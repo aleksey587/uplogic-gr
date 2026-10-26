@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UpLogic — Ιστοσελίδες, E-Shop, Εφαρμογές & AI | Πάτρα</title>
+  <meta name="description" content="Η UpLogic σχεδιάζει και κατασκευάζει ιστοσελίδες από 350€, e-shop από 590€, web & mobile εφαρμογές, AI chatbots, SEO και καμπάνιες Google & Meta. Πάτρα — Ελλάδα & εξωτερικό.">
+  <meta name="theme-color" content="#FBFAF8">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%23111114%22/><path d=%22M30 30v24a20 20 0 0 0 40 0V30%22 fill=%22none%22 stroke=%22%23ffffff%22 stroke-width=%2210%22 stroke-linecap=%22round%22/><circle cx=%2270%22 cy=%2230%22 r=%227%22 fill=%22%232451F5%22/></svg>">
+
+  <!-- Δύο οικογένειες γραμματοσειρών με πλήρη ελληνικά -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Χειρόγραφο CSS: χωρίς Tailwind CDN, χωρίς εξωτερικές βιβλιοθήκες εικονιδίων -->
+  <style>
+    :root {
+      --bg: #FBFAF8;
+      --surface: #FFFFFF;
+      --line: #E9E7E2;
+      --line-strong: #D9D6CF;
+      --ink: #111114;
+      --ink-2: #3A3A42;
+      --muted: #6B6B75;
+      --accent: #2451F5;
+      --accent-ink: #1B3FC4;
+      --accent-soft: #EEF2FF;
+      --radius: 18px;
+      --radius-sm: 12px;
+      --shadow: 0 1px 2px rgba(17,17,20,.04), 0 8px 24px rgba(17,17,20,.06);
+      --shadow-lg: 0 2px 4px rgba(17,17,20,.04), 0 24px 60px rgba(17,17,20,.10);
+      --max: 1180px;
+      --display: "Inter Tight", "Inter", system-ui, sans-serif;
+      --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0; background: var(--bg); color: var(--ink);
+      font-family: var(--body); font-size: 16px; line-height: 1.6;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+    }
+    img, svg { display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; cursor: pointer; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    h1, h2, h3 { font-family: var(--display); font-weight: 600; letter-spacing: -0.03em; line-height: 1.05; margin: 0; }
+    p { margin: 0; }
+    .eyebrow { font-size: 13px; font-weight: 500; color: var(--muted); display: inline-flex; align-items: center; gap: 10px; }
+    .eyebrow::before { content: ""; width: 18px; height: 1px; background: var(--line-strong); }
+    .accent { color: var(--accent); }
+
+    /* Buttons */
+    .btn { display: inline-flex; align-items: center; gap: 8px; height: 46px; padding: 0 20px; border-radius: 999px; font-weight: 600; font-size: 15px; border: 1px solid transparent; transition: background .2s, border-color .2s, transform .2s, color .2s; white-space: nowrap; }
+    .btn svg { width: 16px; height: 16px; }
+    .btn-dark { background: var(--ink); color: #fff; }
+    .btn-dark:hover { background: #26262C; transform: translateY(-1px); }
+    .btn-line { background: var(--surface); border-color: var(--line-strong); color: var(--ink); }
+    .btn-line:hover { border-color: var(--ink); }
+    .btn-sm { height: 38px; padding: 0 16px; font-size: 14px; }
+
+    /* ---------- Header με φόντο το UpLogicLogo ---------- */
+    .header {
+      position: sticky; top: 0; z-index: 40;
+      background: #22252A;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 10px 30px rgba(10,12,16,0.16);
+    }
+    .header .wrap { display: flex; align-items: center; justify-content: space-between; height: 108px; position: relative; }
+    .logo-banner-link {
+      display: flex; align-items: center; height: 100%;
+      position: relative; margin-left: -18px;
+    }
+    .logo-banner-img {
+      height: 106px; width: auto; object-fit: contain; display: block;
+    }
+    .nav { display: flex; align-items: center; gap: 6px; background: rgba(15,17,22,0.55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 6px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.10); }
+    .nav a { padding: 8px 16px; border-radius: 999px; font-size: 14.5px; font-weight: 500; color: rgba(255,255,255,0.86); transition: background .2s, color .2s; }
+    .nav a:hover { background: rgba(255,255,255,0.12); color: #fff; }
+    .header-cta { display: flex; align-items: center; gap: 10px; }
+    .header-cta .btn-dark { background: #189DF5; color: #fff; box-shadow: 0 4px 16px rgba(24,157,245,0.35); }
+    .header-cta .btn-dark:hover { background: #0E8CE0; }
+    .menu-btn { display: none; width: 42px; height: 42px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08); color: #fff; align-items: center; justify-content: center; }
+    .mobile-nav { display: none; }
+    /* Footer logo styling */
+    .logo { display: inline-flex; align-items: center; gap: 12px; font-family: var(--display); font-weight: 700; font-size: 20px; letter-spacing: -0.02em; }
+    .logo-mark { width: 38px; height: 38px; border-radius: 11px; background: #111318; display: grid; place-items: center; box-shadow: 0 2px 10px rgba(24,157,245,.22), inset 0 0 0 1px rgba(255,255,255,.08); flex-shrink: 0; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.05; }
+    .logo-title { font-size: 20px; font-weight: 700; color: var(--ink); letter-spacing: -0.03em; }
+    .logo-title span { color: #189DF5; }
+    .logo-sub { font-family: var(--body); font-size: 9.5px; font-weight: 600; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; margin-top: 3px; }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 72px 0 40px; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+    .hero h1 { font-size: clamp(2.5rem, 4.6vw, 4rem); margin: 20px 0 22px; }
+    .shop .prod:nth-child(5) { display: none; }
+    .hero-sub { font-size: clamp(1.05rem, 1.4vw, 1.2rem); color: var(--ink-2); max-width: 520px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .hero-facts { display: flex; flex-wrap: wrap; gap: 28px; margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .hero-facts div { font-size: 14px; color: var(--muted); }
+    .hero-facts strong { display: block; font-family: var(--display); font-size: 22px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; }
+
+    /* Hero visual: σύνθεση από πραγματικά έργα, σε CSS */
+    .stage { position: relative; height: 520px; }
+    .win { position: absolute; inset: 0 40px 70px 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow-lg); overflow: hidden; }
+    .win-bar { height: 40px; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 6px; padding: 0 14px; }
+    .win-bar i { width: 10px; height: 10px; border-radius: 50%; background: #E5E2DC; }
+    .win-url { margin-left: 12px; font-size: 12px; color: var(--muted); background: #F4F2EE; padding: 4px 12px; border-radius: 999px; }
+    .shop { padding: 22px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+    .shop-head { grid-column: 1 / -1; display: flex; justify-content: space-between; align-items: end; margin-bottom: 6px; }
+    .shop-head b { font-family: var(--display); font-size: 22px; letter-spacing: -0.02em; }
+    .shop-head span { font-size: 12px; color: var(--muted); }
+    .prod { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+    .prod .ph { aspect-ratio: 1/1; background: #F3F1ED; display: grid; place-items: center; }
+    .prod .ph svg { width: 40%; height: 40%; color: #C9C5BD; }
+    .prod .meta { padding: 10px 12px; font-size: 12px; }
+    .prod .meta b { display: block; font-size: 13px; }
+    .prod .meta span { color: var(--muted); }
+    .phone { position: absolute; right: 0; bottom: 0; width: 210px; background: var(--ink); color: #fff; border-radius: 30px; padding: 10px; box-shadow: var(--shadow-lg); }
+    .phone-in { background: #1B1B20; border-radius: 22px; padding: 18px 16px; }
+    .phone small { font-size: 11px; color: #9C9CA6; display: block; }
+    .phone .big { font-family: var(--display); font-size: 28px; font-weight: 600; letter-spacing: -0.02em; margin: 4px 0 14px; }
+    .phone .row { display: flex; justify-content: space-between; font-size: 12px; padding: 9px 0; border-top: 1px solid #2B2B33; color: #D6D6DC; }
+    .phone .row b { color: #fff; font-weight: 600; }
+    .phone .ok { color: #7EE2A8; }
+    .bubble { position: absolute; left: -18px; bottom: 34px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 12px 14px; box-shadow: var(--shadow); max-width: 250px; font-size: 13px; }
+    .bubble .who { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 12px; margin-bottom: 4px; }
+    .bubble .dot { width: 8px; height: 8px; border-radius: 50%; background: #22C55E; }
+    .bubble p { color: var(--ink-2); }
+
+    /* ---------- Clients ---------- */
+    .clients { padding: 40px 0 24px; }
+    .clients p { text-align: center; font-size: 14px; color: var(--muted); margin-bottom: 22px; }
+    .client-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 48px; }
+    .client-row span { font-family: var(--display); font-weight: 600; font-size: 19px; letter-spacing: -0.01em; color: #8E8C86; transition: color .2s; }
+    .client-row span:hover { color: var(--ink); }
+    .client-row small { font-family: var(--body); font-weight: 500; font-size: 12px; color: #A8A59E; margin-left: 6px; }
+
+    /* ---------- Sections ---------- */
+    section { scroll-margin-top: 80px; }
+    .section { padding: 112px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 32px; margin-bottom: 56px; flex-wrap: wrap; }
+    .section-head h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin-top: 14px; max-width: 640px; }
+    .section-head p { color: var(--ink-2); max-width: 420px; }
+
+    /* Services */
+    .services { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+    .svc { padding: 34px 30px 30px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: transparent; transition: background .25s; display: flex; flex-direction: column; min-height: 300px; }
+    .svc:hover { background: var(--surface); }
+    .svc-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+    .svc-num { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .svc-price { font-size: 13px; font-weight: 600; color: var(--accent-ink); background: var(--accent-soft); padding: 4px 10px; border-radius: 999px; }
+    .svc h3 { font-size: 24px; margin-bottom: 12px; }
+    .svc p { color: var(--ink-2); font-size: 15px; }
+    .svc ul { list-style: none; padding: 0; margin: auto 0 0; padding-top: 22px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .svc li { font-size: 12.5px; color: var(--ink-2); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; background: var(--surface); }
+
+    /* Work */
+    .filters { display: flex; flex-wrap: wrap; gap: 6px; padding: 4px; background: #F1EFEB; border-radius: 999px; }
+    .filters button { border: 0; background: transparent; padding: 8px 16px; border-radius: 999px; font-size: 14px; font-weight: 500; color: var(--ink-2); transition: background .2s, color .2s; }
+    .filters button.active { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(17,17,20,.08); }
+    .work { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    .proj { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; cursor: pointer; text-align: left; padding: 0; transition: transform .3s, box-shadow .3s; display: flex; flex-direction: column; }
+    .proj:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .proj-vis { height: 280px; padding: 28px; display: flex; align-items: flex-end; justify-content: center; position: relative; overflow: hidden; }
+    .proj-vis .card { background: var(--surface); border-radius: 14px; box-shadow: var(--shadow); padding: 16px 18px; width: 78%; transition: transform .4s; }
+    .proj:hover .proj-vis .card { transform: translateY(-6px); }
+    .proj-vis .card small { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--muted); }
+    .proj-vis .card b { display: block; font-family: var(--display); font-size: 26px; letter-spacing: -0.02em; margin: 6px 0 10px; }
+    .bars { display: flex; align-items: flex-end; gap: 6px; height: 48px; }
+    .bars i { flex: 1; border-radius: 4px 4px 0 0; background: currentColor; opacity: .85; }
+    .proj-body { padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+    .proj-meta { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); }
+    .proj h3 { font-size: 24px; }
+    .proj p { color: var(--ink-2); font-size: 15px; }
+    .proj-link { margin-top: auto; padding-top: 10px; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+    .proj-link svg { width: 15px; height: 15px; transition: transform .2s; }
+    .proj:hover .proj-link svg { transform: translateX(3px); }
+
+    /* Process */
+    .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; counter-reset: s; }
+    .step { padding-top: 22px; border-top: 2px solid var(--ink); }
+    .step:not(:first-child) { border-top-color: var(--line-strong); }
+    .step span { font-size: 13px; color: var(--muted); }
+    .step h3 { font-size: 21px; margin: 10px 0 8px; }
+    .step p { font-size: 15px; color: var(--ink-2); }
+
+    /* Pricing configurator */
+    .pricing { background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 48px; box-shadow: var(--shadow); }
+    .pkgs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 36px; }
+    .pkg { text-align: left; background: var(--bg); border: 1.5px solid var(--line); border-radius: 16px; padding: 18px; display: flex; flex-direction: column; gap: 6px; transition: border-color .2s, background .2s; position: relative; }
+    .pkg:hover { border-color: var(--line-strong); }
+    .pkg[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); }
+    .pkg-top { display: flex; justify-content: space-between; align-items: center; }
+    .pkg-top b { font-size: 16px; font-weight: 600; }
+    .pkg-top span { font-family: var(--display); font-weight: 600; font-size: 16px; }
+    .pkg p { font-size: 13.5px; color: var(--muted); padding-right: 26px; }
+    .pkg .tick { position: absolute; right: 16px; bottom: 16px; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid var(--line-strong); display: grid; place-items: center; transition: all .2s; }
+    .pkg .tick svg { width: 12px; height: 12px; color: #fff; opacity: 0; }
+    .pkg[aria-pressed="true"] .tick { background: var(--accent); border-color: var(--accent); }
+    .pkg[aria-pressed="true"] .tick svg { opacity: 1; }
+    .total { margin-top: 24px; padding: 24px 28px; border-radius: 18px; background: var(--ink); color: #fff; display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .total small { display: block; font-size: 13px; color: #A3A3AD; }
+    .total .amount { font-family: var(--display); font-size: 40px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
+    .total .days { font-size: 14px; color: #C9C9D1; margin-left: 10px; }
+    .total .btn { background: #fff; color: var(--ink); }
+    .total .btn:hover { background: #ECECEF; }
+    .note { font-size: 13px; color: var(--muted); margin-top: 14px; }
+
+    /* Contact */
+    .contact { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: start; }
+    .contact h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin: 14px 0 18px; }
+    .contact-info { margin-top: 36px; display: grid; gap: 14px; }
+    .ci { display: flex; gap: 14px; align-items: center; padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+    .ci svg { width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; }
+    .ci b { display: block; font-size: 15px; }
+    .ci span { font-size: 13.5px; color: var(--muted); }
+    form.lead { background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 32px; display: grid; gap: 16px; box-shadow: var(--shadow); }
+    .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    label { display: block; font-size: 13.5px; font-weight: 500; margin-bottom: 6px; }
+    input, textarea { width: 100%; font: inherit; font-size: 15px; color: var(--ink); background: var(--bg); border: 1px solid var(--line-strong); border-radius: 12px; padding: 12px 14px; transition: border-color .2s, box-shadow .2s; }
+    input:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+    textarea { resize: vertical; min-height: 110px; }
+    .consent { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--muted); }
+    .consent input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--accent); flex-shrink: 0; }
+    .consent a { text-decoration: underline; }
+    form.lead .btn { justify-content: center; height: 52px; }
+    .form-ok { display: none; padding: 14px 16px; border-radius: 12px; background: #ECFDF3; color: #0F6B3A; font-size: 14px; }
+
+    /* Footer */
+    footer { border-top: 1px solid var(--line); padding: 48px 0 36px; margin-top: 40px; }
+    .foot { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 40px; }
+    .foot p, .foot a { font-size: 14px; color: var(--muted); }
+    .foot a:hover { color: var(--ink); }
+    .foot h4 { margin: 0 0 12px; font-size: 13px; font-weight: 600; color: var(--ink); }
+    .foot ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+    .legal { margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--muted); }
+
+    /* Modal */
+    .modal { position: fixed; inset: 0; z-index: 60; background: rgba(17,17,20,.4); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; padding: 20px; }
+    .modal.open { display: flex; }
+    .modal-box { background: var(--surface); border-radius: 24px; max-width: 640px; width: 100%; max-height: 90vh; overflow: auto; padding: 36px; box-shadow: var(--shadow-lg); animation: pop .25s ease; }
+    @keyframes pop { from { opacity: 0; transform: translateY(12px) scale(.98); } }
+    .modal-head { display: flex; justify-content: space-between; gap: 20px; margin-bottom: 18px; }
+    .modal-head small { font-size: 13px; color: var(--muted); }
+    .modal-head h3 { font-size: 28px; margin-top: 6px; }
+    .x { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); display: grid; place-items: center; flex-shrink: 0; }
+    .x svg { width: 16px; height: 16px; }
+    .modal-box p { color: var(--ink-2); }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 24px 0; }
+    .stats div { border: 1px solid var(--line); border-radius: 14px; padding: 14px; text-align: center; }
+    .stats b { display: block; font-family: var(--display); font-size: 22px; letter-spacing: -0.02em; }
+    .stats span { font-size: 12.5px; color: var(--muted); }
+    .tech { font-size: 13.5px; color: var(--muted); padding-top: 16px; border-top: 1px solid var(--line); }
+
+    /* Chat */
+    .chat-fab { position: fixed; right: 22px; bottom: 22px; z-index: 50; width: 54px; height: 54px; border-radius: 50%; background: var(--ink); color: #fff; border: 0; display: grid; place-items: center; box-shadow: var(--shadow-lg); transition: transform .2s; }
+    .chat-fab:hover { transform: scale(1.06); }
+    .chat-fab svg { width: 22px; height: 22px; }
+    .chat { position: fixed; right: 22px; bottom: 88px; z-index: 50; width: 360px; max-width: calc(100vw - 32px); background: var(--surface); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow-lg); display: none; flex-direction: column; overflow: hidden; animation: pop .2s ease; }
+    .chat.open { display: flex; }
+    .chat-head { padding: 16px 18px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    .chat-head b { font-size: 15px; }
+    .chat-head span { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
+    .chat-head span::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #22C55E; }
+    .chat-msgs { padding: 16px; height: 320px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 14px; }
+    .msg { max-width: 86%; padding: 10px 13px; border-radius: 14px; line-height: 1.5; }
+    .msg.bot { background: #F3F1ED; border-bottom-left-radius: 4px; }
+    .msg.me { align-self: flex-end; background: var(--ink); color: #fff; border-bottom-right-radius: 4px; }
+    .msg a { text-decoration: underline; font-weight: 600; }
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chips button { border: 1px solid var(--line-strong); background: var(--surface); border-radius: 999px; padding: 6px 12px; font-size: 13px; }
+    .chips button:hover { border-color: var(--ink); }
+    .chat form { display: flex; gap: 8px; padding: 12px; border-top: 1px solid var(--line); }
+    .chat form input { padding: 10px 12px; }
+    .chat form button { width: 42px; border-radius: 12px; border: 0; background: var(--ink); color: #fff; display: grid; place-items: center; flex-shrink: 0; }
+    .chat form button svg { width: 16px; height: 16px; }
+
+    /* Cookies */
+    .cookie { position: fixed; left: 22px; bottom: 22px; z-index: 55; max-width: 400px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 18px 20px; box-shadow: var(--shadow-lg); font-size: 14px; color: var(--ink-2); display: none; }
+    .cookie.show { display: block; }
+    .cookie a { text-decoration: underline; }
+    .cookie div { display: flex; gap: 8px; margin-top: 14px; }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      * { animation: none !important; }
+    }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1024px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .stage { height: 460px; max-width: 620px; }
+      .services { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); row-gap: 36px; }
+      .pkgs { grid-template-columns: repeat(2, 1fr); }
+      .contact { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 820px) {
+      .header .wrap { height: 82px; }
+      .logo-banner-img { height: 76px; }
+      .nav, .header-cta .btn-line { display: none; }
+      .menu-btn { display: inline-flex; }
+      .mobile-nav { position: fixed; inset: 82px 0 auto 0; background: var(--bg); border-bottom: 1px solid var(--line); padding: 12px 24px 24px; flex-direction: column; gap: 2px; z-index: 39; }
+      .mobile-nav.open { display: flex; }
+      .mobile-nav a { padding: 14px 4px; font-size: 18px; font-weight: 500; border-bottom: 1px solid var(--line); }
+      .mobile-nav .btn { margin-top: 16px; justify-content: center; border-bottom: 0; color: #fff; font-size: 16px; }
+      .work { grid-template-columns: 1fr; }
+      .foot { grid-template-columns: 1fr 1fr; }
+      .foot > div:first-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 600px) {
+      .wrap { padding: 0 20px; }
+      .logo-sub { display: none; }
+      .brand-hero-banner { margin-bottom: 24px; border-radius: 16px; }
+      .hero { padding: 40px 0 24px; }
+      .hero-facts { gap: 20px; }
+      .stage { height: 400px; }
+      .win { inset: 0 0 90px 0; }
+      .shop { grid-template-columns: 1fr 1fr; padding: 16px; }
+      .shop .prod:nth-child(4) { display: none; }
+      .shop .prod:nth-child(5) { display: none; }
+      .phone { width: 196px; right: -4px; border-radius: 26px; padding: 8px; }
+      .phone-in { padding: 14px 12px; border-radius: 20px; }
+      .phone .big { font-size: 21px; margin-bottom: 10px; white-space: nowrap; }
+      .phone .row { font-size: 11px; gap: 8px; white-space: nowrap; }
+      .bubble { left: 0; bottom: 0; max-width: 180px; font-size: 12px; padding: 10px 12px; }
+      .section { padding: 80px 0; }
+      .services { grid-template-columns: 1fr; }
+      .svc { min-height: 0; }
+      .svc-top { margin-bottom: 24px; }
+      .steps { grid-template-columns: 1fr; }
+      .pricing { padding: 28px 20px; border-radius: 22px; }
+      .pkgs { grid-template-columns: 1fr; }
+      .total .amount { font-size: 34px; }
+      .total .btn { width: 100%; justify-content: center; }
+      .row2 { grid-template-columns: 1fr; }
+      form.lead { padding: 22px; }
+      .proj-vis { height: 230px; }
+      .stats { grid-template-columns: 1fr; }
+      .modal-box { padding: 24px; }
+      .chat-fab { right: 16px; bottom: 16px; }
+      .chat { right: 16px; bottom: 80px; }
+      .cookie { left: 16px; right: 16px; bottom: 16px; max-width: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Σύνολο εικονιδίων (inline SVG, χωρίς εξωτερική βιβλιοθήκη) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></symbol>
+  </svg>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="header">
+    <div class="wrap">
+      <a href="#top" class="logo-banner-link" aria-label="UpLogic — αρχική">
+        <img src="UpLogicHeaderLogo.jpg" alt="UpLogic — Web · Applications · Technology" class="logo-banner-img">
+      </a>
+      <nav class="nav" aria-label="Κύριο μενού">
+        <a href="#services">Υπηρεσίες</a>
+        <a href="#work">Έργα</a>
+        <a href="#pricing">Τιμές</a>
+        <a href="#contact">Επικοινωνία</a>
+      </nav>
+      <div class="header-cta">
+        <a href="#contact" class="btn btn-dark btn-sm">Ζήτα προσφορά</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="mobileNav">
+          <svg width="20" height="20"><use href="#i-menu"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Μενού κινητού">
+    <a href="#services">Υπηρεσίες</a>
+    <a href="#work">Έργα</a>
+    <a href="#pricing">Τιμές</a>
+    <a href="#contact">Επικοινωνία</a>
+    <a href="#contact" class="btn btn-dark">Ζήτα προσφορά</a>
+  </nav>
+
+  <main id="top">
+
+    <!-- ================= HERO ================= -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <span class="eyebrow">Digital studio · Πάτρα</span>
+          <h1>Ψηφιακά προϊόντα που <span class="accent">φέρνουν πελάτες.</span></h1>
+          <p class="hero-sub">Σχεδιάζουμε και χτίζουμε ιστοσελίδες, e-shop, εφαρμογές και AI chatbots για επιχειρήσεις στην Ελλάδα και το εξωτερικό. Γρήγορα, καθαρά, με μετρήσιμο αποτέλεσμα.</p>
+          <div class="hero-actions">
+            <a href="#contact" class="btn btn-dark">Ζήτα προσφορά <svg><use href="#i-arrow"/></svg></a>
+            <a href="#work" class="btn btn-line">Δες τα έργα μας</a>
+          </div>
+          <div class="hero-facts">
+            <div><strong>7+</strong>έργα σε παραγωγή</div>
+            <div><strong>5</strong>χώρες πελατών</div>
+            <div><strong>από 350€</strong>ιστοσελίδα</div>
+          </div>
+        </div>
+
+        <div class="stage reveal" aria-hidden="true">
+          <div class="win">
+            <div class="win-bar"><i></i><i></i><i></i><span class="win-url">shop.example.gr</span></div>
+            <div class="shop">
+              <div class="shop-head"><b>Νέες αφίξεις</b><span>Δωρεάν αποστολή από 40€</span></div>
+              <div class="prod"><div class="ph"><svg><use href="#i-bag"/></svg></div><div class="meta"><b>Classic Tote</b><span>48,00 €</span></div></div>
+              <div class="prod"><div class="ph" style="background:#EEF2FF"><svg style="color:#B9C6F7"><use href="#i-bag"/></svg></div><div class="meta"><b>Daypack</b><span>72,00 €</span></div></div>
+              <div class="prod"><div class="ph"><svg><use href="#i-bag"/></svg></div><div class="meta"><b>Mini Bag</b><span>36,00 €</span></div></div>
+              <div class="prod"><div class="ph"><svg><use href="#i-bag"/></svg></div><div class="meta"><b>Weekender</b><span>94,00 €</span></div></div>
+            </div>
+          </div>
+          <div class="phone">
+            <div class="phone-in">
+              <small>TaxPilot · Safe-to-Spend</small>
+              <div class="big">3.450,00 €</div>
+              <div class="row"><span>Τιμολόγιο #0142</span><b>+350 €</b></div>
+              <div class="row"><span>myDATA</span><b class="ok">Συγχρονίστηκε</b></div>
+              <div class="row"><span>Για φόρους</span><b>1.248 €</b></div>
+            </div>
+          </div>
+          <div class="bubble">
+            <div class="who"><span class="dot"></span>AI Βοηθός</div>
+            <p>Το μέγεθος M είναι διαθέσιμο. Θέλετε να το προσθέσω στο καλάθι;</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ΠΕΛΑΤΕΣ ================= -->
+    <section class="clients">
+      <div class="wrap reveal">
+        <p>Έχουμε συνεργαστεί με επιχειρήσεις σε Ελλάδα και Ευρώπη</p>
+        <div class="client-row">
+          <span>Γεωργιάδης<small>GR</small></span>
+          <span>TKDraw<small>WT</small></span>
+          <span>HanFishing<small>DE</small></span>
+          <span>Vanguard Clinic<small>UK</small></span>
+          <span>Nordic Krone<small>CH</small></span>
+          <span>Solarix Living<small>IT</small></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ΥΠΗΡΕΣΙΕΣ ================= -->
+    <section class="section" id="services">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Υπηρεσίες</span>
+            <h2>Ό,τι χρειάζεται η επιχείρησή σας online, από μία ομάδα.</h2>
+          </div>
+          <p>Από την πρώτη ιστοσελίδα μέχρι μια ολόκληρη πλατφόρμα. Ένας συνεργάτης για σχεδιασμό, κώδικα και ανάπτυξη.</p>
+        </div>
+
+        <div class="services reveal">
+          <article class="svc">
+            <div class="svc-top"><span class="svc-num">01</span><span class="svc-price">από 350€</span></div>
+            <h3>Ιστοσελίδες</h3>
+            <p>Εταιρικές σελίδες και landing pages με δικό σας design, γρήγορη φόρτωση και σωστή εμφάνιση σε κάθε κινητό.</p>
+            <ul><li>Custom design</li><li>Online ραντεβού</li><li>SEO & GDPR</li></ul>
+          </article>
+          <article class="svc">
+            <div class="svc-top"><span class="svc-num">02</span><span class="svc-price">από 590€</span></div>
+            <h3>E-Shop</h3>
+            <p>Καταστήματα που πουλάνε. Πληρωμές, courier, myDATA και συγχρονισμός αποθήκης, όλα συνδεδεμένα.</p>
+            <ul><li>IRIS & Apple Pay</li><li>Skroutz XML</li><li>Amazon & eBay</li></ul>
+          </article>
+          <article class="svc">
+            <div class="svc-top"><span class="svc-num">03</span><span class="svc-price">από 1.100€</span></div>
+            <h3>Εφαρμογές</h3>
+            <p>Web και mobile εφαρμογές, πλατφόρμες SaaS και εσωτερικά εργαλεία, φτιαγμένα για τη δική σας ροή εργασίας.</p>
+            <ul><li>iOS & Android</li><li>PWA</li><li>Cloud & API</li></ul>
+          </article>
+          <article class="svc">
+            <div class="svc-top"><span class="svc-num">04</span><span class="svc-price">από 180€</span></div>
+            <h3>AI Chatbots</h3>
+            <p>Ένας βοηθός εκπαιδευμένος στα προϊόντα σας, που απαντά στους πελάτες 24/7 και μαζεύει αιτήματα.</p>
+            <ul><li>WooCommerce & Shopify</li><li>WhatsApp</li><li>Instagram</li></ul>
+          </article>
+          <article class="svc">
+            <div class="svc-top"><span class="svc-num">05</span><span class="svc-price">από 240€</span></div>
+            <h3>SEO & Google Maps</h3>
+            <p>Τεχνικό SEO, λέξεις-κλειδιά και Google Business Profile, ώστε να σας βρίσκουν όταν σας ψάχνουν.</p>
+            <ul><li>Core Web Vitals</li><li>Local SEO</li><li>Μηνιαίες αναφορές</li></ul>
+          </article>
+          <article class="svc">
+            <div class="svc-top"><span class="svc-num">06</span><span class="svc-price">από 220€</span></div>
+            <h3>Google & Meta Ads</h3>
+            <p>Καμπάνιες σε Google, Facebook, Instagram και TikTok με σωστή μέτρηση μετατροπών από την πρώτη μέρα.</p>
+            <ul><li>Performance Max</li><li>Reels</li><li>Conversion API</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ΕΡΓΑ ================= -->
+    <section class="section" id="work" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Επιλεγμένα έργα</span>
+            <h2>Δουλειά που τρέχει ήδη στην αγορά.</h2>
+          </div>
+          <div class="filters" role="tablist" aria-label="Φίλτρο έργων">
+            <button class="active" data-filter="all" role="tab" aria-selected="true">Όλα</button>
+            <button data-filter="web" role="tab" aria-selected="false">Ιστοσελίδες & E-Shop</button>
+            <button data-filter="saas" role="tab" aria-selected="false">SaaS & AI</button>
+            <button data-filter="app" role="tab" aria-selected="false">Εφαρμογές</button>
+          </div>
+        </div>
+
+        <div class="work" id="workGrid">
+          <button class="proj reveal" data-cat="saas app" data-id="taxpilot">
+            <div class="proj-vis" style="background:#EEF6F1;color:#1F9D57">
+              <div class="card"><small><span>TaxPilot · Safe-to-Spend</span><span>myDATA ✓</span></small><b>3.450,00 €</b>
+                <div class="bars"><i style="height:40%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:80%"></i><i style="height:66%"></i><i style="height:92%"></i></div></div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-meta"><span>FinTech SaaS · Web & Mobile</span><span>Live</span></div>
+              <h3>TaxPilot GR</h3>
+              <p>Φορολογικός βοηθός για ελεύθερους επαγγελματίες: Safe-to-Spend, τιμολόγια στο myDATA, σάρωση αποδείξεων και AI σύμβουλος.</p>
+              <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
+            </div>
+          </button>
+
+          <button class="proj reveal" data-cat="web" data-id="georgiadis">
+            <div class="proj-vis" style="background:#EEF2FF;color:#2451F5">
+              <div class="card"><small><span>Γεωργιάδης · Ιστοσελίδα</span><span>PageSpeed 99</span></small><b>Νέα ιστοσελίδα</b>
+                <div class="bars"><i style="height:30%"></i><i style="height:38%"></i><i style="height:52%"></i><i style="height:64%"></i><i style="height:78%"></i><i style="height:96%"></i></div></div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-meta"><span>Εταιρική σελίδα · E-Shop · SEO</span><span>Ελλάδα</span></div>
+              <h3>Γεωργιάδης</h3>
+              <p>Νέα εταιρική ιστοσελίδα και ψηφιακός κατάλογος, με γρήγορη φόρτωση στο κινητό και στρατηγική Local SEO.</p>
+              <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
+            </div>
+          </button>
+
+          <button class="proj reveal" data-cat="saas app" data-id="tkdraw">
+            <div class="proj-vis" style="background:#FFF1F0;color:#D92D20">
+              <div class="card"><small><span>TKDraw · World Taekwondo</span><span>WT Rules ✓</span></small><b>Zero-BYE · Live Score</b>
+                <div class="bars"><i style="height:54%"></i><i style="height:72%"></i><i style="height:64%"></i><i style="height:86%"></i><i style="height:78%"></i><i style="height:98%"></i></div></div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-meta"><span>SportsTech SaaS · Live Scoring</span><span>WT / ΕΛΟΤ</span></div>
+              <h3>TKDraw</h3>
+              <p>Πλατφόρμα αγώνων Taekwondo: αλγόριθμος δίκαιων κληρώσεων χωρίς BYE, ηλεκτρονική βαθμολογία κριτών σε tablets και Live TV Scoreboard σταδίου.</p>
+              <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
+            </div>
+          </button>
+
+          <button class="proj reveal" data-cat="saas" data-id="greekhost">
+            <div class="proj-vis" style="background:#EDF7F8;color:#0E8A9A">
+              <div class="card"><small><span>GreekHost · Κρατήσεις μήνα</span><span>iCal ✓</span></small><b>8.940,00 €</b>
+                <div class="bars"><i style="height:70%"></i><i style="height:55%"></i><i style="height:88%"></i><i style="height:60%"></i><i style="height:74%"></i><i style="height:82%"></i></div></div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-meta"><span>PropTech SaaS</span><span>Airbnb · Booking</span></div>
+              <h3>GreekHost PMS</h3>
+              <p>Διαχείριση καταλυμάτων βραχυχρόνιας μίσθωσης: αυτόματο Τέλος Ανθεκτικότητας, έσοδα ανά ακίνητο, αποστολή στον λογιστή με ένα κλικ.</p>
+              <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
+            </div>
+          </button>
+
+          <button class="proj reveal" data-cat="web" data-id="hanfishing">
+            <div class="proj-vis" style="background:#FBF3EA;color:#C2700F">
+              <div class="card"><small><span>Multi-channel store</span><span>800+ SKU</span></small><b>E-Shop · Amazon · eBay</b>
+                <div class="bars"><i style="height:24%"></i><i style="height:36%"></i><i style="height:50%"></i><i style="height:58%"></i><i style="height:76%"></i><i style="height:100%"></i></div></div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-meta"><span>E-Commerce · Marketplaces</span><span>Γερμανία · ΕΕ</span></div>
+              <h3>HanFishing</h3>
+              <p>Ψηφιοποίηση 800+ προϊόντων, επεξεργασία εικόνων με AI, συγχρονισμός αποθήκης με Amazon Europe και eBay, Google Shopping.</p>
+              <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
+            </div>
+          </button>
+
+          <button class="proj reveal" data-cat="app saas" data-id="aura">
+            <div class="proj-vis" style="background:#F4F0FB;color:#7046C9">
+              <div class="card"><small><span>Aura Edu · Μάθημα 4</span><span>AI Tutor</span></small><b>Πρόοδος 72%</b>
+                <div class="bars"><i style="height:50%"></i><i style="height:60%"></i><i style="height:45%"></i><i style="height:72%"></i><i style="height:68%"></i><i style="height:84%"></i></div></div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-meta"><span>EdTech · Android & Web</span><span>Εφαρμογή</span></div>
+              <h3>Aura Edu</h3>
+              <p>Εκπαιδευτική εφαρμογή με AI καθηγητή, μαθήματα σαν παιχνίδι, φωνητική αλληλεπίδραση και παρακολούθηση προόδου.</p>
+              <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
+            </div>
+          </button>
+
+          <button class="proj reveal" data-cat="app saas" data-id="pinshot">
+            <div class="proj-vis" style="background:#FBEFF1;color:#D23F5A">
+              <div class="card"><small><span>PinShot · FilmCraft</span><span>60 fps</span></small><b>Reels · TikTok · Ads</b>
+                <div class="bars"><i style="height:66%"></i><i style="height:42%"></i><i style="height:80%"></i><i style="height:58%"></i><i style="height:90%"></i><i style="height:70%"></i></div></div>
+            </div>
+            <div class="proj-body">
+              <div class="proj-meta"><span>Mobile app · Creative AI</span><span>iOS · Android</span></div>
+              <h3>PinShot & FilmCraft</h3>
+              <p>Mobile εφαρμογή και εργαλεία παραγωγής βίντεο για Reels, TikTok και διαφημίσεις στο Meta.</p>
+              <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ΔΙΑΔΙΚΑΣΙΑ ================= -->
+    <section class="section" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Πώς δουλεύουμε</span>
+            <h2>Απλή διαδικασία, χωρίς εκπλήξεις.</h2>
+          </div>
+        </div>
+        <div class="steps reveal">
+          <div class="step"><span>01</span><h3>Γνωριμία</h3><p>Μια σύντομη κουβέντα για την επιχείρηση, τους στόχους και τον προϋπολογισμό σας.</p></div>
+          <div class="step"><span>02</span><h3>Πρόταση</h3><p>Γραπτή προσφορά με σταθερή τιμή, χρονοδιάγραμμα και σαφές τι περιλαμβάνεται.</p></div>
+          <div class="step"><span>03</span><h3>Κατασκευή</h3><p>Βλέπετε την πρόοδο σε ζωντανό σύνδεσμο και δίνετε σχόλια σε κάθε βήμα.</p></div>
+          <div class="step"><span>04</span><h3>Παράδοση</h3><p>Ανέβασμα online, εκπαίδευση στη χρήση και υποστήριξη μετά την παράδοση.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ΤΙΜΕΣ ================= -->
+    <section class="section" id="pricing" style="padding-top:0">
+      <div class="wrap">
+        <div class="pricing reveal">
+          <div class="section-head" style="margin-bottom:0">
+            <div>
+              <span class="eyebrow">Τιμές</span>
+              <h2>Υπολογίστε το κόστος σε λίγα δευτερόλεπτα.</h2>
+            </div>
+            <p>Επιλέξτε μία ή περισσότερες υπηρεσίες. Η τελική προσφορά επιβεβαιώνεται γραπτώς μετά τη γνωριμία μας.</p>
+          </div>
+
+          <div class="pkgs" id="pkgs">
+            <button class="pkg" aria-pressed="true" data-name="Ιστοσελίδα" data-price="350" data-days="6"><div class="pkg-top"><b>Ιστοσελίδα</b><span>350€</span></div><p>Custom design, 5–8 σελίδες, mobile-first</p><span class="tick"><svg><use href="#i-check"/></svg></span></button>
+            <button class="pkg" aria-pressed="false" data-name="E-Shop" data-price="590" data-days="10"><div class="pkg-top"><b>E-Shop</b><span>590€</span></div><p>Πληρωμές, IRIS, vouchers courier, Skroutz XML</p><span class="tick"><svg><use href="#i-check"/></svg></span></button>
+            <button class="pkg" aria-pressed="false" data-name="AI Chatbot" data-price="180" data-days="3"><div class="pkg-top"><b>AI Chatbot</b><span>180€</span></div><p>Απαντήσεις σε πελάτες 24/7 και συλλογή αιτημάτων</p><span class="tick"><svg><use href="#i-check"/></svg></span></button>
+            <button class="pkg" aria-pressed="false" data-name="Εφαρμογή" data-price="1100" data-days="18"><div class="pkg-top"><b>Εφαρμογή</b><span>1.100€</span></div><p>Web ή mobile, βάση δεδομένων, λειτουργίες AI</p><span class="tick"><svg><use href="#i-check"/></svg></span></button>
+            <button class="pkg" aria-pressed="false" data-name="SEO & Google Maps" data-price="240" data-days="5"><div class="pkg-top"><b>SEO & Google Maps</b><span>240€</span></div><p>Λέξεις-κλειδιά, Schema, Google Business Profile</p><span class="tick"><svg><use href="#i-check"/></svg></span></button>
+            <button class="pkg" aria-pressed="false" data-name="Google & Meta Ads" data-price="220" data-days="4"><div class="pkg-top"><b>Google & Meta Ads</b><span>220€</span></div><p>Στήσιμο καμπανιών, Pixel και μέτρηση μετατροπών</p><span class="tick"><svg><use href="#i-check"/></svg></span></button>
+          </div>
+
+          <div class="total">
+            <div>
+              <small id="pkgNames">Ιστοσελίδα</small>
+              <span class="amount" id="pkgTotal">350 €</span><span class="days" id="pkgDays">~6 εργάσιμες</span>
+            </div>
+            <a href="#contact" class="btn" id="pkgCta">Συνέχεια με αυτό το πακέτο <svg><use href="#i-arrow"/></svg></a>
+          </div>
+          <p class="note">Ενδεικτικές τιμές εκκίνησης. Οι διαφημιστικοί προϋπολογισμοί σε Google/Meta χρεώνονται χωριστά από τις πλατφόρμες.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ΕΠΙΚΟΙΝΩΝΙΑ ================= -->
+    <section class="section" id="contact" style="padding-top:0">
+      <div class="wrap contact">
+        <div class="reveal">
+          <span class="eyebrow">Επικοινωνία</span>
+          <h2>Ας μιλήσουμε για το project σας.</h2>
+          <p style="color:var(--ink-2)">Πείτε μας τι χρειάζεστε. Σας απαντάμε αυθημερόν με τα επόμενα βήματα και μια πρώτη εκτίμηση κόστους.</p>
+          <div class="contact-info">
+            <a class="ci" href="mailto:info@uplogic.gr"><svg><use href="#i-mail"/></svg><div><b>info@uplogic.gr</b><span>Απάντηση την ίδια μέρα</span></div></a>
+            <div class="ci"><svg><use href="#i-pin"/></svg><div><b>Πάτρα, Αχαΐα</b><span>Εξυπηρέτηση σε Ελλάδα & εξωτερικό</span></div></div>
+          </div>
+        </div>
+
+        <!-- Η φόρμα ανοίγει email προς info@uplogic.gr με τα στοιχεία συμπληρωμένα.
+             Για αποστολή χωρίς email client, σύνδεσέ την με backend ή υπηρεσία φορμών (π.χ. Formspree). -->
+        <form class="lead reveal" id="leadForm" novalidate>
+          <div class="row2">
+            <div><label for="fName">Ονοματεπώνυμο</label><input id="fName" name="name" required autocomplete="name" placeholder="Γιώργος Παπαδόπουλος"></div>
+            <div><label for="fPhone">Τηλέφωνο</label><input id="fPhone" name="phone" type="tel" required autocomplete="tel" placeholder="69XXXXXXXX"></div>
+          </div>
+          <div><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" required autocomplete="email" placeholder="you@company.gr"></div>
+          <div><label for="fPkg">Τι σας ενδιαφέρει</label><input id="fPkg" name="package" value="Ιστοσελίδα (350€)"></div>
+          <div><label for="fMsg">Μήνυμα</label><textarea id="fMsg" name="message" placeholder="Λίγα λόγια για την επιχείρηση ή link της τωρινής σας σελίδας…"></textarea></div>
+          <label class="consent"><input type="checkbox" id="fConsent" required><span>Συμφωνώ με την επεξεργασία των στοιχείων μου για να λάβω απάντηση, σύμφωνα με την <a href="#" data-todo="privacy">Πολιτική Απορρήτου</a>.</span></label>
+          <button type="submit" class="btn btn-dark">Αποστολή αιτήματος <svg><use href="#i-send"/></svg></button>
+          <div class="form-ok" id="formOk" role="status">Άνοιξε το email σας με το μήνυμα έτοιμο. Πατήστε «Αποστολή» για να το λάβουμε.</div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <div class="wrap">
+      <div class="foot">
+        <div>
+          <a href="#top" class="logo" style="margin-bottom:12px">
+            <span class="logo-mark"><svg width="22" height="22" viewBox="0 0 100 100" aria-hidden="true"><path d="M28 24v30a22 22 0 0 0 44 0V44" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="round"/><circle cx="72" cy="24" r="9.5" fill="#189DF5"/></svg></span>
+            <span class="logo-text">
+              <span class="logo-title">Up<span>Logic</span></span>
+              <span class="logo-sub">Web · Applications · Technology</span>
+            </span>
+          </a>
+          <p style="max-width:340px">Ιστοσελίδες, e-shop, εφαρμογές, AI chatbots, SEO και διαφήμιση. Από την Πάτρα, για Ελλάδα και εξωτερικό.</p>
+        </div>
+        <div>
+          <h4>Πλοήγηση</h4>
+          <ul><li><a href="#services">Υπηρεσίες</a></li><li><a href="#work">Έργα</a></li><li><a href="#pricing">Τιμές</a></li><li><a href="#contact">Επικοινωνία</a></li></ul>
+        </div>
+        <div>
+          <h4>Νομικά</h4>
+          <ul>
+            <li><a href="#" data-todo="privacy">Πολιτική Απορρήτου</a></li>
+            <li><a href="#" data-todo="terms">Όροι Χρήσης</a></li>
+            <li><a href="#" id="cookieSettings">Ρυθμίσεις cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="legal">
+        <span>© <span id="yr">2026</span> UpLogic. Με επιφύλαξη παντός δικαιώματος.</span>
+        <span>Έδρα: Πάτρα</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL ΕΡΓΟΥ ================= -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div><small id="mCat"></small><h3 id="mTitle"></h3></div>
+        <button class="x" id="mClose" aria-label="Κλείσιμο"><svg><use href="#i-x"/></svg></button>
+      </div>
+      <p id="mDesc"></p>
+      <div class="stats" id="mStats"></div>
+      <div class="tech" id="mTech"></div>
+    </div>
+  </div>
+
+  <!-- ================= CHAT ================= -->
+  <button class="chat-fab" id="chatFab" aria-label="Άνοιγμα συνομιλίας" aria-expanded="false" aria-controls="chat"><svg><use href="#i-chat"/></svg></button>
+  <div class="chat" id="chat" role="dialog" aria-label="Βοηθός UpLogic">
+    <div class="chat-head"><div><b>Βοηθός UpLogic</b><span>Online</span></div><button class="x" id="chatClose" aria-label="Κλείσιμο"><svg><use href="#i-x"/></svg></button></div>
+    <div class="chat-msgs" id="chatMsgs" aria-live="polite">
+      <div class="msg bot">Γεια σας! Πώς μπορώ να βοηθήσω;</div>
+      <div class="chips" id="chips">
+        <button data-q="pricing">Πόσο κοστίζει;</button>
+        <button data-q="time">Σε πόσο καιρό παραδίδετε;</button>
+        <button data-q="chatbot">Τι κάνει το AI chatbot;</button>
+        <button data-q="contact">Θέλω να μιλήσω με κάποιον</button>
+      </div>
+    </div>
+    <form id="chatForm"><input id="chatInput" placeholder="Γράψτε την ερώτησή σας…" autocomplete="off" aria-label="Μήνυμα"><button aria-label="Αποστολή"><svg><use href="#i-send"/></svg></button></form>
+  </div>
+
+  <!-- ================= COOKIES ================= -->
+  <div class="cookie" id="cookie" role="region" aria-label="Cookies">
+    Χρησιμοποιούμε μόνο τα απαραίτητα cookies για τη λειτουργία της σελίδας. Με τη συγκατάθεσή σας, ενεργοποιούμε και cookies μέτρησης επισκεψιμότητας. <a href="#" data-todo="privacy">Μάθετε περισσότερα</a>
+    <div><button class="btn btn-dark btn-sm" data-consent="all">Αποδοχή</button><button class="btn btn-line btn-sm" data-consent="necessary">Μόνο απαραίτητα</button></div>
+  </div>
+
+  <script>
+    // ---------- Header / μενού ----------
+    const header = document.getElementById('header');
+    addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 8), { passive: true });
+
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    menuBtn.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open);
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+
+    // ---------- Εμφάνιση κατά το scroll ----------
+    const io = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    }), { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // ---------- Φίλτρο έργων ----------
+    document.querySelectorAll('.filters button').forEach(btn => btn.addEventListener('click', () => {
+      document.querySelectorAll('.filters button').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+      btn.classList.add('active'); btn.setAttribute('aria-selected', 'true');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('#workGrid .proj').forEach(p => {
+        p.style.display = (f === 'all' || p.dataset.cat.split(' ').includes(f)) ? '' : 'none';
+      });
+    }));
+
+    // ---------- Λεπτομέρειες έργων ----------
+    const projects = {
+      taxpilot: { cat: 'FinTech SaaS · Web & Mobile PWA', title: 'TaxPilot GR',
+        desc: 'Πλατφόρμα οικονομικής και φορολογικής διαχείρισης για ελεύθερους επαγγελματίες και επιχειρήσεις. Περιλαμβάνει τον αλγόριθμο Safe-to-Spend, έκδοση τιμολογίων στο myDATA με έλεγχο ΑΦΜ, σάρωση αποδείξεων (OCR) και AI φορολογικό σύμβουλο.',
+        stats: [['myDATA', 'Πλήρης διασύνδεση'], ['OCR', 'Σάρωση αποδείξεων'], ['24/7', 'AI σύμβουλος']],
+        tech: 'React · TypeScript · Supabase · AADE myDATA API' },
+      georgiadis: { cat: 'Εταιρική σελίδα · E-Shop · SEO · Ελλάδα', title: 'Γεωργιάδης',
+        desc: 'Σχεδιασμός και ανάπτυξη της νέας διαδικτυακής παρουσίας: custom UI/UX, γρήγορη φόρτωση σε κινητό και desktop, παρουσίαση προϊόντων και υπηρεσιών, πλήρης βελτιστοποίηση SEO.',
+        stats: [['99/100', 'Google PageSpeed'], ['+240%', 'Οργανική κίνηση'], ['100%', 'Mobile responsive']],
+        tech: 'Custom web · Technical SEO & Schema · UX για μετατροπές' },
+      tkdraw: { cat: 'SportsTech SaaS · World Taekwondo (WT / ΕΛΟΤ)', title: 'TKDraw',
+        desc: 'Ολοκληρωμένη πλατφόρμα διαχείρισης τουρνουά, κληρώσεων και ηλεκτρονικής βαθμολόγησης Taekwondo σύμφωνα με τους επίσημους κανονισμούς της World Taekwondo (WT). Περιλαμβάνει πύλη εγγραφών συλλόγων, αλγόριθμο δίκαιων κληρώσεων χωρίς εικονικά BYE με αυτόματο διαχωρισμό συλλόγων, touch-screen εφαρμογή κριτών σε tablets (-0.1 / -0.3 & Ολυμπιακό Trimmed Mean), σύστημα Cut-off Top 8 και Live TV Scoreboard σταδίου.',
+        stats: [['Zero-BYE', 'Δίκαιες κληρώσεις WT'], ['Live Tablets', 'Ηλεκτρονική βαθμολογία'], ['10 κατηγορίες', 'Επίσημα πρότυπα WT']],
+        tech: 'Python · Flask · SQLite · Real-time Judge Tablets & Arena TV' },
+      greekhost: { cat: 'PropTech & Hospitality SaaS', title: 'GreekHost PMS',
+        desc: 'Εφαρμογή για ιδιοκτήτες και διαχειριστές ακινήτων βραχυχρόνιας μίσθωσης. Υπολογίζει αυτόματα το Τέλος Ανθεκτικότητας στην Κλιματική Κρίση, συγχρονίζει ημερολόγια iCal και στέλνει αναφορά στον λογιστή με ένα κλικ.',
+        stats: [['Αυτόματος', 'Υπολογισμός Τ.Α.Κ.'], ['1 κλικ', 'Εξαγωγή για λογιστή'], ['0', 'Διπλοκρατήσεις']],
+        tech: 'Next.js · Cloud sync · iCal multi-calendar · Οικονομικά analytics' },
+      hanfishing: { cat: 'E-Commerce · Amazon, eBay & SEO · Εξωτερικό', title: 'HanFishing',
+        desc: 'Ψηφιακή αναβάθμιση και αυτοματοποίηση για πάνω από 800 κωδικούς. E-shop υψηλής μετατροπής, βελτιστοποίηση φωτογραφιών με AI, διασύνδεση αποθήκης με Amazon Europe και eBay, διεθνές SEO.',
+        stats: [['800+', 'Κωδικοί SKU'], ['+340%', 'Αύξηση πωλήσεων'], ['5 χώρες', 'Amazon & eBay']],
+        tech: 'Custom e-commerce · Amazon SP-API · eBay · Google Shopping' },
+      aura: { cat: 'EdTech · Android & Web', title: 'Aura Edu',
+        desc: 'Εφαρμογή μάθησης για μαθητές και εκπαιδευτικούς, με διαδραστικά μαθήματα, AI ψηφιακό βοηθό, πόντους επιβράβευσης και native εφαρμογή Android.',
+        stats: [['Android', '& Web'], ['AI Tutor', 'Προσωποποιημένη μάθηση'], ['Φωνή', 'Ηχητική αλληλεπίδραση']],
+        tech: 'React · Android · Audio/Voice · Ενσωμάτωση LLM' },
+      pinshot: { cat: 'Creative Tech · Mobile & AI Video', title: 'PinShot & FilmCraft',
+        desc: 'Mobile εφαρμογή και εργαλεία για δυναμικά βίντεο και διαφημιστικά δημιουργικά (Reels, TikTok, Meta Ads), με animations στα 60fps και επεξεργασία με AI.',
+        stats: [['60 fps', 'Animations'], ['AI', 'Επεξεργασία βίντεο'], ['iOS/Android', 'Cross-platform']],
+        tech: 'Mobile UI · WebGL / Canvas · Meta Ads creative' }
+    };
+    const modal = document.getElementById('modal');
+    let lastFocus = null;
+    function openModal(id) {
+      const p = projects[id]; if (!p) return;
+      lastFocus = document.activeElement;
+      document.getElementById('mCat').textContent = p.cat;
+      document.getElementById('mTitle').textContent = p.title;
+      document.getElementById('mDesc').textContent = p.desc;
+      document.getElementById('mTech').textContent = p.tech;
+      const s = document.getElementById('mStats'); s.replaceChildren();
+      p.stats.forEach(([v, l]) => {
+        const d = document.createElement('div'); const b = document.createElement('b'); const sp = document.createElement('span');
+        b.textContent = v; sp.textContent = l; d.append(b, sp); s.append(d);
+      });
+      modal.classList.add('open'); document.body.style.overflow = 'hidden';
+      document.getElementById('mClose').focus();
+    }
+    function closeModal() { modal.classList.remove('open'); document.body.style.overflow = ''; lastFocus && lastFocus.focus(); }
+    document.querySelectorAll('.proj').forEach(p => p.addEventListener('click', () => openModal(p.dataset.id)));
+    document.getElementById('mClose').addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeChat(); } });
+
+    // ---------- Υπολογισμός κόστους ----------
+    const fmt = n => n.toLocaleString('el-GR') + ' €';
+    function renderTotal() {
+      const sel = [...document.querySelectorAll('.pkg[aria-pressed="true"]')];
+      const names = sel.map(b => b.dataset.name);
+      const total = sel.reduce((s, b) => s + +b.dataset.price, 0);
+      // Εκτίμηση χρόνου: το μεγαλύτερο έργο + μισός χρόνος για τα υπόλοιπα που τρέχουν παράλληλα
+      const days = sel.map(b => +b.dataset.days).sort((a, b) => b - a);
+      const est = days.length ? Math.round(days[0] + days.slice(1).reduce((s, d) => s + d / 2, 0)) : 0;
+      document.getElementById('pkgNames').textContent = names.length ? names.join(' + ') : 'Δεν έχετε επιλέξει υπηρεσία';
+      document.getElementById('pkgTotal').textContent = fmt(total);
+      document.getElementById('pkgDays').textContent = est ? `~${est} εργάσιμες` : '';
+      document.getElementById('fPkg').value = names.length ? `${names.join(' + ')} (${fmt(total)})` : '';
+    }
+    document.querySelectorAll('.pkg').forEach(b => b.addEventListener('click', () => {
+      b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); renderTotal();
+    }));
+    renderTotal();
+
+    // ---------- Φόρμα: ανοίγει email με τα στοιχεία συμπληρωμένα ----------
+    document.getElementById('leadForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const f = e.target;
+      if (!f.reportValidity()) return;
+      const v = id => document.getElementById(id).value.trim();
+      const body = `Όνομα: ${v('fName')}\nΤηλέφωνο: ${v('fPhone')}\nEmail: ${v('fEmail')}\nΕνδιαφέρον: ${v('fPkg')}\n\n${v('fMsg')}`;
+      location.href = `mailto:info@uplogic.gr?subject=${encodeURIComponent('Αίτημα προσφοράς — ' + v('fName'))}&body=${encodeURIComponent(body)}`;
+      document.getElementById('formOk').style.display = 'block';
+    });
+
+    // ---------- Chat (σεναριακές απαντήσεις) ----------
+    const chat = document.getElementById('chat'), fab = document.getElementById('chatFab'), msgs = document.getElementById('chatMsgs');
+    function openChat() { chat.classList.add('open'); fab.setAttribute('aria-expanded', 'true'); document.getElementById('chatInput').focus(); }
+    function closeChat() { chat.classList.remove('open'); fab.setAttribute('aria-expanded', 'false'); }
+    fab.addEventListener('click', () => chat.classList.contains('open') ? closeChat() : openChat());
+    document.getElementById('chatClose').addEventListener('click', closeChat);
+
+    // Οι απαντήσεις του bot είναι δικό μας, σταθερό HTML. Ό,τι γράφει ο χρήστης μπαίνει ΜΟΝΟ ως κείμενο.
+    const replies = {
+      pricing: 'Ενδεικτικά: ιστοσελίδα από <b>350€</b>, e-shop από <b>590€</b>, AI chatbot από <b>180€</b>, εφαρμογή από <b>1.100€</b>. Συνδυάστε ό,τι θέλετε στον <a href="#pricing" data-close>υπολογισμό κόστους</a>.',
+      time: 'Συνήθως: ιστοσελίδα σε 5–8 εργάσιμες, e-shop σε 7–12, chatbot σε 3–5. Οι εφαρμογές εξαρτώνται από το εύρος, το ορίζουμε μαζί στην προσφορά.',
+      chatbot: 'Εκπαιδεύεται στα προϊόντα και τις υπηρεσίες σας, απαντά στους πελάτες 24/7 (διαθεσιμότητα, αποστολές, μεγέθη) και μαζεύει αιτήματα. Συνδέεται με e-shop, WhatsApp και Instagram.',
+      contact: 'Συμπληρώστε τη <a href="#contact" data-close>φόρμα επικοινωνίας</a> ή στείλτε μας στο <b>info@uplogic.gr</b>. Απαντάμε την ίδια μέρα.',
+      seo: 'Κάνουμε τεχνικό SEO, έρευνα λέξεων-κλειδιών και βελτιστοποίηση Google Business Profile. Η οργανική άνοδος θέλει συνήθως 2–4 μήνες συνεπούς δουλειάς.',
+      fallback: 'Ευχαριστούμε! Για να σας δώσουμε σωστή απάντηση, στείλτε μας λίγα λόγια στη <a href="#contact" data-close>φόρμα επικοινωνίας</a>.'
+    };
+    const userText = { pricing: 'Πόσο κοστίζει;', time: 'Σε πόσο καιρό παραδίδετε;', chatbot: 'Τι κάνει το AI chatbot;', contact: 'Θέλω να μιλήσω με κάποιον' };
+    function addMsg(who, content, isHTML) {
+      const d = document.createElement('div'); d.className = 'msg ' + who;
+      if (isHTML) d.innerHTML = content; else d.textContent = content;
+      msgs.append(d); msgs.scrollTop = msgs.scrollHeight;
+    }
+    function botReply(key) { setTimeout(() => addMsg('bot', replies[key], true), 350); }
+    document.getElementById('chips').addEventListener('click', e => {
+      const q = e.target.dataset.q; if (!q) return;
+      addMsg('me', userText[q]); botReply(q);
+    });
+    document.getElementById('chatForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const input = document.getElementById('chatInput'); const val = input.value.trim(); if (!val) return;
+      addMsg('me', val); input.value = '';
+      const t = val.toLowerCase();
+      const key = /τιμ|κοστ|πόσο|ποσο|ευρώ|ευρω|€|προσφορ/.test(t) ? 'pricing'
+        : /χρόν|χρον|μέρ|μερ|καιρ|παράδ|παραδ/.test(t) ? 'time'
+        : /chat|bot|μποτ|ai|τεχνητ/.test(t) ? 'chatbot'
+        : /seo|google|γκουγκλ|πρώτ|πρωτ/.test(t) ? 'seo'
+        : /τηλ|επικοιν|ραντεβ|mail|μιλ/.test(t) ? 'contact' : 'fallback';
+      botReply(key);
+    });
+    msgs.addEventListener('click', e => { if (e.target.matches('[data-close]')) closeChat(); });
+
+    // ---------- Cookies ----------
+    const cookie = document.getElementById('cookie');
+    if (!localStorage.getItem('ul_consent')) setTimeout(() => cookie.classList.add('show'), 800);
+    cookie.addEventListener('click', e => {
+      const c = e.target.dataset.consent; if (!c) return;
+      localStorage.setItem('ul_consent', c); cookie.classList.remove('show');
+      // Εδώ φόρτωσε analytics μόνο αν c === 'all'
+    });
+    document.getElementById('cookieSettings').addEventListener('click', e => { e.preventDefault(); cookie.classList.add('show'); });
+
+    // Σελίδες νομικών κειμένων: θα δημιουργηθούν μετά τη σύσταση της εταιρείας
+    document.querySelectorAll('[data-todo]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
