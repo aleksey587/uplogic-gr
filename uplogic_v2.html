@@ -265,6 +265,11 @@
     .stats b { display: block; font-family: var(--display); font-size: 22px; letter-spacing: -0.02em; }
     .stats span { font-size: 12.5px; color: var(--muted); }
     .tech { font-size: 13.5px; color: var(--muted); padding-top: 16px; border-top: 1px solid var(--line); }
+    .legal-body { font-size: 14.5px; color: var(--ink-2); line-height: 1.65; }
+    .legal-body h4 { font-family: var(--display); font-size: 17px; color: var(--ink); margin: 20px 0 6px; }
+    .legal-body p { margin: 0 0 10px; }
+    .legal-body ul { margin: 0 0 12px; padding-left: 20px; }
+    .legal-body li { margin-bottom: 4px; }
 
     /* Chat */
     .chat-fab { position: fixed; right: 22px; bottom: 22px; z-index: 50; width: 54px; height: 54px; border-radius: 50%; background: var(--ink); color: #fff; border: 0; display: grid; place-items: center; box-shadow: var(--shadow-lg); transition: transform .2s; }
@@ -774,6 +779,17 @@
     </div>
   </div>
 
+  <!-- ================= MODAL ΝΟΜΙΚΩΝ (GDPR / ΟΡΟΙ) ================= -->
+  <div class="modal" id="legalModal" role="dialog" aria-modal="true" aria-labelledby="lTitle">
+    <div class="modal-box" style="max-width:720px">
+      <div class="modal-head">
+        <div><small id="lSub">UpLogic · uplogic.gr</small><h3 id="lTitle"></h3></div>
+        <button class="x" id="lClose" aria-label="Κλείσιμο"><svg><use href="#i-x"/></svg></button>
+      </div>
+      <div class="legal-body" id="lBody"></div>
+    </div>
+  </div>
+
   <!-- ================= CHAT ================= -->
   <button class="chat-fab" id="chatFab" aria-label="Άνοιγμα συνομιλίας" aria-expanded="false" aria-controls="chat"><svg><use href="#i-chat"/></svg></button>
   <div class="chat" id="chat" role="dialog" aria-label="Βοηθός UpLogic">
@@ -1042,8 +1058,66 @@
     });
     document.getElementById('cookieSettings').addEventListener('click', e => { e.preventDefault(); cookie.classList.add('show'); });
 
-    // Σελίδες νομικών κειμένων: θα δημιουργηθούν μετά τη σύσταση της εταιρείας
-    document.querySelectorAll('[data-todo]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+    // ---------- Πολιτική Απορρήτου & Όροι Χρήσης (GDPR) ----------
+    const legalDocs = {
+      privacy: {
+        sub: 'Προστασία Προσωπικών Δεδομένων (GDPR) & Cookies',
+        title: 'Πολιτική Απορρήτου',
+        html: `
+          <p>Η <b>UpLogic</b> (ιστότοπος <b>uplogic.gr</b>, έδρα: Πάτρα, email επικοινωνίας: <b>info@uplogic.gr</b>) δεσμεύεται για την προστασία των προσωπικών σας δεδομένων σύμφωνα με τον Γενικό Κανονισμό Προστασίας Δεδομένων (ΕΕ 2016/679 — GDPR) και την ελληνική νομοθεσία (Ν. 4624/2019).</p>
+          <h4>1. Ποια δεδομένα συλλέγουμε</h4>
+          <p>Συλλέγουμε αποκλειστικά τα στοιχεία που μας παρέχετε οικειοθελώς μέσω της φόρμας επικοινωνίας ή του ψηφιακού βοηθού (AI Chat) της ιστοσελίδας μας:</p>
+          <ul>
+            <li>Ονοματεπώνυμο / Επωνυμία επιχείρησης</li>
+            <li>Τηλέφωνο επικοινωνίας και διεύθυνση Email</li>
+            <li>Πληροφορίες σχετικά με τις υπηρεσίες που σας ενδιαφέρουν (π.χ. κατασκευή ιστοσελίδας, e-shop, εφαρμογής ή AI chatbot)</li>
+          </ul>
+          <h4>2. Σκοπός & Νομική Βάση Επεξεργασίας</h4>
+          <p>Τα στοιχεία σας χρησιμοποιούνται <b>αποκλειστικά</b> για να επικοινωνήσουμε μαζί σας, να απαντήσουμε στο αίτημά σας και να σας αποστείλουμε εξατομικευμένη οικονομοτεχνική προσφορά. Δεν πωλούμε, δεν ενοικιάζουμε και δεν κοινοποιούμε τα στοιχεία σας σε τρίτους για διαφημιστικούς σκοπούς.</p>
+          <h4>3. Χρόνος Τήρησης Δεδομένων</h4>
+          <p>Τα στοιχεία αιτημάτων προσφοράς διατηρούνται για διάστημα έως είκοσι τεσσάρων (24) μηνών από την τελευταία επικοινωνία μας ή μέχρι να ζητήσετε τη διαγραφή τους, εκτός εάν συναφθεί σύμβαση συνεργασίας οπότε τηρούνται βάσει της φορολογικής νομοθεσίας.</p>
+          <h4>4. Πολιτική Cookies</h4>
+          <p>Η ιστοσελίδα χρησιμοποιεί τα απολύτως απαραίτητα τεχνικά cookies (π.χ. αποθήκευση της επιλογής συγκατάθεσης cookies). Cookies στατιστικής ανάλυσης ή απόδοσης ενεργοποιούνται μόνο εφόσον επιλέξετε «Αποδοχή» στο σχετικό πλαίσιο ενημέρωσης. Μπορείτε ανά πάσα στιγμή να αλλάξετε την επιλογή σας από τις «Ρυθμίσεις cookies» στο υποσέλιδο.</p>
+          <h4>5. Τα Δικαιώματά σας (GDPR)</h4>
+          <p>Έχετε δικαίωμα πρόσβασης, διόρθωσης, διαγραφής («δικαίωμα στη λήθη»), περιορισμού της επεξεργασίας και ανάκλησης της συγκατάθεσής σας ανά πάσα στιγμή, στέλνοντας απλό email στο <a href="mailto:info@uplogic.gr">info@uplogic.gr</a>.</p>
+        `
+      },
+      terms: {
+        sub: 'Όροι & Προϋποθέσεις Πλοήγησης και Υπηρεσιών',
+        title: 'Όροι Χρήσης',
+        html: `
+          <p>Καλώς ήρθατε στον ιστότοπο <b>uplogic.gr</b> της <b>UpLogic</b> (Web · Applications · Technology). Η πλοήγηση και χρήση της ιστοσελίδας συνεπάγεται την ανεπιφύλακτη αποδοχή των παρακάτω όρων:</p>
+          <h4>1. Πνευματική Ιδιοκτησία</h4>
+          <p>Το σύνολο του περιεχομένου του ιστοτόπου (κείμενα, λογότυπα, γραφικά, κώδικας, σχεδιασμός UI/UX και παρουσιάσεις έργων) αποτελεί πνευματική ιδιοκτησία της UpLogic ή των αντίστοιχων πελατών της και προστατεύεται από την ελληνική και ευρωπαϊκή νομοθεσία. Απαγορεύεται η αναπαραγωγή ή αντιγραφή χωρίς προηγούμενη έγγραφη άδεια.</p>
+          <h4>2. Πληροφορίες Υπηρεσιών & Προσφορές</h4>
+          <p>Οι ενδεικτικές τιμές (όπως η κατασκευή ιστοσελίδας από 350€) και οι εκτιμώμενοι χρόνοι παράδοσης που αναφέρονται στον ιστότοπο ή στον ψηφιακό βοηθό αποτελούν αρχική ενημέρωση. Η τελική αμοιβή, τα ακριβή παραδοτέα και το χρονοδιάγραμμα κάθε έργου καθορίζονται πάντοτε με <b>έγγραφη εξατομικευμένη προσφορά / συμφωνητικό</b> σύμφωνα με τις προδιαγραφές του εκάστοτε πελάτη.</p>
+          <h4>3. Ψηφιακός Βοηθός (AI Chat)</h4>
+          <p>Ο αυτοματοποιημένος βοηθός της σελίδας παρέχει άμεσες ενημερωτικές απαντήσεις και διευκολύνει την καταγραφή των στοιχείων επικοινωνίας σας ώστε να σας καλέσει εκπρόσωπος της ομάδας μας. Οι απαντήσεις του βοηθού έχουν ενημερωτικό χαρακτήρα και δεν συνιστούν δεσμευτική σύμβαση.</p>
+          <h4>4. Περιορισμός Ευθύνης & Εξωτερικοί Σύνδεσμοι</h4>
+          <p>Η UpLogic καταβάλλει κάθε προσπάθεια για την ακρίβεια του περιεχομένου και την αδιάλειπτη λειτουργία του ιστοτόπου, ωστόσο δεν ευθύνεται για τυχόν προσωρινή αδυναμία πρόσβασης ή για το περιεχόμενο εξωτερικών ιστοσελίδων τρίτων στις οποίες μπορεί να παραπέμπει.</p>
+          <h4>5. Εφαρμοστέο Δίκαιο & Επικοινωνία</h4>
+          <p>Οι παρόντες όροι διέπονται από το Ελληνικό Δίκαιο. Για οποιαδήποτε διευκρίνιση μπορείτε να επικοινωνείτε μαζί μας στο <a href="mailto:info@uplogic.gr">info@uplogic.gr</a>.</p>
+        `
+      }
+    };
+    const legalModal = document.getElementById('legalModal');
+    function openLegal(type) {
+      const doc = legalDocs[type]; if (!doc) return;
+      lastFocus = document.activeElement;
+      document.getElementById('lSub').textContent = doc.sub;
+      document.getElementById('lTitle').textContent = doc.title;
+      document.getElementById('lBody').innerHTML = doc.html;
+      legalModal.classList.add('open'); document.body.style.overflow = 'hidden';
+      document.getElementById('lClose').focus();
+    }
+    function closeLegal() { legalModal.classList.remove('open'); document.body.style.overflow = ''; lastFocus && lastFocus.focus(); }
+    document.getElementById('lClose').addEventListener('click', closeLegal);
+    legalModal.addEventListener('click', e => { if (e.target === legalModal) closeLegal(); });
+    addEventListener('keydown', e => { if (e.key === 'Escape') closeLegal(); });
+    document.querySelectorAll('[data-todo]').forEach(a => a.addEventListener('click', e => {
+      e.preventDefault();
+      openLegal(a.dataset.todo);
+    }));
     document.getElementById('yr').textContent = new Date().getFullYear();
   </script>
 </body>
