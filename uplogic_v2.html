@@ -480,8 +480,8 @@
           <article class="svc">
             <div class="svc-top"><span class="svc-num">01</span><span class="svc-price">από 350€</span></div>
             <h3>Ιστοσελίδες</h3>
-            <p>Εταιρικές σελίδες και landing pages με δικό σας design, γρήγορη φόρτωση και σωστή εμφάνιση σε κάθε κινητό.</p>
-            <ul><li>Custom design</li><li>Online ραντεβού</li><li>SEO & GDPR</li></ul>
+            <p>Εταιρικές σελίδες και landing pages με δικό σας design, γρήγορη φόρτωση, σωστή εμφάνιση σε κάθε κινητό και παράδοση από 3 εργάσιμες.</p>
+            <ul><li>Custom design</li><li>Από 3 εργάσιμες</li><li>SEO & GDPR</li></ul>
           </article>
           <article class="svc">
             <div class="svc-top"><span class="svc-num">02</span></div>
@@ -659,7 +659,7 @@
           </div>
 
           <div class="pkgs" id="pkgs">
-            <button class="pkg" aria-pressed="true" data-name="Ιστοσελίδα" data-price="350" data-days="6"><div class="pkg-top"><b>Ιστοσελίδα</b><span>από 350€</span></div><p>Custom design, 5–8 σελίδες, mobile-first</p><span class="tick"><svg><use href="#i-check"/></svg></span></button>
+            <button class="pkg" aria-pressed="true" data-name="Ιστοσελίδα" data-price="350" data-days="3"><div class="pkg-top"><b>Ιστοσελίδα</b><span>από 350€</span></div><p>Custom design, mobile-first, από 3 εργάσιμες</p><span class="tick"><svg><use href="#i-check"/></svg></span></button>
             <button class="pkg" aria-pressed="false" data-name="E-Shop" data-price="0" data-days="10"><div class="pkg-top"><b>E-Shop</b></div><p>Πληρωμές, IRIS, vouchers courier, Skroutz XML</p><span class="tick"><svg><use href="#i-check"/></svg></span></button>
             <button class="pkg" aria-pressed="false" data-name="AI Chatbot" data-price="0" data-days="3"><div class="pkg-top"><b>AI Chatbot</b></div><p>Απαντήσεις σε πελάτες 24/7 και συλλογή αιτημάτων</p><span class="tick"><svg><use href="#i-check"/></svg></span></button>
             <button class="pkg" aria-pressed="false" data-name="Εφαρμογή" data-price="0" data-days="18"><div class="pkg-top"><b>Εφαρμογή</b></div><p>Web ή mobile, βάση δεδομένων, λειτουργίες AI</p><span class="tick"><svg><use href="#i-check"/></svg></span></button>
@@ -670,7 +670,7 @@
           <div class="total">
             <div>
               <small id="pkgNames">Ιστοσελίδα</small>
-              <span class="amount" id="pkgTotal">από 350 €</span><span class="days" id="pkgDays">~6 εργάσιμες</span>
+              <span class="amount" id="pkgTotal">από 350 €</span><span class="days" id="pkgDays">από 3 εργάσιμες</span>
             </div>
             <a href="#contact" class="btn" id="pkgCta">Ζητήστε προσφορά για το πακέτο <svg><use href="#i-arrow"/></svg></a>
           </div>
@@ -873,7 +873,7 @@
       document.getElementById('pkgNames').textContent = names.length ? names.join(' + ') : 'Δεν έχετε επιλέξει υπηρεσία';
       const onlyWeb = names.length === 1 && names[0] === 'Ιστοσελίδα';
       document.getElementById('pkgTotal').textContent = !names.length ? '—' : (onlyWeb ? 'από 350 €' : 'Εξατομικευμένη προσφορά');
-      document.getElementById('pkgDays').textContent = est ? `~${est} εργάσιμες` : '';
+      document.getElementById('pkgDays').textContent = est ? (onlyWeb ? 'από 3 εργάσιμες' : `~${est} εργάσιμες`) : '';
       document.getElementById('fPkg').value = names.length ? (onlyWeb ? 'Ιστοσελίδα (από 350€)' : names.join(' + ')) : '';
     }
     document.querySelectorAll('.pkg').forEach(b => b.addEventListener('click', () => {
@@ -927,8 +927,8 @@
     document.getElementById('chatClose').addEventListener('click', closeChat);
 
     const replies = {
-      pricing: 'Οι επαγγελματικές <b>Ιστοσελίδες ξεκινούν από 350€</b>. Για <b>E-Shop, Εφαρμογές, AI Chatbots, SEO & Διαφήμιση</b> ετοιμάζουμε εξατομικευμένη προσφορά ανάλογα με τις ανάγκες σας.<br><br>Αφήστε μου εδώ το <b>Όνομα</b> και το <b>Τηλέφωνό</b> σας (ή συμπληρώστε τα παρακάτω) για να σας καλέσουμε με ακριβή προσφορά:',
-      time: 'Συνήθως παραδίδουμε <b>ιστοσελίδα σε 5–8 εργάσιμες</b>, <b>e-shop σε 7–12</b> και <b>AI chatbot σε 3–5 εργάσιμες</b>. Οι εφαρμογές εξαρτώνται από τις λειτουργίες.<br><br>Θέλετε να σας καλέσουμε για το δικό σας χρονοδιάγραμμα και προσφορά; Συμπληρώστε τα στοιχεία σας εδώ:',
+      pricing: 'Οι επαγγελματικές <b>Ιστοσελίδες ξεκινούν από 350€</b> (παράδοση από 3 εργάσιμες). Για <b>E-Shop, Εφαρμογές, AI Chatbots, SEO & Διαφήμιση</b> ετοιμάζουμε εξατομικευμένη προσφορά ανάλογα με τις ανάγκες σας.<br><br>Αφήστε μου εδώ το <b>Όνομα</b> και το <b>Τηλέφωνό</b> σας (ή συμπληρώστε τα παρακάτω) για να σας καλέσουμε με ακριβή προσφορά:',
+      time: 'Παραδίδουμε <b>ιστοσελίδα από 3 εργάσιμες</b>, <b>e-shop σε 7–12</b> και <b>AI chatbot σε 3–5 εργάσιμες</b>. Οι εφαρμογές εξαρτώνται από τις λειτουργίες.<br><br>Θέλετε να σας καλέσουμε για το δικό σας χρονοδιάγραμμα και προσφορά; Συμπληρώστε τα στοιχεία σας εδώ:',
       chatbot: 'Το <b>AI Chatbot</b> εκπαιδεύεται στα προϊόντα και τις υπηρεσίες σας, απαντά στους πελάτες 24/7 και συλλέγει αυτόματα στοιχεία ενδιαφερομένων σε Site, E-Shop, WhatsApp και Instagram.<br><br>Αφήστε μου τα στοιχεία σας εδώ για να σας δείξουμε πώς θα δουλεύει στη δική σας επιχείρηση:',
       contact: 'Πολύ ευχαρίστως! Γράψτε μου εδώ το <b>Όνομα</b> και το <b>Τηλέφωνο</b> (ή το Email) σας, ή συμπληρώστε τα παρακάτω, και θα επικοινωνήσουμε άμεσα μαζί σας:',
       seo: 'Αναλαμβάνουμε τεχνικό SEO, Google Business Profile (Google Maps) και καμπάνιες σε Google, Instagram, Facebook & TikTok.<br><br>Αφήστε μου εδώ τα στοιχεία σας για να ελέγξουμε δωρεάν την παρουσία σας και να σας καλέσουμε:',
