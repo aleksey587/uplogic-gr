@@ -148,6 +148,18 @@
     .section-head h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin-top: 14px; max-width: 640px; }
     .section-head p { color: var(--ink-2); max-width: 420px; }
 
+    /* About */
+    .about-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 56px; align-items: start; }
+    .about-lead h2 { font-size: clamp(2rem, 3.6vw, 2.9rem); margin: 14px 0 22px; line-height: 1.12; }
+    .about-lead p { color: var(--ink-2); font-size: 16.5px; line-height: 1.7; margin-bottom: 16px; }
+    .about-pillars { display: grid; gap: 14px; }
+    .pillar { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px 24px; transition: border-color .25s, box-shadow .25s; }
+    .pillar:hover { border-color: var(--line-strong); box-shadow: var(--shadow); }
+    .pillar-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .pillar-num { font-size: 12px; font-weight: 600; color: var(--accent-ink); background: var(--accent-soft); padding: 3px 9px; border-radius: 999px; font-variant-numeric: tabular-nums; }
+    .pillar h3 { font-size: 18px; margin: 0; }
+    .pillar p { font-size: 14.5px; color: var(--ink-2); margin: 0; line-height: 1.55; }
+
     /* Services */
     .services { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
     .svc { padding: 34px 30px 30px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: transparent; transition: background .25s; display: flex; flex-direction: column; min-height: 300px; }
@@ -164,21 +176,17 @@
     .filters { display: flex; flex-wrap: wrap; gap: 6px; padding: 4px; background: #F1EFEB; border-radius: 999px; }
     .filters button { border: 0; background: transparent; padding: 8px 16px; border-radius: 999px; font-size: 14px; font-weight: 500; color: var(--ink-2); transition: background .2s, color .2s; }
     .filters button.active { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgba(17,17,20,.08); }
-    .work { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
-    .proj { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; cursor: pointer; text-align: left; padding: 0; transition: transform .3s, box-shadow .3s; display: flex; flex-direction: column; }
-    .proj:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-    .proj-vis { height: 280px; padding: 28px; display: flex; align-items: flex-end; justify-content: center; position: relative; overflow: hidden; }
-    .proj-vis .card { background: var(--surface); border-radius: 14px; box-shadow: var(--shadow); padding: 16px 18px; width: 78%; transition: transform .4s; }
-    .proj:hover .proj-vis .card { transform: translateY(-6px); }
-    .proj-vis .card small { display: flex; justify-content: space-between; font-size: 11.5px; color: var(--muted); }
-    .proj-vis .card b { display: block; font-family: var(--display); font-size: 26px; letter-spacing: -0.02em; margin: 6px 0 10px; }
-    .bars { display: flex; align-items: flex-end; gap: 6px; height: 48px; }
-    .bars i { flex: 1; border-radius: 4px 4px 0 0; background: currentColor; opacity: .85; }
-    .proj-body { padding: 24px 26px 26px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-    .proj-meta { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); }
-    .proj h3 { font-size: 24px; }
-    .proj p { color: var(--ink-2); font-size: 15px; }
-    .proj-link { margin-top: auto; padding-top: 10px; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
+    .work { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .proj { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; cursor: pointer; text-align: left; padding: 0; transition: transform .25s, box-shadow .25s, border-color .25s; display: flex; flex-direction: column; }
+    .proj:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--line-strong); }
+    .proj-body { padding: 30px 28px 28px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+    .proj-meta { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-size: 13px; color: var(--muted); }
+    .proj-badge { font-size: 12px; font-weight: 600; color: var(--accent-ink); background: var(--accent-soft); padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+    .proj h3 { font-size: 25px; margin-top: 2px; }
+    .proj p { color: var(--ink-2); font-size: 15px; line-height: 1.6; }
+    .proj-tags { list-style: none; padding: 0; margin: 6px 0 0; display: flex; flex-wrap: wrap; gap: 6px; }
+    .proj-tags li { font-size: 12.5px; color: var(--ink-2); background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 4px 11px; }
+    .proj-link { margin-top: auto; padding-top: 14px; font-size: 14px; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; color: var(--ink); }
     .proj-link svg { width: 15px; height: 15px; transition: transform .2s; }
     .proj:hover .proj-link svg { transform: translateX(3px); }
 
@@ -305,6 +313,7 @@
     @media (max-width: 1024px) {
       .hero-grid { grid-template-columns: 1fr; gap: 48px; }
       .stage { height: 460px; max-width: 620px; }
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
       .services { grid-template-columns: repeat(2, 1fr); }
       .steps { grid-template-columns: repeat(2, 1fr); row-gap: 36px; }
       .pkgs { grid-template-columns: repeat(2, 1fr); }
@@ -381,6 +390,7 @@
         <img src="UpLogicHeaderLogo.jpg" alt="UpLogic — Web · Applications · Technology" class="logo-banner-img">
       </a>
       <nav class="nav" aria-label="Κύριο μενού">
+        <a href="#about">Η Εταιρεία</a>
         <a href="#services">Υπηρεσίες</a>
         <a href="#work">Έργα</a>
         <a href="#pricing">Τιμές</a>
@@ -395,6 +405,7 @@
     </div>
   </header>
   <nav class="mobile-nav" id="mobileNav" aria-label="Μενού κινητού">
+    <a href="#about">Η Εταιρεία</a>
     <a href="#services">Υπηρεσίες</a>
     <a href="#work">Έργα</a>
     <a href="#pricing">Τιμές</a>
@@ -461,6 +472,33 @@
           <span>Vanguard Clinic<small>UK</small></span>
           <span>Nordic Krone<small>CH</small></span>
           <span>Solarix Living<small>IT</small></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Η ΕΤΑΙΡΕΙΑ ================= -->
+    <section class="section" id="about" style="padding-bottom:0">
+      <div class="wrap about-grid">
+        <div class="about-lead reveal">
+          <span class="eyebrow">Η Εταιρεία · UpLogic</span>
+          <h2>Δεν φτιάχνουμε απλώς σελίδες. Χτίζουμε εργαλεία που <span class="accent">δουλεύουν για την επιχείρησή σας.</span></h2>
+          <p>Η <b>UpLogic</b> είναι ένα σύγχρονο τεχνολογικό studio με έδρα την Πάτρα και έργα σε όλη την Ελλάδα και την Ευρώπη. Δημιουργήθηκε με έναν ξεκάθαρο στόχο: να δώσει σε κάθε επιχείρηση πρόσβαση σε γρήγορες, σύγχρονες ιστοσελίδες, αυτοματοποιημένα e-shop, εξειδικευμένες εφαρμογές και λύσεις Τεχνητής Νοημοσύνης (AI) — χωρίς πολύπλοκες διαδικασίες, κρυφές χρεώσεις και ατέλειωτους μήνες αναμονής.</p>
+          <p style="margin-bottom:0">Είτε χρειάζεστε μια επαγγελματική ιστοσελίδα έτοιμη σε λίγες ημέρες, είτε μια custom πλατφόρμα λογισμικού από το μηδέν, μιλάτε απευθείας με την ομάδα που σχεδιάζει και γράφει τον κώδικα του έργου σας.</p>
+        </div>
+
+        <div class="about-pillars reveal">
+          <div class="pillar">
+            <div class="pillar-head"><span class="pillar-num">01</span><h3>Ταχύτητα & Συνέπεια</h3></div>
+            <p>Παραδίδουμε επαγγελματικές ιστοσελίδες από 3 εργάσιμες ημέρες, με αυστηρή τήρηση χρονοδιαγραμμάτων.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-head"><span class="pillar-num">02</span><h3>Τεχνολογία Αιχμής & AI</h3></div>
+            <p>Από SEO που φέρνει πρώτες θέσεις στη Google μέχρι έξυπνους AI βοηθούς που εξυπηρετούν πελάτες 24/7.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-head"><span class="pillar-num">03</span><h3>Άμεση Επικοινωνία</h3></div>
+            <p>Χωρίς μεσάζοντες και δυσνόητους τεχνικούς όρους. Είμαστε δίπλα σας πριν, κατά τη διάρκεια και μετά την παράδοση.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -535,92 +573,71 @@
 
         <div class="work" id="workGrid">
           <button class="proj reveal" data-cat="saas app" data-id="taxpilot">
-            <div class="proj-vis" style="background:#EEF6F1;color:#1F9D57">
-              <div class="card"><small><span>TaxPilot · Safe-to-Spend</span><span>myDATA ✓</span></small><b>3.450,00 €</b>
-                <div class="bars"><i style="height:40%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:80%"></i><i style="height:66%"></i><i style="height:92%"></i></div></div>
-            </div>
             <div class="proj-body">
-              <div class="proj-meta"><span>FinTech SaaS · Web & Mobile</span><span>Live</span></div>
+              <div class="proj-meta"><span>FinTech SaaS · Web & Mobile</span><span class="proj-badge">Live</span></div>
               <h3>TaxPilot GR</h3>
               <p>Φορολογικός βοηθός για ελεύθερους επαγγελματίες: Safe-to-Spend, τιμολόγια στο myDATA, σάρωση αποδείξεων και AI σύμβουλος.</p>
+              <ul class="proj-tags"><li>myDATA API</li><li>Safe-to-Spend</li><li>OCR & AI Σύμβουλος</li></ul>
               <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
             </div>
           </button>
 
           <button class="proj reveal" data-cat="web" data-id="georgiadis">
-            <div class="proj-vis" style="background:#EEF2FF;color:#2451F5">
-              <div class="card"><small><span>Γεωργιάδης · Ιστοσελίδα</span><span>PageSpeed 99</span></small><b>Νέα ιστοσελίδα</b>
-                <div class="bars"><i style="height:30%"></i><i style="height:38%"></i><i style="height:52%"></i><i style="height:64%"></i><i style="height:78%"></i><i style="height:96%"></i></div></div>
-            </div>
             <div class="proj-body">
-              <div class="proj-meta"><span>Εταιρική σελίδα · E-Shop · SEO</span><span>Ελλάδα</span></div>
+              <div class="proj-meta"><span>Εταιρική σελίδα · E-Shop · SEO</span><span class="proj-badge">Ελλάδα</span></div>
               <h3>Γεωργιάδης</h3>
               <p>Νέα εταιρική ιστοσελίδα και ψηφιακός κατάλογος, με γρήγορη φόρτωση στο κινητό και στρατηγική Local SEO.</p>
+              <ul class="proj-tags"><li>PageSpeed 99/100</li><li>Mobile-First</li><li>Local SEO</li></ul>
               <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
             </div>
           </button>
 
           <button class="proj reveal" data-cat="saas app" data-id="tkdraw">
-            <div class="proj-vis" style="background:#FFF1F0;color:#D92D20">
-              <div class="card"><small><span>TKDraw · World Taekwondo</span><span>WT Rules ✓</span></small><b>Zero-BYE · Live Score</b>
-                <div class="bars"><i style="height:54%"></i><i style="height:72%"></i><i style="height:64%"></i><i style="height:86%"></i><i style="height:78%"></i><i style="height:98%"></i></div></div>
-            </div>
             <div class="proj-body">
-              <div class="proj-meta"><span>SportsTech SaaS · Live Scoring</span><span>WT / ΕΛΟΤ</span></div>
+              <div class="proj-meta"><span>SportsTech SaaS · Live Scoring</span><span class="proj-badge">WT / ΕΛΟΤ</span></div>
               <h3>TKDraw</h3>
               <p>Πλατφόρμα αγώνων Taekwondo: αλγόριθμος δίκαιων κληρώσεων χωρίς BYE, ηλεκτρονική βαθμολογία κριτών σε tablets και Live TV Scoreboard σταδίου.</p>
+              <ul class="proj-tags"><li>Zero-BYE WT</li><li>Live Judge Tablets</li><li>Arena TV Scoreboard</li></ul>
               <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
             </div>
           </button>
 
           <button class="proj reveal" data-cat="saas" data-id="greekhost">
-            <div class="proj-vis" style="background:#EDF7F8;color:#0E8A9A">
-              <div class="card"><small><span>GreekHost · Κρατήσεις μήνα</span><span>iCal ✓</span></small><b>8.940,00 €</b>
-                <div class="bars"><i style="height:70%"></i><i style="height:55%"></i><i style="height:88%"></i><i style="height:60%"></i><i style="height:74%"></i><i style="height:82%"></i></div></div>
-            </div>
             <div class="proj-body">
-              <div class="proj-meta"><span>PropTech SaaS</span><span>Airbnb · Booking</span></div>
+              <div class="proj-meta"><span>PropTech SaaS</span><span class="proj-badge">Airbnb · Booking</span></div>
               <h3>GreekHost PMS</h3>
               <p>Διαχείριση καταλυμάτων βραχυχρόνιας μίσθωσης: αυτόματο Τέλος Ανθεκτικότητας, έσοδα ανά ακίνητο, αποστολή στον λογιστή με ένα κλικ.</p>
+              <ul class="proj-tags"><li>Αυτόματο Τ.Α.Κ.</li><li>iCal Sync</li><li>1-Click Λογιστήριο</li></ul>
               <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
             </div>
           </button>
 
           <button class="proj reveal" data-cat="web" data-id="hanfishing">
-            <div class="proj-vis" style="background:#FBF3EA;color:#C2700F">
-              <div class="card"><small><span>Multi-channel store</span><span>800+ SKU</span></small><b>E-Shop · Amazon · eBay</b>
-                <div class="bars"><i style="height:24%"></i><i style="height:36%"></i><i style="height:50%"></i><i style="height:58%"></i><i style="height:76%"></i><i style="height:100%"></i></div></div>
-            </div>
             <div class="proj-body">
-              <div class="proj-meta"><span>E-Commerce · Marketplaces</span><span>Γερμανία · ΕΕ</span></div>
+              <div class="proj-meta"><span>E-Commerce · Marketplaces</span><span class="proj-badge">Γερμανία · ΕΕ</span></div>
               <h3>HanFishing</h3>
               <p>Ψηφιοποίηση 800+ προϊόντων, επεξεργασία εικόνων με AI, συγχρονισμός αποθήκης με Amazon Europe και eBay, Google Shopping.</p>
+              <ul class="proj-tags"><li>800+ Κωδικοί SKU</li><li>Amazon & eBay Sync</li><li>Google Shopping</li></ul>
               <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
             </div>
           </button>
 
           <button class="proj reveal" data-cat="app saas" data-id="aura">
-            <div class="proj-vis" style="background:#F4F0FB;color:#7046C9">
-              <div class="card"><small><span>Aura Edu · Μάθημα 4</span><span>AI Tutor</span></small><b>Πρόοδος 72%</b>
-                <div class="bars"><i style="height:50%"></i><i style="height:60%"></i><i style="height:45%"></i><i style="height:72%"></i><i style="height:68%"></i><i style="height:84%"></i></div></div>
-            </div>
             <div class="proj-body">
-              <div class="proj-meta"><span>EdTech · Android & Web</span><span>Εφαρμογή</span></div>
+              <div class="proj-meta"><span>EdTech · Android & Web</span><span class="proj-badge">Εφαρμογή</span></div>
               <h3>Aura Edu</h3>
               <p>Εκπαιδευτική εφαρμογή με AI καθηγητή, μαθήματα σαν παιχνίδι, φωνητική αλληλεπίδραση και παρακολούθηση προόδου.</p>
+              <ul class="proj-tags"><li>AI Tutor</li><li>Voice Interaction</li><li>Android & Web</li></ul>
               <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
             </div>
           </button>
 
           <button class="proj reveal" data-cat="app saas" data-id="pinshot">
-            <div class="proj-vis" style="background:#FBEFF1;color:#D23F5A">
-              <div class="card"><small><span>PinShot · FilmCraft</span><span>60 fps</span></small><b>Reels · TikTok · Ads</b>
-                <div class="bars"><i style="height:66%"></i><i style="height:42%"></i><i style="height:80%"></i><i style="height:58%"></i><i style="height:90%"></i><i style="height:70%"></i></div></div>
-            </div>
             <div class="proj-body">
-              <div class="proj-meta"><span>Mobile app · Creative AI</span><span>iOS · Android</span></div>
+              <div class="proj-meta"><span>Mobile app · Creative AI</span><span class="proj-badge">iOS · Android</span></div>
               <h3>PinShot & FilmCraft</h3>
               <p>Mobile εφαρμογή και εργαλεία παραγωγής βίντεο για Reels, TikTok και διαφημίσεις στο Meta.</p>
+              <ul class="proj-tags"><li>60 fps Video</li><li>AI Επεξεργασία</li><li>Reels & Meta Ads</li></ul>
               <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
             </div>
           </button>
@@ -726,7 +743,7 @@
         </div>
         <div>
           <h4>Πλοήγηση</h4>
-          <ul><li><a href="#services">Υπηρεσίες</a></li><li><a href="#work">Έργα</a></li><li><a href="#pricing">Τιμές</a></li><li><a href="#contact">Επικοινωνία</a></li></ul>
+          <ul><li><a href="#about">Η Εταιρεία</a></li><li><a href="#services">Υπηρεσίες</a></li><li><a href="#work">Έργα</a></li><li><a href="#pricing">Τιμές</a></li><li><a href="#contact">Επικοινωνία</a></li></ul>
         </div>
         <div>
           <h4>Νομικά</h4>
