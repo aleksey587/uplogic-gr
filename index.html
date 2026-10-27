@@ -8,6 +8,15 @@
   <meta name="theme-color" content="#FBFAF8">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%23111114%22/><path d=%22M30 30v24a20 20 0 0 0 40 0V30%22 fill=%22none%22 stroke=%22%23ffffff%22 stroke-width=%2210%22 stroke-linecap=%22round%22/><circle cx=%2270%22 cy=%2230%22 r=%227%22 fill=%22%232451F5%22/></svg>">
 
+  <!-- Google tag (gtag.js) - Google Analytics 4 (UpLogic) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3DTZFZGM0B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3DTZFZGM0B', { 'anonymize_ip': true });
+  </script>
+
   <!-- Δύο οικογένειες γραμματοσειρών με πλήρη ελληνικά -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1101,13 +1110,17 @@
     });
     msgs.addEventListener('click', e => { if (e.target.matches('[data-close]')) closeChat(); });
 
-    // ---------- Cookies ----------
+    // ---------- Cookies & Analytics ----------
     const cookie = document.getElementById('cookie');
     if (!localStorage.getItem('ul_consent')) setTimeout(() => cookie.classList.add('show'), 800);
     cookie.addEventListener('click', e => {
       const c = e.target.dataset.consent; if (!c) return;
       localStorage.setItem('ul_consent', c); cookie.classList.remove('show');
-      // Εδώ φόρτωσε analytics μόνο αν c === 'all'
+      if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+          'analytics_storage': c === 'all' ? 'granted' : 'denied'
+        });
+      }
     });
     document.getElementById('cookieSettings').addEventListener('click', e => { e.preventDefault(); cookie.classList.add('show'); });
 
