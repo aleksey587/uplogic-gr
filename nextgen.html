@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="el" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UpLogic — Digital Engineering, Ιστοσελίδες, E-Shop, Εφαρμογές, AI Chatbots & Growth Studio</title>
+  <meta name="description" content="Η UpLogic κατασκευάζει κορυφαίες Ιστοσελίδες, E-Shops, Mobile/Web Εφαρμογές, AI Chatbots, SaaS και κυριαρχεί σε SEO, Google Ads & Meta Ads σε Ελλάδα και Εξωτερικό.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%2338bdf8%22/><stop offset=%22100%25%22 stop-color=%22%2310b981%22/></linearGradient></defs><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%23070a12%22 stroke=%22url(%23g)%22 stroke-width=%226%22/><text y=%22.86em%22 font-size=%2254%22 font-weight=%22800%22 x=%2214%22 fill=%22%23f8fafc%22 font-family=%22sans-serif%22>UP</text></svg>">
+
+  <!-- Google Fonts with 100% FULL GREEK SUPPORT (Manrope, Inter, Playfair Display, JetBrains Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,500;1,600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', 'sans-serif'],
+            display: ['"Manrope"', 'sans-serif'],
+            serif: ['"Playfair Display"', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            obsidian: '#06080f',
+            surface: '#0b0f1c',
+            surfaceLight: '#12182b',
+            accentCyan: '#38bdf8',
+            accentEmerald: '#10b981',
+            accentIndigo: '#6366f1',
+            accentAmber: '#f59e0b',
+            accentRose: '#f43f5e'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --cursor-x: 50vw;
+      --cursor-y: 50vh;
+    }
+
+    body {
+      background-color: #06080f;
+      color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Clean, Modern Greek Headline Typography */
+    .greek-headline {
+      font-family: 'Manrope', sans-serif;
+      letter-spacing: -0.03em;
+      line-height: 1.14;
+      font-weight: 800;
+    }
+
+    .editorial-italic {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+
+    ::selection {
+      background: #38bdf8;
+      color: #06080f;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #06080f; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 99px; }
+    ::-webkit-scrollbar-thumb:hover { background: #38bdf8; }
+
+    /* Ambient Spotlight following cursor */
+    .cursor-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      background: radial-gradient(750px circle at var(--cursor-x) var(--cursor-y), rgba(56, 189, 248, 0.06), rgba(16, 185, 129, 0.035) 40%, transparent 80%);
+    }
+
+    /* Architectural Subtle Grid */
+    .bg-grid-pattern {
+      background-size: 56px 56px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    }
+
+    /* Bento Cards with Interactive Mouse Border Glow */
+    .bento-card {
+      background: linear-gradient(165deg, rgba(18, 24, 43, 0.78) 0%, rgba(10, 14, 24, 0.92) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bento-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: radial-gradient(450px circle at var(--card-mouse-x, 0px) var(--card-mouse-y, 0px), rgba(56, 189, 248, 0.45), rgba(16, 185, 129, 0.25) 45%, transparent 70%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .bento-card:hover::before {
+      opacity: 1;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.28);
+      box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.75), 0 0 32px -6px rgba(56, 189, 248, 0.1);
+    }
+
+    /* Primary Gradient Button */
+    .btn-primary-glow {
+      background: linear-gradient(135deg, #38bdf8 0%, #10b981 100%);
+      color: #06080f;
+      font-weight: 700;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 8px 25px -4px rgba(16, 185, 129, 0.35);
+    }
+    .btn-primary-glow:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px -4px rgba(56, 189, 248, 0.55);
+      filter: brightness(1.06);
+    }
+
+    /* Custom Range Slider */
+    input[type="range"].modern-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 8px;
+      background: #1e293b;
+      border-radius: 99px;
+      outline: none;
+    }
+    input[type="range"].modern-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #38bdf8, #10b981);
+      cursor: pointer;
+      border: 3px solid #06080f;
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.7);
+      transition: transform 0.15s ease;
+    }
+    input[type="range"].modern-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.18);
+    }
+
+    /* Chatbot Animations */
+    @keyframes botPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6); }
+      50% { transform: scale(1.04); box-shadow: 0 0 0 12px rgba(56, 189, 248, 0); }
+    }
+    .bot-trigger-pulse {
+      animation: botPulse 3s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-grid-pattern antialiased">
+
+  <!-- Interactive Cursor Spotlight -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Interactive Background Particle Network Canvas -->
+  <canvas id="neuralCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-35"></canvas>
+
+  <!-- =====================================================================
+       FLOATING NAVIGATION BAR
+       ===================================================================== -->
+  <header class="fixed top-4 left-0 right-0 z-50 px-4 flex justify-center">
+    <nav class="w-full max-w-6xl rounded-2xl bg-obsidian/85 backdrop-blur-2xl border border-white/10 px-4 sm:px-6 py-3 flex items-center justify-between shadow-2xl">
+      
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-[#111318] border border-sky-400/30 flex items-center justify-center shadow-lg shadow-sky-500/20 group-hover:scale-105 transition">
+          <svg width="22" height="22" viewBox="0 0 100 100" aria-hidden="true">
+            <path d="M28 24v30a22 22 0 0 0 44 0V44" fill="none" stroke="#fff" stroke-width="13" stroke-linecap="round"/>
+            <circle cx="72" cy="24" r="9.5" fill="#189DF5"/>
+          </svg>
+        </div>
+        <div>
+          <div class="font-display font-extrabold text-slate-100 text-lg leading-none tracking-tight flex items-center gap-1">
+            <span>Up<span class="text-[#189DF5]">Logic</span></span>
+            <span class="w-2 h-2 rounded-full bg-accentEmerald animate-pulse ml-1"></span>
+          </div>
+          <span class="text-[9.5px] font-mono text-slate-400 uppercase tracking-widest block mt-1">Web • Applications • Technology</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden lg:flex items-center gap-1 bg-white/[0.03] border border-white/5 rounded-xl p-1">
+        <a href="#sandbox" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Live Demo</a>
+        <a href="#trusted" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Συνεργάτες</a>
+        <a href="#services" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Υπηρεσίες</a>
+        <a href="#projects" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition flex items-center gap-1.5">
+          <span>Έργα μας</span>
+          <span class="px-1.5 py-0.5 bg-accentCyan/15 text-accentCyan rounded text-[10px] font-mono font-semibold">Portfolio</span>
+        </a>
+        <a href="#growth-lab" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">SEO &amp; Ads Lab</a>
+        <a href="#builder" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-white/5 transition">Κοστολόγηση</a>
+      </div>
+
+      <!-- CTA & Chatbot Trigger & Mobile Toggle -->
+      <div class="flex items-center gap-2.5">
+        <button onclick="toggleChatbot()" class="px-3 py-2 rounded-xl bg-accentCyan/10 border border-accentCyan/30 text-accentCyan hover:bg-accentCyan hover:text-obsidian transition text-xs font-semibold flex items-center gap-1.5">
+          <i data-lucide="bot" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">AI Chat</span>
+        </button>
+        <a href="#builder" class="btn-primary-glow px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-1.5">
+          <span>Ξεκινήστε Έργο</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+        <button onclick="toggleMobileMenu()" class="lg:hidden p-2.5 rounded-xl bg-white/5 border border-white/10 text-white hover:border-accentCyan transition">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- MOBILE DRAWER MENU -->
+  <div id="mobileMenu" class="fixed inset-0 z-50 bg-obsidian/95 backdrop-blur-2xl hidden flex-col justify-between p-6">
+    <div class="flex items-center justify-between border-b border-white/10 pb-4">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-accentCyan to-accentEmerald flex items-center justify-center text-obsidian font-display font-black">UP</div>
+        <span class="font-display font-bold text-white text-lg">UpLogic Studio</span>
+      </div>
+      <button onclick="toggleMobileMenu()" class="p-2 rounded-xl bg-white/10 text-white">
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+    </div>
+    <div class="flex flex-col gap-4 my-auto text-center">
+      <a href="#sandbox" onclick="toggleMobileMenu()" class="text-xl font-display font-bold text-slate-100 hover:text-accentCyan py-2">1. Διαδραστικό Sandbox</a>
+      <a href="#trusted" onclick="toggleMobileMenu()" class="text-xl font-display font-bold text-slate-100 hover:text-accentCyan py-2">2. Μας Έχουν Δείξει Εμπιστοσύνη</a>
+      <a href="#services" onclick="toggleMobileMenu()" class="text-xl font-display font-bold text-slate-100 hover:text-accentCyan py-2">3. Υπηρεσίες &amp; AI Chatbots</a>
+      <a href="#projects" onclick="toggleMobileMenu()" class="text-xl font-display font-bold text-accentCyan py-2">4. Τα Projects μας (Portfolio)</a>
+      <a href="#growth-lab" onclick="toggleMobileMenu()" class="text-xl font-display font-bold text-slate-100 hover:text-accentCyan py-2">5. SEO, Google &amp; Meta Ads</a>
+      <a href="#builder" onclick="toggleMobileMenu()" class="text-xl font-display font-bold text-slate-100 hover:text-accentCyan py-2">6. Ζωντανή Κοστολόγηση</a>
+    </div>
+    <div class="space-y-2">
+      <button onclick="toggleMobileMenu(); toggleChatbot();" class="w-full py-3.5 rounded-2xl bg-accentCyan/20 border border-accentCyan/40 text-accentCyan text-center font-bold text-sm flex items-center justify-center gap-2">
+        <i data-lucide="bot" class="w-4 h-4"></i>
+        <span>Άνοιγμα UpLogic AI Chat</span>
+      </button>
+      <a href="#contact" onclick="toggleMobileMenu()" class="btn-primary-glow w-full py-4 rounded-2xl text-center font-bold text-sm block">
+        Επικοινωνήστε Μαζί Μας
+      </a>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       HERO SECTION — REFINED EDITORIAL & ARCHITECTURAL TYPOGRAPHY
+       ===================================================================== -->
+  <section id="sandbox" class="relative z-10 pt-28 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    
+    <!-- Top Brand Wall Logo Banner -->
+    <div class="max-w-5xl mx-auto mb-8 rounded-3xl overflow-hidden border border-white/15 shadow-2xl shadow-sky-500/10 bg-[#141619]">
+      <img src="UpLogicLogo.jpg" alt="UpLogic — Web • Applications • Technology" class="w-full h-auto max-h-[290px] object-cover object-center block">
+    </div>
+
+    <!-- Top Status Badge -->
+    <div class="flex justify-center mb-6">
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-slate-300">
+        <span class="px-2.5 py-0.5 rounded-full bg-accentCyan/20 border border-accentCyan/40 text-accentCyan font-semibold text-[10px] uppercase">Greece &amp; International</span>
+        <span>Ιστοσελίδες • E-Shops • Εφαρμογές • AI Chatbots • SEO • Google/Meta Ads</span>
+      </div>
+    </div>
+
+    <!-- Main Headline -->
+    <div class="text-center max-w-4xl mx-auto space-y-6">
+      <h1 class="greek-headline text-3xl sm:text-5xl lg:text-[62px] text-slate-100">
+        Δεν φτιάχνουμε απλώς σελίδες.<br>
+        Χτίζουμε <span class="text-transparent bg-clip-text bg-gradient-to-r from-accentCyan via-emerald-300 to-accentEmerald">ψηφιακές μηχανές</span>
+        <span class="editorial-italic font-normal text-amber-300">ανάπτυξης &amp; πωλήσεων.</span>
+      </h1>
+      <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto font-normal leading-relaxed">
+        Σχεδιάζουμε και αναπτύσσουμε <strong>Ιστοσελίδες υψηλής αισθητικής</strong>, αστραπιαία <strong>E-Shops</strong>, <strong>Custom Web &amp; Mobile Εφαρμογές</strong>, <strong>24/7 AI Chatbots</strong> και αποδοτικές καμπάνιες <strong>SEO &amp; Ads</strong> για επιχειρήσεις στην Ελλάδα και το εξωτερικό.
+      </p>
+
+      <!-- Interactive Mode Switcher Pills -->
+      <div class="flex flex-wrap items-center justify-center gap-2.5 pt-2">
+        <button onclick="switchHeroMode('web')" id="heroBtn-web" class="hero-mode-btn px-4 py-2.5 rounded-xl text-xs font-semibold border transition flex items-center gap-2 bg-gradient-to-r from-accentCyan to-accentEmerald text-obsidian border-transparent shadow-lg shadow-accentCyan/20">
+          <i data-lucide="globe" class="w-4 h-4"></i>
+          <span>Ιστοσελίδες &amp; E-Shop</span>
+        </button>
+        <button onclick="switchHeroMode('app')" id="heroBtn-app" class="hero-mode-btn px-4 py-2.5 rounded-xl text-xs font-semibold border border-white/15 bg-white/5 text-slate-200 hover:border-accentCyan/50 transition flex items-center gap-2">
+          <i data-lucide="smartphone" class="w-4 h-4 text-accentEmerald"></i>
+          <span>Mobile &amp; Web Apps</span>
+        </button>
+        <button onclick="switchHeroMode('ai')" id="heroBtn-ai" class="hero-mode-btn px-4 py-2.5 rounded-xl text-xs font-semibold border border-white/15 bg-white/5 text-slate-200 hover:border-accentCyan/50 transition flex items-center gap-2">
+          <i data-lucide="bot" class="w-4 h-4 text-accentCyan"></i>
+          <span>AI Chatbots (E-Shop &amp; Web)</span>
+        </button>
+        <button onclick="switchHeroMode('seo')" id="heroBtn-seo" class="hero-mode-btn px-4 py-2.5 rounded-xl text-xs font-semibold border border-white/15 bg-white/5 text-slate-200 hover:border-accentCyan/50 transition flex items-center gap-2">
+          <i data-lucide="search" class="w-4 h-4 text-purple-400"></i>
+          <span>SEO (#1 Google)</span>
+        </button>
+        <button onclick="switchHeroMode('ads')" id="heroBtn-ads" class="hero-mode-btn px-4 py-2.5 rounded-xl text-xs font-semibold border border-white/15 bg-white/5 text-slate-200 hover:border-accentCyan/50 transition flex items-center gap-2">
+          <i data-lucide="bar-chart-3" class="w-4 h-4 text-accentAmber"></i>
+          <span>Google &amp; Meta Ads</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- INTERACTIVE HERO COMMAND CENTER -->
+    <div class="mt-10 max-w-5xl mx-auto">
+      <div class="bento-card rounded-3xl border border-white/15 shadow-2xl overflow-hidden" onmousemove="handleCardMouse(event, this)">
+        
+        <!-- Browser Top Bar -->
+        <div class="bg-slate-950/90 border-b border-white/10 px-4 py-3 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+            <span class="w-3 h-3 rounded-full bg-emerald-400/80"></span>
+            <span id="sandboxUrl" class="ml-3 px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-slate-300">
+              https://uplogic.gr/interactive-architecture/web-eshop
+            </span>
+          </div>
+          <div class="flex items-center gap-2 text-[11px] font-mono text-accentCyan">
+            <span class="w-2 h-2 rounded-full bg-accentEmerald animate-ping"></span>
+            <span class="hidden sm:inline">ΔΙΑΔΡΑΣΤΙΚΟ ΠΕΡΙΒΑΛΛΟΝ — ΔΟΚΙΜΑΣΤΕ ΤΟ</span>
+          </div>
+        </div>
+
+        <!-- MODE 1: WEBSITES & E-SHOP INTERACTIVE ENGINE -->
+        <div id="heroPanel-web" class="p-6 sm:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-6 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-accentCyan/10 border border-accentCyan/30 text-accentCyan text-xs font-mono font-semibold">
+              ⚡ NEXT-GEN WEB &amp; E-COMMERCE
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-display font-bold text-slate-100 leading-snug">
+              Ταχύτητα &lt; 0.5s &amp; Design που Μετατρέπει Επισκέπτες σε Πελάτες
+            </h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Πατήστε στον διακόπτη δεξιά για να συγκρίνετε ένα τυπικό έτοιμο template με την <strong>Custom Αρχιτεκτονική της UpLogic</strong> (1-Click Checkout, IRIS/Apple Pay, αυτόματος συγχρονισμός αποθήκης ERP &amp; myDATA).
+            </p>
+            <div class="grid grid-cols-3 gap-3 pt-2">
+              <div class="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
+                <div class="text-xl sm:text-2xl font-display font-extrabold text-accentCyan">99/100</div>
+                <div class="text-[11px] text-slate-400">PageSpeed</div>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
+                <div class="text-xl sm:text-2xl font-display font-extrabold text-accentEmerald">+215%</div>
+                <div class="text-[11px] text-slate-400">Μετατροπές</div>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
+                <div class="text-xl sm:text-2xl font-display font-extrabold text-amber-300">Bespoke</div>
+                <div class="text-[11px] text-slate-400">Custom UI/UX</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 bg-slate-950/90 border border-white/10 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-mono text-slate-400 uppercase">Ζωντανή Σύγκριση Απόδοσης</span>
+              <div class="flex bg-white/5 p-1 rounded-xl border border-white/10">
+                <button onclick="setWebCompare('old')" id="btnOldWeb" class="px-3 py-1 rounded-lg text-xs font-semibold text-slate-400 transition">Τυπικό Site</button>
+                <button onclick="setWebCompare('uplogic')" id="btnNewWeb" class="px-3 py-1 rounded-lg text-xs font-bold bg-accentCyan text-obsidian transition">UpLogic Engine</button>
+              </div>
+            </div>
+
+            <div class="space-y-4 pt-2">
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs">
+                  <span class="text-slate-300">Χρόνος Φόρτωσης (LCP)</span>
+                  <span id="metricLoad" class="font-mono font-bold text-accentCyan">0.42 δευτερόλεπτα 🚀</span>
+                </div>
+                <div class="w-full h-2.5 bg-white/10 rounded-full overflow-hidden">
+                  <div id="barLoad" class="h-full bg-accentCyan rounded-full transition-all duration-500" style="width: 96%"></div>
+                </div>
+              </div>
+
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs">
+                  <span class="text-slate-300">Εμπειρία Καλαθιού &amp; Checkout</span>
+                  <span id="metricCheckout" class="font-mono font-bold text-accentEmerald">1-Click (Apple Pay / IRIS / Κάρτα)</span>
+                </div>
+                <div class="w-full h-2.5 bg-white/10 rounded-full overflow-hidden">
+                  <div id="barCheckout" class="h-full bg-accentEmerald rounded-full transition-all duration-500" style="width: 98%"></div>
+                </div>
+              </div>
+
+              <div class="space-y-1.5">
+                <div class="flex justify-between text-xs">
+                  <span class="text-slate-300">SEO &amp; Core Web Vitals</span>
+                  <span id="metricSeoScore" class="font-mono font-bold text-amber-300">100 / 100 (Άριστο)</span>
+                </div>
+                <div class="w-full h-2.5 bg-white/10 rounded-full overflow-hidden">
+                  <div id="barSeo" class="h-full bg-amber-400 rounded-full transition-all duration-500" style="width: 100%"></div>
+                </div>
+              </div>
+
+              <div class="p-3.5 rounded-xl bg-accentCyan/10 border border-accentCyan/30 text-xs text-slate-200 flex items-center justify-between">
+                <span>💡 <strong>Αποτέλεσμα:</strong> Μηδενική εγκατάλειψη καλαθιού &amp; 3x πωλήσεις.</span>
+                <a href="#builder" class="text-accentCyan font-bold underline ml-2 shrink-0">Δείτε Τιμές →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODE 2: MOBILE & WEB APPS INTERACTIVE SANDBOX -->
+        <div id="heroPanel-app" class="p-6 sm:p-10 hidden grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-6 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-accentEmerald/10 border border-accentEmerald/30 text-accentEmerald text-xs font-mono font-semibold">
+              📱 NATIVE iOS, ANDROID &amp; SaaS APPS
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-display font-bold text-slate-100 leading-snug">
+              Εφαρμογές που Αυτοματοποιούν &amp; Κλιμακώνουν την Επιχείρησή σας
+            </h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Αναπτύσσουμε εξειδικευμένες <strong>Web &amp; Mobile Εφαρμογές (iOS &amp; Android)</strong>, B2B Portals, συστήματα κρατήσεων και FinTech/AI εργαλεία. Έχουμε δημιουργήσει δικά μας επιτυχημένα SaaS όπως το <strong>TaxPilot GR</strong>, το <strong>GreekHost</strong> και το <strong>Aura Edu</strong>.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-300">React &amp; Next.js</span>
+              <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-300">React Native / Flutter</span>
+              <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-300">AI &amp; LLM Agents</span>
+              <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-300">myDATA &amp; ERP APIs</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 flex justify-center">
+            <div class="w-72 rounded-[32px] bg-slate-950 border-4 border-slate-800 p-4 shadow-2xl space-y-3">
+              <div class="w-20 h-1.5 bg-slate-800 rounded-full mx-auto"></div>
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400 pt-1">
+                <span>UpLogic Mobile OS</span>
+                <span class="text-accentEmerald">● Live Sync</span>
+              </div>
+              <div class="p-3.5 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-slate-900 border border-emerald-500/30 space-y-1">
+                <div class="text-[10px] text-accentEmerald font-mono uppercase">Real-Time Telemetry</div>
+                <div id="miniAppBalance" class="text-2xl font-display font-extrabold text-white">4.820,00 €</div>
+                <div class="text-[10px] text-slate-400">Αυτόματος συγχρονισμός Cloud &amp; Mobile</div>
+              </div>
+              <div class="space-y-2">
+                <button onclick="triggerMiniAppAction()" class="w-full py-2.5 rounded-xl bg-gradient-to-r from-accentCyan to-accentEmerald text-obsidian font-bold text-xs hover:scale-[1.02] transition">
+                  + Προσομοίωση Νέας Συναλλαγής (+350€)
+                </button>
+                <div id="miniAppFeed" class="text-[11px] font-mono text-slate-300 bg-white/5 rounded-xl p-2.5 border border-white/10">
+                  ✓ Push Notification: Νέα παραγγελία #1049
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODE 3: AI CHATBOTS & E-SHOP AUTOMATION DEMO -->
+        <div id="heroPanel-ai" class="p-6 sm:p-10 hidden grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-6 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-accentCyan/10 border border-accentCyan/30 text-accentCyan text-xs font-mono font-semibold">
+              🤖 24/7 AI SALES &amp; CUSTOMER SUPPORT
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-display font-bold text-slate-100 leading-snug">
+              Ένας Έξυπνος AI Πωλητής που Δουλεύει 24/7 στο E-Shop σας
+            </h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Εκπαιδεύουμε AI Chatbots με βάση τα δικά σας προϊόντα και υπηρεσίες. Απαντούν σε δευτερόλεπτα για διαθεσιμότητα, μεγέθη, μεταφορικά, παρακολούθηση παραγγελίας (tracking) και καθοδηγούν τον πελάτη στην αγορά με <strong>+35% αύξηση τζίρου</strong>.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-300">WooCommerce &amp; Shopify</span>
+              <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-300">WhatsApp &amp; Instagram DM</span>
+              <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-slate-300">Αυτόματο Lead Generation</span>
+            </div>
+          </div>
+
+          <div class="lg:col-span-6 bg-slate-950/90 border border-white/10 rounded-2xl p-5 space-y-3">
+            <div class="flex items-center justify-between pb-2 border-b border-white/10 text-xs">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-accentEmerald animate-pulse"></span>
+                <span class="font-display font-bold text-white">AI E-Shop Assistant</span>
+              </div>
+              <span class="text-[10px] font-mono text-accentCyan">Live Simulation</span>
+            </div>
+            
+            <div class="space-y-2.5 text-xs">
+              <div class="p-3 rounded-xl bg-white/5 border border-white/10 text-slate-300 max-w-[85%]">
+                👤 <em>Πελάτης:</em> «Γεια σας, το jacket σε μέγεθος L είναι διαθέσιμο και πότε θα το παραλάβω στην Πάτρα;»
+              </div>
+              <div class="p-3 rounded-xl bg-accentCyan/15 border border-accentCyan/40 text-slate-100 ml-auto max-w-[90%] space-y-1">
+                <div class="font-bold text-accentCyan flex items-center gap-1.5">
+                  <i data-lucide="bot" class="w-3.5 h-3.5"></i>
+                  <span>AI Assistant:</span>
+                </div>
+                <p>«Γεια σας! Ναι, υπάρχει σε απόθεμα (τελευταία 3 τεμάχια). Αν παραγγείλετε τώρα, αποστέλλεται σήμερα με δωρεάν μεταφορικά και παραλαμβάνετε αύριο! Θέλετε να σας προσθέσω έκπτωση 10% για την πρώτη παραγγελία;»</p>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <button onclick="toggleChatbot()" class="w-full py-2.5 rounded-xl bg-accentCyan text-obsidian font-bold text-xs hover:brightness-110 transition flex items-center justify-center gap-2">
+                <i data-lucide="message-square" class="w-4 h-4"></i>
+                <span>Δοκιμάστε το Chatbot της UpLogic Ζωντανά →</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- MODE 4: SEO INTERACTIVE RANKING LAB -->
+        <div id="heroPanel-seo" class="p-6 sm:p-10 hidden grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-6 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-accentCyan/10 border border-accentCyan/30 text-accentCyan text-xs font-mono font-semibold">
+              🔍 TECHNICAL SEO &amp; #1 GOOGLE RANKING
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-display font-bold text-slate-100 leading-snug">
+              Κυριαρχήστε στην 1η Σελίδα της Google σε Ελλάδα &amp; Εξωτερικό
+            </h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Μελετάμε τις λέξεις-κλειδιά με τη μεγαλύτερη εμπορική αξία στον κλάδο σας. Χτίζουμε άψογη τεχνική υποδομή (Schema.org, Core Web Vitals, Ταχύτητα) και Local SEO (Google Maps) για συνεχή ροή οργανικών πελατών.
+            </p>
+          </div>
+          <div class="lg:col-span-6 bg-slate-950/90 border border-white/10 rounded-2xl p-5 space-y-3">
+            <div class="text-xs font-mono text-slate-400 mb-2">Ζωντανή Προεπισκόπηση Google Search (SERP):</div>
+            <div class="p-4 rounded-xl bg-white/[0.04] border border-accentCyan/40 space-y-1">
+              <div class="flex items-center gap-2 text-[11px] text-accentEmerald font-mono">
+                <span class="px-2 py-0.5 rounded bg-accentCyan text-obsidian font-bold">#1 Οργανικό Αποτέλεσμα</span>
+                <span>https://η-επιχείρησή-σας.gr</span>
+              </div>
+              <div class="text-base font-bold text-sky-400 hover:underline cursor-pointer">
+                Η Επωνυμία σας | Κορυφαίες Υπηρεσίες &amp; Προϊόντα
+              </div>
+              <div class="text-xs text-slate-300">
+                ⭐⭐⭐⭐⭐ Αξιολόγηση 4.9/5 • Άμεση εξυπηρέτηση, πιστοποιημένη ποιότητα και online παραγγελίες...
+              </div>
+            </div>
+            <div class="p-3 rounded-xl bg-white/[0.02] border border-white/5 opacity-50 text-xs text-slate-500">
+              #2 Ανταγωνιστής — Χαμηλή ταχύτητα φόρτωσης, χωρίς Rich Snippets
+            </div>
+          </div>
+        </div>
+
+        <!-- MODE 5: GOOGLE & META ADS PERFORMANCE -->
+        <div id="heroPanel-ads" class="p-6 sm:p-10 hidden grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-6 space-y-5">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-accentAmber/10 border border-accentAmber/30 text-accentAmber text-xs font-mono font-semibold">
+              🎯 GOOGLE ADS, META ADS (FB/IG) &amp; TIKTOK
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-display font-bold text-slate-100 leading-snug">
+              Μετρήσιμη Απόδοση (ROAS) σε Κάθε Ευρώ Διαφήμισης
+            </h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Σχεδιάζουμε και βελτιστοποιούμε καθημερινά καμπάνιες σε <strong>Google Search, Shopping, Performance Max</strong> και <strong>Meta Ads (Facebook &amp; Instagram)</strong> με Server-Side Conversion API για μέγιστο τζίρο.
+            </p>
+          </div>
+          <div class="lg:col-span-6 bg-slate-950/90 border border-white/10 rounded-2xl p-5 space-y-4">
+            <div class="flex justify-between items-center">
+              <span class="text-xs font-mono text-slate-400">Live Ads Telemetry</span>
+              <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-accentEmerald text-xs font-bold">Μέσο ROAS: 6.8x</span>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                <div class="text-[11px] text-slate-400">Google Ads (Search/PMax)</div>
+                <div class="text-xl font-display font-extrabold text-accentCyan mt-1">-42% CPA</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">Μείωση κόστους ανά απόκτηση</div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-white/5 border border-white/10">
+                <div class="text-[11px] text-slate-400">Meta Ads (Instagram/FB)</div>
+                <div class="text-xl font-display font-extrabold text-accentEmerald mt-1">+310% Πωλήσεις</div>
+                <div class="text-[10px] text-slate-400 mt-0.5">Dynamic Retargeting &amp; Reels</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       MODERN STATIC "ΜΑΣ ΕΧΟΥΝ ΔΕΙΞΕΙ ΕΜΠΙΣΤΟΣΥΝΗ"
+       ===================================================================== -->
+  <section id="trusted" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+    <div class="bento-card rounded-3xl p-6 sm:p-10 border border-white/10">
+      
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-white/10">
+        <div>
+          <div class="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-accentCyan mb-1">
+            <i data-lucide="shield-check" class="w-4 h-4"></i>
+            <span>Trusted By Industry Leaders • Ελλάδα &amp; Εξωτερικό</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-display font-extrabold text-slate-100">
+            Μας Έχουν Δείξει <span class="editorial-italic font-normal text-amber-300">Εμπιστοσύνη</span>
+          </h2>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-400 max-w-md">
+          Επιχειρήσεις στην Ελλάδα και σε Ευρώπη / ΗΠΑ εμπιστεύονται την UpLogic για την κατασκευή των ιστοσελίδων, των e-shop και των ψηφιακών τους συστημάτων. <span class="text-accentCyan font-medium">(Πατήστε σε κάθε συνεργάτη)</span>
+        </p>
+      </div>
+
+      <!-- Interactive Partner Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 pt-8">
+
+        <!-- Partner 1: ΓΕΩΡΓΙΑΔΗΣ (Ελλάδα) -->
+        <div onclick="showPartnerDetail('georgiadis')" id="partner-georgiadis" class="partner-card cursor-pointer p-4 rounded-2xl bg-accentCyan/10 border border-accentCyan/50 transition hover:bg-white/10 flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-mono font-bold text-accentCyan bg-obsidian/70 px-2 py-0.5 rounded-md">🇬🇷 ΕΛΛΑΔΑ</span>
+            <i data-lucide="external-link" class="w-3.5 h-3.5 text-accentCyan"></i>
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-base text-white tracking-tight">ΓΕΩΡΓΙΑΔΗΣ</div>
+            <div class="text-[11px] text-slate-300 mt-0.5">Georgiadis Group</div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-white/10 text-[10px] font-mono text-accentEmerald">
+            ✓ Custom Website, E-Shop &amp; SEO
+          </div>
+        </div>
+
+        <!-- Partner 2: HanFishing Europe (Γερμανία / ΕΕ) -->
+        <div onclick="showPartnerDetail('hanfishing_eu')" id="partner-hanfishing_eu" class="partner-card cursor-pointer p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accentCyan/40 transition flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-mono font-semibold text-slate-300 bg-obsidian/70 px-2 py-0.5 rounded-md">🇩🇪 ΓΕΡΜΑΝΙΑ / ΕΕ</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i>
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-base text-white tracking-tight">HANFISHING EU</div>
+            <div class="text-[11px] text-slate-400 mt-0.5">Global Tackle &amp; Retail</div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-white/10 text-[10px] font-mono text-slate-400">
+            ✓ E-Shop, Amazon DE &amp; eBay
+          </div>
+        </div>
+
+        <!-- Partner 3: Vanguard Clinic (Λονδίνο, UK) -->
+        <div onclick="showPartnerDetail('vanguard_uk')" id="partner-vanguard_uk" class="partner-card cursor-pointer p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accentCyan/40 transition flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-mono font-semibold text-slate-300 bg-obsidian/70 px-2 py-0.5 rounded-md">🇬🇧 ΛΟΝΔΙΝΟ, UK</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i>
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-base text-white tracking-tight">VANGUARD CLINIC</div>
+            <div class="text-[11px] text-slate-400 mt-0.5">Harley St. Aesthetics</div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-white/10 text-[10px] font-mono text-slate-400">
+            ✓ Bespoke Web, Booking &amp; Ads
+          </div>
+        </div>
+
+        <!-- Partner 4: Nordic Krone (Ζυρίχη / Σκανδιναβία) -->
+        <div onclick="showPartnerDetail('nordic_ch')" id="partner-nordic_ch" class="partner-card cursor-pointer p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accentCyan/40 transition flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-mono font-semibold text-slate-300 bg-obsidian/70 px-2 py-0.5 rounded-md">🇨🇭 ΕΛΒΕΤΙΑ</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i>
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-base text-white tracking-tight">NORDIC KRONE</div>
+            <div class="text-[11px] text-slate-400 mt-0.5">B2B Supply &amp; Logistics</div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-white/10 text-[10px] font-mono text-slate-400">
+            ✓ Custom Web Portal &amp; SEO
+          </div>
+        </div>
+
+        <!-- Partner 5: Solarix Living (Μιλάνο / Ιταλία) -->
+        <div onclick="showPartnerDetail('solarix_it')" id="partner-solarix_it" class="partner-card cursor-pointer p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accentCyan/40 transition flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-[11px] font-mono font-semibold text-slate-300 bg-obsidian/70 px-2 py-0.5 rounded-md">🇮🇹 ΜΙΛΑΝΟ, ΙΤΑΛΙΑ</span>
+            <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-slate-400"></i>
+          </div>
+          <div>
+            <div class="font-display font-extrabold text-base text-white tracking-tight">SOLARIX LIVING</div>
+            <div class="text-[11px] text-slate-400 mt-0.5">Luxury Hospitality Group</div>
+          </div>
+          <div class="mt-3 pt-2 border-t border-white/10 text-[10px] font-mono text-slate-400">
+            ✓ Luxury Website &amp; Meta Ads
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Dynamic Partner Spotlight Strip -->
+      <div id="partnerSpotlightBox" class="mt-5 p-4 sm:p-5 rounded-2xl bg-slate-950/90 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span id="spotPartnerBadge" class="px-2 py-0.5 rounded bg-accentCyan/20 text-accentCyan font-mono text-[10px] font-bold">🇬🇷 Συνεργάτης Ελλάδα</span>
+            <span id="spotPartnerTitle" class="font-display font-bold text-white text-sm sm:text-base">Γεωργιάδης — Κατασκευή Σύγχρονης Ιστοσελίδας, E-Commerce &amp; SEO</span>
+          </div>
+          <p id="spotPartnerDesc" class="text-xs text-slate-300">
+            Πλήρης ανασχεδιασμός εταιρικής ταυτότητας και διαδικτυακής παρουσίας, βελτιστοποίηση ταχύτητας φόρτωσης, mobile-first εμπειρία χρήστη και τοπική/πανελλαδική κυριαρχία στην Google.
+          </p>
+        </div>
+        <div id="spotPartnerMetric" class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-right shrink-0">
+          <div class="text-lg font-display font-extrabold text-accentEmerald">+240%</div>
+          <div class="text-[10px] font-mono text-slate-400">Αύξηση Επισκεψιμότητας</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 2: INTERACTIVE BENTO GRID OF ALL SERVICES (7 CORE SERVICES INCL. AI CHATBOTS)
+       ===================================================================== -->
+  <section id="services" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+    
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accentCyan/10 border border-accentCyan/30 text-accentCyan text-xs font-mono uppercase mb-3">
+          <span>360° Digital Engineering, AI &amp; Growth</span>
+        </div>
+        <h2 class="greek-headline text-3xl sm:text-5xl text-slate-100">
+          Όλα όσα χρειάζεται η επιχείρησή σας<br>
+          <span class="editorial-italic font-normal text-slate-400">κάτω από μία τεχνολογική στέγη.</span>
+        </h2>
+      </div>
+      <p class="text-slate-400 text-sm max-w-md">
+        Συνδυάζουμε κορυφαία μηχανική λογισμικού (Web, E-Shop, Apps), <strong>έξυπνα AI Chatbots</strong> και επιθετικό Digital Marketing (SEO, Google &amp; Meta Ads).
+      </p>
+    </div>
+
+    <!-- 7-Service Interactive Bento Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- 1. ΚΑΤΑΣΚΕΥΗ ΙΣΤΟΣΕΛΙΔΩΝ -->
+      <div class="bento-card rounded-3xl p-7 flex flex-col justify-between group" onmousemove="handleCardMouse(event, this)">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 rounded-2xl bg-accentCyan/15 border border-accentCyan/40 flex items-center justify-center text-accentCyan group-hover:bg-accentCyan group-hover:text-obsidian transition">
+              <i data-lucide="layout" class="w-6 h-6"></i>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-accentCyan font-bold">Από 350€</span>
+          </div>
+          <h3 class="text-2xl font-display font-bold text-white">Κατασκευή Ιστοσελίδων</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Σύγχρονες, διαδραστικές εταιρικές ιστοσελίδες, ιατρικά/επαγγελματικά portals και landing pages με bespoke αισθητική, 100% mobile απόκριση και φόρτωση κάτω από 0.5 δευτερόλεπτα.
+          </p>
+          <ul class="space-y-2 pt-2 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accentCyan"></i> Custom UI/UX Design (Όχι τυποποιημένα πρότυπα)</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accentCyan"></i> Ενσωμάτωση Online Ραντεβού, Κρατήσεων &amp; AI Chat</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accentCyan"></i> Πλήρης τεχνική υποδομή SEO &amp; GDPR</li>
+          </ul>
+        </div>
+        <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] font-mono text-slate-400">Παράδοση: 5-8 ημέρες</span>
+          <a href="#builder" onclick="selectBuilderService('website')" class="text-xs font-bold text-accentCyan flex items-center gap-1 hover:underline">
+            <span>Επιλογή στο Κόστος</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 2. ΚΑΤΑΣΚΕΥΗ E-SHOP -->
+      <div class="bento-card rounded-3xl p-7 flex flex-col justify-between group" onmousemove="handleCardMouse(event, this)">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 rounded-2xl bg-accentEmerald/15 border border-accentEmerald/40 flex items-center justify-center text-accentEmerald group-hover:bg-accentEmerald group-hover:text-obsidian transition">
+              <i data-lucide="shopping-bag" class="w-6 h-6"></i>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-accentEmerald font-bold">Από 590€</span>
+          </div>
+          <h3 class="text-2xl font-display font-bold text-white">Κατασκευή E-Shop</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Ηλεκτρονικά καταστήματα σχεδιασμένα για υψηλό conversion rate. Αυτόματος συγχρονισμός αποθήκης (XML/ERP), Skroutz/BestPrice feeds, διασύνδεση με myDATA και 1-Click Checkout.
+          </p>
+          <ul class="space-y-2 pt-2 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accentEmerald"></i> Όλες οι Τράπεζες, IRIS, Apple Pay, Google Pay &amp; Klarna</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accentEmerald"></i> Αυτόματοι Κωδικοί Voucher (ACS, BoxNow, Speedex, ΕΛΤΑ)</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accentEmerald"></i> Διεθνής διασύνδεση με Amazon &amp; eBay</li>
+          </ul>
+        </div>
+        <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] font-mono text-slate-400">Παράδοση: 7-12 ημέρες</span>
+          <a href="#builder" onclick="selectBuilderService('eshop')" class="text-xs font-bold text-accentEmerald flex items-center gap-1 hover:underline">
+            <span>Επιλογή στο Κόστος</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 3. AI CHATBOTS & SMART AUTOMATIONS (NEW SPECIAL FEATURE) -->
+      <div class="bento-card rounded-3xl p-7 flex flex-col justify-between group border-2 border-accentCyan/30 hover:border-accentCyan/60" onmousemove="handleCardMouse(event, this)">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-accentCyan to-accentEmerald flex items-center justify-center text-obsidian shadow-lg shadow-accentCyan/20 group-hover:scale-105 transition">
+              <i data-lucide="bot" class="w-6 h-6"></i>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-accentCyan/20 border border-accentCyan/40 text-xs font-mono text-accentCyan font-bold">+35% Πωλήσεις</span>
+          </div>
+          <h3 class="text-2xl font-display font-bold text-white flex items-center gap-2">
+            <span>AI Chatbots για E-Shop &amp; Sites</span>
+          </h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Έξυπνοι AI Agents εκπαιδευμένοι αποκλειστικά στα προϊόντα ή τις υπηρεσίες σας. Απαντούν άμεσα 24/7 σε απορίες (μεγέθη, αποστολές, διαθεσιμότητα), προτείνουν προϊόντα (Upsell) και κλείνουν πελάτες.
+          </p>
+          <ul class="space-y-2 pt-2 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accentCyan"></i> 24/7 Αυτόματος AI Πωλητής σε Ελληνικά &amp; Αγγλικά</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accentCyan"></i> Σύνδεση με WooCommerce, Shopify, WhatsApp &amp; Instagram</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-accentCyan"></i> Αυτόματο κλείσιμο ραντεβού &amp; συλλογή leads στο email/CRM</li>
+          </ul>
+        </div>
+        <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] font-mono text-slate-400">Παράδοση: 3-5 ημέρες</span>
+          <button onclick="toggleChatbot()" class="text-xs font-bold text-accentCyan flex items-center gap-1 hover:underline">
+            <span>Δείτε Live Demo</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- 4. CUSTOM ΕΦΑΡΜΟΓΕΣ (WEB, iOS, ANDROID, SAAS) -->
+      <div class="bento-card rounded-3xl p-7 flex flex-col justify-between group" onmousemove="handleCardMouse(event, this)">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 rounded-2xl bg-accentIndigo/15 border border-accentIndigo/40 flex items-center justify-center text-indigo-400 group-hover:bg-accentIndigo group-hover:text-white transition">
+              <i data-lucide="smartphone" class="w-6 h-6"></i>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-indigo-300 font-bold">Custom / SaaS</span>
+          </div>
+          <h3 class="text-2xl font-display font-bold text-white">Εφαρμογές Web &amp; Mobile</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Αναπτύσσουμε Native Mobile Apps (iOS &amp; Android), προοδευτικές Web Εφαρμογές (PWA), SaaS πλατφόρμες, B2B συστήματα παραγγελιών και AI εργαλεία κομμένα και ραμμένα στις ανάγκες σας.
+          </p>
+          <ul class="space-y-2 pt-2 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-indigo-400"></i> Δημοσίευση σε App Store &amp; Google Play</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-indigo-400"></i> Cloud Βάσεις Δεδομένων, Push Notifications &amp; AI</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-indigo-400"></i> Τραπεζική ασφάλεια &amp; API Διασυνδέσεις</li>
+          </ul>
+        </div>
+        <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] font-mono text-slate-400">Full-Stack Engineering</span>
+          <a href="#builder" onclick="selectBuilderService('app')" class="text-xs font-bold text-indigo-400 flex items-center gap-1 hover:underline">
+            <span>Επιλογή στο Κόστος</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 5. SEO & ΟΡΓΑΝΙΚΗ ΑΝΑΠΤΥΞΗ -->
+      <div class="bento-card rounded-3xl p-7 flex flex-col justify-between group" onmousemove="handleCardMouse(event, this)">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 rounded-2xl bg-purple-500/15 border border-purple-500/40 flex items-center justify-center text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition">
+              <i data-lucide="trending-up" class="w-6 h-6"></i>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-purple-300 font-bold">#1 Google</span>
+          </div>
+          <h3 class="text-2xl font-display font-bold text-white">SEO &amp; Google Maps</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Ανεβάζουμε την ιστοσελίδα ή το e-shop σας στις πρώτες θέσεις της Google. Τεχνικό SEO, στόχευση κερδοφόρων λέξεων-κλειδιών, Local SEO (Google Business) και AI Search Optimization.
+          </p>
+          <ul class="space-y-2 pt-2 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> On-Page, Technical SEO &amp; Ταχύτητα Core Vitals</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Κυριαρχία στους Χάρτες της Google στην περιοχή σας</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> Μηνιαίες αναφορές κατάταξης &amp; οργανικής κίνησης</li>
+          </ul>
+        </div>
+        <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] font-mono text-slate-400">Μόνιμη Οργανική Κίνηση</span>
+          <a href="#growth-lab" class="text-xs font-bold text-purple-400 flex items-center gap-1 hover:underline">
+            <span>Δείτε το SEO Lab</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 6. GOOGLE ADS (SEARCH, SHOPPING, PMAX) -->
+      <div class="bento-card rounded-3xl p-7 flex flex-col justify-between group" onmousemove="handleCardMouse(event, this)">
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="w-12 h-12 rounded-2xl bg-amber-400/15 border border-amber-400/40 flex items-center justify-center text-amber-400 group-hover:bg-amber-400 group-hover:text-obsidian transition">
+              <i data-lucide="target" class="w-6 h-6"></i>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-amber-300 font-bold">Άμεσες Πωλήσεις</span>
+          </div>
+          <h3 class="text-2xl font-display font-bold text-white">Google Ads &amp; PMax</h3>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Εμφανιστείτε ακριβώς τη στιγμή που ο πελάτης ψάχνει να αγοράσει. Στήνουμε καμπάνιες Search, Google Shopping, Performance Max &amp; YouTube με απόλυτη εστίαση στη μεγιστοποίηση του ROAS.
+          </p>
+          <ul class="space-y-2 pt-2 text-xs text-slate-300">
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Αποκλεισμός άσχετων κλικ &amp; μείωση κόστους (CPC)</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Google Tag Manager &amp; Enhanced Conversions</li>
+            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-amber-400"></i> Dynamic Product Feeds για E-Shops</li>
+          </ul>
+        </div>
+        <div class="pt-6 mt-6 border-t border-white/10 flex items-center justify-between">
+          <span class="text-[11px] font-mono text-slate-400">Μέσο ROAS: 5.5x - 8.2x</span>
+          <a href="#growth-lab" class="text-xs font-bold text-amber-400 flex items-center gap-1 hover:underline">
+            <span>Υπολογισμός ROAS</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- 7. META ADS (FACEBOOK, INSTAGRAM) & TIKTOK -->
+      <div class="bento-card rounded-3xl p-7 flex flex-col justify-between group md:col-span-2 lg:col-span-3" onmousemove="handleCardMouse(event, this)">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+          <div class="md:col-span-8 space-y-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-accentRose/15 border border-accentRose/40 flex items-center justify-center text-accentRose">
+                <i data-lucide="share-2" class="w-5 h-5"></i>
+              </div>
+              <span class="px-3 py-0.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-rose-300 font-bold">Social Media Scaling</span>
+            </div>
+            <h3 class="text-2xl font-display font-bold text-white">Meta Ads (Facebook &amp; Instagram) &amp; TikTok Growth</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Δημιουργούμε διαφημιστικές καμπάνιες με δυναμικά Reels &amp; βίντεο που μαγνητίζουν το κοινό σας. Επαναφέρουμε επισκέπτες που είδαν προϊόντα αλλά δεν αγόρασαν (Retargeting) με Server-Side Conversion API για 100% ακρίβεια δεδομένων.
+            </p>
+          </div>
+          <div class="md:col-span-4 flex flex-col justify-center items-start md:items-end gap-3 border-t md:border-t-0 md:border-l border-white/10 pt-4 md:pt-0 md:pl-6">
+            <div class="text-right">
+              <div class="text-2xl font-display font-black text-accentEmerald">7.4x ROAS</div>
+              <div class="text-xs text-slate-400">Μέση απόδοση επένδυσης</div>
+            </div>
+            <a href="#growth-lab" class="btn-primary-glow px-4 py-2 rounded-xl text-xs font-bold">
+              Υπολογισμός Budget →
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 3: REAL PROJECTS SHOWCASE (PORTFOLIO)
+       ===================================================================== -->
+  <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto relative z-10">
+    
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+      <div>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accentEmerald/10 border border-accentEmerald/30 text-accentEmerald text-xs font-mono uppercase mb-3">
+          <span>Selected Works &amp; Proprietary SaaS</span>
+        </div>
+        <h2 class="greek-headline text-3xl sm:text-5xl text-slate-100">
+          Έργα που Έχουμε <span class="editorial-italic font-normal text-accentCyan">Υλοποιήσει</span>
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+          Επιλεγμένα έργα κατασκευής ιστοσελίδων, διεθνών e-shops, mobile εφαρμογών και ιδιόκτητων SaaS πλατφορμών σε Ελλάδα και εξωτερικό.
+        </p>
+      </div>
+
+      <!-- Interactive Category Filters -->
+      <div class="flex flex-wrap gap-2">
+        <button onclick="filterProjects('all')" class="proj-filter-btn active px-4 py-2 rounded-xl text-xs font-bold bg-accentCyan text-obsidian transition" data-filter="all">Όλα (6)</button>
+        <button onclick="filterProjects('ecommerce')" class="proj-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-slate-300 border border-white/10 hover:border-accentCyan/40 transition" data-filter="ecommerce">Websites &amp; E-Shops</button>
+        <button onclick="filterProjects('saas')" class="proj-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-slate-300 border border-white/10 hover:border-accentCyan/40 transition" data-filter="saas">SaaS &amp; AI</button>
+        <button onclick="filterProjects('app')" class="proj-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-slate-300 border border-white/10 hover:border-accentCyan/40 transition" data-filter="app">Mobile &amp; Web Apps</button>
+      </div>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7" id="portfolioGrid">
+
+      <!-- PROJECT 1: TaxPilot GR -->
+      <div class="project-card bento-card rounded-3xl overflow-hidden flex flex-col justify-between group" data-category="saas app">
+        <div>
+          <div class="h-52 bg-gradient-to-br from-emerald-950 via-slate-900 to-obsidian p-5 relative overflow-hidden border-b border-white/10 flex flex-col justify-between">
+            <div class="flex items-center justify-between relative z-10">
+              <span class="px-2.5 py-1 rounded-md bg-emerald-500/20 border border-emerald-400/40 text-accentEmerald text-[10px] font-mono font-bold uppercase">FinTech SaaS &amp; Mobile App</span>
+              <span class="text-[11px] font-mono text-accentEmerald flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-accentEmerald animate-ping"></span> Live</span>
+            </div>
+            <div class="bg-slate-950/90 border border-emerald-500/30 rounded-2xl p-3.5 relative z-10 shadow-xl group-hover:scale-[1.03] transition duration-300">
+              <div class="flex justify-between items-center text-[11px] text-slate-400 mb-1">
+                <span>TaxPilot GR • Safe-to-Spend™</span>
+                <span class="text-accentEmerald font-mono">myDATA Sync</span>
+              </div>
+              <div class="flex items-baseline justify-between">
+                <div class="text-2xl font-display font-extrabold text-white">3.450,00 €</div>
+                <div class="text-[11px] text-amber-400 font-mono">Κουμπαράς: 1.248€</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 space-y-3">
+            <h3 class="text-2xl font-display font-bold text-white group-hover:text-accentCyan transition">TaxPilot GR</h3>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              Ο έξυπνος φορολογικός συγκυβερνήτης για ελεύθερους επαγγελματίες &amp; επιχειρήσεις. Αυτόματος υπολογισμός Safe-to-Spend, έκδοση τιμολογίων myDATA, OCR σαρωτής αποδείξεων και AI Φορολογικός Σύμβουλος.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">React / TypeScript</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Supabase Cloud</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">AADE myDATA</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="px-6 pb-6 pt-3 border-t border-white/10">
+          <button onclick="openProjectModal('taxpilot')" class="w-full py-2.5 rounded-xl bg-white/5 hover:bg-accentCyan hover:text-obsidian border border-white/10 text-xs font-bold text-white transition flex items-center justify-center gap-2">
+            <i data-lucide="eye" class="w-4 h-4"></i>
+            <span>Ζωντανή Παρουσίαση Έργου</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: ΓΕΩΡΓΙΑΔΗΣ (Georgiadis Group) -->
+      <div class="project-card bento-card rounded-3xl overflow-hidden flex flex-col justify-between group" data-category="ecommerce">
+        <div>
+          <div class="h-52 bg-gradient-to-br from-sky-950 via-slate-900 to-obsidian p-5 relative overflow-hidden border-b border-white/10 flex flex-col justify-between">
+            <div class="flex items-center justify-between relative z-10">
+              <span class="px-2.5 py-1 rounded-md bg-sky-500/20 border border-sky-400/40 text-sky-300 text-[10px] font-mono font-bold uppercase">Corporate Web, E-Shop &amp; SEO</span>
+              <span class="text-[11px] font-mono text-sky-300">🇬🇷 Ελλάδα</span>
+            </div>
+            <div class="bg-slate-950/90 border border-sky-500/30 rounded-2xl p-3.5 relative z-10 shadow-xl group-hover:scale-[1.03] transition duration-300">
+              <div class="flex justify-between items-center text-[11px] text-slate-400 mb-1">
+                <span>Georgiadis • Digital Presence</span>
+                <span class="text-accentEmerald font-mono">PageSpeed 99/100</span>
+              </div>
+              <div class="flex items-baseline justify-between">
+                <div class="text-xl font-display font-extrabold text-white">Σύγχρονη Ιστοσελίδα &amp; Κατάλογος</div>
+                <div class="text-[11px] text-accentCyan font-mono">+240% Κίνηση</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 space-y-3">
+            <h3 class="text-2xl font-display font-bold text-white group-hover:text-accentCyan transition">Γεωργιάδης — Web &amp; E-Commerce</h3>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              Σχεδιασμός και κατασκευή σύγχρονης εταιρικής ιστοσελίδας &amp; ψηφιακού καταλόγου, βελτιστοποίηση ταχύτητας φόρτωσης σε κινητά και ολοκληρωμένη στρατηγική Local &amp; Organic SEO στην Google.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Custom Web Design</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Mobile-First UI</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Technical SEO #1</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="px-6 pb-6 pt-3 border-t border-white/10">
+          <button onclick="openProjectModal('georgiadis')" class="w-full py-2.5 rounded-xl bg-white/5 hover:bg-accentCyan hover:text-obsidian border border-white/10 text-xs font-bold text-white transition flex items-center justify-center gap-2">
+            <i data-lucide="eye" class="w-4 h-4"></i>
+            <span>Ζωντανή Παρουσίαση Έργου</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PROJECT 3: GreekHost PMS -->
+      <div class="project-card bento-card rounded-3xl overflow-hidden flex flex-col justify-between group" data-category="saas">
+        <div>
+          <div class="h-52 bg-gradient-to-br from-cyan-950 via-slate-900 to-obsidian p-5 relative overflow-hidden border-b border-white/10 flex flex-col justify-between">
+            <div class="flex items-center justify-between relative z-10">
+              <span class="px-2.5 py-1 rounded-md bg-cyan-500/20 border border-cyan-400/40 text-cyan-300 text-[10px] font-mono font-bold uppercase">PropTech &amp; Hospitality SaaS</span>
+              <span class="text-[11px] font-mono text-cyan-300">Airbnb / Booking</span>
+            </div>
+            <div class="bg-slate-950/90 border border-cyan-500/30 rounded-2xl p-3.5 relative z-10 shadow-xl group-hover:scale-[1.03] transition duration-300">
+              <div class="flex justify-between items-center text-[11px] text-slate-400 mb-1">
+                <span>GreekHost PMS • Κρατήσεις Μήνα</span>
+                <span class="text-accentCyan font-mono">iCal Sync ✓</span>
+              </div>
+              <div class="flex items-baseline justify-between">
+                <div class="text-2xl font-display font-extrabold text-white">8.940,00 €</div>
+                <div class="text-[11px] text-accentEmerald font-mono">Τ.Α.Κ. Auto-Calc</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 space-y-3">
+            <h3 class="text-2xl font-display font-bold text-white group-hover:text-accentCyan transition">GreekHost PMS</h3>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              Πλατφόρμα διαχείρισης καταλυμάτων βραχυχρόνιας μίσθωσης (Airbnb, Booking, VRBO). Αυτόματος υπολογισμός Τέλους Ανθεκτικότητας (Τ.Α.Κ.), έσοδα/έξοδα ανά ακίνητο και 1-Click αποστολή στον λογιστή.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Multi-Calendar Sync</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Auto Τ.Α.Κ.</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Property Analytics</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="px-6 pb-6 pt-3 border-t border-white/10">
+          <button onclick="openProjectModal('greekhost')" class="w-full py-2.5 rounded-xl bg-white/5 hover:bg-accentCyan hover:text-obsidian border border-white/10 text-xs font-bold text-white transition flex items-center justify-center gap-2">
+            <i data-lucide="eye" class="w-4 h-4"></i>
+            <span>Ζωντανή Παρουσίαση Έργου</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PROJECT 4: HanFishing Global E-Shop & Marketplace Engine -->
+      <div class="project-card bento-card rounded-3xl overflow-hidden flex flex-col justify-between group" data-category="ecommerce">
+        <div>
+          <div class="h-52 bg-gradient-to-br from-amber-950 via-slate-900 to-obsidian p-5 relative overflow-hidden border-b border-white/10 flex flex-col justify-between">
+            <div class="flex items-center justify-between relative z-10">
+              <span class="px-2.5 py-1 rounded-md bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[10px] font-mono font-bold uppercase">E-Commerce • Amazon &amp; eBay</span>
+              <span class="text-[11px] font-mono text-amber-300">🇩🇪 🇬🇧 Εξωτερικό</span>
+            </div>
+            <div class="bg-slate-950/90 border border-amber-500/30 rounded-2xl p-3.5 relative z-10 shadow-xl group-hover:scale-[1.03] transition duration-300">
+              <div class="flex justify-between items-center text-[11px] text-slate-400 mb-1">
+                <span>Global Multi-Channel Store</span>
+                <span class="text-amber-300 font-mono">+340% Πωλήσεις</span>
+              </div>
+              <div class="flex items-baseline justify-between">
+                <div class="text-xl font-display font-extrabold text-white">Amazon EU + eBay + E-Shop</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 space-y-3">
+            <h3 class="text-2xl font-display font-bold text-white group-hover:text-accentCyan transition">HanFishing Global Commerce</h3>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              Πλήρης ψηφιοποίηση καταλόγου 800+ εξειδικευμένων προϊόντων, AI επεξεργασία εικόνων, αυτόματο inventory sync σε Amazon Europe &amp; eBay, Technical SEO και διεθνείς καμπάνιες Google Shopping.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">E-Shop Architecture</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Amazon A9 SEO</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Google Shopping Ads</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="px-6 pb-6 pt-3 border-t border-white/10">
+          <button onclick="openProjectModal('hanfishing')" class="w-full py-2.5 rounded-xl bg-white/5 hover:bg-accentCyan hover:text-obsidian border border-white/10 text-xs font-bold text-white transition flex items-center justify-center gap-2">
+            <i data-lucide="eye" class="w-4 h-4"></i>
+            <span>Ζωντανή Παρουσίαση Έργου</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PROJECT 5: Aura Edu -->
+      <div class="project-card bento-card rounded-3xl overflow-hidden flex flex-col justify-between group" data-category="app saas">
+        <div>
+          <div class="h-52 bg-gradient-to-br from-purple-950 via-slate-900 to-obsidian p-5 relative overflow-hidden border-b border-white/10 flex flex-col justify-between">
+            <div class="flex items-center justify-between relative z-10">
+              <span class="px-2.5 py-1 rounded-md bg-purple-500/20 border border-purple-400/40 text-purple-300 text-[10px] font-mono font-bold uppercase">EdTech Mobile &amp; Web App</span>
+              <span class="text-[11px] font-mono text-purple-300">Android &amp; Web</span>
+            </div>
+            <div class="bg-slate-950/90 border border-purple-500/30 rounded-2xl p-3.5 relative z-10 shadow-xl group-hover:scale-[1.03] transition duration-300">
+              <div class="flex justify-between items-center text-[11px] text-slate-400 mb-1">
+                <span>Aura Edu • AI Learning Companion</span>
+                <span class="text-purple-400 font-mono">Interactive Quiz</span>
+              </div>
+              <div class="text-xl font-display font-extrabold text-white">Έξυπνη Πλατφόρμα Μάθησης</div>
+            </div>
+          </div>
+
+          <div class="p-6 space-y-3">
+            <h3 class="text-2xl font-display font-bold text-white group-hover:text-accentCyan transition">Aura Edu App</h3>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              Διαδραστική εκπαιδευτική εφαρμογή (Web &amp; Native Android) με AI προσωπικό καθηγητή, gamified μαθήματα, φωνητική αλληλεπίδραση και real-time παρακολούθηση προόδου μαθητών.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Android APK / Web</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">AI Tutor Engine</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Gamification UI</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="px-6 pb-6 pt-3 border-t border-white/10">
+          <button onclick="openProjectModal('aura')" class="w-full py-2.5 rounded-xl bg-white/5 hover:bg-accentCyan hover:text-obsidian border border-white/10 text-xs font-bold text-white transition flex items-center justify-center gap-2">
+            <i data-lucide="eye" class="w-4 h-4"></i>
+            <span>Ζωντανή Παρουσίαση Έργου</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PROJECT 6: PinShot & FilmCraft AI Studio -->
+      <div class="project-card bento-card rounded-3xl overflow-hidden flex flex-col justify-between group" data-category="app saas">
+        <div>
+          <div class="h-52 bg-gradient-to-br from-rose-950 via-slate-900 to-obsidian p-5 relative overflow-hidden border-b border-white/10 flex flex-col justify-between">
+            <div class="flex items-center justify-between relative z-10">
+              <span class="px-2.5 py-1 rounded-md bg-rose-500/20 border border-rose-400/40 text-rose-300 text-[10px] font-mono font-bold uppercase">Mobile App &amp; Creative AI</span>
+              <span class="text-[11px] font-mono text-rose-300">iOS / Android</span>
+            </div>
+            <div class="bg-slate-950/90 border border-rose-500/30 rounded-2xl p-3.5 relative z-10 shadow-xl group-hover:scale-[1.03] transition duration-300">
+              <div class="flex justify-between items-center text-[11px] text-slate-400 mb-1">
+                <span>PinShot &amp; FilmCraft Studio</span>
+                <span class="text-rose-400 font-mono">60fps Engine</span>
+              </div>
+              <div class="text-xl font-display font-extrabold text-white">Next-Gen Interactive Media</div>
+            </div>
+          </div>
+
+          <div class="p-6 space-y-3">
+            <h3 class="text-2xl font-display font-bold text-white group-hover:text-accentCyan transition">PinShot &amp; FilmCraft</h3>
+            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+              Διαδραστική mobile εφαρμογή (Android/iOS) και σουίτα παραγωγής οπτικοακουστικού περιεχομένου για Social Media Reels, TikTok &amp; Meta Ads υψηλής μετατροπής.
+            </p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Mobile Native UI</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">AI Video Pipeline</span>
+              <span class="px-2 py-0.5 rounded bg-white/5 text-[10px] font-mono text-slate-300">Meta Ads Creative</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="px-6 pb-6 pt-3 border-t border-white/10">
+          <button onclick="openProjectModal('pinshot')" class="w-full py-2.5 rounded-xl bg-white/5 hover:bg-accentCyan hover:text-obsidian border border-white/10 text-xs font-bold text-white transition flex items-center justify-center gap-2">
+            <i data-lucide="eye" class="w-4 h-4"></i>
+            <span>Ζωντανή Παρουσίαση Έργου</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 4: INTERACTIVE SEO, GOOGLE ADS & META ADS ROI SIMULATOR
+       ===================================================================== -->
+  <section id="growth-lab" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto relative z-10">
+    <div class="bento-card rounded-3xl p-8 sm:p-12 border border-accentCyan/30 shadow-2xl">
+      
+      <div class="text-center max-w-2xl mx-auto mb-10 space-y-3">
+        <span class="px-3.5 py-1 rounded-full bg-accentCyan/15 border border-accentCyan/40 text-accentCyan text-xs font-mono font-bold uppercase">
+          Διαδραστικός Προσομοιωτής Απόδοσης (SEO + Google/Meta Ads)
+        </span>
+        <h2 class="greek-headline text-3xl sm:text-5xl text-slate-100">
+          Δείτε πόσους πελάτες μπορείτε να <span class="editorial-italic font-normal text-accentEmerald">κερδίσετε</span>
+        </h2>
+        <p class="text-slate-300 text-sm">
+          Κουνήστε την μπάρα προϋπολογισμού και επιλέξτε τον κλάδο σας για να δείτε την εκτιμώμενη απόδοση από τον συνδυασμό <strong>SEO + Google Ads + Meta Ads</strong> της UpLogic.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left Controls -->
+        <div class="lg:col-span-6 space-y-6 bg-slate-950/70 p-6 rounded-2xl border border-white/10">
+          
+          <div>
+            <label class="block text-xs font-mono uppercase text-slate-400 mb-2">1. Επιλέξτε Κλάδο Επιχείρησης:</label>
+            <div class="grid grid-cols-2 gap-2.5">
+              <button onclick="setIndustry(6.5, 45, this)" class="ind-btn active p-3 rounded-xl border border-accentCyan bg-accentCyan/15 text-left text-xs font-bold text-white transition">
+                🛍️ E-Shop / Λιανική
+              </button>
+              <button onclick="setIndustry(7.8, 85, this)" class="ind-btn p-3 rounded-xl border border-white/10 bg-white/5 text-left text-xs font-bold text-slate-300 hover:border-accentCyan/40 transition">
+                🩺 Ιατρείο / Υπηρεσίες
+              </button>
+              <button onclick="setIndustry(8.4, 140, this)" class="ind-btn p-3 rounded-xl border border-white/10 bg-white/5 text-left text-xs font-bold text-slate-300 hover:border-accentCyan/40 transition">
+                🏨 Τουρισμός / Airbnb
+              </button>
+              <button onclick="setIndustry(9.2, 220, this)" class="ind-btn p-3 rounded-xl border border-white/10 bg-white/5 text-left text-xs font-bold text-slate-300 hover:border-accentCyan/40 transition">
+                🏢 B2B / Κατασκευές
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex justify-between text-xs font-bold mb-2">
+              <span class="text-slate-300 font-mono uppercase">2. Μηνιαίο Budget Διαφήμισης (Google + Meta):</span>
+              <span id="adsBudgetDisplay" class="text-xl font-display font-extrabold text-accentCyan">600 € / μήνα</span>
+            </div>
+            <input type="range" id="adsBudgetSlider" min="250" max="5000" step="50" value="600" class="modern-slider" oninput="updateGrowthSimulator()">
+            <div class="flex justify-between text-[10px] font-mono text-slate-500 mt-1">
+              <span>250€ (Starter)</span>
+              <span>1.500€ (Growth)</span>
+              <span>5.000€ (Scale)</span>
+            </div>
+          </div>
+
+          <div class="flex items-center justify-between p-3.5 rounded-xl bg-white/5 border border-white/10">
+            <div>
+              <div class="text-xs font-bold text-white">Ενεργοποίηση Technical SEO (#1 Google)</div>
+              <div class="text-[11px] text-slate-400">Αυξάνει την οργανική κίνηση κατά +65% χωρίς χρέωση ανά κλικ</div>
+            </div>
+            <input type="checkbox" id="seoBoostToggle" checked onchange="updateGrowthSimulator()" class="w-5 h-5 accent-sky-400 cursor-pointer">
+          </div>
+
+        </div>
+
+        <!-- Right Live Output Dashboard -->
+        <div class="lg:col-span-6 grid grid-cols-2 gap-4">
+          
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-white/10 space-y-1">
+            <span class="text-[11px] font-mono text-slate-400 uppercase">Εκτιμώμενοι Επισκέπτες / Μήνα</span>
+            <div id="simVisitors" class="text-3xl font-display font-extrabold text-white">4.850</div>
+            <span class="text-[11px] text-accentEmerald flex items-center gap-1">↑ Google Search + Meta Reels</span>
+          </div>
+
+          <div class="p-5 rounded-2xl bg-slate-950/90 border border-white/10 space-y-1">
+            <span class="text-[11px] font-mono text-slate-400 uppercase">Νέες Παραγγελίες / Leads</span>
+            <div id="simLeads" class="text-3xl font-display font-extrabold text-accentCyan">115</div>
+            <span class="text-[11px] text-slate-400">Υψηλής πρόθεσης αγοράς</span>
+          </div>
+
+          <div class="col-span-2 p-6 rounded-2xl bg-gradient-to-r from-accentCyan/15 via-accentEmerald/15 to-slate-950 border border-accentCyan/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span class="text-xs font-mono font-bold text-accentCyan uppercase">Εκτιμώμενος Μηνιαίος Τζίρος (Revenue)</span>
+              <div id="simRevenue" class="text-4xl sm:text-5xl font-display font-extrabold text-white mt-1">4.950 €</div>
+              <span id="simRoasBadge" class="inline-block mt-2 px-2.5 py-0.5 rounded bg-accentEmerald text-obsidian font-mono font-bold text-xs">
+                Απόδοση ROAS: 8.2x
+              </span>
+            </div>
+            <a href="#contact" class="btn-primary-glow px-5 py-3.5 rounded-xl text-xs font-bold text-center shrink-0">
+              Κλείστε Δωρεάν Στρατηγική →
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 5: INTERACTIVE PROJECT & PACKAGE BUILDER (INCL. AI CHATBOT OPTION)
+       ===================================================================== -->
+  <section id="builder" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10">
+    <div class="bento-card rounded-3xl p-8 sm:p-12 border border-white/15">
+      
+      <div class="text-center space-y-2 mb-10">
+        <span class="px-3 py-1 rounded-full bg-accentCyan/15 text-accentCyan font-mono text-xs font-bold uppercase">
+          Interactive Quote Configurator
+        </span>
+        <h2 class="greek-headline text-3xl sm:text-5xl text-slate-100">
+          Φτιάξτε το Πακέτο σας σε <span class="editorial-italic font-normal text-amber-300">15 Δευτερόλεπτα</span>
+        </h2>
+        <p class="text-slate-400 text-sm">
+          Επιλέξτε μία ή περισσότερες υπηρεσίες (Combo) για να δείτε αμέσως κόστος και χρόνο παράδοσης.
+        </p>
+      </div>
+
+      <!-- Multi-Select Services Grid (Now including AI Chatbots) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 mb-8">
+        
+        <!-- 1. Ιστοσελίδα -->
+        <button type="button" onclick="togglePackageItem(this, 'Κατασκευή Ιστοσελίδας', 350, 6)" data-pkg="website" class="pkg-btn selected p-4 rounded-2xl border-2 border-accentCyan bg-accentCyan/10 text-left transition flex flex-col justify-between">
+          <div class="flex items-center justify-between w-full mb-2">
+            <span class="text-sm font-bold text-white">🌐 Ιστοσελίδα</span>
+            <span class="px-2 py-0.5 rounded bg-accentCyan text-obsidian font-mono font-extrabold text-xs">350€</span>
+          </div>
+          <p class="text-[11px] text-slate-300">Custom Design, Mobile-first, 5-8 σελίδες, Ταχύτητα &lt;0.5s</p>
+        </button>
+
+        <!-- 2. E-Shop -->
+        <button type="button" onclick="togglePackageItem(this, 'Κατασκευή E-Shop', 590, 10)" data-pkg="eshop" class="pkg-btn p-4 rounded-2xl border-2 border-white/10 bg-white/5 text-left hover:border-accentCyan/40 transition flex flex-col justify-between">
+          <div class="flex items-center justify-between w-full mb-2">
+            <span class="text-sm font-bold text-white">🛒 Πλήρες E-Shop</span>
+            <span class="px-2 py-0.5 rounded bg-white/10 text-accentEmerald font-mono font-extrabold text-xs">590€</span>
+          </div>
+          <p class="text-[11px] text-slate-300">Τράπεζες, IRIS, Apple Pay, Courier Vouchers, Skroutz XML</p>
+        </button>
+
+        <!-- 3. AI Chatbot 24/7 (NEW OPTION) -->
+        <button type="button" onclick="togglePackageItem(this, 'AI Chatbot 24/7 (E-Shop & Web)', 180, 3)" data-pkg="ai-bot" class="pkg-btn p-4 rounded-2xl border-2 border-white/10 bg-white/5 text-left hover:border-accentCyan/40 transition flex flex-col justify-between">
+          <div class="flex items-center justify-between w-full mb-2">
+            <span class="text-sm font-bold text-white flex items-center gap-1.5">
+              <span>🤖 AI Chatbot 24/7</span>
+              <span class="w-2 h-2 rounded-full bg-accentEmerald animate-pulse"></span>
+            </span>
+            <span class="px-2 py-0.5 rounded bg-white/10 text-accentCyan font-mono font-extrabold text-xs">180€</span>
+          </div>
+          <p class="text-[11px] text-slate-300">AI Πωλητής, Απαντήσεις σε πελάτες, Upselling &amp; Leads</p>
+        </button>
+
+        <!-- 4. Custom App -->
+        <button type="button" onclick="togglePackageItem(this, 'Custom Web / Mobile App', 1100, 18)" data-pkg="app" class="pkg-btn p-4 rounded-2xl border-2 border-white/10 bg-white/5 text-left hover:border-accentCyan/40 transition flex flex-col justify-between">
+          <div class="flex items-center justify-between w-full mb-2">
+            <span class="text-sm font-bold text-white">📱 Εφαρμογή Web/App</span>
+            <span class="px-2 py-0.5 rounded bg-white/10 text-indigo-300 font-mono font-extrabold text-xs">1.100€</span>
+          </div>
+          <p class="text-[11px] text-slate-300">Custom Πλατφόρμα, iOS/Android PWA, Βάση Δεδομένων &amp; AI</p>
+        </button>
+
+        <!-- 5. SEO -->
+        <button type="button" onclick="togglePackageItem(this, 'Technical SEO & Google Maps', 240, 5)" data-pkg="seo" class="pkg-btn p-4 rounded-2xl border-2 border-white/10 bg-white/5 text-left hover:border-accentCyan/40 transition flex flex-col justify-between">
+          <div class="flex items-center justify-between w-full mb-2">
+            <span class="text-sm font-bold text-white">🔍 SEO (#1 Google)</span>
+            <span class="px-2 py-0.5 rounded bg-white/10 text-purple-300 font-mono font-extrabold text-xs">240€</span>
+          </div>
+          <p class="text-[11px] text-slate-300">Λέξεις-κλειδιά, Schema, Google Business Profile, Ταχύτητα</p>
+        </button>
+
+        <!-- 6. Google & Meta Ads -->
+        <button type="button" onclick="togglePackageItem(this, 'Google Ads & Meta Ads Setup', 220, 4)" data-pkg="ads" class="pkg-btn p-4 rounded-2xl border-2 border-white/10 bg-white/5 text-left hover:border-accentCyan/40 transition flex flex-col justify-between">
+          <div class="flex items-center justify-between w-full mb-2">
+            <span class="text-sm font-bold text-white">🎯 Google &amp; Meta Ads</span>
+            <span class="px-2 py-0.5 rounded bg-white/10 text-rose-300 font-mono font-extrabold text-xs">220€</span>
+          </div>
+          <p class="text-[11px] text-slate-300">Search, Performance Max, Facebook/Instagram Reels &amp; Pixel</p>
+        </button>
+
+      </div>
+
+      <!-- Total Bar -->
+      <div class="p-6 rounded-2xl bg-slate-950 border border-accentCyan/40 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div class="space-y-1 text-center sm:text-left">
+          <div id="selectedPkgNames" class="text-xs font-mono text-accentCyan">Επιλεγμένα: Κατασκευή Ιστοσελίδας</div>
+          <div class="flex items-baseline justify-center sm:justify-start gap-4">
+            <span id="pkgTotalPrice" class="text-4xl font-display font-extrabold text-white">350 €</span>
+            <span id="pkgTotalDays" class="text-xs font-mono text-slate-400">~ 6 εργάσιμες ημέρες</span>
+          </div>
+        </div>
+        <a href="#contact" onclick="transferQuoteToForm()" class="btn-primary-glow px-7 py-4 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2">
+          <span>Κλείδωμα Προσφοράς</span>
+          <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================================
+       SECTION 6: CONTACT & DIRECT CALL
+       ===================================================================== -->
+  <section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto relative z-10">
+    <div class="bento-card rounded-3xl p-8 sm:p-12 border border-white/15">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+        
+        <div class="lg:col-span-5 space-y-5">
+          <span class="px-3 py-1 rounded-full bg-accentCyan/15 text-accentCyan font-mono text-xs font-bold uppercase">Start Your Project</span>
+          <h2 class="greek-headline text-3xl sm:text-4xl text-slate-100">
+            Ας δημιουργήσουμε το επόμενο <span class="editorial-italic font-normal text-amber-300">success story</span> σας.
+          </h2>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Μιλήστε απευθείας με τους μηχανικούς και τους digital strategists της <strong>UpLogic</strong>. Σας απαντάμε αυθημερόν με ολοκληρωμένο πλάνο.
+          </p>
+
+          <div class="space-y-3 pt-2 text-sm">
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3.5">
+              <i data-lucide="map-pin" class="w-5 h-5 text-accentCyan shrink-0"></i>
+              <div>
+                <div class="font-bold text-white">Έδρα: Πάτρα, Αχαΐα</div>
+                <div class="text-xs text-slate-400">Εξυπηρέτηση σε Ελλάδα &amp; Εξωτερικό</div>
+              </div>
+            </div>
+            <div class="p-4 rounded-2xl bg-white/5 border border-white/10 flex items-center gap-3.5">
+              <i data-lucide="mail" class="w-5 h-5 text-accentEmerald shrink-0"></i>
+              <div>
+                <div class="font-bold text-white">info@uplogic.gr</div>
+                <div class="text-xs text-slate-400">Άμεση απάντηση εντός 2 ωρών</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <form onsubmit="submitLeadForm(event)" class="lg:col-span-7 space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-mono text-slate-400 mb-1.5">Ονοματεπώνυμο</label>
+              <input type="text" required placeholder="π.χ. Γιώργος Παπαδόπουλος" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-white/15 text-white text-sm focus:border-accentCyan outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-mono text-slate-400 mb-1.5">Τηλέφωνο</label>
+              <input type="tel" required placeholder="69XXXXXXXX" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-white/15 text-white text-sm focus:border-accentCyan outline-none">
+            </div>
+          </div>
+          <div>
+            <label class="block text-xs font-mono text-slate-400 mb-1.5">Επιλεγμένο Πακέτο / Ενδιαφέρον</label>
+            <input type="text" id="formPackageInput" value="Κατασκευή Ιστοσελίδας (350€)" class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-accentCyan/40 text-accentCyan font-mono text-xs sm:text-sm outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-mono text-slate-400 mb-1.5">Μήνυμα ή Link υπάρχουσας σελίδας</label>
+            <textarea rows="3" placeholder="Πείτε μας λίγα λόγια για το project σας..." class="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-white/15 text-white text-sm focus:border-accentCyan outline-none"></textarea>
+          </div>
+          <button type="submit" id="leadSubmitBtn" class="btn-primary-glow w-full py-4 rounded-xl text-sm font-bold flex items-center justify-center gap-2">
+            <span>Αποστολή &amp; Κλείσιμο Δωρεάν Ραντεβού</span>
+            <i data-lucide="send" class="w-4 h-4"></i>
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 border-t border-white/10 text-center text-xs text-slate-500 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2 text-white font-display font-bold">
+        <span class="w-6 h-6 rounded bg-gradient-to-br from-accentCyan to-accentEmerald text-obsidian flex items-center justify-center text-xs font-black">UP</span>
+        <span>UpLogic Technologies • Digital Engineering, AI &amp; Growth Studio</span>
+      </div>
+      <div>© 2026 UpLogic. Κατασκευή Ιστοσελίδων, E-Shop, Εφαρμογές, AI Chatbots, SEO &amp; Google/Meta Ads.</div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       INTERACTIVE PROJECT CASE STUDY MODAL
+       ===================================================================== -->
+  <div id="projectModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-xl hidden items-center justify-center p-4">
+    <div class="bento-card rounded-3xl max-w-2xl w-full p-6 sm:p-8 border border-accentCyan/40 space-y-5 shadow-2xl">
+      <div class="flex items-start justify-between gap-4 border-b border-white/10 pb-4">
+        <div>
+          <span id="modalCategory" class="text-[11px] font-mono text-accentCyan uppercase">Case Study</span>
+          <h3 id="modalTitle" class="text-2xl sm:text-3xl font-display font-extrabold text-white mt-0.5">Project Title</h3>
+        </div>
+        <button onclick="closeProjectModal()" class="p-2 rounded-xl bg-white/10 text-white hover:bg-accentCyan hover:text-obsidian transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <p id="modalDesc" class="text-slate-300 text-sm leading-relaxed"></p>
+
+      <div id="modalStats" class="grid grid-cols-3 gap-3"></div>
+
+      <div class="p-4 rounded-2xl bg-slate-950 border border-white/10 space-y-2">
+        <div class="text-xs font-mono text-slate-400 uppercase">Τεχνολογίες &amp; Υλοποίηση UpLogic:</div>
+        <div id="modalTech" class="text-xs text-accentEmerald font-mono"></div>
+      </div>
+
+      <div class="flex justify-end gap-3 pt-2">
+        <button onclick="closeProjectModal()" class="px-5 py-2.5 rounded-xl bg-white/10 text-white text-xs font-bold">Κλείσιμο</button>
+        <a href="#contact" onclick="closeProjectModal()" class="btn-primary-glow px-5 py-2.5 rounded-xl text-xs font-bold">Θέλω Παρόμοιο Project →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       INTERACTIVE FLOATING AI CHATBOT WIDGET (BOTTOM-RIGHT)
+       ===================================================================== -->
+  <!-- Floating Button -->
+  <div class="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+    <button onclick="toggleChatbot()" class="bot-trigger-pulse group flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-accentCyan to-accentEmerald text-obsidian font-bold text-xs shadow-2xl hover:scale-105 transition duration-300 border border-white/20">
+      <div class="w-6 h-6 rounded-full bg-obsidian flex items-center justify-center text-accentCyan">
+        <i data-lucide="bot" class="w-4 h-4"></i>
+      </div>
+      <span class="tracking-tight">UpLogic AI Assistant</span>
+      <span class="w-2 h-2 rounded-full bg-obsidian animate-ping"></span>
+    </button>
+  </div>
+
+  <!-- Chatbot Window Dialog -->
+  <div id="chatbotBox" class="fixed bottom-24 right-4 sm:right-6 z-50 w-[calc(100vw-32px)] sm:w-96 rounded-3xl bento-card border-2 border-accentCyan/40 shadow-2xl hidden flex-col overflow-hidden transition-all duration-300">
+    <!-- Chat Header -->
+    <div class="p-4 bg-slate-950/95 border-b border-white/10 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-accentCyan to-accentEmerald flex items-center justify-center text-obsidian shadow-md">
+          <i data-lucide="bot" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <div class="font-display font-extrabold text-sm text-white flex items-center gap-1.5">
+            <span>UpLogic AI Concierge</span>
+            <span class="w-2 h-2 rounded-full bg-accentEmerald"></span>
+          </div>
+          <span class="text-[10px] font-mono text-accentCyan">Online 24/7 • Απαντά άμεσα</span>
+        </div>
+      </div>
+      <button onclick="toggleChatbot()" class="p-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white transition">
+        <i data-lucide="x" class="w-4 h-4"></i>
+      </button>
+    </div>
+
+    <!-- Chat Messages Container -->
+    <div id="chatMessages" class="p-4 max-h-96 min-h-[300px] overflow-y-auto space-y-3.5 text-xs text-slate-200">
+      <!-- Welcome Message from Bot -->
+      <div class="flex items-start gap-2.5">
+        <div class="w-7 h-7 rounded-lg bg-accentCyan/20 text-accentCyan flex items-center justify-center shrink-0 mt-0.5">
+          <i data-lucide="bot" class="w-4 h-4"></i>
+        </div>
+        <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-2 leading-relaxed">
+          <p>
+            Γεια σας! 👋 Είμαι ο έξυπνος βοηθός της <strong>UpLogic</strong>.
+          </p>
+          <p>
+            Μπορώ να σας δώσω <strong>άμεσα τιμές</strong> για ιστοσελίδες &amp; eshop, να σας εξηγήσω πώς εγκαθιστούμε <strong>AI Chatbots</strong> στο δικό σας κατάστημα, ή να σας βοηθήσω να κλείσετε ραντεβού!
+          </p>
+          <div class="pt-1 text-[11px] font-mono text-accentCyan">
+            Επιλέξτε μια ερώτηση ή πληκτρολογήστε:
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Interactive Question Chips -->
+      <div id="chatChipsContainer" class="flex flex-col gap-1.5 pt-1">
+        <button onclick="askBotQuestion('pricing')" class="text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-accentCyan/15 border border-white/10 hover:border-accentCyan/40 text-[11px] text-slate-300 transition flex items-center justify-between">
+          <span>💰 Πόσο κοστίζει μια Ιστοσελίδα ή ένα E-Shop;</span>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-accentCyan"></i>
+        </button>
+        <button onclick="askBotQuestion('aichatbot')" class="text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-accentCyan/15 border border-white/10 hover:border-accentCyan/40 text-[11px] text-slate-300 transition flex items-center justify-between">
+          <span>🤖 Πώς βοηθάει το AI Chatbot το E-Shop μου;</span>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-accentCyan"></i>
+        </button>
+        <button onclick="askBotQuestion('seo')" class="text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-accentCyan/15 border border-white/10 hover:border-accentCyan/40 text-[11px] text-slate-300 transition flex items-center justify-between">
+          <span>🔍 Πώς θα βγω στην 1η σελίδα της Google;</span>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-accentCyan"></i>
+        </button>
+        <button onclick="askBotQuestion('booking')" class="text-left px-3 py-2 rounded-xl bg-white/5 hover:bg-accentCyan/15 border border-white/10 hover:border-accentCyan/40 text-[11px] text-slate-300 transition flex items-center justify-between">
+          <span>📅 Θέλω να κλείσω ένα δωρεάν ραντεβού</span>
+          <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-accentCyan"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Chat Input Form -->
+    <form onsubmit="handleChatSubmit(event)" class="p-3 bg-slate-950/90 border-t border-white/10 flex items-center gap-2">
+      <input type="text" id="chatInput" placeholder="Γράψτε την ερώτησή σας εδώ..." class="flex-1 px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-xs focus:border-accentCyan outline-none">
+      <button type="submit" class="p-2.5 rounded-xl bg-accentCyan text-obsidian hover:scale-105 transition font-bold shrink-0">
+        <i data-lucide="send" class="w-4 h-4"></i>
+      </button>
+    </form>
+  </div>
+
+  <!-- =====================================================================
+       JAVASCRIPT INTERACTIVITY ENGINE
+       ===================================================================== -->
+  <script>
+    lucide.createIcons();
+
+    // 1. Cursor Ambient Spotlight & Card Glow
+    document.addEventListener('mousemove', (e) => {
+      document.documentElement.style.setProperty('--cursor-x', e.clientX + 'px');
+      document.documentElement.style.setProperty('--cursor-y', e.clientY + 'px');
+    });
+
+    function handleCardMouse(e, card) {
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--card-mouse-x', (e.clientX - rect.left) + 'px');
+      card.style.setProperty('--card-mouse-y', (e.clientY - rect.top) + 'px');
+    }
+
+    // 2. Mobile Menu Toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+    }
+
+    // 3. Floating AI Chatbot Toggle & Engine
+    function toggleChatbot() {
+      const box = document.getElementById('chatbotBox');
+      box.classList.toggle('hidden');
+      box.classList.toggle('flex');
+      if (!box.classList.contains('hidden')) {
+        document.getElementById('chatInput').focus();
+        scrollChatToBottom();
+      }
+    }
+
+    function scrollChatToBottom() {
+      const container = document.getElementById('chatMessages');
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function addChatMessage(sender, text) {
+      const container = document.getElementById('chatMessages');
+      const msgDiv = document.createElement('div');
+      
+      if (sender === 'user') {
+        msgDiv.className = 'flex items-start gap-2.5 justify-end';
+        msgDiv.innerHTML = `
+          <div class="p-3 rounded-2xl bg-gradient-to-r from-accentCyan to-accentEmerald text-obsidian font-semibold max-w-[85%] leading-relaxed">
+            ${text}
+          </div>
+        `;
+      } else {
+        msgDiv.className = 'flex items-start gap-2.5';
+        msgDiv.innerHTML = `
+          <div class="w-7 h-7 rounded-lg bg-accentCyan/20 text-accentCyan flex items-center justify-center shrink-0 mt-0.5">
+            <i data-lucide="bot" class="w-4 h-4"></i>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-2 leading-relaxed text-slate-200 max-w-[90%]">
+            ${text}
+          </div>
+        `;
+      }
+      container.appendChild(msgDiv);
+      lucide.createIcons();
+      scrollChatToBottom();
+    }
+
+    function askBotQuestion(type) {
+      if (type === 'pricing') {
+        addChatMessage('user', 'Πόσο κοστίζει μια Ιστοσελίδα ή ένα E-Shop;');
+        setTimeout(() => {
+          addChatMessage('bot', `
+            <p>Στην <strong>UpLogic</strong> προσφέρουμε απόλυτη διαφάνεια:</p>
+            <ul class="space-y-1 list-disc pl-4 text-slate-300">
+              <li><strong>Εταιρικές Ιστοσελίδες:</strong> Από <strong>350€</strong> (custom design, ταχύτητα &lt;0.5s).</li>
+              <li><strong>Ολοκληρωμένα E-Shops:</strong> Από <strong>590€</strong> (τράπεζες, IRIS, Apple Pay, myDATA, vouchers).</li>
+              <li><strong>AI Chatbot 24/7:</strong> Από <strong>180€</strong> (αυτόματος πωλητής).</li>
+              <li><strong>SEO &amp; Ads:</strong> Από <strong>220€</strong>.</li>
+            </ul>
+            <p class="pt-1">Μπορείτε να συνδυάσετε ό,τι θέλετε στον διαδραστικό μας <a href="#builder" onclick="toggleChatbot()" class="text-accentCyan underline font-bold">Υπολογιστή Κόστους</a>!</p>
+          `);
+        }, 350);
+      } else if (type === 'aichatbot') {
+        addChatMessage('user', 'Πώς βοηθάει το AI Chatbot το E-Shop μου;');
+        setTimeout(() => {
+          addChatMessage('bot', `
+            <p>Το <strong>AI Chatbot</strong> της UpLogic λειτουργεί σαν ένας <strong>ακούραστος πωλητής 24/7</strong>:</p>
+            <ul class="space-y-1 list-disc pl-4 text-slate-300">
+              <li>Απαντά σε δευτερόλεπτα σε ερωτήσεις για διαθεσιμότητα, μεγέθη &amp; χρόνο παράδοσης.</li>
+              <li>Προτείνει σχετικά προϊόντα την ώρα της περιήγησης αυξάνοντας το μέσο καλάθι.</li>
+              <li>Διασυνδέεται με WhatsApp, Instagram DMs και Facebook Messenger.</li>
+              <li>Αυξάνει τις ολοκληρωμένες παραγγελίες κατά <strong>+25% έως +35%</strong>!</li>
+            </ul>
+            <p class="pt-1">Θέλετε να το ενσωματώσουμε και στο δικό σας κατάστημα;</p>
+          `);
+        }, 350);
+      } else if (type === 'seo') {
+        addChatMessage('user', 'Πώς θα βγω στην 1η σελίδα της Google;');
+        setTimeout(() => {
+          addChatMessage('bot', `
+            <p>Χρησιμοποιούμε <strong>Technical SEO &amp; Core Web Vitals</strong>:</p>
+            <ul class="space-y-1 list-disc pl-4 text-slate-300">
+              <li>Ταχύτητα φόρτωσης κάτω από 0.5s (η Google λατρεύει τα γρήγορα sites).</li>
+              <li>Στόχευση λέξεων-κλειδιών υψηλής αγοραστικής πρόθεσης.</li>
+              <li>Βελτιστοποίηση Google Business Profile (Χάρτες).</li>
+            </ul>
+            <p class="pt-1">Δείτε τον <a href="#growth-lab" onclick="toggleChatbot()" class="text-accentCyan underline font-bold">Προσομοιωτή SEO &amp; Ads</a> για να δείτε εκτιμώμενη κίνηση!</p>
+          `);
+        }, 350);
+      } else if (type === 'booking') {
+        addChatMessage('user', 'Θέλω να κλείσω ένα δωρεάν ραντεβού');
+        setTimeout(() => {
+          addChatMessage('bot', `
+            <p>Τέλεια! Μπορείτε να συμπληρώσετε τη φόρμα στο <a href="#contact" onclick="toggleChatbot()" class="text-accentCyan underline font-bold">τέλος της σελίδας</a> ή να μας στείλετε απευθείας email στο <strong class="text-white">info@uplogic.gr</strong>.</p>
+            <p>Ένας Senior Engineer της UpLogic θα επικοινωνήσει μαζί σας εντός 2 ωρών!</p>
+          `);
+        }, 350);
+      }
+    }
+
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const val = input.value.trim();
+      if (!val) return;
+
+      addChatMessage('user', val);
+      input.value = '';
+
+      setTimeout(() => {
+        const lower = val.toLowerCase();
+        let reply = '';
+        if (lower.includes('τιμ') || lower.includes('κοστ') || lower.includes('ποσο') || lower.includes('ευρω') || lower.includes('προσφορ')) {
+          reply = 'Οι τιμές μας ξεκινούν από <strong>350€ για ιστοσελίδες</strong>, <strong>590€ για E-Shop</strong> και <strong>180€ για AI Chatbots</strong>. Μπορείτε να δείτε ζωντανά το κόστος στο <a href="#builder" onclick="toggleChatbot()" class="text-accentCyan underline font-bold">Builder</a>!';
+        } else if (lower.includes('chat') || lower.includes('μποτ') || lower.includes('bot') || lower.includes('ai') || lower.includes('τεχνητ')) {
+          reply = 'Το <strong>AI Chatbot</strong> της UpLogic εκπαιδεύεται πάνω στα προϊόντα σας, απαντά 24/7 σε ερωτήσεις πελατών και συνδέεται με E-Shop, WhatsApp και Instagram! Κοστίζει από 180€ και παραδίδεται σε 3 ημέρες.';
+        } else if (lower.includes('seo') || lower.includes('google') || lower.includes('πρωτ') || lower.includes('διαφημ')) {
+          reply = 'Αναλαμβάνουμε <strong>Technical SEO</strong> για #1 θέση στην Google καθώς και <strong>Google Ads (PMax) & Meta Ads</strong> με μέσο ROAS 6.8x. Δείτε τον <a href="#growth-lab" onclick="toggleChatbot()" class="text-accentCyan underline font-bold">Προσομοιωτή</a>!';
+        } else if (lower.includes('τηλ') || lower.includes('επικοινων') || lower.includes('ραντεβ') || lower.includes('mail') || lower.includes('πατρα')) {
+          reply = 'Η έδρα μας είναι στην <strong>Πάτρα</strong> και εξυπηρετούμε όλη την Ελλάδα &amp; το εξωτερικό. Στείλτε μας στο <strong class="text-white">info@uplogic.gr</strong> ή συμπληρώστε τη <a href="#contact" onclick="toggleChatbot()" class="text-accentCyan underline font-bold">φόρμα επικοινωνίας</a>!';
+        } else {
+          reply = 'Ευχαριστούμε για το μήνυμα! Στην UpLogic κατασκευάζουμε ιστοσελίδες, e-shops, εφαρμογές και AI Chatbots με εγγυημένο αποτέλεσμα. Θέλετε να σας βοηθήσω να επιλέξετε το ιδανικό πακέτο;';
+        }
+        addChatMessage('bot', reply);
+      }, 400);
+    }
+
+    // 4. Hero Interactive Mode Switcher
+    function switchHeroMode(mode) {
+      const modes = ['web', 'app', 'ai', 'seo', 'ads'];
+      const urls = {
+        web: 'https://uplogic.gr/interactive-architecture/web-eshop',
+        app: 'https://uplogic.gr/interactive-architecture/mobile-web-apps',
+        ai: 'https://uplogic.gr/interactive-architecture/ai-chatbots-ecommerce',
+        seo: 'https://uplogic.gr/interactive-architecture/google-seo-rank-1',
+        ads: 'https://uplogic.gr/interactive-architecture/google-meta-ads-roas'
+      };
+
+      modes.forEach(m => {
+        const panel = document.getElementById('heroPanel-' + m);
+        const btn = document.getElementById('heroBtn-' + m);
+        if (panel && btn) {
+          if (m === mode) {
+            panel.classList.remove('hidden');
+            panel.classList.add('grid');
+            btn.className = 'hero-mode-btn px-4 py-2.5 rounded-xl text-xs font-semibold border transition flex items-center gap-2 bg-gradient-to-r from-accentCyan to-accentEmerald text-obsidian border-transparent shadow-lg shadow-accentCyan/20';
+          } else {
+            panel.classList.add('hidden');
+            panel.classList.remove('grid');
+            btn.className = 'hero-mode-btn px-4 py-2.5 rounded-xl text-xs font-semibold border border-white/15 bg-white/5 text-slate-200 hover:border-accentCyan/50 transition flex items-center gap-2';
+          }
+        }
+      });
+
+      document.getElementById('sandboxUrl').innerText = urls[mode] || urls['web'];
+    }
+
+    // 5. Before / After Website Speed Toggle inside Hero
+    function setWebCompare(type) {
+      const btnOld = document.getElementById('btnOldWeb');
+      const btnNew = document.getElementById('btnNewWeb');
+      if (type === 'old') {
+        btnOld.className = 'px-3 py-1 rounded-lg text-xs font-bold bg-rose-500 text-white transition';
+        btnNew.className = 'px-3 py-1 rounded-lg text-xs font-semibold text-slate-400 transition';
+        document.getElementById('metricLoad').innerText = '4.8 δευτερόλεπτα (Αργό) ⚠️';
+        document.getElementById('metricLoad').className = 'font-mono font-bold text-rose-400';
+        document.getElementById('barLoad').style.width = '28%';
+        document.getElementById('barLoad').className = 'h-full bg-rose-500 rounded-full transition-all duration-500';
+
+        document.getElementById('metricCheckout').innerText = '5 Βήματα (42% Εγκατάλειψη)';
+        document.getElementById('metricCheckout').className = 'font-mono font-bold text-amber-400';
+        document.getElementById('barCheckout').style.width = '35%';
+        document.getElementById('barCheckout').className = 'h-full bg-amber-500 rounded-full transition-all duration-500';
+
+        document.getElementById('metricSeoScore').innerText = '48 / 100 (Χαμηλή Κατάταξη)';
+        document.getElementById('metricSeoScore').className = 'font-mono font-bold text-rose-400';
+        document.getElementById('barSeo').style.width = '48%';
+        document.getElementById('barSeo').className = 'h-full bg-rose-500 rounded-full transition-all duration-500';
+      } else {
+        btnNew.className = 'px-3 py-1 rounded-lg text-xs font-bold bg-accentCyan text-obsidian transition';
+        btnOld.className = 'px-3 py-1 rounded-lg text-xs font-semibold text-slate-400 transition';
+        document.getElementById('metricLoad').innerText = '0.42 δευτερόλεπτα 🚀';
+        document.getElementById('metricLoad').className = 'font-mono font-bold text-accentCyan';
+        document.getElementById('barLoad').style.width = '96%';
+        document.getElementById('barLoad').className = 'h-full bg-accentCyan rounded-full transition-all duration-500';
+
+        document.getElementById('metricCheckout').innerText = '1-Click (Apple Pay / IRIS / Κάρτα)';
+        document.getElementById('metricCheckout').className = 'font-mono font-bold text-accentEmerald';
+        document.getElementById('barCheckout').style.width = '98%';
+        document.getElementById('barCheckout').className = 'h-full bg-accentEmerald rounded-full transition-all duration-500';
+
+        document.getElementById('metricSeoScore').innerText = '100 / 100 (Άριστο)';
+        document.getElementById('metricSeoScore').className = 'font-mono font-bold text-amber-300';
+        document.getElementById('barSeo').style.width = '100%';
+        document.getElementById('barSeo').className = 'h-full bg-amber-400 rounded-full transition-all duration-500';
+      }
+    }
+
+    // 6. Interactive Trusted Partners Switcher
+    const partnerData = {
+      georgiadis: {
+        badge: '🇬🇷 Συνεργάτης Ελλάδα',
+        title: 'Γεωργιάδης — Κατασκευή Σύγχρονης Ιστοσελίδας, E-Commerce & SEO',
+        desc: 'Πλήρης ανασχεδιασμός εταιρικής ταυτότητας και διαδικτυακής παρουσίας, βελτιστοποίηση ταχύτητας φόρτωσης, mobile-first εμπειρία χρήστη και τοπική/πανελλαδική κυριαρχία στην Google.',
+        metric: '+240%',
+        metricLabel: 'Αύξηση Επισκεψιμότητας'
+      },
+      hanfishing_eu: {
+        badge: '🇩🇪 Συνεργάτης Γερμανία / ΕΕ',
+        title: 'HanFishing Europe — Διεθνές E-Shop & Amazon/eBay Automation',
+        desc: 'Ψηφιοποίηση 800+ κωδικών, αυτόματος συγχρονισμός αποθήκης σε 5 ευρωπαϊκές αγορές, SEO βελτιστοποίηση listings και Google Shopping καμπάνιες.',
+        metric: '+340%',
+        metricLabel: 'Διεθνείς Πωλήσεις'
+      },
+      vanguard_uk: {
+        badge: '🇬🇧 Συνεργάτης Λονδίνο, UK',
+        title: 'Vanguard Clinic London — Bespoke Ιατρική Ιστοσελίδα & Google Ads',
+        desc: 'Υψηλής αισθητικής ιατρικό portal στο Λονδίνο με ενσωματωμένο σύστημα online κρατήσεων ραντεβού, ταχύτητα 0.4s και στοχευμένες καμπάνιες Google Search.',
+        metric: '+285%',
+        metricLabel: 'Online Ραντεβού'
+      },
+      nordic_ch: {
+        badge: '🇨🇭 Συνεργάτης Ζυρίχη, Ελβετία',
+        title: 'Nordic Krone — Custom B2B Web Πλατφόρμα & International SEO',
+        desc: 'Κατασκευή πολυγλωσσικής (DE/EN/FR) B2B διαδικτυακής πύλης με real-time tracking, custom dashboard πελατών και τεχνικό SEO.',
+        metric: '99.9%',
+        metricLabel: 'Core Web Vitals'
+      },
+      solarix_it: {
+        badge: '🇮🇹 Συνεργάτης Μιλάνο, Ιταλία',
+        title: 'Solarix Living — Luxury Hospitality Website, Booking Engine & Meta Ads',
+        desc: 'Editorial web design για πολυτελή καταλύματα, απευθείας κρατήσεις χωρίς προμήθειες τρίτων και δυναμικές καμπάνιες σε Instagram & Facebook.',
+        metric: '7.4x',
+        metricLabel: 'Απόδοση ROAS'
+      }
+    };
+
+    function showPartnerDetail(key) {
+      const d = partnerData[key];
+      if (!d) return;
+
+      document.querySelectorAll('.partner-card').forEach(el => {
+        el.className = 'partner-card cursor-pointer p-4 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-accentCyan/40 transition flex flex-col justify-between';
+      });
+      const activeEl = document.getElementById('partner-' + key);
+      if (activeEl) {
+        activeEl.className = 'partner-card cursor-pointer p-4 rounded-2xl bg-accentCyan/10 border border-accentCyan/50 transition flex flex-col justify-between';
+      }
+
+      document.getElementById('spotPartnerBadge').innerText = d.badge;
+      document.getElementById('spotPartnerTitle').innerText = d.title;
+      document.getElementById('spotPartnerDesc').innerText = d.desc;
+      document.getElementById('spotPartnerMetric').innerHTML = `
+        <div class="text-lg font-display font-extrabold text-accentEmerald">${d.metric}</div>
+        <div class="text-[10px] font-mono text-slate-400">${d.metricLabel}</div>
+      `;
+    }
+
+    // 7. Mini Phone Simulator inside App Tab
+    let appSimBalance = 4820;
+    function triggerMiniAppAction() {
+      appSimBalance += 350;
+      document.getElementById('miniAppBalance').innerText = appSimBalance.toLocaleString('el-GR') + ',00 €';
+      document.getElementById('miniAppFeed').innerHTML = '⚡ <strong>Live Sync:</strong> +350€ τιμολογήθηκαν &amp; ανέβηκαν στο Cloud!';
+    }
+
+    // 8. Portfolio Filter
+    function filterProjects(cat) {
+      document.querySelectorAll('.proj-filter-btn').forEach(btn => {
+        if (btn.dataset.filter === cat) {
+          btn.className = 'proj-filter-btn active px-4 py-2 rounded-xl text-xs font-bold bg-accentCyan text-obsidian transition';
+        } else {
+          btn.className = 'proj-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-white/5 text-slate-300 border border-white/10 hover:border-accentCyan/40 transition';
+        }
+      });
+
+      document.querySelectorAll('.project-card').forEach(card => {
+        if (cat === 'all' || card.dataset.category.includes(cat)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // 9. Portfolio Case Study Modal Data
+    const projectDetails = {
+      taxpilot: {
+        cat: 'FinTech SaaS • Web & Mobile PWA',
+        title: 'TaxPilot GR — Greek Fiscal OS',
+        desc: 'Πλατφόρμα οικονομικής & φορολογικής διαχείρισης για ελεύθερους επαγγελματίες και επιχειρήσεις. Περιλαμβάνει τον αλγόριθμο Safe-to-Spend™, ζωντανή έκδοση τιμολογίων ΤΠΥ στο myDATA με έλεγχο Modulo 11, OCR σάρωση αποδείξεων και AI Φορολογικό Σύμβουλο.',
+        stats: [['100%', 'Συμβατότητα myDATA'], ['0.3s', 'Υπολογισμός Φόρων'], ['24/7', 'AI Tax Copilot']],
+        tech: 'React 18 • TypeScript • Tailwind CSS • Supabase Cloud • AADE myDATA API'
+      },
+      georgiadis: {
+        cat: 'Corporate Website • E-Commerce & SEO (Ελλάδα)',
+        title: 'Γεωργιάδης — Σύγχρονη Ιστοσελίδα & Ψηφιακός Μετασχηματισμός',
+        desc: 'Ολοκληρωμένη σχεδίαση και ανάπτυξη της διαδικτυακής παρουσίας για την επωνυμία Γεωργιάδης. Περιλαμβάνει custom UI/UX σχεδιασμό, αστραπιαία ταχύτητα φόρτωσης σε κινητά & desktop, διαδραστική παρουσίαση προϊόντων/υπηρεσιών και πλήρη βελτιστοποίηση SEO.',
+        stats: [['99/100', 'Google PageSpeed'], ['+240%', 'Οργανική Κίνηση'], ['100%', 'Mobile Responsive']],
+        tech: 'Custom Web Architecture • Technical SEO Schema • High-Conversion UX'
+      },
+      greekhost: {
+        cat: 'PropTech & Hospitality SaaS',
+        title: 'GreekHost — Airbnb & Booking PMS',
+        desc: 'Εξειδικευμένη εφαρμογή για ιδιοκτήτες και διαχειριστές ακινήτων βραχυχρόνιας μίσθωσης. Υπολογίζει αυτόματα το Τέλος Ανθεκτικότητας στην Κλιματική Κρίση (Τ.Α.Κ.), συγχρονίζει ημερολόγια iCal και στέλνει με 1 κλικ αναφορά στον λογιστή.',
+        stats: [['Auto', 'Υπολογισμός Τ.Α.Κ.'], ['1-Click', 'Εξαγωγή Λογιστή'], ['Zero', 'Double Bookings']],
+        tech: 'Next.js • Cloud Sync • Multi-Calendar iCal Engine • Financial Analytics'
+      },
+      hanfishing: {
+        cat: 'Global E-Commerce • Amazon, eBay & SEO (Εξωτερικό)',
+        title: 'HanFishing — Multi-Channel E-Shop & Marketplaces',
+        desc: 'Ολική ψηφιακή αναβάθμιση και αυτοματοποίηση για πάνω από 800 κωδικούς προϊόντων. Δημιουργία high-converting E-Shop, AI βελτιστοποίηση φωτογραφιών, διασύνδεση αποθήκης με Amazon Europe & eBay και διεθνές SEO.',
+        stats: [['800+', 'Κωδικοί SKU'], ['+340%', 'Αύξηση Πωλήσεων'], ['5 Χώρες', 'Amazon & eBay Sync']],
+        tech: 'Custom E-Commerce • Amazon SP-API • eBay Inventory Loader • Google Shopping PMax'
+      },
+      aura: {
+        cat: 'EdTech • Native Android & Web App',
+        title: 'Aura Edu — AI Εκπαιδευτική Πλατφόρμα',
+        desc: 'Σύγχρονη εφαρμογή μάθησης για μαθητές και εκπαιδευτικούς. Διαθέτει διαδραστικά μαθήματα, AI ψηφιακό βοηθό, gamification με πόντους επιβράβευσης και native εφαρμογή Android.',
+        stats: [['Android', '& Web App'], ['AI Tutor', 'Προσωποποιημένη Μάθηση'], ['99.9%', 'Uptime']],
+        tech: 'React • Android Gradle Build • Interactive Audio/Voice • AI LLM Integration'
+      },
+      pinshot: {
+        cat: 'Creative Tech • Mobile App & AI Video',
+        title: 'PinShot & FilmCraft Studio',
+        desc: 'Mobile εφαρμογή και σουίτα δημιουργίας δυναμικών βίντεο και διαφημιστικών δημιουργικών (Reels, TikTok, Meta Ads) με 60fps animations και AI επεξεργασία.',
+        stats: [['60 FPS', 'Smooth Animations'], ['3.2x', 'Υψηλότερο CTR σε Ads'], ['iOS/Android', 'Cross-Platform']],
+        tech: 'Mobile UI Architecture • WebGL / Canvas • Meta Ads Creative Engine'
+      }
+    };
+
+    function openProjectModal(id) {
+      const data = projectDetails[id];
+      if (!data) return;
+      document.getElementById('modalCategory').innerText = data.cat;
+      document.getElementById('modalTitle').innerText = data.title;
+      document.getElementById('modalDesc').innerText = data.desc;
+      document.getElementById('modalTech').innerText = data.tech;
+
+      const statsContainer = document.getElementById('modalStats');
+      statsContainer.innerHTML = data.stats.map(s => `
+        <div class="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
+          <div class="text-xl font-display font-extrabold text-accentCyan">${s[0]}</div>
+          <div class="text-[11px] text-slate-400">${s[1]}</div>
+        </div>
+      `).join('');
+
+      const modal = document.getElementById('projectModal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('projectModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // 10. Interactive Growth Simulator (SEO + Google/Meta Ads)
+    let currentRoasMult = 6.5;
+    let currentOrderVal = 45;
+
+    function setIndustry(roas, avgOrder, btnEl) {
+      currentRoasMult = roas;
+      currentOrderVal = avgOrder;
+      document.querySelectorAll('.ind-btn').forEach(b => {
+        b.className = 'ind-btn p-3 rounded-xl border border-white/10 bg-white/5 text-left text-xs font-bold text-slate-300 hover:border-accentCyan/40 transition';
+      });
+      btnEl.className = 'ind-btn active p-3 rounded-xl border border-accentCyan bg-accentCyan/15 text-left text-xs font-bold text-white transition';
+      updateGrowthSimulator();
+    }
+
+    function updateGrowthSimulator() {
+      const budget = parseInt(document.getElementById('adsBudgetSlider').value, 10);
+      const seoActive = document.getElementById('seoBoostToggle').checked;
+
+      document.getElementById('adsBudgetDisplay').innerText = budget.toLocaleString('el-GR') + ' € / μήνα';
+
+      const seoMultiplier = seoActive ? 1.35 : 1.0;
+      const effectiveRoas = (currentRoasMult * seoMultiplier).toFixed(1);
+      const revenue = Math.round(budget * effectiveRoas);
+      const leads = Math.max(8, Math.round(revenue / currentOrderVal));
+      const visitors = Math.round(leads * 28);
+
+      document.getElementById('simVisitors').innerText = visitors.toLocaleString('el-GR');
+      document.getElementById('simLeads').innerText = leads.toLocaleString('el-GR');
+      document.getElementById('simRevenue').innerText = revenue.toLocaleString('el-GR') + ' €';
+      document.getElementById('simRoasBadge').innerText = 'Εκτιμώμενο ROAS: ' + effectiveRoas + 'x';
+    }
+
+    // 11. Multi-Service Package Configurator (Now supports AI Chatbot)
+    let selectedPackages = [
+      { name: 'Κατασκευή Ιστοσελίδας', price: 350, days: 6 }
+    ];
+
+    function togglePackageItem(btn, name, price, days) {
+      const exists = selectedPackages.find(p => p.name === name);
+      if (exists) {
+        if (selectedPackages.length === 1) return;
+        selectedPackages = selectedPackages.filter(p => p.name !== name);
+        btn.className = 'pkg-btn p-4 rounded-2xl border-2 border-white/10 bg-white/5 text-left hover:border-accentCyan/40 transition flex flex-col justify-between';
+      } else {
+        selectedPackages.push({ name, price, days });
+        btn.className = 'pkg-btn selected p-4 rounded-2xl border-2 border-accentCyan bg-accentCyan/10 text-left transition flex flex-col justify-between';
+      }
+      renderPackageSummary();
+    }
+
+    function selectBuilderService(pkgKey) {
+      const targetBtn = document.querySelector(`[data-pkg="${pkgKey}"]`);
+      if (targetBtn && !targetBtn.classList.contains('selected')) {
+        targetBtn.click();
+      }
+    }
+
+    function renderPackageSummary() {
+      const total = selectedPackages.reduce((acc, item) => acc + item.price, 0);
+      const maxDays = Math.max(...selectedPackages.map(i => i.days));
+      const names = selectedPackages.map(i => i.name).join(' + ');
+
+      document.getElementById('selectedPkgNames').innerText = 'Επιλεγμένα: ' + names;
+      document.getElementById('pkgTotalPrice').innerText = total.toLocaleString('el-GR') + ' €';
+      document.getElementById('pkgTotalDays').innerText = '~ ' + maxDays + ' εργάσιμες ημέρες';
+      document.getElementById('formPackageInput').value = `${names} (${total}€)`;
+    }
+
+    function transferQuoteToForm() {
+      renderPackageSummary();
+    }
+
+    function submitLeadForm(e) {
+      e.preventDefault();
+      const btn = document.getElementById('leadSubmitBtn');
+      btn.innerHTML = '<span>✓ Το αίτημά σας καταχωρήθηκε! Θα σας καλέσουμε άμεσα.</span>';
+    }
+
+    // 12. Subtle Architectural Particle Canvas
+    const canvas = document.getElementById('neuralCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    for (let i = 0; i < 40; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: Math.random() * 1.6 + 0.7
+      });
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let i = 0; i < particles.length; i++) {
+        let p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = '#38bdf8';
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          let p2 = particles[j];
+          let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+          if (dist < 135) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(56, 189, 248, ${0.12 * (1 - dist / 135)})`;
+            ctx.lineWidth = 0.7;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+    updateGrowthSimulator();
+  </script>
+</body>
+</html>

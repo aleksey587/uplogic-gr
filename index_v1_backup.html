@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="el" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UpLogic Technologies | Elite Digital Engineering & Innovation Studio</title>
+  <meta name="description" content="Η UpLogic δημιουργεί κορυφαίες ιστοσελίδες από 350€, e-shops από 590€, custom web/mobile apps, Amazon/eBay automation & ιδιόκτητα SaaS (TaxPilot GR, GreekHost). Έδρα: Πάτρα.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22g%22 x1=%220%22 y1=%220%22 x2=%221%22 y2=%221%22><stop offset=%220%25%22 stop-color=%22%236366f1%22/><stop offset=%22100%25%22 stop-color=%22%23ec4899%22/></linearGradient></defs><rect width=%22100%22 height=%22100%22 rx=%2228%22 fill=%22url(%23g)%22/><text y=%22.9em%22 font-size=%2262%22 font-weight=%22900%22 x=%2218%22 fill=%22white%22>UP</text></svg>">
+
+  <!-- Google Fonts: Plus Jakarta Sans, Outfit & Cormorant Garamond (Calligraphic Luxury Serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Outfit"', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'serif'],
+            mono: ['"Space Grotesk"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f5f3ff',
+              100: '#ede9fe',
+              200: '#ddd6fe',
+              300: '#c4b5fd',
+              400: '#a78bfa',
+              500: '#8b5cf6',
+              600: '#7c3aed',
+              700: '#6d28d9',
+              800: '#5b21b6',
+              900: '#4c1d95',
+            },
+            cyanGlow: {
+              400: '#22d3ee',
+              500: '#06b6d4',
+            },
+            aurora: {
+              pink: '#f43f5e',
+              purple: '#a855f7',
+              blue: '#3b82f6',
+              gold: '#fbbf24',
+              teal: '#14b8a6',
+            }
+          },
+          animation: {
+            'float-slow': 'float 6s ease-in-out infinite',
+            'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+            'aurora-drift': 'auroraDrift 14s ease infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+            pulseGlow: {
+              '0%, 100%': { opacity: '0.4', transform: 'scale(1)' },
+              '50%': { opacity: '0.8', transform: 'scale(1.08)' },
+            },
+            auroraDrift: {
+              '0%': { transform: 'translate(0%, 0%) scale(1)' },
+              '50%': { transform: 'translate(5%, -4%) scale(1.1)' },
+              '100%': { transform: 'translate(-4%, 6%) scale(0.95)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js (3D Interactive Engine) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 9px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090d1e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(to bottom, #7c3aed, #06b6d4);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #a855f7;
+    }
+
+    /* Ambient Aurora Multi-Color Background */
+    body {
+      background-color: #080c1d;
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(124, 58, 237, 0.22) 0px, transparent 50%),
+        radial-gradient(at 90% 10%, rgba(6, 182, 212, 0.25) 0px, transparent 55%),
+        radial-gradient(at 50% 50%, rgba(244, 63, 94, 0.12) 0px, transparent 60%),
+        radial-gradient(at 80% 90%, rgba(168, 85, 247, 0.2) 0px, transparent 50%),
+        radial-gradient(at 10% 90%, rgba(20, 184, 166, 0.18) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: #f8fafc;
+    }
+
+    /* Glassmorphic Cards with Luminous Iridescent Borders */
+    .glass-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: rgba(167, 139, 250, 0.45);
+      box-shadow: 0 25px 60px -10px rgba(124, 58, 237, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .gradient-text-vibrant {
+      background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 30%, #a78bfa 65%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* 3D Canvas Container */
+    #webgl-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Interactive Spotlight hover */
+    .spotlight-box {
+      position: relative;
+      overflow: hidden;
+    }
+    .spotlight-box::before {
+      content: '';
+      position: absolute;
+      top: var(--mouse-y, -1000px);
+      left: var(--mouse-x, -1000px);
+      transform: translate(-50%, -50%);
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.22), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .spotlight-box:hover::before {
+      opacity: 1;
+    }
+
+    /* Scrollbar Utility for Mobile Quick-Nav */
+    .scrollbar-none::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-none {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeIn {
+      animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+  </style>
+</head>
+<body class="overflow-x-hidden selection:bg-brand-500 selection:text-white font-sans antialiased">
+
+  <!-- VIBRANT BACKGROUND AURORA GLOW ORBS -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute top-[-10%] left-[15%] w-[600px] h-[600px] rounded-full bg-gradient-to-tr from-brand-600/30 via-indigo-600/20 to-transparent blur-[140px] animate-aurora-drift"></div>
+    <div class="absolute top-[20%] right-[-5%] w-[650px] h-[650px] rounded-full bg-gradient-to-bl from-cyanGlow-500/25 via-teal-500/15 to-transparent blur-[150px] animate-aurora-drift" style="animation-delay: -5s;"></div>
+    <div class="absolute bottom-[10%] left-[5%] w-[700px] h-[700px] rounded-full bg-gradient-to-tr from-fuchsia-600/20 via-pink-600/15 to-transparent blur-[160px] animate-aurora-drift" style="animation-delay: -8s;"></div>
+    <div class="absolute bottom-[-10%] right-[20%] w-[550px] h-[550px] rounded-full bg-gradient-to-tl from-amber-500/15 via-rose-500/10 to-transparent blur-[140px] animate-aurora-drift" style="animation-delay: -11s;"></div>
+  </div>
+
+  <!-- FLOATING NAVIGATION BAR WITH MOBILE QUICK-PILLS -->
+  <header class="fixed top-0 left-0 right-0 z-50 px-3 sm:px-8 pt-3 sm:pt-4 pb-2 transition-all duration-300">
+    <nav class="max-w-7xl mx-auto glass-pill rounded-full px-4 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between shadow-xl shadow-black/30">
+      
+      <!-- UpLogic Logo -->
+      <a href="#" class="flex items-center gap-2.5 sm:gap-3 group">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-tr from-brand-600 via-indigo-500 to-cyanGlow-500 flex items-center justify-center text-white font-sans font-black text-base sm:text-lg tracking-wider shadow-lg shadow-brand-500/40 group-hover:scale-105 group-hover:rotate-3 transition duration-300">
+          UP
+        </div>
+        <div class="flex flex-col">
+          <span class="font-sans font-black text-base sm:text-lg tracking-tight text-white flex items-center gap-1.5">
+            UpLogic
+            <span class="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-brand-500/20 text-brand-300 border border-brand-400/30 font-mono font-medium">STUDIO</span>
+          </span>
+          <span class="text-[9px] sm:text-[10px] text-slate-400 font-sans tracking-wide">Engineering & Growth</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <div class="hidden md:flex items-center gap-7 lg:gap-8 text-sm font-medium text-slate-200">
+        <a href="#services" class="hover:text-cyanGlow-400 transition">Υπηρεσίες</a>
+        <a href="#ventures" class="hover:text-brand-300 transition flex items-center gap-1.5 relative">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Τα Ventures μας</span>
+          <span class="text-[9px] px-1.5 py-0.2 rounded bg-indigo-500/30 text-indigo-300 font-bold uppercase">TaxPilot & GreekHost</span>
+        </a>
+        <a href="#calculator" class="hover:text-amber-300 transition font-semibold text-amber-300 flex items-center gap-1">
+          <i data-lucide="calculator" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span>Υπολογιστής Τιμών</span>
+        </a>
+        <a href="#about" class="hover:text-slate-100 transition">Γιατί Εμάς</a>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- WhatsApp (Visible on both Mobile & Desktop) -->
+        <a href="https://wa.me/306980000000" target="_blank" class="flex items-center gap-1.5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full glass-card hover:border-emerald-400/50 text-emerald-300 text-xs font-semibold transition shadow-sm">
+          <i data-lucide="message-circle" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span class="hidden sm:inline">WhatsApp Chat</span>
+          <span class="sm:hidden text-[11px]">Chat</span>
+        </a>
+
+        <!-- Main CTA -->
+        <a href="#contact" class="px-4 py-1.5 sm:px-5 sm:py-2.5 rounded-full bg-gradient-to-r from-brand-600 via-indigo-600 to-cyanGlow-500 hover:from-brand-500 hover:to-cyanGlow-400 text-white font-bold text-xs tracking-wide shadow-lg shadow-brand-600/40 hover:shadow-cyanGlow-500/40 hover:scale-105 transition flex items-center gap-1.5">
+          <span>Συνεργασία</span>
+          <i data-lucide="arrow-up-right" class="w-3 h-3 sm:w-3.5 sm:h-3.5"></i>
+        </a>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" aria-label="Open Navigation Menu" class="md:hidden p-2 rounded-full glass-card text-slate-200 hover:text-white hover:border-brand-400/50 transition">
+          <i data-lucide="menu" id="menu-icon-open" class="w-4 h-4"></i>
+          <i data-lucide="x" id="menu-icon-close" class="w-4 h-4 hidden"></i>
+        </button>
+      </div>
+
+    </nav>
+
+    <!-- MOBILE DIRECT QUICK-NAVIGATION PILLS (Instant 1-Tap Access without Scrolling) -->
+    <div class="flex md:hidden items-center gap-2 overflow-x-auto scrollbar-none py-1.5 px-1 text-xs font-medium mt-1">
+      <a href="#ventures" class="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-card border border-indigo-500/40 text-brand-200 bg-indigo-950/40 shadow-sm active:scale-95 transition">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="font-bold text-slate-100">Ventures:</span>
+        <span class="text-indigo-300 font-semibold">TaxPilot & GreekHost</span>
+      </a>
+      <a href="#calculator" class="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-card border border-amber-500/40 text-amber-300 bg-amber-950/40 shadow-sm active:scale-95 transition">
+        <i data-lucide="calculator" class="w-3.5 h-3.5 text-amber-400"></i>
+        <span class="font-bold">Υπολογιστής Τιμών</span>
+      </a>
+      <a href="#services" class="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full glass-card border border-cyanGlow-500/30 text-cyanGlow-300 bg-cyanGlow-950/40 shadow-sm active:scale-95 transition">
+        <i data-lucide="layout-grid" class="w-3.5 h-3.5 text-cyanGlow-400"></i>
+        <span>Υπηρεσίες</span>
+      </a>
+      <a href="#about" class="shrink-0 flex items-center gap-1 px-3 py-1.5 rounded-full glass-card border border-white/15 text-slate-300 shadow-sm active:scale-95 transition">
+        <span>Γιατί Εμάς (Πάτρα)</span>
+      </a>
+    </div>
+
+    <!-- COLLAPSIBLE MOBILE FULL-FEATURED DRAWER -->
+    <div id="mobile-drawer" class="hidden md:hidden mt-2 p-4 rounded-3xl glass-card border border-white/20 shadow-2xl backdrop-blur-2xl space-y-2 bg-[#080c1d]/95 animate-fadeIn">
+      <div class="grid grid-cols-1 gap-2 text-sm font-medium">
+        <a href="#ventures" class="mobile-nav-link flex items-center justify-between p-3 rounded-2xl bg-indigo-500/15 hover:bg-brand-500/20 text-brand-200 hover:text-white transition border border-indigo-500/30">
+          <div class="flex items-center gap-2.5">
+            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="font-bold text-white">Τα Proprietary Ventures μας</span>
+          </div>
+          <span class="text-[10px] px-2 py-0.5 rounded bg-indigo-500/30 text-indigo-300 font-bold uppercase">TaxPilot & GreekHost</span>
+        </a>
+        <a href="#calculator" class="mobile-nav-link flex items-center justify-between p-3 rounded-2xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 transition border border-amber-500/30 font-bold">
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="calculator" class="w-4 h-4 text-amber-400"></i>
+            <span>Υπολογιστής Τιμών Έργου</span>
+          </div>
+          <span class="text-xs text-amber-400 font-mono font-bold">-40% Promo</span>
+        </a>
+        <a href="#services" class="mobile-nav-link flex items-center justify-between p-3 rounded-2xl bg-white/5 hover:bg-white/10 text-slate-200 hover:text-white transition">
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="layout-grid" class="w-4 h-4 text-cyanGlow-400"></i>
+            <span>Υπηρεσίες & Ανάπτυξη</span>
+          </div>
+          <span class="text-xs text-cyanGlow-300 font-mono">Websites από 350€</span>
+        </a>
+        <a href="#about" class="mobile-nav-link flex items-center gap-2.5 p-3 rounded-2xl bg-white/5 hover:bg-white/10 text-slate-300 hover:text-white transition">
+          <i data-lucide="map-pin" class="w-4 h-4 text-rose-400"></i>
+          <span>Γιατί η UpLogic (Έδρα: Πάτρα)</span>
+        </a>
+        <a href="https://wa.me/306980000000" target="_blank" class="mobile-nav-link flex items-center justify-between p-3 rounded-2xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 transition border border-emerald-500/30 font-semibold">
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
+            <span>WhatsApp Direct Chat</span>
+          </div>
+          <span class="text-xs text-emerald-400 font-mono">24/7 Live</span>
+        </a>
+      </div>
+    </div>
+
+  </header>
+
+  <!-- HERO SECTION WITH INTERACTIVE 3D CYBER-GLOBE (PERMANENT CENTERPIECE) -->
+  <section class="relative min-h-screen pt-36 pb-20 px-4 sm:px-6 lg:px-8 flex items-center justify-center overflow-hidden z-10">
+    
+    <!-- Three.js 3D Cyber-Globe Canvas in Background -->
+    <div id="webgl-container" class="opacity-100"></div>
+
+    <div class="max-w-6xl mx-auto w-full text-center relative z-20 space-y-7">
+      
+      <!-- Luxury Pill Tag with Patras HQ -->
+      <div class="inline-flex items-center gap-2.5 sm:gap-3 px-4 sm:px-5 py-2 rounded-full glass-card text-xs text-slate-200 border border-brand-400/30 shadow-lg animate-float-slow">
+        <span class="w-2.5 h-2.5 rounded-full bg-gradient-to-r from-cyanGlow-400 to-brand-400 animate-ping"></span>
+        <span class="font-sans font-medium text-xs sm:text-sm text-amber-300">The Next Generation Digital Studio</span>
+        <span class="text-slate-500">•</span>
+        <span class="font-mono text-[11px] text-cyanGlow-400 tracking-wider uppercase font-semibold">Έδρα: Πάτρα • Global Reach</span>
+      </div>
+
+      <!-- Main Masterpiece Headline: Modern, Refined Titanium Slate & High-Contrast Radiant Gold Accent -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-sans font-extrabold tracking-tight leading-[1.12] text-slate-100 drop-shadow-[0_4px_24px_rgba(8,12,29,0.95)]">
+        Χτίζουμε <span class="text-amber-400 font-extrabold inline-block tracking-tight drop-shadow-[0_0_24px_rgba(251,191,36,0.75)] hover:text-amber-300 transition duration-300">μοναδικές</span> εμπειρίες & <span class="bg-gradient-to-r from-cyanGlow-300 via-sky-300 to-indigo-300 bg-clip-text text-transparent font-extrabold drop-shadow-[0_2px_14px_rgba(34,211,238,0.45)]">κερδοφόρα</span> ψηφιακά συστήματα.
+      </h1>
+
+      <!-- Sophisticated Subtitle with Competitive Entry Callout -->
+      <p class="text-base sm:text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed drop-shadow-[0_2px_10px_rgba(8,12,29,0.9)]">
+        Συνδυάζουμε υψηλή <strong class="text-amber-300 font-semibold">αισθητική</strong>, ταχύτητα αιχμής και παγκόσμια κλίμακα σε 
+        <span class="text-cyanGlow-300 font-medium">Websites (από 350€), E-Shops (από 590€), Apps & Marketplaces</span>.
+      </p>
+
+      <!-- 3D Responsive Hint Tag -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card border border-white/15 text-[11px] font-mono text-slate-300 shadow-md">
+        <i data-lucide="globe" class="w-3.5 h-3.5 text-cyanGlow-400 animate-spin" style="animation-duration: 9s;"></i>
+        <span class="hidden sm:inline">3D Cyber-Globe: Κούνησε το ποντίκι σου για περιστροφή & πλοήγηση στις παγκόσμιες συνδέσεις από Πάτρα</span>
+        <span class="sm:hidden">3D Cyber-Globe: Σύρε με το δάχτυλο για περιστροφή στις συνδέσεις από Πάτρα</span>
+      </div>
+
+      <!-- Hero Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+        <a href="#calculator" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-600 via-indigo-500 to-cyanGlow-500 text-white font-bold text-sm tracking-wide shadow-xl shadow-brand-600/40 hover:shadow-cyanGlow-500/50 hover:scale-[1.03] transition flex items-center justify-center gap-2.5">
+          <i data-lucide="calculator" class="w-4 h-4"></i>
+          <span>Υπολογιστής Τιμής Έργου</span>
+        </a>
+        <a href="#ventures" class="w-full sm:w-auto px-7 py-4 rounded-2xl glass-card text-slate-200 hover:text-white font-medium text-sm hover:border-brand-400/50 transition flex items-center justify-center gap-2">
+          <span>Τα Proprietary SaaS μας</span>
+          <i data-lucide="arrow-down" class="w-4 h-4 text-brand-300"></i>
+        </a>
+      </div>
+
+      <!-- Live Key Performance Metrics with vibrant lighting -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-10 text-left">
+        
+        <div class="glass-card p-5 rounded-3xl space-y-1.5 border-t-2 border-t-brand-400 relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase tracking-wider text-slate-400">Growth ROI</span>
+            <i data-lucide="trending-up" class="w-4 h-4 text-brand-400"></i>
+          </div>
+          <div class="text-3xl sm:text-4xl font-display font-black text-white">+340%</div>
+          <div class="text-xs text-slate-300 font-serif italic">Μέση αύξηση πωλήσεων πελατών</div>
+        </div>
+
+        <div class="glass-card p-5 rounded-3xl space-y-1.5 border-t-2 border-t-cyanGlow-400 relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase tracking-wider text-slate-400">Availability</span>
+            <i data-lucide="shield-check" class="w-4 h-4 text-cyanGlow-400"></i>
+          </div>
+          <div class="text-3xl sm:text-4xl font-display font-black text-cyanGlow-300">&lt; 0.6s</div>
+          <div class="text-xs text-slate-300 font-serif italic">Ακαριαία φόρτωση Next.js</div>
+        </div>
+
+        <div class="glass-card p-5 rounded-3xl space-y-1.5 border-t-2 border-t-amber-400 relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase tracking-wider text-slate-400">Marketplaces</span>
+            <i data-lucide="globe-2" class="w-4 h-4 text-amber-400"></i>
+          </div>
+          <div class="text-3xl sm:text-4xl font-display font-black text-amber-300">&gt; 14.000</div>
+          <div class="text-xs text-slate-300 font-serif italic">Live Listings σε eBay & Amazon</div>
+        </div>
+
+        <div class="glass-card p-5 rounded-3xl space-y-1.5 border-t-2 border-t-rose-400 relative overflow-hidden">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono uppercase tracking-wider text-slate-400">Proprietary Tech</span>
+            <i data-lucide="award" class="w-4 h-4 text-rose-400"></i>
+          </div>
+          <div class="text-3xl sm:text-4xl font-display font-black text-rose-300">2 SaaS</div>
+          <div class="text-xs text-slate-300 font-serif italic">TaxPilot GR & GreekHost live</div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROPRIETARY VENTURES: TAXPILOT GR & GREEKHOST (AIRBNB / BOOKING PMS) -->
+  <section id="ventures" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative">
+    
+    <div class="text-center space-y-4 mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-brand-600/20 to-cyanGlow-500/20 border border-brand-400/40 text-brand-200 text-xs font-mono uppercase tracking-wider">
+        <i data-lucide="layers" class="w-3.5 h-3.5 text-cyanGlow-400"></i>
+        <span>Proprietary Ecosystem & Flagship Products</span>
+      </div>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight">
+        Τα Δικά μας <span class="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-rose-300 to-indigo-300">Μεγάλα SaaS</span>
+      </h2>
+      <p class="text-slate-300 max-w-2xl mx-auto text-base sm:text-lg">
+        Στην UpLogic δεν μένουμε στη θεωρία. Κατασκευάζουμε, συντηρούμε και κλιμακώνουμε 
+        καινοτόμες πλατφόρμες που λύνουν πραγματικά προβλήματα χιλιάδων επιχειρήσεων.
+      </p>
+    </div>
+
+    <!-- 2 Pillars Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      
+      <!-- VENTURE 1: TaxPilot GR -->
+      <div class="glass-card spotlight-box rounded-3xl p-8 sm:p-10 relative overflow-hidden flex flex-col justify-between border-2 border-brand-500/40 hover:border-brand-400 group">
+        <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-brand-600/25 blur-3xl pointer-events-none group-hover:bg-brand-500/35 transition duration-500"></div>
+        
+        <div class="space-y-6 relative z-10">
+          <div class="flex items-center justify-between">
+            <span class="px-3.5 py-1 rounded-full bg-brand-500/20 border border-brand-400/40 text-brand-200 text-xs font-mono font-bold tracking-wider uppercase">
+              FinTech • myDATA Copilot
+            </span>
+            <span class="flex items-center gap-1.5 text-xs text-emerald-400 font-bold bg-emerald-950/60 border border-emerald-700/60 px-3 py-1 rounded-full">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              Live in Greece
+            </span>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-3xl sm:text-4xl font-display font-extrabold text-white flex items-baseline gap-3">
+              <span>TaxPilot GR</span>
+              <span class="text-xs px-2.5 py-1 rounded-lg bg-gradient-to-r from-brand-600 to-indigo-600 text-white font-sans font-bold uppercase tracking-wider">FinTech SaaS</span>
+            </h3>
+            <p class="text-slate-200 text-base leading-relaxed">
+              Ο έξυπνος <strong>Φορολογικός Συγκυβερνήτης</strong> για ελεύθερους επαγγελματίες, delivery couriers (Wolt/efood) και ατομικές επιχειρήσεις στην Ελλάδα.
+            </p>
+          </div>
+
+          <!-- Feature Highlights with visual badges -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            
+            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+              <div class="flex items-center gap-2 text-brand-300 font-bold text-xs">
+                <i data-lucide="receipt" class="w-4 h-4 text-cyanGlow-400"></i>
+                <span>myDATA & QR Code</span>
+              </div>
+              <p class="text-[11px] text-slate-300">Ακαριαία έκδοση παραστατικών στην ΑΑΔΕ με 1 πάτημα και αυτόματο MARK.</p>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+              <div class="flex items-center gap-2 text-brand-300 font-bold text-xs">
+                <i data-lucide="landmark" class="w-4 h-4 text-emerald-400"></i>
+                <span>Open Banking & Safe-to-Spend</span>
+              </div>
+              <p class="text-[11px] text-slate-300">Ζωντανή σύνδεση με Ελληνικές τράπεζες. Ξέρεις ακριβώς τι μπορείς να ξοδέψεις.</p>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+              <div class="flex items-center gap-2 text-brand-300 font-bold text-xs">
+                <i data-lucide="clock-4" class="w-4 h-4 text-amber-400"></i>
+                <span>24h Έναρξη Επιχείρησης</span>
+              </div>
+              <p class="text-[11px] text-slate-300">Πλήρης ψηφιακή έναρξη ατομικής επιχείρησης σε 24 ώρες χωρίς ουρές σε ΔΟΥ.</p>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+              <div class="flex items-center gap-2 text-brand-300 font-bold text-xs">
+                <i data-lucide="shield-check" class="w-4 h-4 text-rose-400"></i>
+                <span>100% Tax Guarantee</span>
+              </div>
+              <p class="text-[11px] text-slate-300">Εγγύηση μηδενικών προστίμων με επίβλεψη από πιστοποιημένους λογιστές.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="pt-8 relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 mt-6">
+          <div class="text-xs font-mono text-slate-300 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-brand-400"></span>
+            <span>Stack: React • Supabase • PSD2 • Cloud Functions</span>
+          </div>
+          <a href="#contact" class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-xs tracking-wide transition flex items-center justify-center gap-2 shadow-lg shadow-brand-600/30">
+            <span>Μάθετε Περισσότερα</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- VENTURE 2: GreekHost (Airbnb & Booking PMS Platform) -->
+      <div class="glass-card spotlight-box rounded-3xl p-8 sm:p-10 relative overflow-hidden flex flex-col justify-between border-2 border-cyanGlow-500/40 hover:border-cyanGlow-400 group">
+        <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-cyanGlow-500/25 blur-3xl pointer-events-none group-hover:bg-cyanGlow-400/35 transition duration-500"></div>
+
+        <div class="space-y-6 relative z-10">
+          <div class="flex items-center justify-between">
+            <span class="px-3.5 py-1 rounded-full bg-cyanGlow-500/20 border border-cyanGlow-400/40 text-cyanGlow-200 text-xs font-mono font-bold tracking-wider uppercase">
+              Hospitality & PropTech SaaS
+            </span>
+            <span class="flex items-center gap-1.5 text-xs text-cyanGlow-300 font-bold bg-cyan-950/60 border border-cyan-700/60 px-3 py-1 rounded-full">
+              <span class="w-2 h-2 rounded-full bg-cyanGlow-400 animate-pulse"></span>
+              Active Property PMS
+            </span>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-3xl sm:text-4xl font-display font-extrabold text-white flex items-baseline gap-3">
+              <span>GreekHost</span>
+              <span class="text-xs px-2.5 py-1 rounded-lg bg-gradient-to-r from-cyanGlow-500 to-teal-500 text-white font-sans font-bold uppercase tracking-wider">Airbnb & Booking PMS</span>
+            </h3>
+            <p class="text-slate-200 text-base leading-relaxed">
+              Η εξειδικευμένη πλατφόρμα <strong>οικονομικής διαχείρισης βραχυχρόνιας μίσθωσης</strong> (Airbnb, Booking.com, VRBO) για οικοδεσπότες & διαχειριστές ακινήτων στην Ελλάδα.
+            </p>
+          </div>
+
+          <!-- Feature Highlights with accurate GreekHost specs -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+            
+            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+              <div class="flex items-center gap-2 text-cyanGlow-300 font-bold text-xs">
+                <i data-lucide="calculator" class="w-4 h-4 text-cyanGlow-400"></i>
+                <span>Αυτόματος Υπολογισμός Τ.Α.Κ.</span>
+              </div>
+              <p class="text-[11px] text-slate-300">Υπολογίζει άμεσα το Τέλος Ανθεκτικότητας στην Κλιματική Κρίση ανά κράτηση και ανά περίοδο (χειμώνα/καλοκαίρι).</p>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+              <div class="flex items-center gap-2 text-cyanGlow-300 font-bold text-xs">
+                <i data-lucide="pie-chart" class="w-4 h-4 text-emerald-400"></i>
+                <span>Ανάλυση Εσόδων & Εξόδων</span>
+              </div>
+              <p class="text-[11px] text-slate-300">Καταγραφή προμηθειών πλατφορμών, εξόδων καθαρισμού, αναλωσίμων και καθαρής κερδοφορίας ανά διαμέρισμα.</p>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+              <div class="flex items-center gap-2 text-cyanGlow-300 font-bold text-xs">
+                <i data-lucide="send" class="w-4 h-4 text-indigo-400"></i>
+                <span>1-Click Αποστολή στον Λογιστή</span>
+              </div>
+              <p class="text-[11px] text-slate-300">Με ένα μόνο κουμπί εξάγει όλες τις κρατήσεις, παραστατικά & ΤΑΚ απευθείας στον λογιστή και στο myDATA.</p>
+            </div>
+
+            <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+              <div class="flex items-center gap-2 text-cyanGlow-300 font-bold text-xs">
+                <i data-lucide="calendar-check" class="w-4 h-4 text-amber-400"></i>
+                <span>Multi-Calendar iCal Sync</span>
+              </div>
+              <p class="text-[11px] text-slate-300">Αμφίδρομος συγχρονισμός κρατήσεων μεταξύ Airbnb, Booking και ιδιωτικών πελατών για αποφυγή double-booking.</p>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="pt-8 relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/10 mt-6">
+          <div class="text-xs font-mono text-slate-300 flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-cyanGlow-400"></span>
+            <span>Target: Ιδιοκτήτες, Property Managers & Superhosts</span>
+          </div>
+          <a href="#contact" class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-cyanGlow-500 to-teal-500 hover:from-cyanGlow-400 hover:to-teal-400 text-white font-bold text-xs tracking-wide transition flex items-center justify-center gap-2 shadow-lg shadow-cyanGlow-500/30">
+            <span>Εξερεύνηση GreekHost</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CORE SPECIALIZATIONS (4 ΠΥΛΩΝΕΣ ΕΞΕΙΔΙΚΕΥΣΗΣ) -->
+  <section id="services" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative">
+    
+    <div class="text-center space-y-4 mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-slate-200 text-xs font-mono uppercase tracking-wider">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-300"></i>
+        <span>Our Elite Engineering Services</span>
+      </div>
+      <h2 class="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-white tracking-tight">
+        Οι 4 Πυλώνες <span class="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-cyanGlow-300 via-indigo-200 to-rose-300">Κυριαρχίας</span>
+      </h2>
+      <p class="text-slate-300 max-w-2xl mx-auto text-base sm:text-lg">
+        Σχεδιάζουμε και παραδίδουμε ψηφιακά έργα που ξεχωρίζουν αισθητικά, φορτώνουν ακαριαία 
+        και παράγουν αποδεδειγμένη κερδοφορία από την 1η ημέρα.
+      </p>
+    </div>
+
+    <!-- 4 Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      
+      <!-- SERVICE 1: Custom Websites & High-Converting E-Commerce -->
+      <div class="glass-card spotlight-box rounded-3xl p-8 sm:p-10 space-y-6 relative overflow-hidden group border border-white/15">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/40 group-hover:scale-110 group-hover:rotate-6 transition duration-300">
+          <i data-lucide="globe" class="w-7 h-7"></i>
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-brand-300 uppercase tracking-wider">Web & E-Commerce</span>
+            <span class="text-xs font-bold text-emerald-400 bg-emerald-950/70 border border-emerald-700/60 px-2.5 py-0.5 rounded-full">Από 350€</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-display font-bold text-white">
+            Ιστοσελίδες & High-End E-Shops
+          </h3>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Δεν χρησιμοποιούμε φθηνά έτοιμα templates. Χτίζουμε custom, αστραπιαία ηλεκτρονικά καταστήματα (από 590€) και εταιρικές ιστοσελίδες (από 350€) που μαγνητίζουν τους επισκέπτες και εκτοξεύουν το conversion rate.
+          </p>
+        </div>
+
+        <div class="space-y-2.5 pt-2 border-t border-white/10 text-xs sm:text-sm text-slate-300">
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check" class="w-4 h-4 text-cyanGlow-400"></i>
+            <span>Headless & Next.js αρχιτεκτονική για χρόνο φόρτωσης &lt; 0.6s</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check" class="w-4 h-4 text-cyanGlow-400"></i>
+            <span>Custom WooCommerce & Shopify με απεριόριστες δυνατότητες</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check" class="w-4 h-4 text-cyanGlow-400"></i>
+            <span>Σύνδεση με ERP, myDATA, CRM και τραπεζικά gateways (IRIS & Κάρτες)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SERVICE 2: Custom Web & Mobile Apps -->
+      <div class="glass-card spotlight-box rounded-3xl p-8 sm:p-10 space-y-6 relative overflow-hidden group border border-white/15">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-indigo-600 to-cyanGlow-500 flex items-center justify-center text-white shadow-lg shadow-cyanGlow-500/40 group-hover:scale-110 group-hover:rotate-6 transition duration-300">
+          <i data-lucide="smartphone" class="w-7 h-7"></i>
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-cyanGlow-300 uppercase tracking-wider">Custom Software & FinTech</span>
+            <span class="text-xs font-bold text-cyanGlow-300 bg-cyan-950/70 border border-cyan-700/60 px-2.5 py-0.5 rounded-full">Από 1.100€</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-display font-bold text-white">
+            Custom Web & Mobile Εφαρμογές
+          </h3>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Από FinTech πλατφόρμες και portals μέχρι Native iOS & Android εφαρμογές. Μετατρέπουμε περίπλοκες επιχειρηματικές διαδικασίες σε απλές, κομψές και scalable εφαρμογές.
+          </p>
+        </div>
+
+        <div class="space-y-2.5 pt-2 border-t border-white/10 text-xs sm:text-sm text-slate-300">
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check" class="w-4 h-4 text-indigo-400"></i>
+            <span>React, React Native & Flutter για κορυφαίο user experience</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check" class="w-4 h-4 text-indigo-400"></i>
+            <span>Scalable Cloud Backends (Node.js, Supabase, PostgreSQL)</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check" class="w-4 h-4 text-indigo-400"></i>
+            <span>Τραπεζικές διασυνδέσεις (PSD2 Open Banking) & Ασφάλεια τραπεζικού επιπέδου</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SERVICE 3: Amazon & eBay Global Operations -->
+      <div class="glass-card spotlight-box rounded-3xl p-8 sm:p-10 space-y-6 relative overflow-hidden group border border-white/15">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-amber-500 to-rose-500 flex items-center justify-center text-white shadow-lg shadow-amber-500/40 group-hover:scale-110 group-hover:rotate-6 transition duration-300">
+          <i data-lucide="shopping-bag" class="w-7 h-7"></i>
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-amber-300 uppercase tracking-wider">Global Marketplaces Scale</span>
+            <span class="text-xs font-bold text-amber-400 bg-amber-950/70 border border-amber-700/60 px-2.5 py-0.5 rounded-full">Από 490€</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-display font-bold text-white">
+            Amazon & eBay Store Automation
+          </h3>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Ανοίγουμε τις πόρτες του παγκόσμιου εμπορίου για την επιχείρησή σου. Πλήρης δημιουργία καταστημάτων, SEO listing optimization, αυτοματοποιημένο sync αποθεμάτων και πολυκαναλική διαχείριση.
+          </p>
+        </div>
+
+        <div class="space-y-2.5 pt-2 border-t border-white/10 text-xs sm:text-sm text-slate-300">
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check" class="w-4 h-4 text-amber-400"></i>
+            <span>Βελτιστοποίηση αλγορίθμων Amazon A9 & eBay Cassini</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check" class="w-4 h-4 text-amber-400"></i>
+            <span>Αυτοματοποιημένο Repricing & Inventory Multi-store Sync</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check" class="w-4 h-4 text-amber-400"></i>
+            <span>Ευρωπαϊκή & Αμερικανική επέκταση (DE, UK, FR, IT, US)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SERVICE 4: Performance Google Ads -->
+      <div class="glass-card spotlight-box rounded-3xl p-8 sm:p-10 space-y-6 relative overflow-hidden group border border-white/15">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-500 flex items-center justify-center text-white shadow-lg shadow-emerald-500/40 group-hover:scale-110 group-hover:rotate-6 transition duration-300">
+          <i data-lucide="target" class="w-7 h-7"></i>
+        </div>
+
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-emerald-300 uppercase tracking-wider">Data-Driven Performance</span>
+            <span class="text-xs font-bold text-emerald-400 bg-emerald-950/70 border border-emerald-700/60 px-2.5 py-0.5 rounded-full">Από 220€</span>
+          </div>
+          <h3 class="text-2xl sm:text-3xl font-display font-bold text-white">
+            Google Ads & Precision Marketing
+          </h3>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Σταματήστε να σπαταλάτε χρήματα σε κλικ χωρίς αξία. Δημιουργούμε καμπάνιες Google Ads (Search, Google Shopping, Performance Max) με απόλυτη προσήλωση στο πραγματικό κέρδος και το ROAS.
+          </p>
+        </div>
+
+        <div class="space-y-2.5 pt-2 border-t border-white/10 text-xs sm:text-sm text-slate-300">
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+            <span>Performance Max (PMax) & Advanced Google Shopping Feeds</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+            <span>Server-side Tracking & Enhanced Conversions για 100% ακρίβεια</span>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i data-lucide="check" class="w-4 h-4 text-emerald-400"></i>
+            <span>Συνεχής A/B testing και μείωση Cost Per Acquisition (CPA)</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INTERACTIVE PROJECT ESTIMATOR (ΥΠΟΛΟΓΙΣΤΗΣ ΕΡΓΟΥ - ΕΠΙΘΕΤΙΚΕΣ ΤΙΜΕΣ -40%) -->
+  <section id="calculator" class="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto z-10 relative">
+    <div class="glass-card rounded-3xl p-8 sm:p-14 border-2 border-brand-400/40 space-y-8 shadow-2xl relative overflow-hidden">
+      
+      <div class="absolute -bottom-24 -left-24 w-80 h-80 rounded-full bg-cyanGlow-500/20 blur-3xl pointer-events-none"></div>
+
+      <div class="text-center space-y-2 relative z-10">
+        <span class="px-3.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-mono font-bold uppercase tracking-wider">
+          Best Value Guaranteed • Επιθετική Τιμολόγηση
+        </span>
+        <h2 class="text-3xl sm:text-5xl font-display font-extrabold text-white">
+          Υπολογίστε το Έργο σας <span class="font-serif italic font-normal text-amber-200">Άμεσα</span>
+        </h2>
+        <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto">
+          Διαφανείς τιμές έως και 40% κάτω από τον μέσο όρο της αγοράς, με ποιότητα και ταχύτητα κορυφαίου agency.
+        </p>
+      </div>
+
+      <!-- Step 1: Project Type Buttons -->
+      <div class="space-y-3 relative z-10">
+        <label class="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center gap-2">
+          <span class="w-5 h-5 rounded-full bg-brand-600 flex items-center justify-center text-white text-[11px]">1</span>
+          <span>Επιλέξτε Βασική Υπηρεσία:</span>
+        </label>
+        <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+          
+          <!-- Option 1: Website -->
+          <button type="button" onclick="selectType('site', 350, 6)" class="type-btn p-3.5 rounded-2xl border-2 border-brand-500 bg-white/10 text-left transition" data-type="site">
+            <div class="flex items-center justify-between mb-2">
+              <i data-lucide="globe" class="w-5 h-5 text-cyanGlow-400"></i>
+              <span class="text-[10px] font-bold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded">350€</span>
+            </div>
+            <div class="text-xs font-bold text-white">Εταιρικό Site</div>
+            <div class="text-[10px] text-slate-300 mt-0.5">4-6 Σελίδες / SEO</div>
+          </button>
+
+          <!-- Option 2: E-Shop -->
+          <button type="button" onclick="selectType('eshop', 590, 10)" class="type-btn p-3.5 rounded-2xl border-2 border-white/10 bg-white/5 text-left hover:border-brand-400 transition" data-type="eshop">
+            <div class="flex items-center justify-between mb-2">
+              <i data-lucide="shopping-cart" class="w-5 h-5 text-amber-400"></i>
+              <span class="text-[10px] font-bold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded">590€</span>
+            </div>
+            <div class="text-xs font-bold text-white">E-Shop Πλήρες</div>
+            <div class="text-[10px] text-slate-300 mt-0.5">Κάρτες, IRIS, Μεταφορικά</div>
+          </button>
+
+          <!-- Option 3: Custom App -->
+          <button type="button" onclick="selectType('app', 1100, 20)" class="type-btn p-3.5 rounded-2xl border-2 border-white/10 bg-white/5 text-left hover:border-brand-400 transition" data-type="app">
+            <div class="flex items-center justify-between mb-2">
+              <i data-lucide="smartphone" class="w-5 h-5 text-indigo-300"></i>
+              <span class="text-[10px] font-bold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded">1.100€</span>
+            </div>
+            <div class="text-xs font-bold text-white">Custom Web/App</div>
+            <div class="text-[10px] text-slate-300 mt-0.5">SaaS, Portal, Mobile</div>
+          </button>
+
+          <!-- Option 4: Amazon / eBay -->
+          <button type="button" onclick="selectType('market', 490, 10)" class="type-btn p-3.5 rounded-2xl border-2 border-white/10 bg-white/5 text-left hover:border-brand-400 transition" data-type="market">
+            <div class="flex items-center justify-between mb-2">
+              <i data-lucide="shopping-bag" class="w-5 h-5 text-rose-300"></i>
+              <span class="text-[10px] font-bold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded">490€</span>
+            </div>
+            <div class="text-xs font-bold text-white">Amazon / eBay</div>
+            <div class="text-[10px] text-slate-300 mt-0.5">Store Setup & Sync</div>
+          </button>
+
+          <!-- Option 5: Google Ads -->
+          <button type="button" onclick="selectType('ads', 220, 4)" class="type-btn p-3.5 rounded-2xl border-2 border-white/10 bg-white/5 text-left hover:border-brand-400 transition col-span-2 sm:col-span-1" data-type="ads">
+            <div class="flex items-center justify-between mb-2">
+              <i data-lucide="trending-up" class="w-5 h-5 text-emerald-300"></i>
+              <span class="text-[10px] font-bold text-emerald-400 bg-emerald-950/80 px-1.5 py-0.5 rounded">220€</span>
+            </div>
+            <div class="text-xs font-bold text-white">Google Ads</div>
+            <div class="text-[10px] text-slate-300 mt-0.5">PMax & High-ROAS</div>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- Step 2: Add-ons Checkboxes -->
+      <div class="space-y-3 relative z-10">
+        <label class="text-xs font-bold uppercase tracking-wider text-slate-200 flex items-center gap-2">
+          <span class="w-5 h-5 rounded-full bg-brand-600 flex items-center justify-center text-white text-[11px]">2</span>
+          <span>Επιπλέον Δυνατότητες (Προαιρετικά):</span>
+        </label>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          
+          <label class="flex items-center gap-3 p-4 rounded-2xl border border-white/15 bg-white/5 cursor-pointer hover:border-brand-400 transition">
+            <input type="checkbox" onchange="toggleAddon(this, 190, 3)" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500 bg-white/10 border-white/20">
+            <div class="text-xs">
+              <span class="font-bold text-white block">Διασύνδεση myDATA / ERP</span>
+              <span class="text-[10px] text-cyanGlow-300">+190€ (+3 ημέρες)</span>
+            </div>
+          </label>
+
+          <label class="flex items-center gap-3 p-4 rounded-2xl border border-white/15 bg-white/5 cursor-pointer hover:border-brand-400 transition">
+            <input type="checkbox" onchange="toggleAddon(this, 150, 2)" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500 bg-white/10 border-white/20">
+            <div class="text-xs">
+              <span class="font-bold text-white block">Πολυγλωσσικότητα (Multi-lang)</span>
+              <span class="text-[10px] text-cyanGlow-300">+150€ (+2 ημέρες)</span>
+            </div>
+          </label>
+
+          <label class="flex items-center gap-3 p-4 rounded-2xl border border-white/15 bg-white/5 cursor-pointer hover:border-brand-400 transition">
+            <input type="checkbox" onchange="toggleAddon(this, 220, 3)" class="w-4 h-4 rounded text-brand-600 focus:ring-brand-500 bg-white/10 border-white/20">
+            <div class="text-xs">
+              <span class="font-bold text-white block">GreekHost Airbnb Sync</span>
+              <span class="text-[10px] text-cyanGlow-300">+220€ (+3 ημέρες)</span>
+            </div>
+          </label>
+
+        </div>
+      </div>
+
+      <!-- Step 3: Dynamic Price Box -->
+      <div class="p-6 rounded-3xl bg-gradient-to-r from-brand-900/60 via-indigo-900/60 to-purple-900/60 border-2 border-brand-400/50 flex flex-col sm:flex-row justify-between items-center gap-6 relative z-10 shadow-xl">
+        <div>
+          <div class="text-xs text-slate-300 uppercase font-mono font-bold tracking-wider flex items-center gap-2">
+            <span>Εκτιμώμενο Κόστος & Χρόνος Παράδοσης</span>
+            <span class="text-[10px] text-emerald-400 font-bold bg-emerald-950/90 border border-emerald-700/60 px-2.5 py-0.5 rounded-full">-40% Market Rate</span>
+          </div>
+          <div class="flex items-baseline gap-4 mt-1">
+            <span id="calc-price" class="text-3xl sm:text-4xl font-display font-black text-white">350€ - 490€</span>
+            <span id="calc-time" class="text-sm font-semibold text-cyanGlow-300">~ 6-9 εργάσιμες</span>
+          </div>
+        </div>
+
+        <a href="#contact" onclick="prefillContactForm()" class="w-full sm:w-auto px-7 py-4 rounded-2xl bg-gradient-to-r from-brand-600 via-indigo-500 to-cyanGlow-500 hover:from-brand-500 hover:to-cyanGlow-400 text-white font-bold text-xs sm:text-sm tracking-wide transition flex items-center justify-center gap-2 shadow-xl shadow-brand-600/40 hover:scale-105">
+          <span>Ζητήστε Επίσημη Προσφορά</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY UPLOGIC (THE BOUTIQUE ADVANTAGE) -->
+  <section id="about" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto z-10 relative">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      
+      <!-- Left Column: The Philosophy -->
+      <div class="space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-200 text-xs font-mono font-bold uppercase tracking-wider">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-cyanGlow-400"></i>
+          <span>The UpLogic Advantage</span>
+        </div>
+        <h2 class="text-4xl sm:text-5xl font-display font-extrabold text-white tracking-tight leading-tight">
+          Δεν είμαστε απλοί designers. Είμαστε <span class="font-serif italic font-normal text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-rose-300 to-indigo-300">Digital Architects</span>.
+        </h2>
+        <p class="text-slate-200 text-base sm:text-lg leading-relaxed font-light">
+          Οι περισσότερες digital agencies παραδίδουν ένα τυποποιημένο site και εξαφανίζονται. Στην UpLogic χτίζουμε <strong>ψηφιακά assets υψηλής απόδοσης</strong> που λειτουργούν αυτόνομα, προστατεύουν το περιθώριο κέρδους σου και αυξάνουν την πραγματική αξία της επιχείρησής σου.
+        </p>
+
+        <div class="space-y-4 pt-2">
+          
+          <div class="flex items-start gap-4 p-4 rounded-2xl glass-card">
+            <div class="p-3 rounded-xl bg-brand-600/30 text-brand-300 border border-brand-500/40 flex-shrink-0">
+              <i data-lucide="zap" class="w-5 h-5 text-amber-300"></i>
+            </div>
+            <div>
+              <h4 class="text-white font-bold text-base">Ασυναγώνιστο Value for Money (-40%)</h4>
+              <p class="text-xs sm:text-sm text-slate-300 mt-1">
+                Προσφέρουμε τιμές εισόδου ώστε κάθε επιχείρηση να αποκτήσει κορυφαία ιστοσελίδα και e-shop χωρίς υπέρογκα κόστη.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 p-4 rounded-2xl glass-card">
+            <div class="p-3 rounded-xl bg-cyanGlow-500/25 text-cyanGlow-300 border border-cyanGlow-400/40 flex-shrink-0">
+              <i data-lucide="crosshair" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h4 class="text-white font-bold text-base">Απόλυτη Προσήλωση στο Κέρδος & ROAS</h4>
+              <p class="text-xs sm:text-sm text-slate-300 mt-1">
+                Κάθε κουμπί, κάθε flow και κάθε διαφήμιση έχει σχεδιαστεί με μετρήσιμα KPIs. Δεν μας ενδιαφέρουν τα vanity metrics, μας ενδιαφέρει το ταμείο.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4 p-4 rounded-2xl glass-card">
+            <div class="p-3 rounded-xl bg-rose-600/25 text-rose-300 border border-rose-500/40 flex-shrink-0">
+              <i data-lucide="headphones" class="w-5 h-5"></i>
+            </div>
+            <div>
+              <h4 class="text-white font-bold text-base">Προσωπική Επαφή με Senior Developers</h4>
+              <p class="text-xs sm:text-sm text-slate-300 mt-1">
+                Δεν μιλάς με juniors ή πωλητές. Έχεις απευθείας επαφή με τους μηχανικούς που κατασκευάζουν το έργο σου σε τηλέφωνο και WhatsApp.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Comparison Showcase (Boutique vs Traditional) -->
+      <div class="glass-card rounded-3xl p-8 sm:p-10 space-y-6 border-2 border-white/20 shadow-2xl relative">
+        <div class="flex items-center justify-between pb-4 border-b border-white/10">
+          <span class="font-display font-bold text-lg text-white">UpLogic vs Παραδοσιακές Agencies</span>
+          <span class="text-xs font-mono text-cyanGlow-400 px-2.5 py-1 rounded-full bg-cyanGlow-500/10 border border-cyanGlow-400/30">BENCHMARK</span>
+        </div>
+
+        <div class="space-y-4 text-xs sm:text-sm">
+          
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+            <div class="flex items-center justify-between font-bold text-white">
+              <span>Ταχύτητα & Τεχνολογία</span>
+              <span class="text-emerald-400 text-xs flex items-center gap-1">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> UpLogic &lt; 0.6s
+              </span>
+            </div>
+            <p class="text-slate-300 text-xs">
+              Αντί για βαριά, ευάλωτα WordPress templates με 45 plugins, χρησιμοποιούμε Next.js, Headless APIs και σύγχρονες τεχνολογίες.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+            <div class="flex items-center justify-between font-bold text-white">
+              <span>Διασύνδεση Φορολογικών Συστημάτων</span>
+              <span class="text-emerald-400 text-xs flex items-center gap-1">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> myDATA & Open Banking
+              </span>
+            </div>
+            <p class="text-slate-300 text-xs">
+              Χάρη στο TaxPilot GR και το GreekHost, ενσωματώνουμε άμεσα αυτόματη έκδοση myDATA, τραπεζικές διασυνδέσεις και αυτόματο υπολογισμό ΤΑΚ.
+            </p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+            <div class="flex items-center justify-between font-bold text-white">
+              <span>Παγκόσμια Αγορά (Marketplaces)</span>
+              <span class="text-emerald-400 text-xs flex items-center gap-1">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> eBay & Amazon Scale
+              </span>
+            </div>
+            <p class="text-slate-300 text-xs">
+              Δεν περιοριζόμαστε στην τοπική αγορά. Σας βγάζουμε σε εκατομμύρια αγοραστές σε Ευρώπη και Αμερική με πλήρη αυτοματισμό αποθεμάτων.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="pt-2 text-center">
+          <a href="#contact" class="inline-flex items-center gap-2 text-xs font-bold text-cyanGlow-300 hover:text-white transition">
+            <span>Κλείστε μια δωρεάν 30λεπτη τεχνική αξιολόγηση</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT & CONSULTATION BOOKING -->
+  <section id="contact" class="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto z-10 relative">
+    <div class="glass-card rounded-3xl p-8 sm:p-14 border-2 border-brand-400/50 space-y-10 shadow-2xl relative overflow-hidden">
+      
+      <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-brand-600/30 blur-3xl pointer-events-none"></div>
+
+      <div class="text-center space-y-3 relative z-10">
+        <span class="px-4 py-1.5 rounded-full bg-brand-500/20 border border-brand-400/40 text-brand-200 text-xs font-mono font-bold uppercase tracking-wider">
+          Let's Create Together
+        </span>
+        <h2 class="text-4xl sm:text-5xl font-display font-extrabold text-white tracking-tight">
+          Έχετε ένα project στο <span class="font-serif italic font-normal text-amber-200">μυαλό</span> σας;
+        </h2>
+        <p class="text-slate-200 text-base sm:text-lg max-w-lg mx-auto">
+          Μιλήστε απευθείας με τους Senior Architects της UpLogic. Σας απαντάμε εντός 2 ωρών με συγκεκριμένες λύσεις.
+        </p>
+      </div>
+
+      <!-- Direct Channels & Form -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-10">
+        
+        <!-- Channels Info (HQ: Patras) -->
+        <div class="space-y-4">
+          
+          <div class="p-5 rounded-2xl glass-card space-y-1.5 border border-white/15">
+            <div class="flex items-center gap-2 text-rose-300 text-xs font-bold uppercase">
+              <i data-lucide="map-pin" class="w-4 h-4 text-rose-400"></i>
+              <span>Έδρα Εταιρείας</span>
+            </div>
+            <div class="text-base font-semibold text-white">Πάτρα, Αχαΐα</div>
+            <div class="text-[11px] text-slate-300">Πανελλαδική & Παγκόσμια Εξυπηρέτηση</div>
+          </div>
+
+          <div class="p-5 rounded-2xl glass-card space-y-1.5 border border-white/15">
+            <div class="flex items-center gap-2 text-brand-300 text-xs font-bold uppercase">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+              <span>Email Επικοινωνίας</span>
+            </div>
+            <a href="mailto:info@uplogic.gr" class="text-base font-mono font-semibold text-white hover:text-cyanGlow-300 transition block">info@uplogic.gr</a>
+          </div>
+
+          <div class="p-5 rounded-2xl glass-card space-y-1.5 border border-white/15">
+            <div class="flex items-center gap-2 text-emerald-400 text-xs font-bold uppercase">
+              <i data-lucide="phone" class="w-4 h-4"></i>
+              <span>Τηλεφωνική Γραμμή</span>
+            </div>
+            <a href="tel:+302610000000" class="text-base font-mono font-semibold text-white hover:text-emerald-300 transition block">2610 000 000</a>
+          </div>
+
+          <div class="p-5 rounded-2xl glass-card space-y-1.5 border border-white/15">
+            <div class="flex items-center gap-2 text-cyanGlow-300 text-xs font-bold uppercase">
+              <i data-lucide="message-circle" class="w-4 h-4"></i>
+              <span>WhatsApp Instant Call</span>
+            </div>
+            <a href="https://wa.me/306980000000" target="_blank" class="text-sm font-semibold text-white hover:text-cyanGlow-300 transition block flex items-center gap-1.5">
+              <span>Άμεση συνομιλία 24/7</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Consultation Form -->
+        <form id="contact-form" onsubmit="handleContactSubmit(event)" class="lg:col-span-2 space-y-4">
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Ονοματεπώνυμο</label>
+              <input type="text" required placeholder="π.χ. Αλέξανδρος Παπαδόπουλος" class="w-full px-4 py-3 rounded-2xl bg-white/10 border border-white/20 text-white placeholder-slate-400 text-sm focus:border-cyanGlow-400 focus:ring-1 focus:ring-cyanGlow-400 outline-none transition">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Τηλέφωνο Επικοινωνίας</label>
+              <input type="tel" required placeholder="69XXXXXXXX" class="w-full px-4 py-3 rounded-2xl bg-white/10 border border-white/20 text-white placeholder-slate-400 text-sm focus:border-cyanGlow-400 focus:ring-1 focus:ring-cyanGlow-400 outline-none transition">
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Email</label>
+              <input type="email" required placeholder="your@email.com" class="w-full px-4 py-3 rounded-2xl bg-white/10 border border-white/20 text-white placeholder-slate-400 text-sm focus:border-cyanGlow-400 focus:ring-1 focus:ring-cyanGlow-400 outline-none transition">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-slate-300 mb-1.5">Υπηρεσία που σας ενδιαφέρει</label>
+              <select id="contact-service" class="w-full px-4 py-3 rounded-2xl bg-slate-900 border border-white/20 text-white text-sm focus:border-cyanGlow-400 outline-none transition">
+                <option value="site">Εταιρική Ιστοσελίδα (από 350€)</option>
+                <option value="eshop">E-Shop Κατάστημα (από 590€)</option>
+                <option value="app">Custom Web ή Mobile Εφαρμογή (από 1.100€)</option>
+                <option value="market">Amazon & eBay Store Automation (από 490€)</option>
+                <option value="ads">Performance Google Ads (από 220€)</option>
+                <option value="taxpilot">TaxPilot GR (FinTech & myDATA)</option>
+                <option value="greekhost">GreekHost (Airbnb/Booking PMS)</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-300 mb-1.5">Περιγραφή Έργου & Στόχοι</label>
+            <textarea id="contact-message" rows="3" placeholder="Περιγράψτε συνοπτικά τι θέλετε να υλοποιήσουμε ή τις ανάγκες της επιχείρησής σας..." class="w-full px-4 py-3 rounded-2xl bg-white/10 border border-white/20 text-white placeholder-slate-400 text-sm focus:border-cyanGlow-400 focus:ring-1 focus:ring-cyanGlow-400 outline-none transition"></textarea>
+          </div>
+
+          <button type="submit" id="submit-btn" class="w-full py-4 rounded-2xl bg-gradient-to-r from-brand-600 via-indigo-600 to-cyanGlow-500 hover:from-brand-500 hover:to-cyanGlow-400 text-white font-bold text-sm tracking-wide shadow-xl shadow-brand-600/40 hover:shadow-cyanGlow-500/50 hover:scale-[1.01] transition flex items-center justify-center gap-2">
+            <span>Αποστολή Αιτήματος & Κλείσιμο Call</span>
+            <i data-lucide="send" class="w-4 h-4"></i>
+          </button>
+        </form>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CORPORATE FOOTER -->
+  <footer class="border-t border-white/10 bg-slate-950/80 backdrop-blur-xl py-12 px-4 sm:px-6 lg:px-8 text-xs text-slate-400 z-10 relative">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      
+      <div class="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
+        <div class="flex items-center gap-2 font-display font-black text-white text-base">
+          <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-brand-600 to-cyanGlow-500 flex items-center justify-center text-white text-xs font-black">UP</div>
+          <span>UpLogic Technologies</span>
+        </div>
+        <span class="hidden sm:inline text-slate-600">•</span>
+        <span class="font-serif italic text-slate-300">Έδρα: Πάτρα • Engineering the Future of Digital Commerce</span>
+      </div>
+
+      <!-- Footer ventures & links -->
+      <div class="flex flex-wrap items-center justify-center gap-5 text-slate-300 font-medium text-[11px]">
+        <span class="flex items-center gap-1.5 text-emerald-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span>Architects Online</span>
+        </span>
+        <span>•</span>
+        <a href="#ventures" class="hover:text-cyanGlow-300 transition">TaxPilot GR</a>
+        <span>•</span>
+        <a href="#ventures" class="hover:text-cyanGlow-300 transition">GreekHost</a>
+        <span>•</span>
+        <a href="mailto:info@uplogic.gr" class="hover:text-white transition">info@uplogic.gr</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT: THREE.JS 3D CYBER-GLOBE (PERMANENT OFFICIAL CENTERPIECE) -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // ==========================================
+    // THREE.JS 3D CYBER-GLOBE & PATRAS HUB PATHS
+    // ==========================================
+    let scene, camera, renderer, globeGroup;
+    let mouseX = 0, mouseY = 0;
+    let targetRotationX = 0, targetRotationY = 0;
+    const container = document.getElementById('webgl-container');
+
+    function latLonToVector3(lat, lon, radius) {
+      const phi = (90 - lat) * (Math.PI / 180);
+      const theta = (lon + 180) * (Math.PI / 180);
+      return new THREE.Vector3(
+        -(radius * Math.sin(phi) * Math.cos(theta)),
+        radius * Math.cos(phi),
+        radius * Math.sin(phi) * Math.sin(theta)
+      );
+    }
+
+    function createCurvedArc(startVec, endVec, maxElevation, colorHex) {
+      const distance = startVec.distanceTo(endVec);
+      const mid = startVec.clone().lerp(endVec, 0.5);
+      const elevation = Math.max(distance * 0.4, maxElevation);
+      mid.normalize().multiplyScalar(startVec.length() + elevation);
+
+      const curve = new THREE.QuadraticBezierCurve3(startVec, mid, endVec);
+      const points = curve.getPoints(50);
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+
+      const material = new THREE.LineBasicMaterial({
+        color: colorHex,
+        transparent: true,
+        opacity: 0.85,
+        linewidth: 2,
+      });
+
+      return new THREE.Line(geometry, material);
+    }
+
+    function initCyberGlobe() {
+      const width = container.clientWidth || window.innerWidth;
+      const height = container.clientHeight || window.innerHeight;
+
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+      camera.position.z = 6.8;
+
+      renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.appendChild(renderer.domElement);
+
+      // Lights
+      const ambientLight = new THREE.AmbientLight(0xffffff, 1.1);
+      scene.add(ambientLight);
+
+      const light1 = new THREE.PointLight(0xa855f7, 4.0, 50);
+      light1.position.set(5, 5, 5);
+      scene.add(light1);
+
+      const light2 = new THREE.PointLight(0x06b6d4, 4.0, 50);
+      light2.position.set(-5, -5, 5);
+      scene.add(light2);
+
+      const light3 = new THREE.PointLight(0xfbbf24, 2.5, 40);
+      light3.position.set(0, 5, -3);
+      scene.add(light3);
+
+      globeGroup = new THREE.Group();
+      const globeRadius = 1.95;
+
+      // 1. Inner Translucent Dark Cyber Sphere
+      const sphereGeo = new THREE.SphereGeometry(globeRadius, 40, 40);
+      const sphereMat = new THREE.MeshPhysicalMaterial({
+        color: 0x0a102b,
+        roughness: 0.3,
+        metalness: 0.6,
+        transmission: 0.65,
+        transparent: true,
+        opacity: 0.9,
+      });
+      globeGroup.add(new THREE.Mesh(sphereGeo, sphereMat));
+
+      // 2. Wireframe Grid
+      const wireGeo = new THREE.SphereGeometry(globeRadius + 0.01, 28, 28);
+      const wireMat = new THREE.MeshBasicMaterial({
+        color: 0x7c3aed,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.26,
+      });
+      globeGroup.add(new THREE.Mesh(wireGeo, wireMat));
+      globeGroup.userData.wireMat = wireMat;
+
+      // 3. Surface Matrix Dots (Fibonacci Distribution)
+      const dotsCount = 1400;
+      const dotPositions = new Float32Array(dotsCount * 3);
+      for (let i = 0; i < dotsCount; i++) {
+        const phi = Math.acos(-1 + (2 * i) / dotsCount);
+        const theta = Math.sqrt(dotsCount * Math.PI) * phi;
+        const r = globeRadius + 0.025;
+        dotPositions[i * 3] = r * Math.cos(theta) * Math.sin(phi);
+        dotPositions[i * 3 + 1] = r * Math.sin(theta) * Math.sin(phi);
+        dotPositions[i * 3 + 2] = r * Math.cos(phi);
+      }
+      const dotGeo = new THREE.BufferGeometry();
+      dotGeo.setAttribute('position', new THREE.BufferAttribute(dotPositions, 3));
+      const dotMat = new THREE.PointsMaterial({
+        size: 0.038,
+        color: 0x22d3ee,
+        transparent: true,
+        opacity: 0.85,
+      });
+      globeGroup.add(new THREE.Points(dotGeo, dotMat));
+      globeGroup.userData.dotMat = dotMat;
+
+      // 4. Global Hub Cities Coordinates (Patras HQ Hub)
+      const cities = {
+        patras: { lat: 38.25, lon: 21.73, name: 'Patras (UpLogic HQ)', color: 0x22d3ee },
+        frankfurt: { lat: 50.11, lon: 8.68, name: 'Frankfurt (Cloud Central)', color: 0xa855f7 },
+        london: { lat: 51.50, lon: -0.12, name: 'London (UK Hub)', color: 0x38bdf8 },
+        newyork: { lat: 40.71, lon: -74.00, name: 'New York (Amazon US)', color: 0xfbbf24 },
+        tokyo: { lat: 35.67, lon: 139.65, name: 'Tokyo (Asia Pacific)', color: 0xf43f5e },
+        dubai: { lat: 25.20, lon: 55.27, name: 'Dubai (FinTech)', color: 0x10b981 },
+      };
+
+      const cityVectors = {};
+      const markerGeo = new THREE.SphereGeometry(0.065, 16, 16);
+
+      for (const [key, city] of Object.entries(cities)) {
+        const vec = latLonToVector3(city.lat, city.lon, globeRadius + 0.03);
+        cityVectors[key] = vec;
+
+        const markerMat = new THREE.MeshBasicMaterial({ color: city.color });
+        const marker = new THREE.Mesh(markerGeo, markerMat);
+        marker.position.copy(vec);
+        globeGroup.add(marker);
+      }
+
+      // Patras Glowing Pulsating Halo Beacon
+      const patrasBeaconGeo = new THREE.RingGeometry(0.08, 0.16, 24);
+      const patrasBeaconMat = new THREE.MeshBasicMaterial({ color: 0x22d3ee, side: THREE.DoubleSide, transparent: true, opacity: 0.95 });
+      const patrasBeacon = new THREE.Mesh(patrasBeaconGeo, patrasBeaconMat);
+      patrasBeacon.position.copy(cityVectors.patras);
+      patrasBeacon.lookAt(new THREE.Vector3(0, 0, 0));
+      globeGroup.add(patrasBeacon);
+      globeGroup.userData.patrasBeacon = patrasBeacon;
+
+      // 5. Connection Flight Arcs from Patras (HQ) to the World
+      const connections = [
+        { from: 'patras', to: 'frankfurt', color: 0x22d3ee, elevation: 0.42 },
+        { from: 'patras', to: 'london', color: 0xa855f7, elevation: 0.46 },
+        { from: 'patras', to: 'newyork', color: 0xfbbf24, elevation: 0.68 },
+        { from: 'patras', to: 'tokyo', color: 0xf43f5e, elevation: 0.82 },
+        { from: 'patras', to: 'dubai', color: 0x10b981, elevation: 0.42 },
+      ];
+
+      connections.forEach(conn => {
+        const arc = createCurvedArc(cityVectors[conn.from], cityVectors[conn.to], conn.elevation, conn.color);
+        globeGroup.add(arc);
+      });
+
+      // 6. Outer Gyroscopic Orbit Rings
+      const ring1Geo = new THREE.RingGeometry(2.45, 2.48, 64);
+      const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x06b6d4, side: THREE.DoubleSide, transparent: true, opacity: 0.38 });
+      const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
+      ring1.rotation.x = Math.PI / 2.2;
+      ring1.rotation.y = Math.PI / 6;
+      globeGroup.add(ring1);
+      globeGroup.userData.ring1Mat = ring1Mat;
+
+      const ring2Geo = new THREE.RingGeometry(2.7, 2.73, 64);
+      const ring2Mat = new THREE.MeshBasicMaterial({ color: 0xa855f7, side: THREE.DoubleSide, transparent: true, opacity: 0.32 });
+      const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
+      ring2.rotation.x = Math.PI / 3;
+      ring2.rotation.y = -Math.PI / 4;
+      globeGroup.add(ring2);
+      globeGroup.userData.ring2Mat = ring2Mat;
+
+      scene.add(globeGroup);
+
+      // 7. Ambient Particle Dust
+      const starsCount = 220;
+      const starPos = new Float32Array(starsCount * 3);
+      for (let i = 0; i < starsCount; i++) {
+        starPos[i * 3] = (Math.random() - 0.5) * 16;
+        starPos[i * 3 + 1] = (Math.random() - 0.5) * 16;
+        starPos[i * 3 + 2] = (Math.random() - 0.5) * 12;
+      }
+      const starGeo = new THREE.BufferGeometry();
+      starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+      const starMat = new THREE.PointsMaterial({ size: 0.04, color: 0x93c5fd, transparent: true, opacity: 0.75 });
+      scene.add(new THREE.Points(starGeo, starMat));
+
+      // Initial responsive layout calculation
+      updateGlobeLayout();
+
+      // Listeners
+      window.addEventListener('mousemove', onMouseMove);
+      
+      // Mobile Touch Listeners for Swipe to Rotate
+      let touchStartX = 0, touchStartY = 0;
+      window.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches.length > 0) {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+
+      window.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches.length > 0) {
+          const deltaX = e.touches[0].clientX - touchStartX;
+          const deltaY = e.touches[0].clientY - touchStartY;
+          targetRotationY += deltaX * 0.005;
+          targetRotationX += deltaY * 0.003;
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+
+      // Device orientation for mobile tilt
+      if (window.DeviceOrientationEvent) {
+        window.addEventListener('deviceorientation', (e) => {
+          if (e.gamma !== null && e.beta !== null) {
+            mouseX = Math.min(Math.max(e.gamma / 25, -1), 1);
+            mouseY = Math.min(Math.max((e.beta - 45) / 25, -1), 1);
+          }
+        }, { passive: true });
+      }
+
+      window.addEventListener('resize', updateGlobeLayout);
+      window.addEventListener('orientationchange', () => {
+        setTimeout(updateGlobeLayout, 250);
+      });
+    }
+
+    function onMouseMove(event) {
+      mouseX = (event.clientX / window.innerWidth - 0.5) * 2;
+      mouseY = (event.clientY / window.innerHeight - 0.5) * 2;
+    }
+
+    function updateGlobeLayout() {
+      if (!container || !camera || !renderer || !globeGroup) return;
+
+      const width = container.clientWidth || window.innerWidth;
+      const height = container.clientHeight || window.innerHeight;
+      const aspect = width / height;
+
+      camera.aspect = aspect;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      const isMobile = window.innerWidth <= 768;
+      const isTablet = window.innerWidth > 768 && window.innerWidth <= 1024;
+
+      if (isMobile) {
+        // Precise Mobile Portrait Auto-Framing Formula:
+        // Outer ring radius is 2.73. We ensure the entire globe fits with 16% breathing margin.
+        const maxRadius = 2.73;
+        const safeRatio = 1.16;
+        const tanHalfFov = Math.tan((camera.fov * Math.PI) / 360);
+        const reqZ = (maxRadius * safeRatio) / (Math.max(aspect, 0.30) * tanHalfFov);
+        camera.position.z = Math.min(Math.max(reqZ, 10.0), 18.0);
+
+        // Position globe gracefully in the upper-center hero area
+        globeGroup.position.x = 0;
+        globeGroup.position.y = 1.15;
+
+        // Make dots and rings shine brightly on mobile screens
+        if (globeGroup.userData.dotMat) {
+          globeGroup.userData.dotMat.size = 0.065;
+          globeGroup.userData.dotMat.opacity = 0.95;
+        }
+        if (globeGroup.userData.wireMat) {
+          globeGroup.userData.wireMat.opacity = 0.42;
+        }
+        if (globeGroup.userData.ring1Mat) {
+          globeGroup.userData.ring1Mat.opacity = 0.55;
+        }
+        if (globeGroup.userData.ring2Mat) {
+          globeGroup.userData.ring2Mat.opacity = 0.45;
+        }
+      } else if (isTablet) {
+        camera.position.z = 8.5;
+        globeGroup.position.x = 0;
+        globeGroup.position.y = 0.5;
+        if (globeGroup.userData.dotMat) {
+          globeGroup.userData.dotMat.size = 0.045;
+          globeGroup.userData.dotMat.opacity = 0.85;
+        }
+        if (globeGroup.userData.wireMat) {
+          globeGroup.userData.wireMat.opacity = 0.32;
+        }
+      } else {
+        // Desktop landscape
+        camera.position.z = 6.8;
+        globeGroup.position.x = 2.1;
+        globeGroup.position.y = 0;
+        if (globeGroup.userData.dotMat) {
+          globeGroup.userData.dotMat.size = 0.038;
+          globeGroup.userData.dotMat.opacity = 0.85;
+        }
+        if (globeGroup.userData.wireMat) {
+          globeGroup.userData.wireMat.opacity = 0.26;
+        }
+        if (globeGroup.userData.ring1Mat) {
+          globeGroup.userData.ring1Mat.opacity = 0.38;
+        }
+        if (globeGroup.userData.ring2Mat) {
+          globeGroup.userData.ring2Mat.opacity = 0.32;
+        }
+      }
+    }
+
+    function animateGlobe() {
+      requestAnimationFrame(animateGlobe);
+      const time = Date.now() * 0.001;
+
+      targetRotationX += (mouseY * 0.4 - targetRotationX) * 0.04;
+      targetRotationY += (mouseX * 0.6 - targetRotationY) * 0.04;
+
+      if (globeGroup) {
+        // Continuous smooth rotation
+        globeGroup.rotation.y += 0.0035;
+        globeGroup.rotation.y += targetRotationY * 0.02;
+        globeGroup.rotation.x = THREE.MathUtils.lerp(globeGroup.rotation.x, targetRotationX * 0.3, 0.05);
+
+        // Patras beacon pulse
+        if (globeGroup.userData.patrasBeacon) {
+          const s = 1.0 + Math.sin(time * 4) * 0.28;
+          globeGroup.userData.patrasBeacon.scale.set(s, s, s);
+        }
+      }
+
+      renderer.render(scene, camera);
+    }
+
+    try {
+      initCyberGlobe();
+      animateGlobe();
+    } catch (e) {
+      console.warn("Globe animation initialized with fallback:", e);
+    }
+
+    // ==========================================
+    // INTERACTIVE SPOTLIGHTS ON CARDS
+    // ==========================================
+    document.querySelectorAll('.spotlight-box').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    });
+
+    // ==========================================
+    // PROJECT ESTIMATOR CALCULATION LOGIC (-40% AGGRESSIVE)
+    // ==========================================
+    let basePrice = 350;
+    let baseDays = 6;
+    let addonsPrice = 0;
+    let addonsDays = 0;
+
+    function selectType(type, price, days) {
+      basePrice = price;
+      baseDays = days;
+      document.querySelectorAll('.type-btn').forEach(b => {
+        b.classList.remove('border-brand-500', 'bg-white/10');
+        b.classList.add('border-white/10', 'bg-white/5');
+      });
+      const selected = document.querySelector(`.type-btn[data-type="${type}"]`);
+      if (selected) {
+        selected.classList.remove('border-white/10', 'bg-white/5');
+        selected.classList.add('border-brand-500', 'bg-white/10');
+      }
+      updateEstimate();
+    }
+
+    function toggleAddon(checkbox, price, days) {
+      if (checkbox.checked) {
+        addonsPrice += price;
+        addonsDays += days;
+      } else {
+        addonsPrice -= price;
+        addonsDays -= days;
+      }
+      updateEstimate();
+    }
+
+    function updateEstimate() {
+      const minP = basePrice + addonsPrice;
+      const maxP = Math.round(minP * 1.4);
+      const days = baseDays + addonsDays;
+      document.getElementById('calc-price').innerText = `${minP.toLocaleString('el-GR')}€ - ${maxP.toLocaleString('el-GR')}€`;
+      document.getElementById('calc-time').innerText = `~ ${days}-${days + 3} εργάσιμες`;
+    }
+
+    function prefillContactForm() {
+      const messageArea = document.getElementById('contact-message');
+      const priceText = document.getElementById('calc-price').innerText;
+      const timeText = document.getElementById('calc-time').innerText;
+      messageArea.value = `Ενδιαφέρομαι για υλοποίηση έργου με εκτίμηση: ${priceText}, ενδεικτικός χρόνος: ${timeText}.`;
+      document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ==========================================
+    // FORM SUBMISSION HANDLING
+    // ==========================================
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const btn = document.getElementById('submit-btn');
+      btn.innerHTML = `<span>Αποστολή αιτήματος...</span>`;
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.classList.remove('from-brand-600', 'to-cyanGlow-500');
+        btn.classList.add('bg-emerald-600');
+        btn.innerHTML = `<i data-lucide="check" class="w-4 h-4"></i><span>Το αίτημα εστάλη επιτυχώς!</span>`;
+        lucide.createIcons();
+        alert('Ευχαριστούμε! Ένας Senior Architect της UpLogic θα επικοινωνήσει μαζί σας εντός 2 ωρών.');
+      }, 900);
+    }
+
+    // ==========================================
+    // MOBILE DRAWER MENU LOGIC
+    // ==========================================
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+
+    if (mobileMenuBtn && mobileDrawer) {
+      mobileMenuBtn.addEventListener('click', () => {
+        const isHidden = mobileDrawer.classList.contains('hidden');
+        if (isHidden) {
+          mobileDrawer.classList.remove('hidden');
+          iconOpen.classList.add('hidden');
+          iconClose.classList.remove('hidden');
+          lucide.createIcons();
+        } else {
+          mobileDrawer.classList.add('hidden');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+        }
+      });
+
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileDrawer.classList.add('hidden');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+        });
+      });
+    }
+  </script>
+
+  <!-- MOBILE PERSISTENT FLOATING QUICK-DOCK (Bottom Bar on Mobile) -->
+  <div class="fixed bottom-3 inset-x-3 z-40 md:hidden pointer-events-none">
+    <div class="max-w-md mx-auto glass-pill rounded-full p-1.5 border border-white/20 shadow-2xl shadow-black/90 flex items-center justify-between gap-1 pointer-events-auto bg-[#080c1d]/90 backdrop-blur-xl">
+      <a href="#calculator" class="flex-1 flex flex-col items-center justify-center py-1.5 px-1 rounded-full text-amber-300 bg-amber-500/15 hover:bg-amber-500/25 transition">
+        <i data-lucide="calculator" class="w-4 h-4 mb-0.5 text-amber-400"></i>
+        <span class="text-[10px] font-bold tracking-tight">Τιμές (350€)</span>
+      </a>
+      <a href="#ventures" class="flex-1 flex flex-col items-center justify-center py-1.5 px-1 rounded-full text-brand-200 bg-brand-500/15 hover:bg-brand-500/25 transition">
+        <div class="relative">
+          <i data-lucide="rocket" class="w-4 h-4 mb-0.5 text-brand-300"></i>
+          <span class="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        </div>
+        <span class="text-[10px] font-bold tracking-tight">Ventures</span>
+      </a>
+      <a href="https://wa.me/306980000000" target="_blank" class="flex-1 flex flex-col items-center justify-center py-1.5 px-1 rounded-full text-emerald-300 bg-emerald-500/15 hover:bg-emerald-500/25 transition">
+        <i data-lucide="message-circle" class="w-4 h-4 mb-0.5 text-emerald-400"></i>
+        <span class="text-[10px] font-bold tracking-tight">WhatsApp</span>
+      </a>
+      <a href="#contact" class="flex-1 flex flex-col items-center justify-center py-1.5 px-1 rounded-full text-white bg-gradient-to-r from-brand-600 to-cyanGlow-500 shadow-md transition">
+        <i data-lucide="arrow-up-right" class="w-4 h-4 mb-0.5"></i>
+        <span class="text-[10px] font-bold tracking-tight">Συνεργασία</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

@@ -25,20 +25,145 @@
 
   <!-- Δομημένα δεδομένα για Google (τοπική επιχείρηση) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "UpLogic",
-    "url": "https://uplogic.gr/",
-    "logo": "https://uplogic.gr/og-image.jpg",
-    "image": "https://uplogic.gr/og-image.jpg",
-    "email": "info@uplogic.gr",
-    "description": "Κατασκευή ιστοσελίδων, e-shop, εφαρμογών, AI chatbots, SEO και διαφήμισης.",
-    "address": { "@type": "PostalAddress", "addressLocality": "Πάτρα", "addressRegion": "Αχαΐα", "addressCountry": "GR" },
-    "areaServed": ["GR", "EU"],
-    "priceRange": "€€",
-    "sameAs": ["https://www.instagram.com/uplogic_/"]
-  }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "Organization",
+        "ProfessionalService"
+      ],
+      "@id": "https://uplogic.gr/#organization",
+      "name": "UpLogic",
+      "alternateName": "UpLogic Digital Studio",
+      "url": "https://uplogic.gr/",
+      "logo": "https://uplogic.gr/og-image.jpg",
+      "image": "https://uplogic.gr/og-image.jpg",
+      "email": "info@uplogic.gr",
+      "description": "Κατασκευή ιστοσελίδων από 350€, σύγχρονων e-shop, web & mobile εφαρμογών, AI chatbots 24/7, SEO και διαφημιστικών καμπανιών Google & Meta.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Πάτρα",
+        "addressRegion": "Αχαΐα",
+        "addressCountry": "GR"
+      },
+      "areaServed": [
+        "GR",
+        "EU"
+      ],
+      "priceRange": "€€",
+      "sameAs": [
+        "https://www.instagram.com/uplogic_/"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Υπηρεσίες UpLogic",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": "350",
+              "priceCurrency": "EUR"
+            },
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Κατασκευή Ιστοσελίδων",
+              "url": "https://uplogic.gr/istoselides.html",
+              "description": "Εταιρικές ιστοσελίδες και landing pages με custom design, mobile-first ταχύτητα, SEO και παράδοση από 3 εργάσιμες."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Κατασκευή E-Shop",
+              "url": "https://uplogic.gr/eshop.html",
+              "description": "Ηλεκτρονικά καταστήματα με IRIS, Apple Pay, Skroutz XML, αυτόματα vouchers courier, myDATA και marketplaces."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "AI Chatbots 24/7",
+              "url": "https://uplogic.gr/ai-chatbots.html",
+              "description": "Έξυπνοι βοηθοί Τεχνητής Νοημοσύνης εκπαιδευμένοι στην επιχείρησή σας για 24/7 εξυπηρέτηση και συλλογή leads."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "SEO, Google Maps & Performance Ads",
+              "url": "https://uplogic.gr/seo-marketing.html",
+              "description": "Τεχνικό SEO, τοπική κατάταξη Google Business Profile και καμπάνιες Google Ads, Meta & TikTok."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Custom Web & Mobile Εφαρμογές (SaaS)",
+              "url": "https://uplogic.gr/efarmoges.html",
+              "description": "Εξειδικευμένες εφαρμογές iOS, Android, PWA, SaaS πλατφόρμες και διασυνδέσεις API/myDATA."
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://uplogic.gr/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Αρχική",
+          "item": "https://uplogic.gr/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://uplogic.gr/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Πόσο κοστίζει η κατασκευή μιας ιστοσελίδας και σε πόσο χρόνο παραδίδεται;",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Οι επαγγελματικές ιστοσελίδες παρουσίασης ξεκινούν από 350€ και παραδίδονται από 3 εργάσιμες ημέρες, με 100% custom design, mobile-first εμφάνιση, τεχνικό SEO και πλήρη συμμόρφωση GDPR. Για e-shop, custom εφαρμογές και AI chatbots ετοιμάζουμε αυθημερόν εξατομικευμένη προσφορά."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Υπάρχουν κρυφές χρεώσεις ή υποχρεωτική μηνιαία συνδρομή;",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Όχι. Η ιστοσελίδα ή το e-shop ανήκει 100% σε εσάς. Πριν ξεκινήσουμε λαμβάνετε αναλυτική γραπτή προσφορά με σταθερό κόστος και σαφές χρονοδιάγραμμα."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Μπορώ να κλείσω ένα σύντομο ραντεβού πριν αποφασίσω;",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Φυσικά! Μπορείτε να κλείσετε δωρεάν 15λεπτη κλήση γνωριμίας (Τηλεφωνικά, Google Meet ή Viber) απευθείας από τη σελίδα μας, επιλέγοντας τη μέρα και ώρα που σας εξυπηρετεί."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Αναλαμβάνετε πελάτες εκτός Πάτρας ή στο εξωτερικό;",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ναι, εξυπηρετούμε επιχειρήσεις σε όλη την Ελλάδα και σε 5 χώρες της Ευρώπης εξ ολοκλήρου online, με ζωντανό σύνδεσμο προεπισκόπησης σε κάθε στάδιο."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 
   <!-- Google Analytics 4 (UpLogic) — Consent Mode: δεν μετράει πριν την «Αποδοχή» cookies (GDPR) -->
@@ -487,6 +612,71 @@
       .chat { right: 16px; bottom: 80px; }
       .cookie { left: 16px; right: 16px; bottom: 16px; max-width: none; }
     }
+
+    /* ---------- Booking Modal (15' Ραντεβού) ---------- */
+    .b-step-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 18px 0 8px; display: block; }
+    .b-channels { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .b-chan, .b-day, .b-slot {
+      padding: 10px 10px; border-radius: 12px; border: 1.5px solid var(--line);
+      background: #fff; font: inherit; font-size: 13px; font-weight: 600; color: var(--ink-2);
+      cursor: pointer; text-align: center; transition: all .15s;
+    }
+    .b-chan:hover, .b-day:hover, .b-slot:hover { border-color: var(--ink); color: var(--ink); }
+    .b-chan.active, .b-day.active, .b-slot.active {
+      background: var(--accent-soft); border-color: var(--accent); color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(36,81,245,.12);
+    }
+    .b-days { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .b-day small { display: block; font-size: 11px; font-weight: 500; color: var(--muted); margin-top: 2px; }
+    .b-day.active small { color: var(--accent); }
+    .b-slots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .b-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+    .b-inputs input, .b-inputs select {
+      width: 100%; padding: 11px 13px; border-radius: 10px; border: 1px solid var(--line-strong);
+      font: inherit; font-size: 14px; background: var(--bg); color: var(--ink);
+    }
+    .b-inputs select { grid-column: 1 / -1; }
+    .b-summary {
+      margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: var(--bg);
+      border: 1px solid var(--line); font-size: 13.5px; color: var(--ink-2);
+      display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap;
+    }
+    .b-summary b { color: var(--ink); }
+    .b-ok {
+      display: none; padding: 22px; border-radius: 14px; background: #ECFDF3; color: #0F6B3A;
+      border: 1px solid #A7F3D0; text-align: center; margin-top: 14px;
+    }
+    .b-ok h4 { margin: 0 0 6px; font-size: 18px; color: #065F46; }
+    .b-ok p { margin: 0; font-size: 14px; color: #0F6B3A; }
+    /* ---------- Homepage FAQ Accordion ---------- */
+    .faq-list { display: grid; gap: 12px; max-width: 860px; margin: 0 auto; }
+    .faq-item { background: #fff; border: 1px solid var(--line); border-radius: var(--radius-sm); overflow: hidden; transition: border-color .2s; }
+    .faq-item[open] { border-color: var(--accent); box-shadow: var(--shadow); }
+    .faq-item summary {
+      padding: 18px 22px; font-family: var(--display); font-weight: 600; font-size: 16.5px;
+      cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 14px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+"; font-size: 20px; font-weight: 500; color: var(--accent);
+      width: 28px; height: 28px; border-radius: 50%; background: var(--accent-soft);
+      display: grid; place-items: center; flex-shrink: 0; transition: transform .2s;
+    }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-item .faq-ans { padding: 0 22px 18px; color: var(--ink-2); font-size: 15px; line-height: 1.65; }
+    .svc-more {
+      display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
+      font-size: 13.5px; font-weight: 600; color: var(--accent);
+    }
+    .svc-more svg { width: 15px; height: 15px; transition: transform .18s; }
+    a.svc:hover .svc-more svg { transform: translateX(4px); }
+    @media (max-width: 600px) {
+      .b-channels, .b-days, .b-slots { grid-template-columns: repeat(2, 1fr); }
+      .b-inputs { grid-template-columns: 1fr; }
+      .faq-item summary { padding: 15px 16px; font-size: 15px; }
+      .faq-item .faq-ans { padding: 0 16px 15px; font-size: 14px; }
+    }
+
   </style>
 </head>
 <body>
@@ -550,7 +740,7 @@
           <p class="hero-sub">Σχεδιάζουμε και χτίζουμε ιστοσελίδες, e-shop, εφαρμογές και AI chatbots για επιχειρήσεις στην Ελλάδα και το εξωτερικό. Γρήγορα, καθαρά, με μετρήσιμο αποτέλεσμα.</p>
           <div class="hero-actions">
             <a href="#contact" class="btn btn-dark">Ζήτα προσφορά <svg><use href="#i-arrow"/></svg></a>
-            <a href="#work" class="btn btn-line">Δες τα έργα μας</a>
+            <button type="button" class="btn btn-line" data-book="Γενική Συζήτηση Project">📅 Κλείσε 15' Ραντεβού</button>
           </div>
           <div class="hero-facts">
             <div><strong>7+</strong>έργα σε παραγωγή</div>
@@ -681,42 +871,48 @@
         </div>
 
         <div class="services reveal">
-          <article class="svc">
+          <a href="istoselides.html" class="svc">
             <div class="svc-top"><span class="svc-num">01</span><span class="svc-price">από 350€</span></div>
             <h3>Ιστοσελίδες</h3>
             <p>Εταιρικές σελίδες και landing pages με δικό σας design, γρήγορη φόρτωση, σωστή εμφάνιση σε κάθε κινητό και παράδοση από 3 εργάσιμες.</p>
             <ul><li>Custom design</li><li>Από 3 εργάσιμες</li><li>SEO & GDPR</li></ul>
-          </article>
-          <article class="svc">
+            <span class="svc-more">Αναλυτικά η υπηρεσία <svg><use href="#i-arrow"/></svg></span>
+          </a>
+          <a href="eshop.html" class="svc">
             <div class="svc-top"><span class="svc-num">02</span></div>
             <h3>E-Shop</h3>
             <p>Καταστήματα που πουλάνε. Πληρωμές, courier, myDATA και συγχρονισμός αποθήκης, όλα συνδεδεμένα.</p>
             <ul><li>IRIS & Apple Pay</li><li>Skroutz XML</li><li>Amazon & eBay</li></ul>
-          </article>
-          <article class="svc">
+            <span class="svc-more">Αναλυτικά η υπηρεσία <svg><use href="#i-arrow"/></svg></span>
+          </a>
+          <a href="efarmoges.html" class="svc">
             <div class="svc-top"><span class="svc-num">03</span></div>
-            <h3>Εφαρμογές</h3>
+            <h3>Custom Εφαρμογές</h3>
             <p>Web και mobile εφαρμογές, πλατφόρμες SaaS και εσωτερικά εργαλεία, φτιαγμένα για τη δική σας ροή εργασίας.</p>
             <ul><li>iOS & Android</li><li>PWA</li><li>Cloud & API</li></ul>
-          </article>
-          <article class="svc">
+            <span class="svc-more">Αναλυτικά η υπηρεσία <svg><use href="#i-arrow"/></svg></span>
+          </a>
+          <a href="ai-chatbots.html" class="svc">
             <div class="svc-top"><span class="svc-num">04</span></div>
             <h3>AI Chatbots</h3>
             <p>Ένας βοηθός εκπαιδευμένος στα προϊόντα σας, που απαντά στους πελάτες 24/7 και μαζεύει αιτήματα.</p>
             <ul><li>WooCommerce & Shopify</li><li>WhatsApp</li><li>Instagram</li></ul>
-          </article>
-          <article class="svc">
+            <span class="svc-more">Αναλυτικά η υπηρεσία <svg><use href="#i-arrow"/></svg></span>
+          </a>
+          <a href="seo-marketing.html" class="svc">
             <div class="svc-top"><span class="svc-num">05</span></div>
             <h3>SEO & Google Maps</h3>
             <p>Τεχνικό SEO, λέξεις-κλειδιά και Google Business Profile, ώστε να σας βρίσκουν όταν σας ψάχνουν.</p>
             <ul><li>Core Web Vitals</li><li>Local SEO</li><li>Μηνιαίες αναφορές</li></ul>
-          </article>
-          <article class="svc">
+            <span class="svc-more">Αναλυτικά η υπηρεσία <svg><use href="#i-arrow"/></svg></span>
+          </a>
+          <a href="seo-marketing.html#ads" class="svc">
             <div class="svc-top"><span class="svc-num">06</span></div>
             <h3>Google & Meta Ads</h3>
             <p>Καμπάνιες σε Google, Facebook, Instagram και TikTok με σωστή μέτρηση μετατροπών από την πρώτη μέρα.</p>
             <ul><li>Performance Max</li><li>Reels</li><li>Conversion API</li></ul>
-          </article>
+            <span class="svc-more">Αναλυτικά η υπηρεσία <svg><use href="#i-arrow"/></svg></span>
+          </a>
         </div>
       </div>
     </section>
@@ -876,6 +1072,34 @@
       </div>
     </section>
 
+    <!-- ================= ΣΥΧΝΕΣ ΕΡΩΤΗΣΕΙΣ (FAQ) ================= -->
+    <section class="section" id="faq" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal" style="max-width:760px;margin:0 auto 28px;text-align:center;display:block">
+          <span class="eyebrow">Συχνές Ερωτήσεις</span>
+          <h2 style="margin-top:8px">Όσα μας ρωτούν πριν ξεκινήσουμε.</h2>
+        </div>
+        <div class="faq-list reveal">
+          <details class="faq-item" open>
+            <summary>Πόσο κοστίζει η κατασκευή μιας ιστοσελίδας και σε πόσο χρόνο παραδίδεται;</summary>
+            <div class="faq-ans">Οι επαγγελματικές ιστοσελίδες παρουσίασης ξεκινούν <b>από 350€</b> και παραδίδονται <b>από 3 εργάσιμες ημέρες</b>, με 100% custom design, mobile-first εμφάνιση, τεχνικό SEO και πλήρη συμμόρφωση GDPR. Για e-shop, custom εφαρμογές και AI chatbots ετοιμάζουμε αυθημερόν εξατομικευμένη γραπτή προσφορά.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Υπάρχουν κρυφές χρεώσεις ή υποχρεωτική μηνιαία συνδρομή;</summary>
+            <div class="faq-ans">Όχι. Η ιστοσελίδα ή το e-shop ανήκει 100% σε εσάς. Πριν ξεκινήσουμε λαμβάνετε αναλυτική γραπτή προσφορά με σταθερό κόστος και σαφές χρονοδιάγραμμα, χωρίς «κλειδωμένα» μηνιαία συμβόλαια.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Μπορώ να κλείσω ένα σύντομο ραντεβού πριν αποφασίσω;</summary>
+            <div class="faq-ans">Φυσικά! Πατήστε <b>«📅 Κλείσε 15' Ραντεβού»</b> οπουδήποτε στη σελίδα, επιλέξτε ημέρα, ώρα και τρόπο επικοινωνίας (Τηλέφωνο, Google Meet ή Viber) και θα μιλήσουμε απευθείας για τις ανάγκες σας.</div>
+          </details>
+          <details class="faq-item">
+            <summary>Αναλαμβάνετε πελάτες εκτός Πάτρας ή στο εξωτερικό;</summary>
+            <div class="faq-ans">Ναι, εξυπηρετούμε επιχειρήσεις σε όλη την Ελλάδα και σε 5 χώρες της Ευρώπης εξ ολοκλήρου online, με ζωντανό σύνδεσμο προεπισκόπησης σε κάθε στάδιο της κατασκευής.</div>
+          </details>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= ΕΠΙΚΟΙΝΩΝΙΑ ================= -->
     <section class="section" id="contact" style="padding-top:0">
       <div class="wrap contact">
@@ -884,6 +1108,7 @@
           <h2>Ας μιλήσουμε για το project σας.</h2>
           <p style="color:var(--ink-2)">Πείτε μας τι χρειάζεστε. Σας απαντάμε αυθημερόν με τα επόμενα βήματα και μια πρώτη εκτίμηση κόστους.</p>
           <div class="contact-info">
+            <a class="ci" href="#" data-book="Κλήση Γνωριμίας 15'" style="border-color:var(--accent);background:var(--accent-soft)"><svg><use href="#i-check"/></svg><div><b style="color:var(--accent)">📅 Κλείστε 15' Δωρεάν Ραντεβού</b><span>Επιλέξτε μέρα & ώρα (Τηλέφωνο / Google Meet / Viber)</span></div></a>
             <a class="ci" href="mailto:info@uplogic.gr"><svg><use href="#i-mail"/></svg><div><b>info@uplogic.gr</b><span>Απάντηση την ίδια μέρα</span></div></a>
             <a class="ci" href="https://www.instagram.com/uplogic_/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg><div><b>@uplogic_</b><span>Instagram · Στείλτε μας DM</span></div></a>
             <a class="ci" id="ciPhone" style="display:none"><svg><use href="#i-phone"/></svg><div><b id="ciPhoneTxt"></b><span>Καλέστε μας Δευτέρα – Σάββατο</span></div></a>
@@ -996,6 +1221,71 @@
     </div>
   </div>
 
+
+  <!-- ================= MODAL ΡΑΝΤΕΒΟΥ 15' (BOOKING) ================= -->
+  <div class="modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bTitle">
+    <div class="modal-box" style="max-width:580px">
+      <div class="modal-head">
+        <div>
+          <small style="color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.06em">Δωρεάν Κλήση Γνωριμίας · 15 Λεπτά</small>
+          <h3 id="bTitle" style="font-size:24px;margin-top:4px">Κλείστε άμεσο ραντεβού</h3>
+        </div>
+        <button class="x" id="bClose" aria-label="Κλείσιμο"><svg><use href="#i-x"/></svg></button>
+      </div>
+      <p style="margin:0 0 6px;font-size:14.5px;color:var(--ink-2)">Επιλέξτε πώς και πότε σας βολεύει να μιλήσουμε για το project σας. Χωρίς καμία δέσμευση.</p>
+
+      <form id="bookingForm" novalidate>
+        <span class="b-step-label">1. Τρόπος επικοινωνίας</span>
+        <div class="b-channels" id="bChannels">
+          <button type="button" class="b-chan active" data-val="Τηλεφωνική Κλήση">📞 Τηλέφωνο</button>
+          <button type="button" class="b-chan" data-val="Google Meet (Video)">💻 Google Meet</button>
+          <button type="button" class="b-chan" data-val="Viber / WhatsApp">💬 Viber / WA</button>
+        </div>
+
+        <span class="b-step-label">2. Επιλέξτε ημέρα</span>
+        <div class="b-days" id="bDays"></div>
+
+        <span class="b-step-label">3. Επιλέξτε ώρα</span>
+        <div class="b-slots" id="bSlots">
+          <button type="button" class="b-slot active" data-val="10:00 - 12:00">10:00 – 12:00</button>
+          <button type="button" class="b-slot" data-val="12:00 - 14:00">12:00 – 14:00</button>
+          <button type="button" class="b-slot" data-val="14:00 - 16:00">14:00 – 16:00</button>
+          <button type="button" class="b-slot" data-val="17:00 - 19:00">17:00 – 19:00</button>
+          <button type="button" class="b-slot" data-val="19:00 - 20:30">19:00 – 20:30</button>
+          <button type="button" class="b-slot" data-val="Όποια ώρα βολεύει">Ευέλικτο ωράριο</button>
+        </div>
+
+        <span class="b-step-label">4. Τα στοιχεία σας</span>
+        <div class="b-inputs">
+          <input type="text" id="bName" placeholder="Το όνομά σας *" required>
+          <input type="text" id="bContact" placeholder="Τηλέφωνο ή Email *" required>
+          <select id="bService" aria-label="Υπηρεσία ενδιαφέροντος">
+            <option value="Ιστοσελίδα (από 350€)">Ιστοσελίδα Παρουσίασης (από 350€)</option>
+            <option value="Κατασκευή E-Shop">Κατασκευή E-Shop (Κατόπιν εκτίμησης)</option>
+            <option value="AI Chatbot 24/7">AI Chatbot 24/7 (Κατόπιν εκτίμησης)</option>
+            <option value="SEO & Google/Meta Ads">SEO, Google Maps & Διαφήμιση</option>
+            <option value="Custom Εφαρμογή / SaaS">Custom Web ή Mobile Εφαρμογή</option>
+            <option value="Γενική Συζήτηση Project">Άλλο / Συνδυασμός Υπηρεσιών</option>
+          </select>
+        </div>
+
+        <div class="b-summary" id="bSummary">
+          <span>Επιλογή: <b id="bSumText">Τηλέφωνο · Αύριο · 10:00 - 12:00</b></span>
+          <span style="color:var(--accent);font-weight:600;font-size:12.5px">Διάρκεια ~15'</span>
+        </div>
+
+        <button type="submit" class="btn btn-dark" style="width:100%;justify-content:center;margin-top:14px" id="bSubmitBtn">
+          Επιβεβαίωση Ραντεβού <svg><use href="#i-arrow"/></svg>
+        </button>
+      </form>
+
+      <div class="b-ok" id="bOk" role="status">
+        <h4>✓ Το ραντεβού σας καταχωρήθηκε!</h4>
+        <p id="bOkText"></p>
+      </div>
+    </div>
+  </div>
+
   <a class="wa-fab" id="waFab" target="_blank" rel="noopener" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
 
   <!-- ================= CHAT ================= -->
@@ -1009,6 +1299,7 @@
         <button data-q="time">Σε πόσο καιρό παραδίδετε;</button>
         <button data-q="chatbot">Τι κάνει το AI chatbot;</button>
         <button data-q="contact">Θέλω να μιλήσω με κάποιον</button>
+        <button type="button" data-book="Ραντεβού από AI Chat">📅 Κλείσε 15' Ραντεβού</button>
       </div>
     </div>
     <form id="chatForm"><input id="chatInput" placeholder="Γράψτε την ερώτησή σας…" autocomplete="off" aria-label="Μήνυμα"><button aria-label="Αποστολή"><svg><use href="#i-send"/></svg></button></form>
@@ -1490,6 +1781,125 @@
       e.preventDefault();
       openLegal(a.dataset.todo);
     }));
+
+    // ---------- Σύστημα Κράτησης Ραντεβού 15' (Booking Modal + Προαιρετικό Calendly) ----------
+    const CALENDLY_URL = ''; // Αν προστεθεί link Calendly στο μέλλον, μπορεί να ανοίγει αυτόματα
+    const bookingModal = document.getElementById('bookingModal');
+    let bState = { channel: 'Τηλεφωνική Κλήση', day: '', slot: '10:00 - 12:00' };
+
+    (function initBookingDays() {
+      const wrap = document.getElementById('bDays');
+      if (!wrap) return;
+      const dNames = ['Κυρ', 'Δευ', 'Τρί', 'Τετ', 'Πέμ', 'Παρ', 'Σάβ'];
+      const mNames = ['Ιαν', 'Φεβ', 'Μαρ', 'Απρ', 'Μαΐ', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοε', 'Δεκ'];
+      const now = new Date();
+      let added = 0, offset = 0;
+      while (added < 6) {
+        const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + offset);
+        offset++;
+        if (d.getDay() === 0) continue; // Παράλειψη Κυριακής
+        const label = `${dNames[d.getDay()]} ${d.getDate()} ${mNames[d.getMonth()]}`;
+        const sub = added === 0 ? 'Άμεσα' : (added === 1 ? 'Επόμενη' : 'Διαθέσιμη');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'b-day' + (added === 0 ? ' active' : '');
+        btn.dataset.val = label;
+        btn.innerHTML = `${label}<small>${sub}</small>`;
+        if (added === 0) bState.day = label;
+        wrap.appendChild(btn);
+        added++;
+      }
+    })();
+
+    function updateBookingSummary() {
+      const el = document.getElementById('bSumText');
+      if (el) el.textContent = `${bState.channel} · ${bState.day} · ${bState.slot}`;
+    }
+    updateBookingSummary();
+
+    function bindGroup(id, key) {
+      const wrap = document.getElementById(id);
+      if (!wrap) return;
+      wrap.addEventListener('click', e => {
+        const btn = e.target.closest('button[data-val]');
+        if (!btn) return;
+        wrap.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        bState[key] = btn.dataset.val;
+        updateBookingSummary();
+      });
+    }
+    bindGroup('bChannels', 'channel');
+    bindGroup('bDays', 'day');
+    bindGroup('bSlots', 'slot');
+
+    function openBookingModal(preselectService) {
+      if (CALENDLY_URL) { window.open(CALENDLY_URL, '_blank', 'noopener'); return; }
+      if (!bookingModal) return;
+      lastFocus = document.activeElement;
+      if (preselectService) {
+        const sel = document.getElementById('bService');
+        if (sel) {
+          for (const opt of sel.options) {
+            if (opt.value.toLowerCase().includes(preselectService.toLowerCase()) || preselectService.toLowerCase().includes(opt.value.toLowerCase().split(' ')[0])) {
+              sel.value = opt.value; break;
+            }
+          }
+        }
+      }
+      document.getElementById('bookingForm').style.display = 'block';
+      document.getElementById('bOk').style.display = 'none';
+      bookingModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('bName').focus();
+    }
+    function closeBookingModal() {
+      if (!bookingModal) return;
+      bookingModal.classList.remove('open');
+      document.body.style.overflow = '';
+      lastFocus && lastFocus.focus();
+    }
+    if (document.getElementById('bClose')) document.getElementById('bClose').addEventListener('click', closeBookingModal);
+    if (bookingModal) bookingModal.addEventListener('click', e => { if (e.target === bookingModal) closeBookingModal(); });
+    addEventListener('keydown', e => { if (e.key === 'Escape') closeBookingModal(); });
+
+    document.querySelectorAll('[data-book]').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.preventDefault();
+        openBookingModal(btn.dataset.book || '');
+      });
+    });
+
+    if (document.getElementById('bookingForm')) {
+      document.getElementById('bookingForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const name = document.getElementById('bName').value.trim();
+        const contact = document.getElementById('bContact').value.trim();
+        const service = document.getElementById('bService').value;
+        if (!name || !contact) {
+          document.getElementById(!name ? 'bName' : 'bContact').focus();
+          return;
+        }
+        const btn = document.getElementById('bSubmitBtn');
+        btn.disabled = true;
+        const details = `Ραντεβού 15': ${bState.channel} | Ημέρα: ${bState.day} | Ώρα: ${bState.slot} | Υπηρεσία: ${service}`;
+        sendLeadData({
+          name,
+          contact,
+          email: contact.includes('@') ? contact : '',
+          interest: `ΡΑΝΤΕΒΟΥ 15' — ${service}`,
+          message: details,
+          source: 'Modal Κράτησης Ραντεβού (uplogic.gr)'
+        }).then(() => {
+          btn.disabled = false;
+          document.getElementById('bookingForm').style.display = 'none';
+          const ok = document.getElementById('bOk');
+          document.getElementById('bOkText').innerHTML = `Κλείσαμε <b>${bState.channel}</b> για <b>${bState.day} (${bState.slot})</b>.<br>Θα επικοινωνήσουμε στο <b>${contact.replace(/[<>&"']/g, '')}</b>!`;
+          ok.style.display = 'block';
+        });
+      });
+    }
+
     document.getElementById('yr').textContent = new Date().getFullYear();
   </script>
 </body>
