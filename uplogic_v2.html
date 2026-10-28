@@ -279,6 +279,31 @@
     .total .btn:hover { background: #ECECEF; }
     .note { font-size: 13px; color: var(--muted); margin-top: 14px; }
 
+    /* Blog / Άρθρα & Οδηγοί */
+    .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .bpost { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 30px 28px 26px; text-align: left; cursor: pointer; display: flex; flex-direction: column; gap: 12px; transition: transform .25s, box-shadow .25s, border-color .25s; }
+    .bpost:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: var(--line-strong); }
+    .bpost-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 13px; color: var(--muted); }
+    .bpost-cat { font-size: 12px; font-weight: 600; color: var(--accent-ink); background: var(--accent-soft); padding: 4px 11px; border-radius: 999px; }
+    .bpost h3 { font-size: 22px; line-height: 1.25; margin-top: 2px; }
+    .bpost p { color: var(--ink-2); font-size: 15px; line-height: 1.6; margin: 0; }
+    .bpost-foot { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-size: 13.5px; }
+    .bpost-foot span { color: var(--muted); }
+    .bpost-read { font-weight: 600; color: var(--ink); display: inline-flex; align-items: center; gap: 6px; }
+    .bpost-read svg { width: 15px; height: 15px; transition: transform .2s; }
+    .bpost:hover .bpost-read svg { transform: translateX(3px); }
+    .post-body { font-size: 15.5px; color: var(--ink-2); line-height: 1.72; }
+    .post-body p { margin: 0 0 14px; }
+    .post-body h4 { font-family: var(--display); font-size: 19px; color: var(--ink); margin: 24px 0 8px; letter-spacing: -0.01em; }
+    .post-body ul { margin: 0 0 16px; padding-left: 20px; }
+    .post-body li { margin-bottom: 6px; }
+    .post-callout { background: var(--accent-soft); border: 1px solid rgba(36,81,245,.18); border-radius: 16px; padding: 16px 20px; margin: 18px 0; color: var(--ink); font-size: 14.5px; }
+    .post-cta-box { margin-top: 26px; padding: 22px 24px; border-radius: 18px; background: var(--ink); color: #fff; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .post-cta-box b { display: block; font-family: var(--display); font-size: 19px; margin-bottom: 2px; }
+    .post-cta-box span { font-size: 13.5px; color: #C9C9D1; }
+    .post-cta-box .btn { background: #fff; color: var(--ink); }
+    .post-cta-box .btn:hover { background: #ECECEF; }
+
     /* Contact */
     .contact { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: start; }
     .contact h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin: 14px 0 18px; }
@@ -407,7 +432,7 @@
       .mobile-nav.open { display: flex; }
       .mobile-nav a { padding: 14px 4px; font-size: 18px; font-weight: 500; border-bottom: 1px solid var(--line); }
       .mobile-nav .btn { margin-top: 16px; justify-content: center; border-bottom: 0; color: #fff; font-size: 16px; }
-      .work { grid-template-columns: 1fr; }
+      .work, .blog-grid { grid-template-columns: 1fr; }
       .foot { grid-template-columns: 1fr 1fr; }
       .foot > div:first-child { grid-column: 1 / -1; }
     }
@@ -479,7 +504,8 @@
         <a href="#about">Η Εταιρεία</a>
         <a href="#services">Υπηρεσίες</a>
         <a href="#work">Έργα</a>
-        <a href="#pricing">Τιμές</a>
+        <a href="#pricing">Πακέτα</a>
+        <a href="#blog">Άρθρα</a>
         <a href="#contact">Επικοινωνία</a>
       </nav>
       <div class="header-cta">
@@ -494,7 +520,8 @@
     <a href="#about">Η Εταιρεία</a>
     <a href="#services">Υπηρεσίες</a>
     <a href="#work">Έργα</a>
-    <a href="#pricing">Τιμές</a>
+    <a href="#pricing">Πακέτα</a>
+    <a href="#blog">Άρθρα</a>
     <a href="#contact">Επικοινωνία</a>
     <a href="#contact" class="btn btn-dark">Ζήτα προσφορά</a>
   </nav>
@@ -822,6 +849,73 @@
       </div>
     </section>
 
+    <!-- ================= ΑΡΘΡΑ & ΟΔΗΓΟΙ (BLOG) ================= -->
+    <section class="section" id="blog" style="padding-top:0">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div>
+            <span class="eyebrow">Άρθρα & Γνωσιακή Βάση</span>
+            <h2>Πρακτικοί οδηγοί για την ψηφιακή ανάπτυξη της επιχείρησής σας.</h2>
+          </div>
+          <p>Ξεκάθαρες απαντήσεις χωρίς τεχνική ορολογία για το κόστος, την τεχνολογία, το SEO και την Τεχνητή Νοημοσύνη.</p>
+        </div>
+
+        <div class="blog-grid reveal">
+          <button class="bpost" data-post="cost-guide">
+            <div class="bpost-top">
+              <span class="bpost-cat">Οδηγός Κόστους · 2026</span>
+              <span>3 λεπτά ανάγνωση</span>
+            </div>
+            <h3>Πόσο κοστίζει μια Ιστοσελίδα ή ένα E-Shop το 2026; Ο οδηγός χωρίς ψιλά γράμματα</h3>
+            <p>Τι περιλαμβάνει πραγματικά μια επαγγελματική ιστοσελίδα από 350€, τι καθορίζει το κόστος ενός σύγχρονου E-Shop και ποιες κρυφές χρεώσεις της αγοράς πρέπει να αποφύγετε.</p>
+            <div class="bpost-foot">
+              <span>Συντακτική ομάδα UpLogic</span>
+              <span class="bpost-read">Διαβάστε το άρθρο <svg><use href="#i-arrow"/></svg></span>
+            </div>
+          </button>
+
+          <button class="bpost" data-post="ai-vs-livechat">
+            <div class="bpost-top">
+              <span class="bpost-cat">Τεχνητή Νοημοσύνη & Πωλήσεις</span>
+              <span>3 λεπτά ανάγνωση</span>
+            </div>
+            <h3>AI Chatbot vs Live Chat: Τι να διαλέξετε για να μη χάνετε πελάτες εκτός ωραρίου;</h3>
+            <p>Το 62% των επισκεπτών μπαίνει σε ιστοσελίδες το βράδυ ή το Σαββατοκύριακο. Δείτε πώς ένας εκπαιδευμένος AI βοηθός απαντά ακαριαία και συλλέγει τηλέφωνα πελατών 24/7.</p>
+            <div class="bpost-foot">
+              <span>Συντακτική ομάδα UpLogic</span>
+              <span class="bpost-read">Διαβάστε το άρθρο <svg><use href="#i-arrow"/></svg></span>
+            </div>
+          </button>
+
+          <button class="bpost" data-post="local-seo-google">
+            <div class="bpost-top">
+              <span class="bpost-cat">SEO & Google Maps</span>
+              <span>4 λεπτά ανάγνωση</span>
+            </div>
+            <h3>Γιατί μια όμορφη ιστοσελίδα δεν φτάνει: Τα 5 σημεία που σας βγάζουν 1ους στη Google</h3>
+            <p>Ταχύτητα φόρτωσης στο κινητό, σωστή δομή κώδικα, Schema markup και Google Business Profile: πώς μετατρέπετε τις τοπικές αναζητήσεις σε καθημερινούς πελάτες.</p>
+            <div class="bpost-foot">
+              <span>Συντακτική ομάδα UpLogic</span>
+              <span class="bpost-read">Διαβάστε το άρθρο <svg><use href="#i-arrow"/></svg></span>
+            </div>
+          </button>
+
+          <button class="bpost" data-post="custom-vs-template">
+            <div class="bpost-top">
+              <span class="bpost-cat">Στρατηγική & Design</span>
+              <span>3 λεπτά ανάγνωση</span>
+            </div>
+            <h3>Έτοιμο Πρότυπο (Template) ή Custom Κατασκευή; Τι συμφέρει μια ελληνική επιχείρηση</h3>
+            <p>Γιατί τα βαριά, έτοιμα θέματα με δεκάδες πρόσθετα επιβραδύνουν τη σελίδα σας και πώς ο καθαρός, custom σχεδιασμός αυξάνει την αξιοπιστία και τις μετατροπές.</p>
+            <div class="bpost-foot">
+              <span>Συντακτική ομάδα UpLogic</span>
+              <span class="bpost-read">Διαβάστε το άρθρο <svg><use href="#i-arrow"/></svg></span>
+            </div>
+          </button>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= ΕΠΙΚΟΙΝΩΝΙΑ ================= -->
     <section class="section" id="contact" style="padding-top:0">
       <div class="wrap contact">
@@ -880,7 +974,7 @@
         </div>
         <div>
           <h4>Πλοήγηση</h4>
-          <ul><li><a href="#about">Η Εταιρεία</a></li><li><a href="#services">Υπηρεσίες</a></li><li><a href="#work">Έργα</a></li><li><a href="#pricing">Τιμές</a></li><li><a href="#contact">Επικοινωνία</a></li></ul>
+          <ul><li><a href="#about">Η Εταιρεία</a></li><li><a href="#services">Υπηρεσίες</a></li><li><a href="#work">Έργα</a></li><li><a href="#pricing">Πακέτα</a></li><li><a href="#blog">Άρθρα & Οδηγοί</a></li><li><a href="#contact">Επικοινωνία</a></li></ul>
         </div>
         <div>
           <h4>Νομικά</h4>
@@ -921,6 +1015,24 @@
         <button class="x" id="lClose" aria-label="Κλείσιμο"><svg><use href="#i-x"/></svg></button>
       </div>
       <div class="legal-body" id="lBody"></div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL ΑΡΘΡΟΥ (BLOG READER) ================= -->
+  <div class="modal" id="postModal" role="dialog" aria-modal="true" aria-labelledby="pTitle">
+    <div class="modal-box" style="max-width:760px">
+      <div class="modal-head">
+        <div><small id="pMeta"></small><h3 id="pTitle" style="font-size:26px;line-height:1.22"></h3></div>
+        <button class="x" id="pClose" aria-label="Κλείσιμο"><svg><use href="#i-x"/></svg></button>
+      </div>
+      <div class="post-body" id="pBody"></div>
+      <div class="post-cta-box">
+        <div>
+          <b>Θέλετε πρόταση στα μέτρα της επιχείρησής σας;</b>
+          <span>Σας απαντάμε αυθημερόν με καθαρό πλάνο και γραπτή προσφορά.</span>
+        </div>
+        <a href="#contact" class="btn btn-sm" id="pCtaBtn">Ζητήστε προσφορά <svg><use href="#i-arrow"/></svg></a>
+      </div>
     </div>
   </div>
 
@@ -1253,6 +1365,110 @@
       }
     });
     document.getElementById('cookieSettings').addEventListener('click', e => { e.preventDefault(); cookie.classList.add('show'); });
+
+    // ---------- Άρθρα & Γνωσιακή Βάση (Blog) ----------
+    const blogPosts = {
+      'cost-guide': {
+        meta: 'Οδηγός Κόστους · 2026 · 3 λεπτά ανάγνωση',
+        title: 'Πόσο κοστίζει μια Ιστοσελίδα ή ένα E-Shop το 2026; Ο οδηγός χωρίς ψιλά γράμματα',
+        pkg: 'Ιστοσελίδα / E-Shop (από Άρθρο Κόστους)',
+        html: `
+          <p>Μία από τις πρώτες ερωτήσεις κάθε επαγγελματία είναι απλή: <b>«Πόσο θα μου κοστίσει πραγματικά μια σωστή ιστοσελίδα ή ένα e-shop και γιατί βλέπω τόσο μεγάλες διαφορές στην αγορά;»</b> Στην UpLogic πιστεύουμε στην απόλυτη διαφάνεια πριν ξεκινήσει οποιαδήποτε συνεργασία.</p>
+          <h4>1. Επαγγελματική Ιστοσελίδα Παρουσίασης (από 350€)</h4>
+          <p>Για έναν ελεύθερο επαγγελματία, ιατρείο, τεχνική εταιρεία, τουριστικό κατάλυμα ή επιχείρηση υπηρεσιών, μια σύγχρονη ιστοσελίδα παρουσίασης δεν χρειάζεται να κοστίζει χιλιάδες ευρώ ούτε να αργεί μήνες. Με <b>εκκίνηση από 350€ και παράδοση από 3 εργάσιμες ημέρες</b>, αποκτάτε:</p>
+          <ul>
+            <li><b>100% Custom Design</b> προσαρμοσμένο στην ταυτότητα της επιχείρησής σας (όχι έτοιμο πρότυπο που χρησιμοποιούν δεκάδες άλλοι).</li>
+            <li><b>Mobile-First κατασκευή</b> ώστε να φορτώνει ακαριαία σε κάθε κινητό τηλέφωνο.</li>
+            <li><b>Τεχνικό SEO & σύνδεση με Google Maps</b> για να σας βρίσκουν οι πελάτες στην περιοχή σας.</li>
+            <li><b>Φόρμα αιτημάτων, SSL ασφάλεια (https) & πλήρη συμμόρφωση GDPR.</b></li>
+          </ul>
+          <h4>2. Τι καθορίζει το κόστος ενός σύγχρονου E-Shop;</h4>
+          <p>Ένα ηλεκτρονικό κατάστημα δεν είναι απλώς μια βιτρίνα — είναι ένα 24ωρο εμπορικό κατάστημα. Η τελική προσφορά διαμορφώνεται ανάλογα με τις πραγματικές σας ανάγκες:</p>
+          <ul>
+            <li><b>Όγκος και οργάνωση προϊόντων:</b> Αριθμός κωδικών (SKU), παραλλαγές (μεγέθη/χρώματα) και φίλτρα αναζήτησης.</li>
+            <li><b>Τρόποι πληρωμής & Courier:</b> Διασύνδεση με όλες τις ελληνικές τράπεζες, IRIS, Apple Pay / Google Pay και αυτόματη έκδοση voucher για ACS, Γενική Ταχυδρομική, Box Now ή ΕΛΤΑ.</li>
+            <li><b>Κανάλια πωλήσεων & ERP:</b> Αυτόματο XML feed για Skroutz & BestPrice, σύνδεση με myDATA ή επέκταση σε Amazon Europe και eBay.</li>
+          </ul>
+          <div class="post-callout"><b>💡 Η συμβουλή της UpLogic:</b> Πριν αναθέσετε το έργο σας, ζητήστε πάντα γραπτή προσφορά που να ξεκαθαρίζει ότι η σελίδα ανήκει 100% σε εσάς, χωρίς υποχρεωτικά «κλειδωμένα» μηνιαία συμβόλαια συντήρησης.</div>
+        `
+      },
+      'ai-vs-livechat': {
+        meta: 'Τεχνητή Νοημοσύνη & Πωλήσεις · 3 λεπτά ανάγνωση',
+        title: 'AI Chatbot vs Live Chat: Τι να διαλέξετε για να μη χάνετε πελάτες εκτός ωραρίου;',
+        pkg: 'AI Chatbot 24/7',
+        html: `
+          <p>Τα στατιστικά δείχνουν ότι <b>πάνω από το 60% των επισκεπτών</b> μπαίνει σε μια ιστοσελίδα ή ένα e-shop το απόγευμα, αργά το βράδυ ή το Σαββατοκύριακο — ακριβώς τις ώρες που το τηλεφωνικό κέντρο είναι κλειστό.</p>
+          <h4>Το πρόβλημα με το κλασικό Live Chat</h4>
+          <p>Στο παραδοσιακό Live Chat, αν δεν υπάρχει διαθέσιμος υπάλληλος να απαντήσει μέσα σε 1–2 λεπτά, ο επισκέπτης κλείνει τη σελίδα και πηγαίνει στον επόμενο ανταγωνιστή. Επιπλέον, οι κλασικές φόρμες επικοινωνίας έχουν χαμηλό ποσοστό συμπλήρωσης επειδή ο πελάτης θέλει άμεση απάντηση.</p>
+          <h4>Πώς αλλάζει το παιχνίδι ένα εκπαιδευμένο AI Chatbot</h4>
+          <p>Ένας σύγχρονος AI Βοηθός (όπως αυτός που μπορείτε να δοκιμάσετε κάτω δεξιά στη σελίδα μας) δεν δίνει τυποποιημένες «ρομποτικές» απαντήσεις:</p>
+          <ul>
+            <li><b>Εκπαιδεύεται στα δικά σας δεδομένα:</b> Γνωρίζει τις υπηρεσίες, τα προϊόντα, την πολιτική αποστολών και τις συχνές ερωτήσεις της επιχείρησής σας.</li>
+            <li><b>Απαντά σε 1 δευτερόλεπτο, 24/7:</b> Εξυπηρετεί ταυτόχρονα δεκάδες επισκέπτες σε Site, E-Shop, WhatsApp και Instagram.</li>
+            <li><b>Μετατρέπει τη συζήτηση σε πελάτη (Lead):</b> Αντί να στέλνει τον επισκέπτη σε μια φόρμα, του ζητά ευγενικά το Όνομα και το Τηλέφωνό του μέσα στη συνομιλία και σας τα στέλνει αμέσως στο email σας.</li>
+          </ul>
+          <div class="post-callout"><b>Συμπέρασμα:</b> Ο ιδανικός συνδυασμός για το 2026 είναι ένα AI Chatbot που απαντά ακαριαία 24/7 και καταγράφει τα στοιχεία του ενδιαφερόμενου, ώστε εσείς να τον καλείτε έτοιμο για κλείσιμο συνεργασίας.</div>
+        `
+      },
+      'local-seo-google': {
+        meta: 'SEO & Google Maps · 4 λεπτά ανάγνωση',
+        title: 'Γιατί μια όμορφη ιστοσελίδα δεν φτάνει: Τα 5 σημεία που σας βγάζουν 1ους στη Google',
+        pkg: 'SEO & Google Maps',
+        html: `
+          <p>Έχουμε δει δεκάδες επιχειρήσεις να πληρώνουν για μια εντυπωσιακή ιστοσελίδα που όμως <b>δεν εμφανίζεται πουθενά</b> όταν ένας πελάτης ψάχνει τις υπηρεσίες τους στη Google. Η ομορφιά κερδίζει τις εντυπώσεις, αλλά η τεχνική υποδομή φέρνει τους πελάτες.</p>
+          <h4>Τα 5 σημεία που κρίνουν την κατάταξή σας:</h4>
+          <ul>
+            <li><b>1. Ταχύτητα φόρτωσης στο κινητό (Core Web Vitals):</b> Η Google αξιολογεί πρώτα την έκδοση κινητού. Αν η σελίδα αργεί πάνω από 3 δευτερόλεπτα, χάνετε τόσο κατάταξη όσο και επισκέπτες.</li>
+            <li><b>2. Καθαρή δομή επικεφαλίδων & λέξεων-κλειδιών:</b> Κάθε υπηρεσία πρέπει να στοχεύει τις ακριβείς φράσεις που αναζητά ο πελάτης (π.χ. υπηρεσία + πόλη).</li>
+            <li><b>3. Δομημένα Δεδομένα (Schema Markup):</b> Ειδικός κώδικας που εξηγεί στη Google ποια είναι η επιχείρησή σας, πού εδρεύει και ποιες υπηρεσίες προσφέρει.</li>
+            <li><b>4. Βελτιστοποίηση Google Business Profile (Google Maps):</b> Για τοπικές επιχειρήσεις, ο χάρτης της Google φέρνει συχνά τα περισσότερα τηλεφωνήματα.</li>
+            <li><b>5. Ξεκάθαρο Call-to-Action:</b> Ο επισκέπτης που μπαίνει από τη Google πρέπει μέσα σε 5 δευτερόλεπτα να καταλαβαίνει τι κάνετε και πώς μπορεί να επικοινωνήσει μαζί σας.</li>
+          </ul>
+          <div class="post-callout"><b>Στην UpLogic</b> το τεχνικό SEO και το Schema Markup ενσωματώνονται από την πρώτη γραμμή κώδικα σε κάθε ιστοσελίδα που παραδίδουμε.</div>
+        `
+      },
+      'custom-vs-template': {
+        meta: 'Στρατηγική & Design · 3 λεπτά ανάγνωση',
+        title: 'Έτοιμο Πρότυπο (Template) ή Custom Κατασκευή; Τι συμφέρει μια ελληνική επιχείρηση',
+        pkg: 'Custom Ιστοσελίδα / Εφαρμογή',
+        html: `
+          <p>Όταν ζητάτε προσφορές για κατασκευή ιστοσελίδας, θα συναντήσετε δύο προσεγγίσεις: την εγκατάσταση ενός έτοιμου προτύπου (template) με δεκάδες βαριά πρόσθετα (plugins) ή τον <b>καθαρό, custom σχεδιασμό</b> πάνω στις ανάγκες σας.</p>
+          <h4>Τι συμβαίνει στην πράξη με τα βαριά έτοιμα Templates</h4>
+          <ul>
+            <li><b>Χαμηλή ταχύτητα:</b> Φορτώνουν κώδικα για εκατοντάδες λειτουργίες που δεν χρησιμοποιείτε ποτέ, κάνοντας τη σελίδα αργή στο κινητό.</li>
+            <li><b>Ομοιότητα με τον ανταγωνισμό:</b> Η επιχείρησή σας μοιάζει οπτικά με δεκάδες άλλες σελίδες που αγόρασαν το ίδιο θέμα.</li>
+            <li><b>Συνεχείς ενημερώσεις & κίνδυνος ασφάλειας:</b> Όσο περισσότερα έτοιμα plugins τρίτων υπάρχουν, τόσο συχνότερα εμφανίζονται ασυμβατότητες.</li>
+          </ul>
+          <h4>Γιατί η Custom προσέγγιση αποδίδει πολλαπλάσια</h4>
+          <p>Στην UpLogic σχεδιάζουμε κάθε σελίδα και εφαρμογή με καθαρό κώδικα, εστιασμένο 100% στον στόχο της επιχείρησής σας:</p>
+          <ul>
+            <li><b>Ακαριαία φόρτωση:</b> Χωρίς περιττό βάρος, η σελίδα ανοίγει αμέσως ακόμη και με δεδομένα κινητής (4G/5G).</li>
+            <li><b>Σχεδιασμός με στόχο τις πωλήσεις:</b> Κάθε ενότητα οδηγεί φυσικά τον επισκέπτη στο να ζητήσει προσφορά ή να αγοράσει.</li>
+            <li><b>Εύκολη επέκταση:</b> Από μια εταιρική σελίδα μέχρι σύνδεση με AI Chatbot ή custom εφαρμογή, όλα χτίζονται πάνω σε γερές βάσεις.</li>
+          </ul>
+        `
+      }
+    };
+    const postModal = document.getElementById('postModal');
+    function openPost(id) {
+      const bp = blogPosts[id]; if (!bp) return;
+      lastFocus = document.activeElement;
+      document.getElementById('pMeta').textContent = bp.meta;
+      document.getElementById('pTitle').textContent = bp.title;
+      document.getElementById('pBody').innerHTML = bp.html;
+      postModal.dataset.pkg = bp.pkg || '';
+      postModal.classList.add('open'); document.body.style.overflow = 'hidden';
+      document.getElementById('pClose').focus();
+    }
+    function closePost() { postModal.classList.remove('open'); document.body.style.overflow = ''; lastFocus && lastFocus.focus(); }
+    document.querySelectorAll('.bpost').forEach(b => b.addEventListener('click', () => openPost(b.dataset.post)));
+    document.getElementById('pClose').addEventListener('click', closePost);
+    postModal.addEventListener('click', e => { if (e.target === postModal) closePost(); });
+    document.getElementById('pCtaBtn').addEventListener('click', () => {
+      if (postModal.dataset.pkg) document.getElementById('fPkg').value = postModal.dataset.pkg;
+      closePost();
+    });
+    addEventListener('keydown', e => { if (e.key === 'Escape') closePost(); });
 
     // ---------- Πολιτική Απορρήτου & Όροι Χρήσης (GDPR) ----------
     const legalDocs = {
