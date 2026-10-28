@@ -36,7 +36,8 @@
     "description": "Κατασκευή ιστοσελίδων, e-shop, εφαρμογών, AI chatbots, SEO και διαφήμισης.",
     "address": { "@type": "PostalAddress", "addressLocality": "Πάτρα", "addressRegion": "Αχαΐα", "addressCountry": "GR" },
     "areaServed": ["GR", "EU"],
-    "priceRange": "€€"
+    "priceRange": "€€",
+    "sameAs": ["https://www.instagram.com/uplogic_/"]
   }
   </script>
 
@@ -830,6 +831,7 @@
           <p style="color:var(--ink-2)">Πείτε μας τι χρειάζεστε. Σας απαντάμε αυθημερόν με τα επόμενα βήματα και μια πρώτη εκτίμηση κόστους.</p>
           <div class="contact-info">
             <a class="ci" href="mailto:info@uplogic.gr"><svg><use href="#i-mail"/></svg><div><b>info@uplogic.gr</b><span>Απάντηση την ίδια μέρα</span></div></a>
+            <a class="ci" href="https://www.instagram.com/uplogic_/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg><div><b>@uplogic_</b><span>Instagram · Στείλτε μας DM</span></div></a>
             <a class="ci" id="ciPhone" style="display:none"><svg><use href="#i-phone"/></svg><div><b id="ciPhoneTxt"></b><span>Καλέστε μας Δευτέρα – Σάββατο</span></div></a>
             <div class="ci"><svg><use href="#i-pin"/></svg><div><b>Πάτρα, Αχαΐα</b><span>Εξυπηρέτηση σε Ελλάδα & εξωτερικό</span></div></div>
             <div class="ci-row">
@@ -951,7 +953,7 @@
     const CONTACT = {
       phone: '',        // π.χ. '+30 69XXXXXXXX'
       whatsapp: '',     // π.χ. '3069XXXXXXXX' (χωρίς + και κενά)
-      instagram: ''     // π.χ. 'uplogic.gr' (το username χωρίς @)
+      instagram: 'uplogic_' // Instagram username
     };
     (function applyContact() {
       const show = (id, href, extra) => { const el = document.getElementById(id); if (!el) return; el.href = href; el.style.display = extra || 'inline-flex'; };
