@@ -85,11 +85,11 @@
       --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
     body {
       margin: 0; background: var(--bg); color: var(--ink);
       font-family: var(--body); font-size: 16px; line-height: 1.6;
-      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: hidden;
     }
     img, svg { display: block; }
     a { color: inherit; text-decoration: none; }
@@ -424,39 +424,52 @@
       .contact { grid-template-columns: 1fr; gap: 40px; }
     }
     @media (max-width: 820px) {
-      .header .wrap { height: 82px; }
-      .logo-banner-img { height: 76px; }
+      .header .wrap { height: 70px; gap: 8px; }
+      .logo-banner-img { height: 54px; max-width: 150px; object-fit: contain; }
       .nav, .header-cta .btn-line { display: none; }
-      .menu-btn { display: inline-flex; }
-      .mobile-nav { position: fixed; inset: 82px 0 auto 0; background: var(--bg); border-bottom: 1px solid var(--line); padding: 12px 24px 24px; flex-direction: column; gap: 2px; z-index: 39; }
+      .header-cta { gap: 8px; }
+      .menu-btn { display: inline-flex; width: 40px; height: 40px; flex-shrink: 0; }
+      .mobile-nav { position: fixed; inset: 70px 0 auto 0; background: var(--bg); border-bottom: 1px solid var(--line); padding: 12px 20px 24px; flex-direction: column; gap: 2px; z-index: 39; box-shadow: var(--shadow-lg); }
       .mobile-nav.open { display: flex; }
-      .mobile-nav a { padding: 14px 4px; font-size: 18px; font-weight: 500; border-bottom: 1px solid var(--line); }
-      .mobile-nav .btn { margin-top: 16px; justify-content: center; border-bottom: 0; color: #fff; font-size: 16px; }
+      .mobile-nav a { padding: 14px 4px; font-size: 17px; font-weight: 500; border-bottom: 1px solid var(--line); }
+      .mobile-nav .btn { margin-top: 14px; justify-content: center; border-bottom: 0; color: #fff; font-size: 16px; }
       .work, .blog-grid { grid-template-columns: 1fr; }
       .foot { grid-template-columns: 1fr 1fr; }
       .foot > div:first-child { grid-column: 1 / -1; }
     }
     @media (max-width: 600px) {
-      .wrap { padding: 0 20px; }
+      .wrap { padding: 0 16px; }
+      .header .wrap { height: 64px; padding: 0 12px; }
+      .logo-banner-img { height: 46px; max-width: 132px; }
+      .header-cta .btn-sm { height: 36px; padding: 0 12px; font-size: 13px; }
+      .menu-btn { width: 38px; height: 38px; border-radius: 10px; }
+      .mobile-nav { inset: 64px 0 auto 0; }
       .logo-sub { display: none; }
-      .brand-hero-banner { margin-bottom: 24px; border-radius: 16px; }
-      .hero { padding: 40px 0 24px; }
-      .hero-facts { gap: 20px; }
-      .stage { height: 430px; }
-      .win { inset: 0 0 85px 0; }
-      .win-speed { display: none; }
-      .hub { padding: 14px; gap: 10px; }
-      .hub-pill { display: none; }
-      .bento { gap: 8px; }
-      .bcard { padding: 11px 12px; }
+      .hero { padding: 28px 0 24px; }
+      .hero h1 { font-size: 2.25rem; margin: 14px 0 16px; }
+      .hero-actions { gap: 10px; margin-top: 24px; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .hero-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 28px; padding-top: 18px; }
+      .hero-facts div { font-size: 12.5px; }
+      .hero-facts strong { font-size: 18px; }
+      .stage { height: auto; display: flex; flex-direction: column; gap: 12px; }
+      .win { position: relative; inset: auto; border-radius: 20px; }
+      .win-bar { height: 38px; padding: 0 12px; }
+      .win-speed { font-size: 10.5px; padding: 2px 8px; }
+      .hub { padding: 14px; gap: 12px; }
+      .hub-head b { font-size: 17px; }
+      .hub-pill { font-size: 11px; padding: 4px 9px; }
+      .bento { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .bcard { padding: 12px; gap: 4px; }
       .bcard b { font-size: 14px; }
-      .bcard span { font-size: 11px; }
-      .phone { width: 196px; right: -4px; border-radius: 24px; padding: 8px; }
-      .phone-in { padding: 13px 12px; border-radius: 18px; }
-      .phone .big { font-size: 21px; margin-bottom: 8px; white-space: nowrap; }
-      .phone .row { font-size: 11px; gap: 8px; white-space: nowrap; padding: 6px 0; }
-      .bubble { left: 0; bottom: 0; max-width: 186px; font-size: 11.5px; padding: 10px 12px; }
-      .section { padding: 80px 0; }
+      .bcard span { font-size: 11.5px; line-height: 1.35; }
+      .bcard-tag { font-size: 10px; padding: 2px 6px; }
+      .phone { position: relative; right: auto; bottom: auto; width: 100%; border-radius: 22px; padding: 8px; }
+      .phone-in { padding: 14px 16px; border-radius: 16px; }
+      .phone .big { font-size: 22px; margin-bottom: 8px; }
+      .phone .row { font-size: 12.5px; padding: 6px 0; }
+      .bubble { position: relative; left: auto; bottom: auto; max-width: 100%; width: 100%; font-size: 12.5px; padding: 12px 14px; }
+      .section { padding: 64px 0; }
       .services { grid-template-columns: 1fr; }
       .svc { min-height: 0; }
       .svc-top { margin-bottom: 24px; }
@@ -505,7 +518,7 @@
         <a href="#services">Υπηρεσίες</a>
         <a href="#work">Έργα</a>
         <a href="#pricing">Πακέτα</a>
-        <a href="#blog">Άρθρα</a>
+        <a href="blog.html">Άρθρα</a>
         <a href="#contact">Επικοινωνία</a>
       </nav>
       <div class="header-cta">
@@ -521,7 +534,7 @@
     <a href="#services">Υπηρεσίες</a>
     <a href="#work">Έργα</a>
     <a href="#pricing">Πακέτα</a>
-    <a href="#blog">Άρθρα</a>
+    <a href="blog.html">Άρθρα</a>
     <a href="#contact">Επικοινωνία</a>
     <a href="#contact" class="btn btn-dark">Ζήτα προσφορά</a>
   </nav>
@@ -849,69 +862,16 @@
       </div>
     </section>
 
-    <!-- ================= ΑΡΘΡΑ & ΟΔΗΓΟΙ (BLOG) ================= -->
+    <!-- ================= ΑΡΘΡΑ & ΟΔΗΓΟΙ (LINK ΣΕ ΞΕΧΩΡΙΣΤΗ ΣΕΛΙΔΑ) ================= -->
     <section class="section" id="blog" style="padding-top:0">
       <div class="wrap">
-        <div class="section-head reveal">
+        <div class="pricing reveal" style="padding:36px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap">
           <div>
-            <span class="eyebrow">Άρθρα & Γνωσιακή Βάση</span>
-            <h2>Πρακτικοί οδηγοί για την ψηφιακή ανάπτυξη της επιχείρησής σας.</h2>
+            <span class="eyebrow">Blog & Γνωσιακή Βάση</span>
+            <h2 style="font-size:clamp(1.6rem,3vw,2.3rem);margin:10px 0 8px">Οδηγοί αγοράς, κόστος E-Shop & AI Chatbots.</h2>
+            <p style="color:var(--ink-2);max-width:580px;margin:0">Διαβάστε τα άρθρα και τις αναλύσεις μας σε ξεχωριστή σελίδα: πόσο κοστίζει μια ιστοσελίδα ή ένα e-shop το 2026, AI Chatbot vs Live Chat, Local SEO & Custom Design.</p>
           </div>
-          <p>Ξεκάθαρες απαντήσεις χωρίς τεχνική ορολογία για το κόστος, την τεχνολογία, το SEO και την Τεχνητή Νοημοσύνη.</p>
-        </div>
-
-        <div class="blog-grid reveal">
-          <button class="bpost" data-post="cost-guide">
-            <div class="bpost-top">
-              <span class="bpost-cat">Οδηγός Κόστους · 2026</span>
-              <span>3 λεπτά ανάγνωση</span>
-            </div>
-            <h3>Πόσο κοστίζει μια Ιστοσελίδα ή ένα E-Shop το 2026; Ο οδηγός χωρίς ψιλά γράμματα</h3>
-            <p>Τι περιλαμβάνει πραγματικά μια επαγγελματική ιστοσελίδα από 350€, τι καθορίζει το κόστος ενός σύγχρονου E-Shop και ποιες κρυφές χρεώσεις της αγοράς πρέπει να αποφύγετε.</p>
-            <div class="bpost-foot">
-              <span>Συντακτική ομάδα UpLogic</span>
-              <span class="bpost-read">Διαβάστε το άρθρο <svg><use href="#i-arrow"/></svg></span>
-            </div>
-          </button>
-
-          <button class="bpost" data-post="ai-vs-livechat">
-            <div class="bpost-top">
-              <span class="bpost-cat">Τεχνητή Νοημοσύνη & Πωλήσεις</span>
-              <span>3 λεπτά ανάγνωση</span>
-            </div>
-            <h3>AI Chatbot vs Live Chat: Τι να διαλέξετε για να μη χάνετε πελάτες εκτός ωραρίου;</h3>
-            <p>Το 62% των επισκεπτών μπαίνει σε ιστοσελίδες το βράδυ ή το Σαββατοκύριακο. Δείτε πώς ένας εκπαιδευμένος AI βοηθός απαντά ακαριαία και συλλέγει τηλέφωνα πελατών 24/7.</p>
-            <div class="bpost-foot">
-              <span>Συντακτική ομάδα UpLogic</span>
-              <span class="bpost-read">Διαβάστε το άρθρο <svg><use href="#i-arrow"/></svg></span>
-            </div>
-          </button>
-
-          <button class="bpost" data-post="local-seo-google">
-            <div class="bpost-top">
-              <span class="bpost-cat">SEO & Google Maps</span>
-              <span>4 λεπτά ανάγνωση</span>
-            </div>
-            <h3>Γιατί μια όμορφη ιστοσελίδα δεν φτάνει: Τα 5 σημεία που σας βγάζουν 1ους στη Google</h3>
-            <p>Ταχύτητα φόρτωσης στο κινητό, σωστή δομή κώδικα, Schema markup και Google Business Profile: πώς μετατρέπετε τις τοπικές αναζητήσεις σε καθημερινούς πελάτες.</p>
-            <div class="bpost-foot">
-              <span>Συντακτική ομάδα UpLogic</span>
-              <span class="bpost-read">Διαβάστε το άρθρο <svg><use href="#i-arrow"/></svg></span>
-            </div>
-          </button>
-
-          <button class="bpost" data-post="custom-vs-template">
-            <div class="bpost-top">
-              <span class="bpost-cat">Στρατηγική & Design</span>
-              <span>3 λεπτά ανάγνωση</span>
-            </div>
-            <h3>Έτοιμο Πρότυπο (Template) ή Custom Κατασκευή; Τι συμφέρει μια ελληνική επιχείρηση</h3>
-            <p>Γιατί τα βαριά, έτοιμα θέματα με δεκάδες πρόσθετα επιβραδύνουν τη σελίδα σας και πώς ο καθαρός, custom σχεδιασμός αυξάνει την αξιοπιστία και τις μετατροπές.</p>
-            <div class="bpost-foot">
-              <span>Συντακτική ομάδα UpLogic</span>
-              <span class="bpost-read">Διαβάστε το άρθρο <svg><use href="#i-arrow"/></svg></span>
-            </div>
-          </button>
+          <a href="blog.html" class="btn btn-dark">Διαβάστε τα Άρθρα μας <svg><use href="#i-arrow"/></svg></a>
         </div>
       </div>
     </section>
@@ -974,7 +934,7 @@
         </div>
         <div>
           <h4>Πλοήγηση</h4>
-          <ul><li><a href="#about">Η Εταιρεία</a></li><li><a href="#services">Υπηρεσίες</a></li><li><a href="#work">Έργα</a></li><li><a href="#pricing">Πακέτα</a></li><li><a href="#blog">Άρθρα & Οδηγοί</a></li><li><a href="#contact">Επικοινωνία</a></li></ul>
+          <ul><li><a href="#about">Η Εταιρεία</a></li><li><a href="#services">Υπηρεσίες</a></li><li><a href="#work">Έργα</a></li><li><a href="#pricing">Πακέτα</a></li><li><a href="blog.html">Άρθρα & Οδηγοί</a></li><li><a href="#contact">Επικοινωνία</a></li></ul>
         </div>
         <div>
           <h4>Νομικά</h4>
