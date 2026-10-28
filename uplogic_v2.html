@@ -197,7 +197,7 @@
       --line-strong: #D9D6CF;
       --ink: #111114;
       --ink-2: #3A3A42;
-      --muted: #6B6B75;
+      --muted: #52525C;
       --accent: #2451F5;
       --accent-ink: #1B3FC4;
       --accent-soft: #EEF2FF;
@@ -679,9 +679,59 @@
       .faq-item .faq-ans { padding: 0 16px 15px; font-size: 14px; }
     }
 
+
+    /* ---------- Skip Link & Accessibility (WCAG AA) ---------- */
+    .skip-link {
+      position: fixed; top: -100px; left: 16px; z-index: 999;
+      background: var(--accent); color: #fff; padding: 10px 18px;
+      border-radius: 10px; font-weight: 600; font-size: 14px;
+      box-shadow: var(--shadow-lg); transition: top .2s;
+    }
+    .skip-link:focus { top: 14px; outline: 3px solid #fff; }
+    :focus-visible { outline: 3px solid var(--accent) !important; outline-offset: 3px !important; border-radius: 6px; }
+
+    /* ---------- Πίνακας Σύγκρισης Πακέτων (Basic / Business / Custom) ---------- */
+    .cmp-box {
+      margin-top: 32px; background: #fff; border: 1px solid var(--line);
+      border-radius: 20px; overflow: hidden; box-shadow: var(--shadow);
+    }
+    .cmp-head {
+      padding: 22px 26px; border-bottom: 1px solid var(--line);
+      display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+      background: #FAF9F5;
+    }
+    .cmp-head h3 { font-size: 20px; letter-spacing: -.02em; }
+    .cmp-head span { font-size: 13.5px; color: var(--muted); }
+    .cmp-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .cmp-table { width: 100%; border-collapse: collapse; min-width: 640px; text-align: left; font-size: 14.5px; }
+    .cmp-table th, .cmp-table td { padding: 14px 20px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+    .cmp-table th:not(:first-child), .cmp-table td:not(:first-child) { text-align: center; width: 21%; }
+    .cmp-table thead th { background: #fff; padding-top: 20px; padding-bottom: 18px; border-bottom: 2px solid var(--line-strong); }
+    .cmp-tier { display: block; font-family: var(--display); font-size: 18px; font-weight: 700; color: var(--ink); }
+    .cmp-sub { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-top: 2px; }
+    .cmp-price {
+      display: inline-block; margin-top: 8px; padding: 4px 10px; border-radius: 99px;
+      font-size: 12.5px; font-weight: 700; background: var(--bg); color: var(--ink); border: 1px solid var(--line-strong);
+    }
+    .cmp-price.hot { background: var(--accent-soft); color: var(--accent); border-color: #C7D4FE; }
+    .cmp-col-hot { background: rgba(36, 81, 245, 0.025); }
+    .cmp-chk {
+      display: inline-grid; place-items: center; width: 24px; height: 24px;
+      border-radius: 50%; background: #ECFDF3; color: #15803D; font-weight: 800; font-size: 13px;
+    }
+    .cmp-dash { color: var(--muted); font-weight: 500; }
+    .cmp-note { display: block; font-size: 12px; color: var(--ink-2); margin-top: 3px; font-weight: 500; }
+    .cmp-table tbody tr:hover { background: rgba(17,17,20,.015); }
+    .cmp-table tfoot td { padding: 18px 16px; border-bottom: 0; background: #FAF9F5; }
+    @media (max-width: 600px) {
+      .cmp-head { padding: 18px 18px; }
+      .cmp-table th, .cmp-table td { padding: 11px 12px; font-size: 13px; }
+    }
+
   </style>
 </head>
 <body>
+  <a href="#top" class="skip-link">Μετάβαση στο κύριο περιεχόμενο</a>
 
   <!-- Σύνολο εικονιδίων (inline SVG, χωρίς εξωτερική βιβλιοθήκη) -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -703,7 +753,7 @@
   <header class="header" id="header">
     <div class="wrap">
       <a href="#top" class="logo-banner-link" aria-label="UpLogic — αρχική">
-        <img src="UpLogicHeaderLogo.jpg" alt="UpLogic — Web · Applications · Technology" class="logo-banner-img">
+        <img src="UpLogicHeaderLogo.jpg" alt="UpLogic — Κατασκευή Ιστοσελίδων, E-Shop, Εφαρμογών & AI Chatbots στην Πάτρα" class="logo-banner-img">
       </a>
       <nav class="nav" aria-label="Κύριο μενού">
         <a href="#about">Η Εταιρεία</a>
@@ -1056,6 +1106,106 @@
             <a href="#contact" class="btn" id="pkgCta">Ζητήστε προσφορά για το πακέτο <svg><use href="#i-arrow"/></svg></a>
           </div>
           <p class="note">Η τελική προσφορά διαμορφώνεται σύμφωνα με τις ακριβείς ανάγκες του project σας.</p>
+
+          <!-- Πίνακας Σύγκρισης Πακέτων (Basic / Business / Custom) -->
+          <div class="cmp-box" role="region" aria-label="Πίνακας σύγκρισης πακέτων Basic, Business και Custom">
+            <div class="cmp-head">
+              <div>
+                <h3>Σύγκριση Πακέτων: Basic vs Business vs Custom</h3>
+                <span>Δείτε αναλυτικά τι περιλαμβάνει κάθε επίπεδο συνεργασίας</span>
+              </div>
+              <span style="font-size:12.5px;font-weight:600;color:var(--accent)">✓ 100% Ιδιοκτησία χωρίς κρυφά πάγια</span>
+            </div>
+            <div class="cmp-scroll" tabindex="0" aria-label="Κύλιση πίνακα σύγκρισης">
+              <table class="cmp-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Χαρακτηριστικά & Παραδοτέα</th>
+                    <th scope="col">
+                      <span class="cmp-tier">Basic</span>
+                      <span class="cmp-sub">Επαγγελματική Ιστοσελίδα</span>
+                      <span class="cmp-price hot">από 350€</span>
+                    </th>
+                    <th scope="col" class="cmp-col-hot">
+                      <span class="cmp-tier" style="color:var(--accent)">Business</span>
+                      <span class="cmp-sub">Πολυσέλιδη / E-Shop / Growth</span>
+                      <span class="cmp-price">Κατόπιν εκτίμησης</span>
+                    </th>
+                    <th scope="col">
+                      <span class="cmp-tier">Custom</span>
+                      <span class="cmp-sub">Εφαρμογές / SaaS / B2B & AI</span>
+                      <span class="cmp-price">Κατόπιν εκτίμησης</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><b>100% Custom Design & Mobile-First</b><span class="cmp-note">Σχεδιασμός στα μέτρα σας (όχι έτοιμο template)</span></td>
+                    <td><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span></td>
+                    <td class="cmp-col-hot"><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span></td>
+                    <td><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td><b>Ασφάλεια SSL (HTTPS) & GDPR Cookies</b><span class="cmp-note">Google Consent Mode v2 & Πολιτική Απορρήτου</span></td>
+                    <td><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span></td>
+                    <td class="cmp-col-hot"><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span></td>
+                    <td><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td><b>Φόρμα Αιτημάτων, Google Maps & Analytics (GA4)</b><span class="cmp-note">Άμεση λήψη leads στο email σας</span></td>
+                    <td><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span></td>
+                    <td class="cmp-col-hot"><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span></td>
+                    <td><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span></td>
+                  </tr>
+                  <tr>
+                    <td><b>Τεχνικό SEO & Schema Markup (JSON-LD)</b><span class="cmp-note">Δομημένα δεδομένα για Google & AI μηχανές</span></td>
+                    <td><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span><span class="cmp-note">Βασικό SEO</span></td>
+                    <td class="cmp-col-hot"><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span><span class="cmp-note">Πλήρες + Local SEO</span></td>
+                    <td><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span><span class="cmp-note">Advanced SEO Strategy</span></td>
+                  </tr>
+                  <tr>
+                    <td><b>Αρχιτεκτονική Σελίδων & Καταλόγου</b><span class="cmp-note">Δομή περιεχομένου & υπηρεσιών</span></td>
+                    <td><span class="cmp-note" style="font-weight:600;color:var(--ink)">One-Page / Landing</span></td>
+                    <td class="cmp-col-hot"><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span><span class="cmp-note">Πολυσέλιδη ή E-Shop</span></td>
+                    <td><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span><span class="cmp-note">Πλήρης Πλατφόρμα</span></td>
+                  </tr>
+                  <tr>
+                    <td><b>Ηλεκτρονικές Πληρωμές, IRIS, Courier & Skroutz XML</b><span class="cmp-note">Διασύνδεση με τράπεζες, Box Now, ACS, Γενική</span></td>
+                    <td><span class="cmp-dash" aria-label="Δεν περιλαμβάνεται">—</span></td>
+                    <td class="cmp-col-hot"><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span></td>
+                    <td><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span><span class="cmp-note">+ Γέφυρα ERP / B2B</span></td>
+                  </tr>
+                  <tr>
+                    <td><b>Εκπαιδευμένο AI Chatbot 24/7</b><span class="cmp-note">Αυτόματες απαντήσεις & καταγραφή τηλεφώνων</span></td>
+                    <td><span class="cmp-note">Προαιρετικό</span></td>
+                    <td class="cmp-col-hot"><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span><span class="cmp-note">Site / E-Shop Bot</span></td>
+                    <td><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span><span class="cmp-note">Custom AI + Social</span></td>
+                  </tr>
+                  <tr>
+                    <td><b>Custom Βάση Δεδομένων, API, myDATA & Mobile Apps</b><span class="cmp-note">Εξειδικευμένο λογισμικό iOS / Android / Cloud</span></td>
+                    <td><span class="cmp-dash" aria-label="Δεν περιλαμβάνεται">—</span></td>
+                    <td><span class="cmp-dash" aria-label="Δεν περιλαμβάνεται">—</span></td>
+                    <td><span class="cmp-chk" aria-label="Περιλαμβάνεται">✓</span><span class="cmp-note">100% Custom Κώδικας</span></td>
+                  </tr>
+                  <tr>
+                    <td><b>Εκτιμώμενος Χρόνος Παράδοσης</b></td>
+                    <td><b style="color:var(--accent)">Από 3 εργάσιμες</b></td>
+                    <td class="cmp-col-hot"><b>5 – 12 εργάσιμες</b></td>
+                    <td><b>Βάσει προδιαγραφών</b></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td><span style="font-size:13px;color:var(--muted)">Επιλέξτε πακέτο για άμεση προσφορά:</span></td>
+                    <td><a href="#contact" class="btn btn-line btn-sm" data-select-tier="Πακέτο Basic — Ιστοσελίδα (από 350€)">Επιλογή Basic</a></td>
+                    <td class="cmp-col-hot"><a href="#contact" class="btn btn-dark btn-sm" data-select-tier="Πακέτο Business (Πολυσέλιδη / E-Shop / AI)">Επιλογή Business</a></td>
+                    <td><a href="#contact" class="btn btn-line btn-sm" data-select-tier="Πακέτο Custom (Εφαρμογή / SaaS / ERP)">Επιλογή Custom</a></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>
@@ -1186,7 +1336,7 @@
         <div><small id="mCat"></small><h3 id="mTitle"></h3></div>
         <button class="x" id="mClose" aria-label="Κλείσιμο"><svg><use href="#i-x"/></svg></button>
       </div>
-      <img class="m-shot" id="mShot" alt="" loading="lazy">
+      <img class="m-shot" id="mShot" alt="Προεπισκόπηση έργου UpLogic" loading="lazy">
       <p id="mDesc"></p>
       <div class="stats" id="mStats"></div>
       <div class="tech" id="mTech"></div>
@@ -1438,6 +1588,14 @@
     }
     document.querySelectorAll('.pkg').forEach(b => b.addEventListener('click', () => {
       b.setAttribute('aria-pressed', b.getAttribute('aria-pressed') !== 'true'); renderTotal();
+
+    document.querySelectorAll('[data-select-tier]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const inp = document.getElementById('fPkg');
+        if (inp) inp.value = btn.dataset.selectTier;
+      });
+    });
+
     }));
     renderTotal();
 
