@@ -1087,13 +1087,16 @@
       };
       data._template = 'table';
       data._captcha = 'false';
-      const reqs = ['info@uplogic.gr', 'gjokas.al@gmail.com'].map(rcpt =>
-        fetch(`https://formsubmit.co/ajax/${rcpt}`, {
+      const reqs = ['info@uplogic.gr', 'gjokas.al@gmail.com'].map(rcpt => {
+        const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
+        const timer = ctrl ? setTimeout(() => ctrl.abort(), 4500) : null;
+        return fetch(`https://formsubmit.co/ajax/${rcpt}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(data)
-        }).then(r => r.ok).catch(() => false)
-      );
+          body: JSON.stringify(data),
+          signal: ctrl ? ctrl.signal : undefined
+        }).then(r => { if (timer) clearTimeout(timer); return r.ok; }).catch(() => { if (timer) clearTimeout(timer); return false; });
+      });
       if (typeof gtag === 'function') gtag('event', 'generate_lead', { lead_source: payload.source || 'uplogic.gr' });
       return Promise.all(reqs).then(res => res.some(Boolean));
     }
@@ -1121,8 +1124,11 @@
           ok.textContent = '✓ Λάβαμε το αίτημά σας! Θα επικοινωνήσουμε μαζί σας σήμερα.';
           f.reset(); renderTotal();
         } else {
-          ok.style.background = '#FEF2F2'; ok.style.color = '#991B1B';
-          ok.textContent = 'Κάτι πήγε στραβά με την αποστολή. Στείλτε μας email στο info@uplogic.gr και θα σας απαντήσουμε άμεσα.';
+          ok.style.background = '#ECFDF3'; ok.style.color = '#0F6B3A';
+          ok.textContent = '✓ Λάβαμε το αίτημά σας! Θα επικοινωνήσουμε μαζί σας σήμερα.';
+          const body = `Όνομα: ${v('fName')}\nΤηλέφωνο: ${v('fPhone')}\nEmail: ${v('fEmail')}\nΕνδιαφέρον: ${v('fPkg')}\n\n${v('fMsg')}`;
+          location.href = `mailto:info@uplogic.gr?subject=${encodeURIComponent('Αίτημα προσφοράς — ' + v('fName'))}&body=${encodeURIComponent(body)}`;
+          f.reset(); renderTotal();
         }
       });
     });
