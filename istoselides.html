@@ -167,11 +167,11 @@
       --body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
     }
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: clip; }
     body {
       margin: 0; background: var(--bg); color: var(--ink);
       font-family: var(--body); font-size: 16px; line-height: 1.6;
-      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: hidden;
+      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: clip;
     }
     img, svg { display: block; }
     a { color: inherit; text-decoration: none; }
@@ -202,14 +202,16 @@
       border-bottom: 1px solid rgba(255,255,255,0.08);
       box-shadow: 0 10px 30px rgba(10,12,16,0.16);
     }
-    .header .wrap { display: flex; align-items: center; justify-content: space-between; height: 108px; position: relative; }
+    .header .wrap { display: flex; align-items: center; justify-content: space-between; height: 108px; position: relative; transition: height .22s ease; }
+    .header.scrolled .wrap { height: 74px; }
     .logo-banner-link {
       display: flex; align-items: center; height: 100%;
       position: relative; margin-left: -18px;
     }
     .logo-banner-img {
-      height: 106px; width: auto; object-fit: contain; display: block;
+      height: 106px; width: auto; object-fit: contain; display: block; transition: height .22s ease;
     }
+    .header.scrolled .logo-banner-img { height: 72px; }
     .nav { display: flex; align-items: center; gap: 6px; background: rgba(15,17,22,0.55); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 6px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.10); }
     .nav a { padding: 8px 16px; border-radius: 999px; font-size: 14.5px; font-weight: 500; color: rgba(255,255,255,0.86); transition: background .2s, color .2s; }
     .nav a:hover { background: rgba(255,255,255,0.12); color: #fff; }
