@@ -8,14 +8,54 @@
   <meta name="theme-color" content="#FBFAF8">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%23111114%22/><path d=%22M30 30v24a20 20 0 0 0 40 0V30%22 fill=%22none%22 stroke=%22%23ffffff%22 stroke-width=%2210%22 stroke-linecap=%22round%22/><circle cx=%2270%22 cy=%2230%22 r=%227%22 fill=%22%232451F5%22/></svg>">
 
-  <!-- Google tag (gtag.js) - Google Analytics 4 (UpLogic) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3DTZFZGM0B"></script>
+  <link rel="canonical" href="https://uplogic.gr/">
+
+  <!-- Open Graph / προεπισκόπηση link σε Instagram, Facebook, Viber, WhatsApp -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="UpLogic">
+  <meta property="og:locale" content="el_GR">
+  <meta property="og:url" content="https://uplogic.gr/">
+  <meta property="og:title" content="UpLogic — Ιστοσελίδες από 350€, E-Shop, Εφαρμογές & AI | Πάτρα">
+  <meta property="og:description" content="Επαγγελματικές ιστοσελίδες από 350€ με παράδοση από 3 εργάσιμες. E-shop, web & mobile εφαρμογές, AI chatbots, SEO και διαφήμιση.">
+  <meta property="og:image" content="https://uplogic.gr/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://uplogic.gr/og-image.jpg">
+
+  <!-- Δομημένα δεδομένα για Google (τοπική επιχείρηση) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "UpLogic",
+    "url": "https://uplogic.gr/",
+    "logo": "https://uplogic.gr/og-image.jpg",
+    "image": "https://uplogic.gr/og-image.jpg",
+    "email": "info@uplogic.gr",
+    "description": "Κατασκευή ιστοσελίδων, e-shop, εφαρμογών, AI chatbots, SEO και διαφήμισης.",
+    "address": { "@type": "PostalAddress", "addressLocality": "Πάτρα", "addressRegion": "Αχαΐα", "addressCountry": "GR" },
+    "areaServed": ["GR", "EU"],
+    "priceRange": "€€"
+  }
+  </script>
+
+  <!-- Google Analytics 4 (UpLogic) — Consent Mode: δεν μετράει πριν την «Αποδοχή» cookies (GDPR) -->
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
+    var ulConsent = null;
+    try { ulConsent = localStorage.getItem('ul_consent'); } catch (e) {}
+    gtag('consent', 'default', {
+      'analytics_storage': ulConsent === 'all' ? 'granted' : 'denied',
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied'
+    });
     gtag('js', new Date());
     gtag('config', 'G-3DTZFZGM0B', { 'anonymize_ip': true });
   </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3DTZFZGM0B"></script>
 
   <!-- Δύο οικογένειες γραμματοσειρών με πλήρη ελληνικά -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -283,6 +323,21 @@
     .stats b { display: block; font-family: var(--display); font-size: 22px; letter-spacing: -0.02em; }
     .stats span { font-size: 12.5px; color: var(--muted); }
     .tech { font-size: 13.5px; color: var(--muted); padding-top: 16px; border-top: 1px solid var(--line); }
+    .m-shot { width: 100%; border-radius: 14px; border: 1px solid var(--line); margin: 6px 0 18px; display: none; }
+    .m-live { display: none; margin-top: 18px; justify-content: center; width: 100%; }
+    .ci-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .ci-btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); font-weight: 600; font-size: 14.5px; transition: border-color .2s; }
+    .ci-btn:hover { border-color: var(--ink); }
+    .ci-btn svg { width: 18px; height: 18px; }
+    .ci-btn.wa { background: #25D366; border-color: #25D366; color: #fff; }
+    .wa-fab { position: fixed; right: 22px; bottom: 88px; z-index: 49; width: 54px; height: 54px; border-radius: 50%; background: #25D366; color: #fff; display: none; place-items: center; box-shadow: var(--shadow-lg); transition: transform .2s; }
+    .wa-fab:hover { transform: scale(1.06); }
+    .wa-fab svg { width: 26px; height: 26px; }
+    body.chat-open .wa-fab { display: none !important; }
+    .foot-social { display: flex; gap: 10px; margin-top: 14px; }
+    .foot-social a { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--line); display: grid; place-items: center; color: var(--ink); }
+    .foot-social a:hover { border-color: var(--ink); }
+    .foot-social svg { width: 18px; height: 18px; }
     .legal-body { font-size: 14.5px; color: var(--ink-2); line-height: 1.65; }
     .legal-body h4 { font-family: var(--display); font-size: 17px; color: var(--ink); margin: 20px 0 6px; }
     .legal-body p { margin: 0 0 10px; }
@@ -407,6 +462,9 @@
     <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+    <symbol id="i-ig" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.5 0-3-.4-4.3-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2c0 1.3.9 2.5 1.1 2.7.1.2 1.8 2.8 4.4 3.9 1.6.7 2.3.8 3.1.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/></symbol>
     <symbol id="i-bag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l1 13H5L6 7z"/><path d="M9 7a3 3 0 0 1 6 0"/></symbol>
   </svg>
 
@@ -465,7 +523,7 @@
             <div class="win-bar">
               <i></i><i></i><i></i>
               <span class="win-url">uplogic.gr · Digital Hub</span>
-              <span class="win-speed">PageSpeed 99/100</span>
+              <span class="win-speed">Mobile-First</span>
             </div>
             <div class="hub">
               <div class="hub-head">
@@ -513,10 +571,10 @@
           </div>
           <div class="phone">
             <div class="phone-in">
-              <small>UpLogic · Αποτελέσματα</small>
-              <div class="big">+240% Κίνηση</div>
-              <div class="row"><span>PageSpeed</span><b class="ok">99 / 100</b></div>
-              <div class="row"><span>Ιστοσελίδα</span><b>από 3 ημέρες</b></div>
+              <small>UpLogic · Πώς δουλεύουμε</small>
+              <div class="big">Από 3 ημέρες</div>
+              <div class="row"><span>Ιστοσελίδα</span><b>από 350€</b></div>
+              <div class="row"><span>Design</span><b class="ok">100% Custom</b></div>
               <div class="row"><span>AI Βοηθός</span><b class="ok">24/7 Ενεργός</b></div>
             </div>
           </div>
@@ -531,7 +589,7 @@
     <!-- ================= ΠΕΛΑΤΕΣ ================= -->
     <section class="clients">
       <div class="wrap reveal">
-        <p>Έχουμε συνεργαστεί με επιχειρήσεις σε Ελλάδα και Ευρώπη</p>
+        <p>Συνεργαζόμαστε με επιχειρήσεις σε Ελλάδα και Ευρώπη</p>
         <div class="client-row">
           <span>Γεωργιάδης<small>GR</small></span>
           <span>TKDraw<small>WT</small></span>
@@ -628,7 +686,7 @@
         <div class="section-head reveal">
           <div>
             <span class="eyebrow">Επιλεγμένα έργα</span>
-            <h2>Δουλειά που τρέχει ήδη στην αγορά.</h2>
+            <h2>Έργα που παραδώσαμε και έργα που χτίζουμε τώρα.</h2>
           </div>
           <div class="filters" role="tablist" aria-label="Φίλτρο έργων">
             <button class="active" data-filter="all" role="tab" aria-selected="true">Όλα</button>
@@ -641,7 +699,7 @@
         <div class="work" id="workGrid">
           <button class="proj reveal" data-cat="saas app" data-id="taxpilot">
             <div class="proj-body">
-              <div class="proj-meta"><span>FinTech SaaS · Web & Mobile</span><span class="proj-badge">Live</span></div>
+              <div class="proj-meta"><span>FinTech SaaS · Web & Mobile</span><span class="proj-badge">Σε ολοκλήρωση</span></div>
               <h3>TaxPilot GR</h3>
               <p>Φορολογικός βοηθός για ελεύθερους επαγγελματίες: Safe-to-Spend, τιμολόγια στο myDATA, σάρωση αποδείξεων και AI σύμβουλος.</p>
               <ul class="proj-tags"><li>myDATA API</li><li>Safe-to-Spend</li><li>OCR & AI Σύμβουλος</li></ul>
@@ -651,17 +709,17 @@
 
           <button class="proj reveal" data-cat="web" data-id="georgiadis">
             <div class="proj-body">
-              <div class="proj-meta"><span>Εταιρική σελίδα · E-Shop · SEO</span><span class="proj-badge">Ελλάδα</span></div>
+              <div class="proj-meta"><span>Εταιρική σελίδα · SEO · kgeorgiadis.com</span><span class="proj-badge">Live</span></div>
               <h3>Γεωργιάδης</h3>
-              <p>Νέα εταιρική ιστοσελίδα και ψηφιακός κατάλογος, με γρήγορη φόρτωση στο κινητό και στρατηγική Local SEO.</p>
-              <ul class="proj-tags"><li>PageSpeed 99/100</li><li>Mobile-First</li><li>Local SEO</li></ul>
+              <p>Νέα εταιρική ιστοσελίδα με 10 σελίδες, AI βοηθό, γρήγορη φόρτωση στο κινητό και στρατηγική Local SEO. Δείτε την ζωντανά.</p>
+              <ul class="proj-tags"><li>Live site</li><li>AI Βοηθός</li><li>Local SEO</li></ul>
               <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
             </div>
           </button>
 
           <button class="proj reveal" data-cat="saas app" data-id="tkdraw">
             <div class="proj-body">
-              <div class="proj-meta"><span>SportsTech SaaS · Live Scoring</span><span class="proj-badge">WT / ΕΛΟΤ</span></div>
+              <div class="proj-meta"><span>SportsTech SaaS · WT / ΕΛΟΤ</span><span class="proj-badge">Σε ολοκλήρωση</span></div>
               <h3>TKDraw</h3>
               <p>Πλατφόρμα αγώνων Taekwondo: αλγόριθμος δίκαιων κληρώσεων χωρίς BYE, ηλεκτρονική βαθμολογία κριτών σε tablets και Live TV Scoreboard σταδίου.</p>
               <ul class="proj-tags"><li>Zero-BYE WT</li><li>Live Judge Tablets</li><li>Arena TV Scoreboard</li></ul>
@@ -671,7 +729,7 @@
 
           <button class="proj reveal" data-cat="saas" data-id="greekhost">
             <div class="proj-body">
-              <div class="proj-meta"><span>PropTech SaaS</span><span class="proj-badge">Airbnb · Booking</span></div>
+              <div class="proj-meta"><span>PropTech SaaS · Airbnb · Booking</span><span class="proj-badge">Σε ολοκλήρωση</span></div>
               <h3>GreekHost PMS</h3>
               <p>Διαχείριση καταλυμάτων βραχυχρόνιας μίσθωσης: αυτόματο Τέλος Ανθεκτικότητας, έσοδα ανά ακίνητο, αποστολή στον λογιστή με ένα κλικ.</p>
               <ul class="proj-tags"><li>Αυτόματο Τ.Α.Κ.</li><li>iCal Sync</li><li>1-Click Λογιστήριο</li></ul>
@@ -681,17 +739,17 @@
 
           <button class="proj reveal" data-cat="web" data-id="hanfishing">
             <div class="proj-body">
-              <div class="proj-meta"><span>E-Commerce · Marketplaces</span><span class="proj-badge">Γερμανία · ΕΕ</span></div>
+              <div class="proj-meta"><span>Marketplaces · Γερμανία · ΕΕ</span><span class="proj-badge">Live</span></div>
               <h3>HanFishing</h3>
-              <p>Ψηφιοποίηση 800+ προϊόντων, επεξεργασία εικόνων με AI, συγχρονισμός αποθήκης με Amazon Europe και eBay, Google Shopping.</p>
-              <ul class="proj-tags"><li>800+ Κωδικοί SKU</li><li>Amazon & eBay Sync</li><li>Google Shopping</li></ul>
+              <p>Στήσαμε τα καταστήματα της HanFishing στο eBay και στο Amazon: καταχώρηση προϊόντων, επεξεργασία φωτογραφιών με AI και οργάνωση καταλόγου.</p>
+              <ul class="proj-tags"><li>eBay Store</li><li>Amazon Europe</li><li>AI Φωτογραφίες</li></ul>
               <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
             </div>
           </button>
 
           <button class="proj reveal" data-cat="app saas" data-id="aura">
             <div class="proj-body">
-              <div class="proj-meta"><span>EdTech · Android & Web</span><span class="proj-badge">Εφαρμογή</span></div>
+              <div class="proj-meta"><span>EdTech · Android & Web</span><span class="proj-badge">Σε ολοκλήρωση</span></div>
               <h3>Aura Edu</h3>
               <p>Εκπαιδευτική εφαρμογή με AI καθηγητή, μαθήματα σαν παιχνίδι, φωνητική αλληλεπίδραση και παρακολούθηση προόδου.</p>
               <ul class="proj-tags"><li>AI Tutor</li><li>Voice Interaction</li><li>Android & Web</li></ul>
@@ -701,10 +759,10 @@
 
           <button class="proj reveal" data-cat="app saas" data-id="pinshot">
             <div class="proj-body">
-              <div class="proj-meta"><span>Mobile app · Creative AI</span><span class="proj-badge">iOS · Android</span></div>
-              <h3>PinShot & FilmCraft</h3>
-              <p>Mobile εφαρμογή και εργαλεία παραγωγής βίντεο για Reels, TikTok και διαφημίσεις στο Meta.</p>
-              <ul class="proj-tags"><li>60 fps Video</li><li>AI Επεξεργασία</li><li>Reels & Meta Ads</li></ul>
+              <div class="proj-meta"><span>Mobile app · Android</span><span class="proj-badge">Έρχεται σύντομα</span></div>
+              <h3>PinShot</h3>
+              <p>Εφαρμογή Android που κρατάει σημειώσεις στα screenshots σας, ώστε να βρίσκετε οποιοδήποτε screenshot με μία αναζήτηση. Κυκλοφορεί τον επόμενο μήνα.</p>
+              <ul class="proj-tags"><li>Σημειώσεις σε screenshots</li><li>Άμεση αναζήτηση</li><li>Android</li></ul>
               <span class="proj-link">Περισσότερα <svg><use href="#i-arrow"/></svg></span>
             </div>
           </button>
@@ -772,7 +830,12 @@
           <p style="color:var(--ink-2)">Πείτε μας τι χρειάζεστε. Σας απαντάμε αυθημερόν με τα επόμενα βήματα και μια πρώτη εκτίμηση κόστους.</p>
           <div class="contact-info">
             <a class="ci" href="mailto:info@uplogic.gr"><svg><use href="#i-mail"/></svg><div><b>info@uplogic.gr</b><span>Απάντηση την ίδια μέρα</span></div></a>
+            <a class="ci" id="ciPhone" style="display:none"><svg><use href="#i-phone"/></svg><div><b id="ciPhoneTxt"></b><span>Καλέστε μας Δευτέρα – Σάββατο</span></div></a>
             <div class="ci"><svg><use href="#i-pin"/></svg><div><b>Πάτρα, Αχαΐα</b><span>Εξυπηρέτηση σε Ελλάδα & εξωτερικό</span></div></div>
+            <div class="ci-row">
+              <a class="ci-btn wa" id="ciWa" style="display:none" target="_blank" rel="noopener"><svg><use href="#i-wa"/></svg>WhatsApp</a>
+              <a class="ci-btn" id="ciIg" style="display:none" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg>Instagram</a>
+            </div>
           </div>
         </div>
 
@@ -784,11 +847,11 @@
             <div><label for="fPhone">Τηλέφωνο</label><input id="fPhone" name="phone" type="tel" required autocomplete="tel" placeholder="69XXXXXXXX"></div>
           </div>
           <div><label for="fEmail">Email</label><input id="fEmail" name="email" type="email" required autocomplete="email" placeholder="you@company.gr"></div>
-          <div><label for="fPkg">Τι σας ενδιαφέρει</label><input id="fPkg" name="package" value="Ιστοσελίδα (350€)"></div>
+          <div><label for="fPkg">Τι σας ενδιαφέρει</label><input id="fPkg" name="package" value="Ιστοσελίδα (από 350€)"></div>
           <div><label for="fMsg">Μήνυμα</label><textarea id="fMsg" name="message" placeholder="Λίγα λόγια για την επιχείρηση ή link της τωρινής σας σελίδας…"></textarea></div>
           <label class="consent"><input type="checkbox" id="fConsent" required><span>Συμφωνώ με την επεξεργασία των στοιχείων μου για να λάβω απάντηση, σύμφωνα με την <a href="#" data-todo="privacy">Πολιτική Απορρήτου</a>.</span></label>
           <button type="submit" class="btn btn-dark">Αποστολή αιτήματος <svg><use href="#i-send"/></svg></button>
-          <div class="form-ok" id="formOk" role="status">Άνοιξε το email σας με το μήνυμα έτοιμο. Πατήστε «Αποστολή» για να το λάβουμε.</div>
+          <div class="form-ok" id="formOk" role="status"></div>
         </form>
       </div>
     </section>
@@ -807,6 +870,11 @@
             </span>
           </a>
           <p style="max-width:340px">Ιστοσελίδες, e-shop, εφαρμογές, AI chatbots, SEO και διαφήμιση. Από την Πάτρα, για Ελλάδα και εξωτερικό.</p>
+          <div class="foot-social">
+            <a href="mailto:info@uplogic.gr" aria-label="Email"><svg><use href="#i-mail"/></svg></a>
+            <a id="footIg" style="display:none" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-ig"/></svg></a>
+            <a id="footWa" style="display:none" target="_blank" rel="noopener" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
+          </div>
         </div>
         <div>
           <h4>Πλοήγηση</h4>
@@ -835,9 +903,11 @@
         <div><small id="mCat"></small><h3 id="mTitle"></h3></div>
         <button class="x" id="mClose" aria-label="Κλείσιμο"><svg><use href="#i-x"/></svg></button>
       </div>
+      <img class="m-shot" id="mShot" alt="" loading="lazy">
       <p id="mDesc"></p>
       <div class="stats" id="mStats"></div>
       <div class="tech" id="mTech"></div>
+      <a class="btn btn-dark m-live" id="mLive" target="_blank" rel="noopener">Δείτε το site ζωντανά <svg><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 
@@ -851,6 +921,8 @@
       <div class="legal-body" id="lBody"></div>
     </div>
   </div>
+
+  <a class="wa-fab" id="waFab" target="_blank" rel="noopener" aria-label="WhatsApp"><svg><use href="#i-wa"/></svg></a>
 
   <!-- ================= CHAT ================= -->
   <button class="chat-fab" id="chatFab" aria-label="Άνοιγμα συνομιλίας" aria-expanded="false" aria-controls="chat"><svg><use href="#i-chat"/></svg></button>
@@ -875,6 +947,28 @@
   </div>
 
   <script>
+    // ---------- Στοιχεία επικοινωνίας (συμπληρώστε για να εμφανιστούν) ----------
+    const CONTACT = {
+      phone: '',        // π.χ. '+30 69XXXXXXXX'
+      whatsapp: '',     // π.χ. '3069XXXXXXXX' (χωρίς + και κενά)
+      instagram: ''     // π.χ. 'uplogic.gr' (το username χωρίς @)
+    };
+    (function applyContact() {
+      const show = (id, href, extra) => { const el = document.getElementById(id); if (!el) return; el.href = href; el.style.display = extra || 'inline-flex'; };
+      if (CONTACT.phone) {
+        show('ciPhone', 'tel:' + CONTACT.phone.replace(/\s/g, ''), 'flex');
+        document.getElementById('ciPhoneTxt').textContent = CONTACT.phone;
+      }
+      if (CONTACT.whatsapp) {
+        const wa = 'https://wa.me/' + CONTACT.whatsapp + '?text=' + encodeURIComponent('Γεια σας! Ενδιαφέρομαι για προσφορά από την UpLogic.');
+        show('ciWa', wa); show('footWa', wa, 'grid'); show('waFab', wa, 'grid');
+      }
+      if (CONTACT.instagram) {
+        const ig = 'https://www.instagram.com/' + CONTACT.instagram + '/';
+        show('ciIg', ig); show('footIg', ig, 'grid');
+      }
+    })();
+
     // ---------- Header / μενού ----------
     const header = document.getElementById('header');
     addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 8), { passive: true });
@@ -907,34 +1001,35 @@
 
     // ---------- Λεπτομέρειες έργων ----------
     const projects = {
-      taxpilot: { cat: 'FinTech SaaS · Web & Mobile PWA', title: 'TaxPilot GR',
+      taxpilot: { cat: 'FinTech SaaS · Web & Mobile PWA · Σε ολοκλήρωση', title: 'TaxPilot GR',
         desc: 'Πλατφόρμα οικονομικής και φορολογικής διαχείρισης για ελεύθερους επαγγελματίες και επιχειρήσεις. Περιλαμβάνει τον αλγόριθμο Safe-to-Spend, έκδοση τιμολογίων στο myDATA με έλεγχο ΑΦΜ, σάρωση αποδείξεων (OCR) και AI φορολογικό σύμβουλο.',
         stats: [['myDATA', 'Πλήρης διασύνδεση'], ['OCR', 'Σάρωση αποδείξεων'], ['24/7', 'AI σύμβουλος']],
         tech: 'React · TypeScript · Supabase · AADE myDATA API' },
-      georgiadis: { cat: 'Εταιρική σελίδα · E-Shop · SEO · Ελλάδα', title: 'Γεωργιάδης',
-        desc: 'Σχεδιασμός και ανάπτυξη της νέας διαδικτυακής παρουσίας: custom UI/UX, γρήγορη φόρτωση σε κινητό και desktop, παρουσίαση προϊόντων και υπηρεσιών, πλήρης βελτιστοποίηση SEO.',
-        stats: [['99/100', 'Google PageSpeed'], ['+240%', 'Οργανική κίνηση'], ['100%', 'Mobile responsive']],
-        tech: 'Custom web · Technical SEO & Schema · UX για μετατροπές' },
-      tkdraw: { cat: 'SportsTech SaaS · World Taekwondo (WT / ΕΛΟΤ)', title: 'TKDraw',
+      georgiadis: { cat: 'Εταιρική σελίδα · SEO · Ελλάδα · Live', title: 'Κώστας Γεωργιάδης',
+        desc: 'Σχεδιασμός και ανάπτυξη της νέας διαδικτυακής παρουσίας: custom UI/UX σε 10 σελίδες, AI βοηθός για τους επισκέπτες, γρήγορη φόρτωση σε κινητό και desktop και βελτιστοποίηση SEO.',
+        stats: [['10', 'Σελίδες'], ['AI', 'Βοηθός επισκεπτών'], ['100%', 'Mobile responsive']],
+        tech: 'Custom web · Technical SEO & Schema · AI Assistant',
+        url: 'https://www.kgeorgiadis.com', shot: 'work-georgiadis.jpg' },
+      tkdraw: { cat: 'SportsTech SaaS · World Taekwondo (WT / ΕΛΟΤ) · Σε ολοκλήρωση', title: 'TKDraw',
         desc: 'Ολοκληρωμένη πλατφόρμα διαχείρισης τουρνουά, κληρώσεων και ηλεκτρονικής βαθμολόγησης Taekwondo σύμφωνα με τους επίσημους κανονισμούς της World Taekwondo (WT). Περιλαμβάνει πύλη εγγραφών συλλόγων, αλγόριθμο δίκαιων κληρώσεων χωρίς εικονικά BYE με αυτόματο διαχωρισμό συλλόγων, touch-screen εφαρμογή κριτών σε tablets (-0.1 / -0.3 & Ολυμπιακό Trimmed Mean), σύστημα Cut-off Top 8 και Live TV Scoreboard σταδίου.',
         stats: [['Zero-BYE', 'Δίκαιες κληρώσεις WT'], ['Live Tablets', 'Ηλεκτρονική βαθμολογία'], ['10 κατηγορίες', 'Επίσημα πρότυπα WT']],
         tech: 'Python · Flask · SQLite · Real-time Judge Tablets & Arena TV' },
-      greekhost: { cat: 'PropTech & Hospitality SaaS', title: 'GreekHost PMS',
+      greekhost: { cat: 'PropTech & Hospitality SaaS · Σε ολοκλήρωση', title: 'GreekHost PMS',
         desc: 'Εφαρμογή για ιδιοκτήτες και διαχειριστές ακινήτων βραχυχρόνιας μίσθωσης. Υπολογίζει αυτόματα το Τέλος Ανθεκτικότητας στην Κλιματική Κρίση, συγχρονίζει ημερολόγια iCal και στέλνει αναφορά στον λογιστή με ένα κλικ.',
         stats: [['Αυτόματος', 'Υπολογισμός Τ.Α.Κ.'], ['1 κλικ', 'Εξαγωγή για λογιστή'], ['0', 'Διπλοκρατήσεις']],
         tech: 'Next.js · Cloud sync · iCal multi-calendar · Οικονομικά analytics' },
-      hanfishing: { cat: 'E-Commerce · Amazon, eBay & SEO · Εξωτερικό', title: 'HanFishing',
-        desc: 'Ψηφιακή αναβάθμιση και αυτοματοποίηση για πάνω από 800 κωδικούς. E-shop υψηλής μετατροπής, βελτιστοποίηση φωτογραφιών με AI, διασύνδεση αποθήκης με Amazon Europe και eBay, διεθνές SEO.',
-        stats: [['800+', 'Κωδικοί SKU'], ['+340%', 'Αύξηση πωλήσεων'], ['5 χώρες', 'Amazon & eBay']],
-        tech: 'Custom e-commerce · Amazon SP-API · eBay · Google Shopping' },
-      aura: { cat: 'EdTech · Android & Web', title: 'Aura Edu',
+      hanfishing: { cat: 'Marketplaces · eBay & Amazon · Γερμανία / ΕΕ · Live', title: 'HanFishing',
+        desc: 'Δημιουργία και στήσιμο των καταστημάτων της HanFishing στο eBay και στο Amazon Europe: καταχώρηση προϊόντων, βελτιστοποίηση φωτογραφιών με AI, κατηγοριοποίηση και οργάνωση του καταλόγου για πωλήσεις στην ευρωπαϊκή αγορά.',
+        stats: [['eBay', 'Κατάστημα'], ['Amazon', 'Europe'], ['AI', 'Επεξεργασία φωτογραφιών']],
+        tech: 'eBay Seller Hub · Amazon Seller Central · AI image editing' },
+      aura: { cat: 'EdTech · Android & Web · Σε ολοκλήρωση', title: 'Aura Edu',
         desc: 'Εφαρμογή μάθησης για μαθητές και εκπαιδευτικούς, με διαδραστικά μαθήματα, AI ψηφιακό βοηθό, πόντους επιβράβευσης και native εφαρμογή Android.',
         stats: [['Android', '& Web'], ['AI Tutor', 'Προσωποποιημένη μάθηση'], ['Φωνή', 'Ηχητική αλληλεπίδραση']],
         tech: 'React · Android · Audio/Voice · Ενσωμάτωση LLM' },
-      pinshot: { cat: 'Creative Tech · Mobile & AI Video', title: 'PinShot & FilmCraft',
-        desc: 'Mobile εφαρμογή και εργαλεία για δυναμικά βίντεο και διαφημιστικά δημιουργικά (Reels, TikTok, Meta Ads), με animations στα 60fps και επεξεργασία με AI.',
-        stats: [['60 fps', 'Animations'], ['AI', 'Επεξεργασία βίντεο'], ['iOS/Android', 'Cross-platform']],
-        tech: 'Mobile UI · WebGL / Canvas · Meta Ads creative' }
+      pinshot: { cat: 'Mobile app · Android · Έρχεται σύντομα', title: 'PinShot',
+        desc: 'Εφαρμογή Android για όσους κρατάνε δεκάδες screenshots: προσθέτετε σημειώσεις σε κάθε screenshot και το βρίσκετε αμέσως με μία αναζήτηση, αντί να ψάχνετε στη συλλογή. Κυκλοφορεί στο Google Play τον επόμενο μήνα.',
+        stats: [['Σημειώσεις', 'Σε κάθε screenshot'], ['Αναζήτηση', 'Εύρεση με μία λέξη'], ['Android', 'Google Play']],
+        tech: 'Android · Τοπική αποθήκευση · Γρήγορη αναζήτηση' }
     };
     const modal = document.getElementById('modal');
     let lastFocus = null;
@@ -945,6 +1040,9 @@
       document.getElementById('mTitle').textContent = p.title;
       document.getElementById('mDesc').textContent = p.desc;
       document.getElementById('mTech').textContent = p.tech;
+      const shot = document.getElementById('mShot'), live = document.getElementById('mLive');
+      if (p.shot) { shot.src = p.shot; shot.alt = 'Screenshot — ' + p.title; shot.style.display = 'block'; } else { shot.removeAttribute('src'); shot.style.display = 'none'; }
+      if (p.url) { live.href = p.url; live.style.display = 'inline-flex'; } else { live.removeAttribute('href'); live.style.display = 'none'; }
       const s = document.getElementById('mStats'); s.replaceChildren();
       p.stats.forEach(([v, l]) => {
         const d = document.createElement('div'); const b = document.createElement('b'); const sp = document.createElement('span');
@@ -987,13 +1085,17 @@
         Μήνυμα: payload.message || '—',
         Πηγή: payload.source || 'uplogic.gr'
       };
-      ['info@uplogic.gr', 'gjokas.al@gmail.com'].forEach(rcpt => {
+      data._template = 'table';
+      data._captcha = 'false';
+      const reqs = ['info@uplogic.gr', 'gjokas.al@gmail.com'].map(rcpt =>
         fetch(`https://formsubmit.co/ajax/${rcpt}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify(data)
-        }).catch(() => {});
-      });
+        }).then(r => r.ok).catch(() => false)
+      );
+      if (typeof gtag === 'function') gtag('event', 'generate_lead', { lead_source: payload.source || 'uplogic.gr' });
+      return Promise.all(reqs).then(res => res.some(Boolean));
     }
 
     document.getElementById('leadForm').addEventListener('submit', e => {
@@ -1001,7 +1103,7 @@
       const f = e.target;
       if (!f.reportValidity()) return;
       const v = id => document.getElementById(id).value.trim();
-      sendLeadData({
+      const sending = sendLeadData({
         name: v('fName'),
         contact: v('fPhone'),
         email: v('fEmail'),
@@ -1009,15 +1111,26 @@
         message: v('fMsg'),
         source: 'Φόρμα Ιστοσελίδας'
       });
-      const body = `Όνομα: ${v('fName')}\nΤηλέφωνο: ${v('fPhone')}\nEmail: ${v('fEmail')}\nΕνδιαφέρον: ${v('fPkg')}\n\n${v('fMsg')}`;
-      location.href = `mailto:info@uplogic.gr?subject=${encodeURIComponent('Αίτημα προσφοράς — ' + v('fName'))}&body=${encodeURIComponent(body)}`;
-      document.getElementById('formOk').style.display = 'block';
+      const btn = f.querySelector('button[type="submit"]'), ok = document.getElementById('formOk');
+      btn.disabled = true;
+      sending.then(sent => {
+        btn.disabled = false;
+        ok.style.display = 'block';
+        if (sent) {
+          ok.style.background = '#ECFDF3'; ok.style.color = '#0F6B3A';
+          ok.textContent = '✓ Λάβαμε το αίτημά σας! Θα επικοινωνήσουμε μαζί σας σήμερα.';
+          f.reset(); renderTotal();
+        } else {
+          ok.style.background = '#FEF2F2'; ok.style.color = '#991B1B';
+          ok.textContent = 'Κάτι πήγε στραβά με την αποστολή. Στείλτε μας email στο info@uplogic.gr και θα σας απαντήσουμε άμεσα.';
+        }
+      });
     });
 
     // ---------- AI Βοηθός (συλλογή στοιχείων απευθείας μέσα στο Chat) ----------
     const chat = document.getElementById('chat'), fab = document.getElementById('chatFab'), msgs = document.getElementById('chatMsgs');
-    function openChat() { chat.classList.add('open'); fab.setAttribute('aria-expanded', 'true'); document.getElementById('chatInput').focus(); }
-    function closeChat() { chat.classList.remove('open'); fab.setAttribute('aria-expanded', 'false'); }
+    function openChat() { chat.classList.add('open'); document.body.classList.add('chat-open'); fab.setAttribute('aria-expanded', 'true'); document.getElementById('chatInput').focus(); }
+    function closeChat() { chat.classList.remove('open'); document.body.classList.remove('chat-open'); fab.setAttribute('aria-expanded', 'false'); }
     fab.addEventListener('click', () => chat.classList.contains('open') ? closeChat() : openChat());
     document.getElementById('chatClose').addEventListener('click', closeChat);
 
@@ -1095,6 +1208,15 @@
         });
         setTimeout(() => {
           addMsg('bot', '✓ <b>Ευχαριστούμε πολύ!</b> Καταγράψαμε τα στοιχεία επικοινωνίας σας και ένας εκπρόσωπός μας θα επικοινωνήσει άμεσα μαζί σας για την προσφορά σας!', true);
+        }, 350);
+        return;
+      }
+
+      if (/uplogic\s*10/i.test(val)) {
+        lastUserTopic = 'Κωδικός Instagram UPLOGIC10 (-10%)';
+        setTimeout(() => {
+          addMsg('bot', '🎉 <b>Ο κωδικός UPLOGIC10 ισχύει!</b> Έχετε <b>έκπτωση -10%</b> σε οποιοδήποτε νέο project (ιστοσελίδα, e-shop, εφαρμογή, AI chatbot, SEO ή διαφήμιση).<br><br>Αφήστε μου το <b>Όνομα</b> και το <b>Τηλέφωνό</b> σας για να σας στείλουμε την προσφορά με την έκπτωση:', true);
+          appendChatLeadCard('Κωδικός UPLOGIC10 (-10%)');
         }, 350);
         return;
       }
