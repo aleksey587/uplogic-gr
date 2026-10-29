@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Fixable – Interactive Demo | UpLogic</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .card { background: rgba(15,23,42,.6); border: 1px solid #1e293b; border-radius: 1rem; padding: 1.5rem; }
+    .chip-on { border: 2px solid #facc15; background: rgba(250,204,21,.12); color: #fff; font-weight: 700; }
+    .chip-off { border: 1px solid #1e293b; background: #020617; color: #94a3b8; }
+    .tab-on { background: #ffd600; color: #000; }
+    .tab-off { color: #94a3b8; }
+    .step { width: 1.75rem; height: 1.75rem; border-radius: .5rem; background: #ffd600; color: #000; font-weight: 800; font-size: .75rem; display: flex; align-items: center; justify-content: center; }
+  </style>
+</head>
+<body class="bg-[#0b0f19] text-slate-100 min-h-screen">
+
+  <div class="bg-yellow-400 text-black text-xs font-bold py-1.5 px-4 text-center">
+    Interactive Demo της UpLogic για το Fixable • Οι τιμές, τα μοντέλα και οι ώρες είναι ενδεικτικά
+  </div>
+
+  <header class="border-b border-slate-800 bg-[#0f172a]/90 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-[#ffd600] flex items-center justify-center font-black text-black text-xl">F</div>
+        <div>
+          <div class="text-lg font-black text-white leading-tight">Fixable<span class="text-yellow-400">.gr</span></div>
+          <div class="text-[11px] text-slate-400">Επισκευές Κινητών • Υπολογιστών • Αξεσουάρ</div>
+        </div>
+      </div>
+      <a href="tel:2611811125" class="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sm font-bold flex items-center gap-2 border border-slate-700">
+        <i class="fa-solid fa-phone text-yellow-400"></i><span class="hidden sm:inline">2611 811 125</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="max-w-3xl mx-auto px-4 pt-7 pb-4 text-center">
+    <h1 class="text-2xl sm:text-3xl font-extrabold text-white mb-2">Online Κράτηση Επισκευής & Live Tracking</h1>
+    <p class="text-slate-400 text-sm">Δοκιμάστε τις 3 καρτέλες. Ό,τι αλλάξετε στη <strong class="text-white">Διαχείριση</strong> (τιμή, απόθεμα, status δελτίου) εμφανίζεται αμέσως στις άλλες δύο, όπως θα το βλέπει ο πελάτης.</p>
+  </div>
+
+  <main class="max-w-3xl mx-auto px-4 pb-16">
+
+    <div class="grid grid-cols-3 gap-1 bg-slate-900/80 p-1.5 rounded-2xl border border-slate-800 mb-6">
+      <button data-tab="booking" class="tab-btn py-3 rounded-xl font-bold text-xs sm:text-sm tab-on"><i class="fa-solid fa-screwdriver-wrench"></i> Κράτηση</button>
+      <button data-tab="tracking" class="tab-btn py-3 rounded-xl font-bold text-xs sm:text-sm tab-off"><i class="fa-solid fa-magnifying-glass"></i> Πορεία Επισκευής</button>
+      <button data-tab="admin" class="tab-btn py-3 rounded-xl font-bold text-xs sm:text-sm tab-off"><i class="fa-solid fa-sliders"></i> Διαχείριση</button>
+    </div>
+
+    <!-- ============ BOOKING ============ -->
+    <section id="tab-booking" class="space-y-5">
+      <div class="card">
+        <div class="flex items-center gap-2 mb-4"><span class="step">1</span><h2 class="font-bold">Συσκευή & Μοντέλο</h2></div>
+        <div id="brand-row" class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-4"></div>
+        <select id="model-select" class="w-full bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm font-semibold focus:border-yellow-400 focus:outline-none"></select>
+      </div>
+
+      <div class="card">
+        <div class="flex items-center gap-2 mb-4"><span class="step">2</span><h2 class="font-bold">Επισκευή</h2></div>
+        <div id="repair-list" class="space-y-2"></div>
+      </div>
+
+      <div class="card">
+        <div class="flex items-center gap-2 mb-3"><span class="step">3</span><h2 class="font-bold">Ραντεβού στο κατάστημα</h2></div>
+        <div id="stock-banner" class="mb-4 p-3 rounded-xl text-xs"></div>
+        <div id="slots" class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-5"></div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+          <input id="cust-name" type="text" placeholder="Ονοματεπώνυμο" class="bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm focus:border-yellow-400 focus:outline-none">
+          <input id="cust-phone" type="tel" placeholder="Κινητό τηλέφωνο" class="bg-slate-950 border border-slate-700 rounded-xl px-4 py-2.5 text-sm focus:border-yellow-400 focus:outline-none">
+        </div>
+        <button id="book-btn" class="w-full py-4 rounded-xl bg-[#ffd600] hover:bg-yellow-300 text-black font-extrabold">Επιβεβαίωση Κράτησης</button>
+        <div id="book-result" class="hidden mt-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-sm text-emerald-300"></div>
+      </div>
+    </section>
+
+    <!-- ============ TRACKING ============ -->
+    <section id="tab-tracking" class="hidden">
+      <div class="card max-w-xl mx-auto">
+        <h2 class="text-lg font-black text-center mb-1">Πού βρίσκεται η συσκευή μου;</h2>
+        <p class="text-xs text-slate-400 text-center mb-5">Ο πελάτης βάζει τον κωδικό του δελτίου παραλαβής. Δοκιμάστε <span class="font-mono text-white">FIX-1024</span> ή <span class="font-mono text-white">FIX-1025</span>.</p>
+        <div class="flex gap-2 mb-5">
+          <input id="ticket-input" type="text" value="FIX-1024" class="flex-1 min-w-0 bg-slate-950 border border-slate-700 rounded-xl px-4 py-3 text-sm font-mono font-bold text-center uppercase focus:border-yellow-400 focus:outline-none">
+          <button id="ticket-btn" class="px-5 rounded-xl bg-[#ffd600] text-black font-extrabold text-sm">Αναζήτηση</button>
+        </div>
+        <div id="ticket-result"></div>
+      </div>
+    </section>
+
+    <!-- ============ ADMIN ============ -->
+    <section id="tab-admin" class="hidden space-y-5">
+      <div class="p-3 rounded-xl bg-sky-500/10 border border-sky-500/30 text-xs text-sky-200">
+        <i class="fa-solid fa-lock"></i> Αυτή η οθόνη είναι μόνο για εσάς, με κωδικό πρόσβασης. Από εδώ αλλάζετε τιμές και διαθεσιμότητα, προσθέτετε μοντέλα και ενημερώνετε την πορεία κάθε δελτίου, χωρίς τεχνικές γνώσεις.
+      </div>
+
+      <div class="card">
+        <h3 class="font-bold mb-3">Τιμές & Απόθεμα</h3>
+        <div class="flex flex-col sm:flex-row gap-2 mb-4">
+          <select id="adm-brand" class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-sm"></select>
+          <select id="adm-model" class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-sm"></select>
+        </div>
+        <div id="adm-repairs" class="space-y-2"></div>
+        <div id="adm-saved" class="hidden mt-3 text-xs text-emerald-400"><i class="fa-solid fa-check"></i> Αποθηκεύτηκε. Δείτε το στην καρτέλα «Κράτηση».</div>
+      </div>
+
+      <div class="card">
+        <h3 class="font-bold mb-3">Νέο μοντέλο</h3>
+        <div class="flex flex-col sm:flex-row gap-2">
+          <input id="new-model" type="text" placeholder="π.χ. iPhone 17" class="flex-1 bg-slate-950 border border-slate-700 rounded-xl px-3 py-2.5 text-sm">
+          <button id="add-model-btn" class="px-5 py-2.5 rounded-xl bg-[#ffd600] text-black font-bold text-sm">Προσθήκη</button>
+        </div>
+        <p class="text-[11px] text-slate-500 mt-2">Το νέο μοντέλο παίρνει τις επισκευές της μάρκας που επιλέξατε παραπάνω, και μετά προσαρμόζετε τις τιμές του.</p>
+      </div>
+
+      <div class="card">
+        <h3 class="font-bold mb-3">Δελτία επισκευής</h3>
+        <div id="adm-tickets" class="space-y-2"></div>
+        <p class="text-[11px] text-slate-500 mt-3">Αν το πρόγραμμα επισκευών σας έχει δυνατότητα σύνδεσης (API), το status ενημερώνεται αυτόματα. Αν όχι, ο τεχνικός το αλλάζει από εδώ με ένα κλικ.</p>
+      </div>
+    </section>
+
+    <p class="text-center text-[11px] text-slate-500 mt-10">Demo από την <a href="https://uplogic.gr/" class="underline hover:text-slate-300">UpLogic</a> • info@uplogic.gr</p>
+  </main>
+
+<script>
+  // ---------- DATA (ενδεικτικά) ----------
+  const REPAIRS = {
+    apple:   [['Οθόνη Original', 290, true], ['Οθόνη Premium OLED', 190, true], ['Μπαταρία', 79, true], ['Πίσω τζάμι', 120, false]],
+    samsung: [['Οθόνη Original', 260, false], ['Οθόνη OLED', 170, true], ['Μπαταρία', 69, true], ['Θύρα φόρτισης', 55, true]],
+    xiaomi:  [['Οθόνη', 110, true], ['Μπαταρία', 49, true], ['Θύρα φόρτισης', 45, false]],
+    laptop:  [['Καθαρισμός & πάστα', 45, true], ['Αλλαγή SSD + μεταφορά', 95, true], ['Οθόνη laptop', 160, false], ['Πληκτρολόγιο', 85, false]]
+  };
+  const BRANDS = { apple: 'iPhone', samsung: 'Samsung', xiaomi: 'Xiaomi', laptop: 'Laptop / PC' };
+  const MODELS = {
+    apple: ['iPhone 16 Pro', 'iPhone 16', 'iPhone 15 Pro', 'iPhone 15', 'iPhone 14', 'iPhone 13'],
+    samsung: ['Galaxy S24', 'Galaxy S23', 'Galaxy A55', 'Galaxy A35'],
+    xiaomi: ['Redmi Note 13', 'Redmi Note 12', 'Xiaomi 14'],
+    laptop: ['MacBook Air', 'MacBook Pro', 'Windows Laptop']
+  };
+  // catalog[brand][model] = [{name, price, stock}]
+  const catalog = {};
+  for (const b in MODELS) {
+    catalog[b] = {};
+    MODELS[b].forEach(m => catalog[b][m] = REPAIRS[b].map(([name, price, stock]) => ({ name, price, stock })));
+  }
+  const STATUSES = ['Παραλήφθηκε', 'Διάγνωση', 'Σε επισκευή', 'Αναμονή ανταλλακτικού', 'Έτοιμο για παραλαβή'];
+  const tickets = [
+    { code: 'FIX-1024', device: 'iPhone 15 Pro', repair: 'Οθόνη Premium OLED', status: 2, note: 'Τοποθετείται η νέα οθόνη. Εκτιμώμενη ολοκλήρωση σήμερα.' },
+    { code: 'FIX-1025', device: 'Galaxy S23', repair: 'Οθόνη Original', status: 3, note: 'Το ανταλλακτικό έχει παραγγελθεί.' }
+  ];
+
+  let state = { brand: 'apple', model: MODELS.apple[0], repair: 0, slot: 0 };
+
+  // ---------- HELPERS ----------
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const DAYS = ['Κυρ', 'Δευ', 'Τρι', 'Τετ', 'Πεμ', 'Παρ', 'Σαβ'];
+  const fmt = d => `${DAYS[d.getDay()]} ${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
+  const isWorkday = d => d.getDay() !== 0 && d.getDay() !== 6;
+  function addWorkdays(from, n) {
+    const d = new Date(from); let added = 0;
+    while (added < n) { d.setDate(d.getDate() + 1); if (isWorkday(d)) added++; }
+    return d;
+  }
+  function nextWorkdays(start, count) {
+    const out = []; const d = new Date(start);
+    while (out.length < count) { if (isWorkday(d)) out.push(new Date(d)); d.setDate(d.getDate() + 1); }
+    return out;
+  }
+
+  function buildSlots(inStock) {
+    const now = new Date();
+    const times = ['10:00', '12:30', '15:00', '18:00'];
+    const slots = [];
+    if (inStock) {
+      // σήμερα (ώρες που δεν πέρασαν) + επόμενες εργάσιμες
+      if (isWorkday(now)) times.forEach(t => { const [h, m] = t.split(':'); const s = new Date(now); s.setHours(+h, +m, 0, 0); if (s - now > 60 * 60 * 1000) slots.push('Σήμερα ' + t); });
+      const days = nextWorkdays(addWorkdays(now, 1), 2);
+      days.forEach(d => times.forEach(t => slots.push(fmt(d) + ' ' + t)));
+    } else {
+      // πρώτη διαθέσιμη μέρα: 3η εργάσιμη από σήμερα (αφού έρθει το ανταλλακτικό)
+      const first = addWorkdays(now, 3);
+      nextWorkdays(first, 2).forEach(d => times.forEach(t => slots.push(fmt(d) + ' ' + t)));
+    }
+    return slots.slice(0, 8);
+  }
+
+  // ---------- BOOKING ----------
+  function renderBrands() {
+    $('brand-row').innerHTML = Object.keys(BRANDS).map(b =>
+      `<button data-brand="${b}" class="p-3 rounded-xl text-sm transition ${b === state.brand ? 'chip-on' : 'chip-off'}">${BRANDS[b]}</button>`).join('');
+    $('brand-row').querySelectorAll('button').forEach(btn => btn.onclick = () => {
+      state.brand = btn.dataset.brand; state.model = Object.keys(catalog[state.brand])[0]; state.repair = 0; state.slot = 0;
+      renderBooking();
+    });
+  }
+  function renderModels() {
+    $('model-select').innerHTML = Object.keys(catalog[state.brand]).map(m => `<option ${m === state.model ? 'selected' : ''}>${esc(m)}</option>`).join('');
+  }
+  function renderRepairs() {
+    const list = catalog[state.brand][state.model];
+    $('repair-list').innerHTML = list.map((r, i) => `
+      <label class="flex items-center justify-between p-3.5 rounded-xl cursor-pointer transition ${i === state.repair ? 'chip-on' : 'chip-off'}">
+        <span class="flex items-center gap-3">
+          <input type="radio" name="repair" value="${i}" ${i === state.repair ? 'checked' : ''} class="accent-yellow-400">
+          <span class="text-sm ${i === state.repair ? 'text-white' : 'text-slate-200'} font-semibold">${esc(r.name)}</span>
+        </span>
+        <span class="text-right">
+          <span class="block font-black text-yellow-400">${r.price}€</span>
+          <span class="text-[10px] font-bold ${r.stock ? 'text-emerald-400' : 'text-amber-400'}">${r.stock ? 'Σε απόθεμα' : 'Κατόπιν παραγγελίας'}</span>
+        </span>
+      </label>`).join('');
+    $('repair-list').querySelectorAll('input').forEach(inp => inp.onchange = () => { state.repair = +inp.value; state.slot = 0; renderRepairs(); renderSlots(); });
+  }
+  function renderSlots() {
+    const r = catalog[state.brand][state.model][state.repair];
+    const banner = $('stock-banner');
+    if (r.stock) {
+      banner.className = 'mb-4 p-3 rounded-xl text-xs bg-emerald-500/10 border border-emerald-500/30 text-emerald-300';
+      banner.innerHTML = `<i class="fa-solid fa-circle-check"></i> <strong>Σε απόθεμα:</strong> μπορείτε να έρθετε ακόμα και σήμερα.`;
+    } else {
+      const first = addWorkdays(new Date(), 3);
+      banner.className = 'mb-4 p-3 rounded-xl text-xs bg-amber-500/10 border border-amber-500/30 text-amber-300';
+      banner.innerHTML = `<i class="fa-solid fa-clock"></i> <strong>Κατόπιν παραγγελίας:</strong> το ανταλλακτικό φτάνει σε 2 εργάσιμες. Γι' αυτό τα ραντεβού ανοίγουν από <strong>${fmt(first)}</strong>.`;
+    }
+    const slots = buildSlots(r.stock);
+    $('slots').innerHTML = slots.map((s, i) =>
+      `<button data-slot="${i}" class="p-2.5 rounded-xl text-xs transition ${i === state.slot ? 'chip-on' : 'chip-off'}">${s}</button>`).join('');
+    $('slots').querySelectorAll('button').forEach(btn => btn.onclick = () => { state.slot = +btn.dataset.slot; renderSlots(); });
+    $('book-btn').textContent = `Επιβεβαίωση Κράτησης • ${r.price}€`;
+    $('book-result').classList.add('hidden');
+  }
+  function renderBooking() { renderBrands(); renderModels(); renderRepairs(); renderSlots(); }
+
+  $('model-select').onchange = e => { state.model = e.target.value; state.repair = 0; state.slot = 0; renderRepairs(); renderSlots(); };
+  $('book-btn').onclick = () => {
+    const name = $('cust-name').value.trim(), phone = $('cust-phone').value.trim();
+    const res = $('book-result');
+    if (!name || !phone) {
+      res.className = 'mt-4 p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-sm text-red-300';
+      res.textContent = 'Συμπληρώστε όνομα και κινητό για να ολοκληρωθεί η κράτηση.';
+      return;
+    }
+    const r = catalog[state.brand][state.model][state.repair];
+    const slot = buildSlots(r.stock)[state.slot];
+    const code = 'FIX-' + (1026 + tickets.length - 2);
+    tickets.push({ code, device: state.model, repair: r.name, status: 0, note: 'Η κράτηση καταχωρήθηκε. Σας περιμένουμε στο κατάστημα.' });
+    res.className = 'mt-4 p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-sm text-emerald-300';
+    res.innerHTML = `<strong>Η κράτηση ολοκληρώθηκε (demo).</strong><br>${esc(state.model)} • ${esc(r.name)} • ${r.price}€<br>Ραντεβού: <strong>${slot}</strong><br>Κωδικός δελτίου: <span class="font-mono font-bold text-white">${code}</span><br><span class="text-xs text-emerald-200/80">Στο κανονικό site, ο πελάτης παίρνει επιβεβαίωση και το κατάστημα λαμβάνει ειδοποίηση. Δοκιμάστε τον κωδικό στην «Πορεία Επισκευής».</span>`;
+    renderAdminTickets();
+  };
+
+  // ---------- TRACKING ----------
+  function showTicket() {
+    const code = $('ticket-input').value.trim().toUpperCase();
+    const t = tickets.find(x => x.code === code);
+    if (!t) { $('ticket-result').innerHTML = `<div class="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-sm text-red-300 text-center">Δεν βρέθηκε δελτίο με κωδικό <span class="font-mono">${esc(code)}</span>.</div>`; return; }
+    const pct = Math.round((t.status / (STATUSES.length - 1)) * 100);
+    $('ticket-result').innerHTML = `
+      <div class="border border-slate-700 bg-slate-950 rounded-2xl p-5 space-y-4">
+        <div class="flex justify-between text-sm"><span class="font-mono font-black">#${esc(t.code)}</span><span class="font-bold text-yellow-400">${esc(t.device)}</span></div>
+        <div class="text-xs text-slate-400">${esc(t.repair)}</div>
+        <div>
+          <div class="w-full bg-slate-800 h-2.5 rounded-full overflow-hidden mb-2"><div class="bg-[#ffd600] h-full rounded-full" style="width:${Math.max(pct, 6)}%"></div></div>
+          <div class="text-sm font-bold ${t.status === STATUSES.length - 1 ? 'text-emerald-400' : 'text-yellow-300'}">${STATUSES[t.status]}</div>
+        </div>
+        <div class="p-3 rounded-xl bg-yellow-400/10 border border-yellow-400/20 text-xs text-yellow-200">${esc(t.note)}</div>
+      </div>`;
+  }
+  $('ticket-btn').onclick = showTicket;
+  $('ticket-input').addEventListener('keydown', e => { if (e.key === 'Enter') showTicket(); });
+
+  // ---------- ADMIN ----------
+  let adm = { brand: 'apple', model: MODELS.apple[0] };
+  function renderAdmin() {
+    $('adm-brand').innerHTML = Object.keys(BRANDS).map(b => `<option value="${b}" ${b === adm.brand ? 'selected' : ''}>${BRANDS[b]}</option>`).join('');
+    $('adm-model').innerHTML = Object.keys(catalog[adm.brand]).map(m => `<option ${m === adm.model ? 'selected' : ''}>${esc(m)}</option>`).join('');
+    const list = catalog[adm.brand][adm.model];
+    $('adm-repairs').innerHTML = list.map((r, i) => `
+      <div class="flex items-center gap-2 p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+        <span class="flex-1 text-sm">${esc(r.name)}</span>
+        <input data-i="${i}" data-f="price" type="number" min="0" value="${r.price}" class="w-20 bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-sm text-right">
+        <span class="text-xs text-slate-500">€</span>
+        <select data-i="${i}" data-f="stock" class="bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs">
+          <option value="1" ${r.stock ? 'selected' : ''}>Σε απόθεμα</option>
+          <option value="0" ${!r.stock ? 'selected' : ''}>Παραγγελία</option>
+        </select>
+      </div>`).join('');
+    $('adm-repairs').querySelectorAll('input,select').forEach(el => el.onchange = () => {
+      const r = catalog[adm.brand][adm.model][+el.dataset.i];
+      if (el.dataset.f === 'price') r.price = Math.max(0, parseInt(el.value || '0', 10));
+      else r.stock = el.value === '1';
+      $('adm-saved').classList.remove('hidden');
+      if (state.brand === adm.brand && state.model === adm.model) { renderRepairs(); renderSlots(); }
+    });
+  }
+  function renderAdminTickets() {
+    $('adm-tickets').innerHTML = tickets.map((t, i) => `
+      <div class="flex flex-col sm:flex-row sm:items-center gap-2 p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+        <span class="font-mono text-sm font-bold w-24">${esc(t.code)}</span>
+        <span class="flex-1 text-xs text-slate-400">${esc(t.device)} • ${esc(t.repair)}</span>
+        <select data-t="${i}" class="bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-xs">
+          ${STATUSES.map((s, k) => `<option value="${k}" ${k === t.status ? 'selected' : ''}>${s}</option>`).join('')}
+        </select>
+      </div>`).join('');
+    $('adm-tickets').querySelectorAll('select').forEach(sel => sel.onchange = () => {
+      const t = tickets[+sel.dataset.t];
+      t.status = +sel.value;
+      t.note = t.status === STATUSES.length - 1 ? 'Η συσκευή σας είναι έτοιμη! Μπορείτε να περάσετε από το κατάστημα.' : 'Ενημέρωση: ' + STATUSES[t.status] + '.';
+      if ($('ticket-input').value.trim().toUpperCase() === t.code) showTicket();
+    });
+  }
+  $('adm-brand').onchange = e => { adm.brand = e.target.value; adm.model = Object.keys(catalog[adm.brand])[0]; $('adm-saved').classList.add('hidden'); renderAdmin(); };
+  $('adm-model').onchange = e => { adm.model = e.target.value; $('adm-saved').classList.add('hidden'); renderAdmin(); };
+  $('add-model-btn').onclick = () => {
+    const name = $('new-model').value.trim();
+    if (!name || catalog[adm.brand][name]) return;
+    catalog[adm.brand][name] = REPAIRS[adm.brand].map(([n, p, s]) => ({ name: n, price: p, stock: s }));
+    adm.model = name; $('new-model').value = '';
+    renderAdmin(); if (state.brand === adm.brand) renderModels();
+    $('adm-saved').classList.remove('hidden');
+  };
+
+  // ---------- TABS ----------
+  document.querySelectorAll('.tab-btn').forEach(btn => btn.onclick = () => {
+    document.querySelectorAll('.tab-btn').forEach(b => { b.classList.toggle('tab-on', b === btn); b.classList.toggle('tab-off', b !== btn); });
+    ['booking', 'tracking', 'admin'].forEach(t => $('tab-' + t).classList.toggle('hidden', t !== btn.dataset.tab));
+    if (btn.dataset.tab === 'tracking') showTicket();
+  });
+
+  renderBooking(); renderAdmin(); renderAdminTickets();
+</script>
+</body>
+</html>
