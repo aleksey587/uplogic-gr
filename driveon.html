@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="el" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DRIVE ON | Σχολή Οδηγών Καλλιθέα — Ντούκας - Πολυτάρχου</title>
+    <meta name="description" content="Σχολή Οδηγών DRIVE ON (Ντούκας Ε. - Πολυτάρχου Η. Ο.Ε.) στην Καλλιθέα, Φιλαρέτου 129 & Ακροπόλεως 15. Μάθε να οδηγείς με ασφάλεια! Διπλώματα αυτοκινήτου, μηχανής, επαγγελματικά, ΠΕΙ & Διεθνές Δίπλωμα IDP.">
+    <link rel="icon" href="/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        drive: {
+                            red: '#DC2626',
+                            redDark: '#B91C1C',
+                            amber: '#F59E0B',
+                            green: '#16A34A',
+                            dark: '#0B0F17',
+                            card: '#131B2E'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #0B0F17; color: #F8FAFC; overflow-x: hidden; }
+        h1, h2, h3, .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-nav { background: rgba(11, 15, 23, 0.88); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+        .glass-card { background: rgba(19, 27, 46, 0.75); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .hero-mesh {
+            background:
+                radial-gradient(circle at 15% 20%, rgba(220, 38, 38, 0.22) 0%, transparent 42%),
+                radial-gradient(circle at 85% 25%, rgba(245, 158, 11, 0.14) 0%, transparent 40%),
+                radial-gradient(circle at 75% 80%, rgba(22, 163, 74, 0.14) 0%, transparent 42%),
+                linear-gradient(180deg, #0B0F17 0%, #111827 100%);
+        }
+        .traffic-dot-red { box-shadow: 0 0 12px rgba(220, 38, 38, 0.8); }
+        .traffic-dot-amber { box-shadow: 0 0 12px rgba(245, 158, 11, 0.8); }
+        .traffic-dot-green { box-shadow: 0 0 12px rgba(22, 163, 74, 0.8); }
+        .tab-btn-active {
+            background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+            color: #ffffff;
+            border-color: #EF4444;
+            box-shadow: 0 10px 25px -5px rgba(220, 38, 38, 0.45);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-red-600 selection:text-white">
+
+    <!-- Top Utility Bar -->
+    <div class="bg-slate-950 border-b border-white/10 text-xs text-slate-300 py-2.5 px-4">
+        <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap items-center gap-4">
+                <a href="#map-section" class="flex items-center gap-1.5 hover:text-white transition">
+                    <span class="text-red-500">📍</span>
+                    <span class="font-medium">Φιλαρέτου 129 & Ακροπόλεως 15, Καλλιθέα</span>
+                </a>
+                <span class="hidden md:inline text-slate-700">|</span>
+                <div class="hidden sm:flex items-center gap-1.5 text-amber-400 font-semibold">
+                    <span>🏆</span>
+                    <span>Διάκριση «Αετοί των Σχολών Οδηγών» 8.5/10</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-4 ml-auto">
+                <a href="tel:2110088403" class="flex items-center gap-1.5 font-semibold text-white hover:text-red-400 transition">
+                    <span>📞</span> 211 0088403
+                </a>
+                <span class="text-slate-700">|</span>
+                <a href="tel:6987709305" class="hidden sm:flex items-center gap-1.5 hover:text-emerald-400 transition">
+                    <span>📱</span> 698 770 9305 • 698 691 0564
+                </a>
+                <div class="flex items-center gap-2 pl-2 border-l border-white/10">
+                    <a href="https://www.facebook.com/61585877729104" target="_blank" rel="noopener" title="Facebook Drive On" class="w-6 h-6 rounded-full bg-white/10 hover:bg-blue-600 flex items-center justify-center text-white transition text-[11px] font-bold">f</a>
+                    <a href="https://www.instagram.com/driveon_sxoli_odigon/" target="_blank" rel="noopener" title="Instagram @driveon_sxoli_odigon" class="w-6 h-6 rounded-full bg-white/10 hover:bg-pink-600 flex items-center justify-center text-white transition text-[11px] font-bold">IG</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky Main Header -->
+    <header class="sticky top-0 z-50 glass-nav border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
+            <!-- Brand Identity -->
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="driveon-assets/post_2.jpg" alt="Σχολή Οδηγών Drive On Λογότυπο" class="w-12 h-12 rounded-full object-cover border-2 border-red-500/60 shadow-lg group-hover:scale-105 transition">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="font-display font-black text-xl sm:text-2xl tracking-tight text-white">DRIVE <span class="text-emerald-500">ON</span></span>
+                        <span class="inline-flex flex-col gap-0.5 bg-slate-900 px-1.5 py-1 rounded-full border border-white/15" title="Σχολή Οδηγών">
+                            <span class="w-2 h-2 rounded-full bg-red-600 traffic-dot-red"></span>
+                            <span class="w-2 h-2 rounded-full bg-amber-400 traffic-dot-amber"></span>
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 traffic-dot-green"></span>
+                        </span>
+                    </div>
+                    <p class="text-[11px] text-slate-400 font-medium tracking-wide">ΝΤΟΥΚΑΣ - ΠΟΛΥΤΑΡΧΟΥ • ΚΑΛΛΙΘΕΑ</p>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden lg:flex items-center gap-5 text-sm font-medium text-slate-300 whitespace-nowrap">
+                <a href="#diplomata" class="hover:text-white transition">Διπλώματα</a>
+                <a href="#idp-section" class="hover:text-white transition">Διεθνές IDP</a>
+                <a href="#kok-quiz" class="hover:text-white transition flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+                    Τεστ Παρατηρητικότητας & ΚΟΚ
+                </a>
+                <a href="#road-safety" class="hover:text-white transition">Οδική Ασφάλεια</a>
+                <a href="#about-school" class="hover:text-white transition">Η Σχολή</a>
+                <a href="#map-section" class="hover:text-white transition">Επικοινωνία</a>
+            </nav>
+
+            <!-- Action CTAs -->
+            <div class="flex items-center gap-2.5 shrink-0">
+                <a href="https://wa.me/306987709305?text=%CE%9A%CE%B1%CE%BB%CE%B7%CF%83%CF%80%CE%AD%CF%81%CE%B1%20Drive%20On!%20%CE%95%CE%BD%CE%B4%CE%B9%CE%B1%CF%86%CE%AD%CF%81%CE%BF%CE%BC%CE%B1%CE%B9%20%CE%B3%CE%B9%CE%B1%20%CE%B4%CE%AF%CF%80%CE%BB%CF%89%CE%BC%CE%B1%20%CE%BF%CE%B4%CE%AE%CE%B3%CE%B7%CF%83%CE%B7%CF%82." target="_blank" rel="noopener" class="hidden sm:inline-flex items-center gap-1.5 bg-emerald-600/20 hover:bg-emerald-600 text-emerald-400 hover:text-white border border-emerald-500/30 px-3.5 py-2 rounded-xl text-xs font-bold transition whitespace-nowrap">
+                    <span>💬</span> WhatsApp
+                </a>
+                <a href="#booking-section" class="inline-flex items-center gap-1.5 bg-red-600 hover:bg-red-700 text-white px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-lg shadow-red-600/30 transition whitespace-nowrap">
+                    <span>Online Εγγραφή</span>
+                    <span>→</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-mesh relative overflow-hidden pt-10 pb-20 lg:py-20 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                <!-- Left Column: Copy & Value Prop -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex flex-wrap items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 text-xs font-semibold text-slate-200">
+                        <span class="inline-flex items-center gap-1 text-red-400 font-bold">● Υπεύθυνα</span>
+                        <span class="inline-flex items-center gap-1 text-amber-400 font-bold">● Γρήγορα</span>
+                        <span class="inline-flex items-center gap-1 text-emerald-400 font-bold">● Οικονομικά</span>
+                        <span class="text-slate-500">|</span>
+                        <span class="text-slate-300">Εκπαιδευτική Επίβλεψη: Ηλίας Πολυτάρχου</span>
+                    </div>
+
+                    <h1 class="font-display font-black text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-white">
+                        Μάθε να Οδηγείς με <span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-amber-400 to-emerald-400">Ασφάλεια & Σιγουριά!</span>
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
+                        Στη <strong class="text-white">Σχολή Οδηγών DRIVE ON (Ντούκας – Πολυτάρχου)</strong> στην Καλλιθέα, δεν μαθαίνουμε απλώς να περνάς τις εξετάσεις. Σε εκπαιδεύουμε με υπομονή, σύγχρονα οχήματα (χειροκίνητα & αυτόματα) και ευέλικτα ωράρια για να βγεις στον δρόμο με πραγματική αυτοπεποίθηση.
+                    </p>
+
+                    <!-- Primary CTAs -->
+                    <div class="flex flex-wrap items-center gap-3.5 pt-2">
+                        <a href="#diplomata" class="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-4 rounded-2xl shadow-xl shadow-red-600/30 transition text-sm sm:text-base">
+                            <span>📋 Δες Κατηγορίες & Δικαιολογητικά</span>
+                        </a>
+                        <a href="#kok-quiz" class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/15 text-white border border-white/15 font-bold px-6 py-4 rounded-2xl transition text-sm sm:text-base">
+                            <span>🎯 Κάνε το Τεστ Παρατηρητικότητας & ΚΟΚ</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Metrics Row -->
+                    <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-4 border-t border-white/10">
+                        <div class="glass-card rounded-2xl p-3.5 sm:p-4">
+                            <div class="font-display font-black text-2xl sm:text-3xl text-white">8.5<span class="text-amber-400 text-lg">/10</span></div>
+                            <div class="text-xs text-slate-400 mt-0.5">Βαθμολογία «Αετοί Σχολών Οδηγών»</div>
+                        </div>
+                        <div class="glass-card rounded-2xl p-3.5 sm:p-4">
+                            <div class="font-display font-black text-2xl sm:text-3xl text-emerald-400">150+</div>
+                            <div class="text-xs text-slate-400 mt-0.5">Χώρες Ισχύος Διεθνούς Διπλώματος IDP</div>
+                        </div>
+                        <div class="glass-card rounded-2xl p-3.5 sm:p-4">
+                            <div class="font-display font-black text-2xl sm:text-3xl text-red-400">100%</div>
+                            <div class="text-xs text-slate-400 mt-0.5">Δίπλα σου σε Παράβολα & Εξετάσεις</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Real Drive On Visual Showcase -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative rounded-3xl overflow-hidden border-2 border-white/15 shadow-2xl bg-slate-900">
+                        <img src="driveon-assets/student_car_clean.jpg" alt="Μαθήτρια της Σχολής Οδηγών Drive On με το νέο της δίπλωμα οδήγησης" class="w-full h-[380px] sm:h-[420px] object-cover object-top">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 glass-card rounded-2xl p-4 flex items-center justify-between gap-3">
+                            <div>
+                                <span class="text-[11px] uppercase tracking-wider font-bold text-red-400 block">ΤΟ ΔΙΠΛΩΜΑ ΣΟΥ ΣΕ ΠΕΡΙΜΕΝΕΙ!</span>
+                                <p class="text-sm font-bold text-white">Ξεκίνα σήμερα στη Φιλαρέτου 129, Καλλιθέα</p>
+                            </div>
+                            <a href="tel:2110088403" class="shrink-0 bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-3.5 py-2.5 rounded-xl transition">
+                                📞 211 0088403
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Floating Secondary Real Card -->
+                    <div class="hidden sm:flex items-center gap-3 glass-card rounded-2xl p-3 border border-white/15 shadow-xl mt-4">
+                        <img src="driveon-assets/logo.png" alt="Κάρτα Σχολής Οδηγών Drive On Ντούκας Πολυτάρχου" class="w-28 h-16 object-contain rounded-lg bg-white p-1 shrink-0">
+                        <div class="text-xs">
+                            <p class="font-bold text-white">Επίσημη Σχολή Οδηγών Drive On Ο.Ε.</p>
+                            <p class="text-slate-400">Ντούκας Ε. – Πολυτάρχου Η. • Άμεση εξυπηρέτηση & ευέλικτα πακέτα διδάκτρων.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE SECTION 1: КАΤΗΓΟΡΙΕΣ ΔΙΠΛΩΜΑΤΩΝ & ΔΙΚΑΙΟΛΟΓΗΤΙΚΑ -->
+    <section id="diplomata" class="py-16 lg:py-24 bg-slate-950 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="inline-block text-xs font-bold uppercase tracking-widest text-red-400 bg-red-500/10 border border-red-500/20 px-3.5 py-1 rounded-full mb-3">
+                    ΔΙΑΔΡΑΣΤΙΚΟΣ ΟΔΗΓΟΣ ΔΙΠΛΩΜΑΤΩΝ & ΔΙΚΑΙΟΛΟΓΗΤΙΚΩΝ
+                </span>
+                <h2 class="font-display font-black text-3xl sm:text-4xl text-white">
+                    Επίλεξε Κατηγορία & Δες Αμέσως τι Χρειάζεσαι
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base mt-2">
+                    Κάνε κλικ στην κατηγορία που σε ενδιαφέρει για να δεις όριο ηλικίας, υποχρεωτικά μαθήματα και όλα τα δικαιολογητικά που αναλαμβάνουμε για εσένα.
+                </p>
+            </div>
+
+            <!-- Interactive Category Tabs -->
+            <div class="flex flex-wrap justify-center gap-2.5 mb-10" role="tablist">
+                <button type="button" onclick="switchLicenseTab('car')" id="tab-btn-car" class="license-tab-btn tab-btn-active px-4 sm:px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold border border-white/10 transition flex items-center gap-2">
+                    <span>🚗</span> Αυτοκίνητο (Β' Χειροκίνητο / Αυτόματο)
+                </button>
+                <button type="button" onclick="switchLicenseTab('moto')" id="tab-btn-moto" class="license-tab-btn bg-slate-900 hover:bg-slate-800 text-slate-300 px-4 sm:px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold border border-white/10 transition flex items-center gap-2">
+                    <span>🏍️</span> Μηχανή (ΑΜ, Α1, Α2, Α)
+                </button>
+                <button type="button" onclick="switchLicenseTab('pro')" id="tab-btn-pro" class="license-tab-btn bg-slate-900 hover:bg-slate-800 text-slate-300 px-4 sm:px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold border border-white/10 transition flex items-center gap-2">
+                    <span>🚛</span> Επαγγελματικά (Γ', Δ', Ε' & Π.Ε.Ι.)
+                </button>
+                <button type="button" onclick="switchLicenseTab('idp')" id="tab-btn-idp" class="license-tab-btn bg-slate-900 hover:bg-slate-800 text-slate-300 px-4 sm:px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold border border-white/10 transition flex items-center gap-2">
+                    <span>🌍</span> Διεθνές Δίπλωμα (IDP 150+ Χώρες)
+                </button>
+                <button type="button" onclick="switchLicenseTab('renew')" id="tab-btn-renew" class="license-tab-btn bg-slate-900 hover:bg-slate-800 text-slate-300 px-4 sm:px-5 py-3 rounded-2xl text-xs sm:text-sm font-bold border border-white/10 transition flex items-center gap-2">
+                    <span>🔄</span> Ανανεώσεις & Μετεκπαίδευση
+                </button>
+            </div>
+
+            <!-- Dynamic Tab Content Container -->
+            <div id="license-tab-content" class="glass-card rounded-3xl p-6 sm:p-10 border border-white/10 shadow-2xl">
+                <!-- Populated & switchable via JS; initial state rendered in HTML for instant SEO/load -->
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-5">
+                        <div class="inline-flex items-center gap-2 bg-red-500/15 text-red-400 text-xs font-bold px-3 py-1 rounded-lg border border-red-500/30" id="lic-badge">
+                            ΚΑΤΗΓΟΡΙΑ Β • ΕΠΙΒΑΤΙΚΟ ΑΥΤΟΚΙΝΗΤΟ (ΧΕΙΡΟΚΙΝΗΤΟ Ή ΑΥΤΟΜΑΤΟ)
+                        </div>
+                        <h3 class="font-display font-black text-2xl sm:text-3xl text-white" id="lic-title">
+                            Δίπλωμα Αυτοκινήτου Κατηγορίας Β' (από 17 ή 18 ετών)
+                        </h3>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed" id="lic-desc">
+                            Εκπαιδεύσου σε σύγχρονα, ευέλικτα εκπαιδευτικά οχήματα (με χειροκίνητο ή αυτόματο κιβώτιο ταχυτήτων). Μαθαίνουμε παρκάρισμα, οδήγηση σε κίνηση, στενούς δρόμους της Καλλιθέας και λεωφόρους χωρίς άγχος!
+                        </p>
+
+                        <!-- Key Specs -->
+                        <div class="grid sm:grid-cols-3 gap-3 pt-2">
+                            <div class="bg-slate-900/90 border border-white/10 rounded-2xl p-3.5">
+                                <span class="text-xs text-slate-400 block">Ελάχιστη Ηλικία</span>
+                                <strong class="text-sm sm:text-base text-white font-bold" id="lic-age">18 ετών (ή 17 με συνοδό)</strong>
+                            </div>
+                            <div class="bg-slate-900/90 border border-white/10 rounded-2xl p-3.5">
+                                <span class="text-xs text-slate-400 block">Εκπαίδευση</span>
+                                <strong class="text-sm sm:text-base text-emerald-400 font-bold" id="lic-hours">21ώ Θεωρία + 25ώ Πρακτική</strong>
+                            </div>
+                            <div class="bg-slate-900/90 border border-white/10 rounded-2xl p-3.5">
+                                <span class="text-xs text-slate-400 block">Επιλογή Κιβωτίου</span>
+                                <strong class="text-sm sm:text-base text-amber-400 font-bold" id="lic-gear">Χειροκίνητο ή Αυτόματο</strong>
+                            </div>
+                        </div>
+
+                        <!-- Required Documents Checklist -->
+                        <div class="bg-slate-900/70 rounded-2xl p-5 border border-white/10">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3">
+                                ✅ Απαραίτητα Δικαιολογητικά (Αναλαμβάνουμε πλήρως την έκδοση):
+                            </h4>
+                            <ul class="grid sm:grid-cols-2 gap-2.5 text-xs sm:text-sm text-slate-200" id="lic-docs">
+                                <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">✓</span> Δελτίο Ταυτότητας ή Διαβατήριο σε ισχύ</li>
+                                <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">✓</span> ΑΦΜ & ΑΜΚΑ (για έκδοση Α.Μ.Α. μέσω gov.gr)</li>
+                                <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">✓</span> 4 έγχρωμες φωτογραφίες τύπου διαβατηρίου</li>
+                                <li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">✓</span> Πιστοποιητικά Παθολόγου & Οφθαλμιάτρου (συνεργαζόμενοι ιατροί)</li>
+                            </ul>
+                        </div>
+
+                        <div class="flex flex-wrap items-center gap-3 pt-2">
+                            <button type="button" onclick="selectCategoryForBooking()" id="lic-cta-btn" class="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3.5 rounded-xl text-sm shadow-lg shadow-red-600/30 transition">
+                                Κράτηση / Ρώτησε Τιμή για Αυτή την Κατηγορία →
+                            </button>
+                            <a href="tel:2110088403" class="bg-white/10 hover:bg-white/15 text-white font-semibold px-5 py-3.5 rounded-xl text-sm transition">
+                                📞 Κάλεσε στο 211 0088403
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-5">
+                        <div class="rounded-2xl overflow-hidden border border-white/15 shadow-xl bg-slate-900">
+                            <img id="lic-img" src="driveon-assets/panel_hero_car.jpg" alt="Κατηγορίες Διπλωμάτων Drive On Καλλιθέα" class="w-full h-[360px] sm:h-[400px] object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEDICATED SPOTLIGHT: ΔΙΕΘΝΕΣ ΔΙΠΛΩΜΑ ΟΔΗΓΗΣΗΣ IDP (WITH THEIR REAL GRAPHIC) -->
+    <section id="idp-section" class="py-16 bg-gradient-to-b from-slate-950 to-slate-900 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-red-500/25 shadow-2xl">
+                <div class="grid lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-6">
+                        <img src="driveon-assets/post_5.jpg" alt="Ταξίδεψε με Ελευθερία - Διεθνές Δίπλωμα Οδήγησης IDP από τη Σχολή Οδηγών Drive On" class="w-full rounded-2xl border border-white/15 shadow-xl object-cover">
+                    </div>
+                    <div class="lg:col-span-6 space-y-5">
+                        <span class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider bg-red-600/20 text-red-400 border border-red-500/30 px-3.5 py-1 rounded-full">
+                            ✈️ ΤΑΞΙΔΕΨΕ ΜΕ ΕΛΕΥΘΕΡΙΑ ΣΕ 150+ ΧΩΡΕΣ
+                        </span>
+                        <h2 class="font-display font-black text-3xl sm:text-4xl text-white">
+                            Διεθνές Δίπλωμα Οδήγησης (IDP) — Άμεση Έκδοση!
+                        </h2>
+                        <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                            Ετοιμάζεσαι για ταξίδι εκτός Ευρωπαϊκής Ένωσης (ΗΠΑ, Καναδά, Αυστραλία, Ασία, Μέση Ανατολή, Λατινική Αμερική); Η σχολή μας αναλαμβάνει <strong class="text-white">όλα τα βήματα για την άμεση έκδοση του Διεθνούς Διπλώματος Οδήγησης (IDP)</strong> χωρίς εξετάσεις!
+                        </p>
+                        <div class="grid sm:grid-cols-2 gap-3 text-sm">
+                            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-white/10 flex items-center gap-2.5">
+                                <span class="text-emerald-400 text-lg">✔</span>
+                                <span>Ισχύει σε <strong>150+ χώρες</strong> παγκοσμίως</span>
+                            </div>
+                            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-white/10 flex items-center gap-2.5">
+                                <span class="text-emerald-400 text-lg">✔</span>
+                                <span>Μονοετής ή Τριετής διάρκεια ισχύος</span>
+                            </div>
+                            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-white/10 flex items-center gap-2.5">
+                                <span class="text-emerald-400 text-lg">✔</span>
+                                <span>Απαραίτητο για ενοικίαση αυτοκινήτου στο εξωτερικό</span>
+                            </div>
+                            <div class="bg-slate-900/80 p-3.5 rounded-xl border border-white/10 flex items-center gap-2.5">
+                                <span class="text-emerald-400 text-lg">✔</span>
+                                <span>Χωρίς καμία εξέταση — μόνο με το ελληνικό δίπλωμα</span>
+                            </div>
+                        </div>
+                        <div class="pt-2 flex flex-wrap gap-3">
+                            <a href="https://wa.me/306987709305?text=%CE%9A%CE%B1%CE%BB%CE%B7%CF%83%CF%80%CE%AD%CF%81%CE%B1%20Drive%20On!%20%CE%98%CE%AD%CE%BB%CF%89%20%CE%BD%CE%B1%20%CE%B5%CE%BA%CE%B4%CF%8E%CF%83%CF%89%20%CE%94%CE%B9%CE%B5%CE%B8%CE%BD%CE%AD%CF%82%20%CE%94%CE%AF%CF%80%CE%BB%CF%89%CE%BC%CE%B1%20%CE%9F%CE%B4%CE%AE%CE%B3%CE%B7%CF%83%CE%B7%CF%82%20(IDP)." target="_blank" rel="noopener" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-3 rounded-xl text-sm transition flex items-center gap-2">
+                                <span>💬</span> Παράγγειλε IDP μέσω WhatsApp
+                            </a>
+                            <a href="#booking-section" onclick="document.getElementById('form-category').value='Διεθνές Δίπλωμα Οδήγησης (IDP)'" class="bg-white/10 hover:bg-white/15 text-white font-semibold px-5 py-3 rounded-xl text-sm transition">
+                                Αίτηση Έκδοσης Online →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE SECTION 2: ΤΕΣΤ ΠΑΡΑΤΗΡΗΤΙΚΟΤΗΤΑΣ DRIVE ON & MINI QUIZ Κ.Ο.Κ. -->
+    <section id="kok-quiz" class="py-16 lg:py-24 bg-slate-900 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="inline-block text-xs font-bold uppercase tracking-widest text-amber-400 bg-amber-500/10 border border-amber-500/20 px-3.5 py-1 rounded-full mb-3">
+                    ΔΙΑΔΡΑΣΤΙΚΗ ΕΜΠΕΙΡΙΑ ΜΑΘΗΤΗ DRIVE ON
+                </span>
+                <h2 class="font-display font-black text-3xl sm:text-4xl text-white">
+                    Πόσο Καλός Παρατηρητής Είσαι στον Δρόμο;
+                </h2>
+                <p class="text-slate-400 text-sm sm:text-base mt-2">
+                    Δοκίμασε το viral <strong>Τεστ Παρατηρητικότητας της Drive On</strong> και απάντησε στις 4 ερωτήσεις προσομοίωσης Θεωρητικών Εξετάσεων (Κ.Ο.Κ.)!
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                <!-- Left: Their Real Observation Challenge Post Made Interactive -->
+                <div class="lg:col-span-5 glass-card rounded-3xl p-6 border border-white/10">
+                    <div class="flex items-center justify-between gap-2 mb-4">
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-400">💡 ΤΕΣΤ ΠΑΡΑΤΗΡΗΤΙΚΟΤΗΤΑΣ DRIVE ON</span>
+                        <span class="text-xs bg-red-600/20 text-red-400 border border-red-500/30 px-2.5 py-0.5 rounded-full font-semibold">5 Δευτερόλεπτα!</span>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden border border-white/10 mb-4">
+                        <img src="driveon-assets/post_7.jpg" alt="Τεστ Παρατηρητικότητας Σχολή Οδηγών Drive On" class="w-full object-cover">
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-300 mb-4">
+                        Κοίτα προσεκτικά τη φωτογραφία της σχολής μας: <strong>1) Πόσοι πεζοί υπάρχουν; 2) Ποιο σήμα βλέπεις πρώτο; 3) Τι χρώμα έχει το αυτοκίνητο μπροστά;</strong>
+                    </p>
+                    <button type="button" onclick="toggleObservationSolution()" id="obs-btn" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3 px-4 rounded-xl text-sm transition">
+                        👁️ Εμφάνιση Σωστών Απαντήσεων Παρατηρητικότητας
+                    </button>
+                    <div id="obs-solution" class="hidden mt-4 bg-slate-950/90 border border-emerald-500/40 rounded-2xl p-4 space-y-2 text-xs sm:text-sm">
+                        <p class="font-bold text-emerald-400">✔ Απαντήσεις Τεστ Παρατηρητικότητας Drive On:</p>
+                        <p class="text-slate-200">• <strong>Πεζοί:</strong> Υπάρχουν <strong>3 πεζοί</strong> πάνω στη διάβαση (2 αριστερά, 1 δεξιά) + 1 ακόμη στο πεζοδρόμιο δεξιά!</p>
+                        <p class="text-slate-200">• <strong>Σήματα & Φανάρια:</strong> Ερυθρός σηματοδότης, πινακίδα <strong>STOP (Ρ-2)</strong> και πινακίδα Διάβασης Πεζών!</p>
+                        <p class="text-slate-200">• <strong>Αυτοκίνητο μπροστά:</strong> Σκούρο ανθρακί / μαύρο hatchback με αναμμένα φώτα πέδησης (φρένα).</p>
+                    </div>
+                </div>
+
+                <!-- Right: Interactive 4-Question KOK Simulator -->
+                <div class="lg:col-span-7 glass-card rounded-3xl p-6 sm:p-8 border border-white/10">
+                    <div class="flex flex-wrap items-center justify-between gap-2 pb-4 mb-6 border-b border-white/10">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 block">ONLINE ΠΡΟΣΟΜΟΙΩΣΗ ΘΕΩΡΙΑΣ Κ.Ο.Κ.</span>
+                            <h3 class="font-display font-bold text-xl sm:text-2xl text-white">Mini Quiz Σημάτων & Οδικής Ασφάλειας</h3>
+                        </div>
+                        <div class="bg-slate-950 border border-white/15 px-4 py-2 rounded-xl text-xs font-bold">
+                            Σκορ: <span id="quiz-score" class="text-emerald-400 text-base">0</span> / 4
+                        </div>
+                    </div>
+
+                    <!-- Quiz Questions Container -->
+                    <div class="space-y-5" id="kok-questions-list">
+                        <!-- Q1 -->
+                        <div class="bg-slate-950/75 rounded-2xl p-4 sm:p-5 border border-white/10" id="qbox-0">
+                            <p class="text-sm sm:text-base font-bold text-white mb-3">
+                                1. Πλησιάζετε σε διάβαση πεζών όπου πεζός ετοιμάζεται να διασχίσει τον δρόμο (όπως στην καμπάνια της Drive On). Τι υποχρεούστε να κάνετε;
+                            </p>
+                            <div class="grid gap-2">
+                                <button type="button" onclick="answerKok(0, 0, false)" class="kok-opt-0 text-left text-xs sm:text-sm bg-slate-900 hover:bg-slate-800 border border-white/10 rounded-xl px-4 py-2.5 transition">
+                                    Α. Να κορνάρετε ώστε να περιμένει να περάσετε πρώτα.
+                                </button>
+                                <button type="button" onclick="answerKok(0, 1, true)" class="kok-opt-0 text-left text-xs sm:text-sm bg-slate-900 hover:bg-slate-800 border border-white/10 rounded-xl px-4 py-2.5 transition">
+                                    Β. Να κόψετε έγκαιρα ταχύτητα και να σταματήσετε παραχωρώντας προτεραιότητα στον πεζό.
+                                </button>
+                                <button type="button" onclick="answerKok(0, 2, false)" class="kok-opt-0 text-left text-xs sm:text-sm bg-slate-900 hover:bg-slate-800 border border-white/10 rounded-xl px-4 py-2.5 transition">
+                                    Γ. Να αλλάξετε λωρίδα και να επιταχύνετε.
+                                </button>
+                            </div>
+                            <p id="qfeed-0" class="hidden mt-2.5 text-xs font-semibold"></p>
+                        </div>
+
+                        <!-- Q2 -->
+                        <div class="bg-slate-950/75 rounded-2xl p-4 sm:p-5 border border-white/10" id="qbox-1">
+                            <p class="text-sm sm:text-base font-bold text-white mb-3">
+                                2. Από ποια ηλικία επιτρέπεται πλέον στην Ελλάδα η απόκτηση διπλώματος αυτοκινήτου (Κατηγορία Β) με συνοδεία έμπειρου οδηγού;
+                            </p>
+                            <div class="grid gap-2">
+                                <button type="button" onclick="answerKok(1, 0, true)" class="kok-opt-1 text-left text-xs sm:text-sm bg-slate-900 hover:bg-slate-800 border border-white/10 rounded-xl px-4 py-2.5 transition">
+                                    Α. Από την ηλικία των 17 ετών (με έγγραφη συναίνεση γονέων/κηδεμόνων).
+                                </button>
+                                <button type="button" onclick="answerKok(1, 1, false)" class="kok-opt-1 text-left text-xs sm:text-sm bg-slate-900 hover:bg-slate-800 border border-white/10 rounded-xl px-4 py-2.5 transition">
+                                    Β. Αυστηρά μετά τη συμπλήρωση του 21ου έτους.
+                                </button>
+                                <button type="button" onclick="answerKok(1, 2, false)" class="kok-opt-1 text-left text-xs sm:text-sm bg-slate-900 hover:bg-slate-800 border border-white/10 rounded-xl px-4 py-2.5 transition">
+                                    Γ. Από τα 15 έτη.
+                                </button>
+                            </div>
+                            <p id="qfeed-1" class="hidden mt-2.5 text-xs font-semibold"></p>
+                        </div>
+
+                        <!-- Q3 -->
+                        <div class="bg-slate-950/75 rounded-2xl p-4 sm:p-5 border border-white/10" id="qbox-2">
+                            <p class="text-sm sm:text-base font-bold text-white mb-3">
+                                3. Τι προβλέπει ο Κ.Ο.Κ. για τη χρήση κινητού τηλεφώνου στο χέρι κατά την οδήγηση;
+                            </p>
+                            <div class="grid gap-2">
+                                <button type="button" onclick="answerKok(2, 0, false)" class="kok-opt-2 text-left text-xs sm:text-sm bg-slate-900 hover:bg-slate-800 border border-white/10 rounded-xl px-4 py-2.5 transition">
+                                    Α. Επιτρέπεται για ανάγνωση σύντομου μηνύματος όταν κινούμαστε κάτω από 40 km/h.
+                                </button>
+                                <button type="button" onclick="answerKok(2, 1, true)" class="kok-opt-2 text-left text-xs sm:text-sm bg-slate-900 hover:bg-slate-800 border border-white/10 rounded-xl px-4 py-2.5 transition">
+                                    Β. Απαγορεύεται αυστηρά — ένα μήνυμα μπορεί να περιμένει, ο δρόμος ΟΧΙ!
+                                </button>
+                            </div>
+                            <p id="qfeed-2" class="hidden mt-2.5 text-xs font-semibold"></p>
+                        </div>
+
+                        <!-- Q4 -->
+                        <div class="bg-slate-950/75 rounded-2xl p-4 sm:p-5 border border-white/10" id="qbox-3">
+                            <p class="text-sm sm:text-base font-bold text-white mb-3">
+                                4. Ποια είναι τα 4 χρυσά βήματα πριν και κατά το σωστό φρενάρισμα;
+                            </p>
+                            <div class="grid gap-2">
+                                <button type="button" onclick="answerKok(3, 0, true)" class="kok-opt-3 text-left text-xs sm:text-sm bg-slate-900 hover:bg-slate-800 border border-white/10 rounded-xl px-4 py-2.5 transition">
+                                    Α. Κρατάς απόσταση ασφαλείας • Παρατηρείς μπροστά • Ελέγχεις καθρέφτη • Φρενάρεις ομαλά.
+                                </button>
+                                <button type="button" onclick="answerKok(3, 1, false)" class="kok-opt-3 text-left text-xs sm:text-sm bg-slate-900 hover:bg-slate-800 border border-white/10 rounded-xl px-4 py-2.5 transition">
+                                    Β. Πατάς απότομα φρένο τελευταία στιγμή χωρίς έλεγχο καθρέφτη.
+                                </button>
+                            </div>
+                            <p id="qfeed-3" class="hidden mt-2.5 text-xs font-semibold"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: ΟΙ ΚΑΜΠΑΝΙΕΣ ΜΑΣ ΓΙΑ ΤΗΝ ΟΔΙΚΗ ΑΣΦΑΛΕΙΑ (REAL SOCIAL MEDIA GALLERY) -->
+    <section id="road-safety" class="py-16 lg:py-24 bg-slate-950 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+                <div>
+                    <span class="inline-block text-xs font-bold uppercase tracking-widest text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3.5 py-1 rounded-full mb-3">
+                        @driveon_sxoli_odigon • ΚΟΙΝΩΝΙΚΗ ΕΥΘΥΝΗ & ΕΚΠΑΙΔΕΥΣΗ
+                    </span>
+                    <h2 class="font-display font-black text-3xl sm:text-4xl text-white">
+                        Μαθαίνουμε να Οδηγούμε. Μαθαίνουμε να Προστατεύουμε Ζωές!
+                    </h2>
+                    <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+                        Δες τις ενημερωτικές καμπάνιες της Σχολής Οδηγών <strong>Drive On (Ντούκας - Πολυτάρχου)</strong> στα Social Media και ακολούθησέ μας για καθημερινές συμβουλές οδικής ασφάλειας.
+                    </p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <a href="https://www.facebook.com/61585877729104" target="_blank" rel="noopener" class="bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition">
+                        Facebook Page →
+                    </a>
+                    <a href="https://www.instagram.com/driveon_sxoli_odigon/" target="_blank" rel="noopener" class="bg-gradient-to-r from-pink-600 to-amber-500 hover:opacity-95 text-white text-xs sm:text-sm font-bold px-4 py-2.5 rounded-xl transition">
+                        @driveon_sxoli_odigon →
+                    </a>
+                </div>
+            </div>
+
+            <!-- 4-Card Real Social Gallery -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group">
+                    <div class="overflow-hidden bg-slate-950">
+                        <img src="driveon-assets/post_10.jpg" alt="Ξέρεις να φρενάρεις σωστά; Drive On Καλλιθέα" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                        <span class="text-[11px] font-bold text-amber-400 uppercase">ΤΕΧΝΙΚΗ ΟΔΗΓΗΣΗΣ</span>
+                        <h3 class="font-bold text-white text-sm mt-1">Ξέρεις να φρενάρεις σωστά; Η ασφάλεια ξεκινά πριν το φρένο.</h3>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group">
+                    <div class="overflow-hidden bg-slate-950">
+                        <img src="driveon-assets/post_4.jpg" alt="Οδηγούμε μαζί με ασφάλεια Drive On" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                        <span class="text-[11px] font-bold text-red-400 uppercase">ΔΙΠΛΑ ΣΕ ΚΑΘΕ ΜΑΘΗΤΗ</span>
+                        <h3 class="font-bold text-white text-sm mt-1">Νέοι στόχοι, νέες διαδρομές — οδηγούμε μαζί με ασφάλεια!</h3>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group">
+                    <div class="overflow-hidden bg-slate-950">
+                        <img src="driveon-assets/post_9.jpg" alt="Ένα μήνυμα μπορεί να περιμένει Drive On" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                        <span class="text-[11px] font-bold text-red-400 uppercase">ΟΧΙ ΚΙΝΗΤΟ ΣΤΟ ΤΙΜΟΝΙ</span>
+                        <h3 class="font-bold text-white text-sm mt-1">Ένα μήνυμα μπορεί να περιμένει. Ο δρόμος ΟΧΙ!</h3>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group">
+                    <div class="overflow-hidden bg-slate-950">
+                        <img src="driveon-assets/post_3.jpg" alt="Στον δρόμο δεν υπάρχουν δεύτερες ευκαιρίες Drive On" class="w-full aspect-square object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-4">
+                        <span class="text-[11px] font-bold text-emerald-400 uppercase">ΟΔΙΚΗ ΣΥΝΕΙΔΗΣΗ</span>
+                        <h3 class="font-bold text-white text-sm mt-1">Στον δρόμο δεν υπάρχουν δεύτερες ευκαιρίες. Οδηγούμε υπεύθυνα!</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: Η ΣΧΟΛΗ ΜΑΣ & ΤΑ 4 ΒΗΜΑΤΑ ΕΠΙΤΥΧΙΑΣ -->
+    <section id="about-school" class="py-16 lg:py-24 bg-slate-900 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="inline-block text-xs font-bold uppercase tracking-widest text-red-400 bg-red-500/10 border border-red-500/20 px-3.5 py-1 rounded-full">
+                        Η ΣΧΟΛΗ ΜΑΣ ΣΤΗΝ ΚΑΛΛΙΘΕΑ
+                    </span>
+                    <h2 class="font-display font-black text-3xl sm:text-4xl text-white">
+                        Εκπαίδευση με Υπομονή, Επιτυχία με Σιγουριά!
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Η <strong>Σχολή Οδηγών DRIVE ON (Ντούκας Ε. – Πολυτάρχου Η. Ο.Ε.)</strong> βρίσκεται στη συμβολή των οδών <strong>Φιλαρέτου 129 & Ακροπόλεως 15 στην Καλλιθέα</strong>. Με εκπαιδευτική επίβλεψη από τον <strong>Ηλία Πολυτάρχου</strong>, στεκόμαστε δίπλα σε κάθε νέο ή έμπειρο οδηγό με μεθοδικότητα, ηρεμία και σεβασμό στον χρόνο και τις ανάγκες του.
+                    </p>
+
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="glass-card p-4 rounded-2xl border border-white/10">
+                            <div class="text-red-400 font-black text-lg mb-1">01. Παράβολα & Α.Μ.Α.</div>
+                            <p class="text-xs text-slate-300">Αναλαμβάνουμε όλη τη γραφειοκρατία, τα παράβολα και τον προγραμματισμό ιατρών χωρίς καμία ταλαιπωρία.</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-2xl border border-white/10">
+                            <div class="text-amber-400 font-black text-lg mb-1">02. Θεωρία Κ.Ο.Κ.</div>
+                            <p class="text-xs text-slate-300">Κατανοητά μαθήματα θεωρίας και τεστ προσομοίωσης για σίγουρη επιτυχία από την 1η φορά.</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-2xl border border-white/10">
+                            <div class="text-emerald-400 font-black text-lg mb-1">03. Πρακτική Οδήγηση</div>
+                            <p class="text-xs text-slate-300">Μαθήματα σε πραγματικές συνθήκες κυκλοφορίας με υπομονετικούς εκπαιδευτές και σύγχρονα οχήματα.</p>
+                        </div>
+                        <div class="glass-card p-4 rounded-2xl border border-white/10">
+                            <div class="text-blue-400 font-black text-lg mb-1">04. Εξετάσεις & Δίπλωμα</div>
+                            <p class="text-xs text-slate-300">Σε συνοδεύουμε στις εξετάσεις με το ίδιο εκπαιδευτικό όχημα μέχρι να πάρεις το δίπλωμα στα χέρια σου!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 grid sm:grid-cols-2 gap-4">
+                    <img src="driveon-assets/panel_cones.jpg" alt="Εκπαίδευση με υπομονή Drive On" class="w-full h-64 sm:h-72 object-cover rounded-2xl border border-white/15 shadow-lg">
+                    <img src="driveon-assets/panel_services.jpg" alt="Ολοκληρωμένες Υπηρεσίες Drive On" class="w-full h-64 sm:h-72 object-cover rounded-2xl border border-white/15 shadow-lg">
+                    <div class="sm:col-span-2 bg-white rounded-2xl p-4 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <img src="driveon-assets/logo.png" alt="Επίσημη Κάρτα Drive On Ντούκας Πολυτάρχου" class="h-28 object-contain">
+                        <div class="text-slate-900 text-center sm:text-right">
+                            <span class="inline-block bg-amber-100 text-amber-900 text-xs font-extrabold px-3 py-1 rounded-full mb-1">🏆 ΑΕΤΟΙ ΤΩΝ ΣΧΟΛΩΝ ΟΔΗΓΩΝ 8.5/10</span>
+                            <p class="font-display font-black text-lg">Ντούκας Ε. – Πολυτάρχου Η. Ο.Ε.</p>
+                            <p class="text-xs text-slate-600">Φιλαρέτου 129 & Ακροπόλεως 15, Καλλιθέα • Τηλ. 211 0088403</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: ONLINE ΕΓΓΡΑΦΗ / ΡΑΝΤΕΒΟΥ & ΧΑΡΤΗΣ ΚΑΛΛΙΘΕΑΣ -->
+    <section id="booking-section" class="py-16 lg:py-24 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid lg:grid-cols-12 gap-10 items-start" id="map-section">
+                <!-- Left: Interactive Inquiry & Callback Form -->
+                <div class="lg:col-span-6 glass-card rounded-3xl p-6 sm:p-8 border border-white/15 shadow-2xl">
+                    <span class="text-xs font-bold uppercase tracking-wider text-red-400 block mb-1">ΞΕΚΙΝΑ ΣΗΜΕΡΑ ΣΤΗ DRIVE ON</span>
+                    <h2 class="font-display font-black text-2xl sm:text-3xl text-white mb-2">
+                        Ζήτησε Πληροφορίες ή Κλείσε Ραντεβού Ενημέρωσης
+                    </h2>
+                    <p class="text-xs sm:text-sm text-slate-400 mb-6">
+                        Συμπλήρωσε τη φόρμα και θα σε καλέσουμε άμεσα για να σου λύσουμε κάθε απορία σχετικά με τα δικαιολογητικά, τη διαδικασία και τα οικονομικά πακέτα μας.
+                    </p>
+
+                    <form id="driveon-form" onsubmit="handleDriveOnSubmit(event)" class="space-y-4">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="form-name" class="block text-xs font-semibold text-slate-300 mb-1.5">Ονοματεπώνυμο *</label>
+                                <input type="text" id="form-name" required placeholder="π.χ. Γιώργος Παπαδόπουλος" class="w-full bg-slate-900 border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-red-500">
+                            </div>
+                            <div>
+                                <label for="form-phone" class="block text-xs font-semibold text-slate-300 mb-1.5">Τηλέφωνο Επικοινωνίας *</label>
+                                <input type="tel" id="form-phone" required placeholder="π.χ. 698 123 4567" class="w-full bg-slate-900 border border-white/15 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-red-500">
+                            </div>
+                        </div>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="form-category" class="block text-xs font-semibold text-slate-300 mb-1.5">Κατηγορία Διπλώματος / Υπηρεσία</label>
+                                <select id="form-category" class="w-full bg-slate-900 border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-red-500">
+                                    <option value="Δίπλωμα Αυτοκινήτου Β (Χειροκίνητο)">🚗 Αυτοκίνητο Β' (Χειροκίνητο)</option>
+                                    <option value="Δίπλωμα Αυτοκινήτου Β (Αυτόματο)">🚗 Αυτοκίνητο Β' (Αυτόματο)</option>
+                                    <option value="Δίπλωμα Μηχανής (ΑΜ / Α1 / Α2 / Α)">🏍️ Μηχανή (ΑΜ / Α1 / Α2 / Α)</option>
+                                    <option value="Επαγγελματικό Δίπλωμα (Γ / Δ / ΠΕΙ)">🚛 Επαγγελματικό (Γ' / Δ' / Π.Ε.Ι.)</option>
+                                    <option value="Διεθνές Δίπλωμα Οδήγησης (IDP)">🌍 Διεθνές Δίπλωμα Οδήγησης (IDP)</option>
+                                    <option value="Ανανέωση / Επέκταση / Μετεκπαίδευση">🔄 Ανανέωση / Επέκταση / Μετεκπαίδευση</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="form-time" class="block text-xs font-semibold text-slate-300 mb-1.5">Επιθυμητή Ώρα Επικοινωνίας</label>
+                                <select id="form-time" class="w-full bg-slate-900 border border-white/15 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-red-500">
+                                    <option value="Όλη την ημέρα">Όλη την ημέρα</option>
+                                    <option value="Πρωινές ώρες (09:00 - 14:00)">Πρωινές ώρες (09:00 - 14:00)</option>
+                                    <option value="Απογευματινές ώρες (17:00 - 20:30)">Απογευματινές ώρες (17:00 - 20:30)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="form-notes" class="block text-xs font-semibold text-slate-300 mb-1.5">Σημειώσεις / Ερώτηση (προαιρετικά)</label>
+                            <textarea id="form-notes" rows="2" placeholder="π.χ. Είμαι 18 ετών και θέλω να ρωτήσω για πακέτο θεωρίας + πρακτικών μαθημάτων..." class="w-full bg-slate-900 border border-white/15 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-red-500"></textarea>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                            <button type="submit" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 px-6 rounded-xl text-sm shadow-lg shadow-red-600/30 transition">
+                                📩 Αποστολή Αιτήματος Ενημέρωσης
+                            </button>
+                            <button type="button" onclick="sendViaWhatsApp()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-5 rounded-xl text-sm transition flex items-center justify-center gap-2">
+                                <span>💬</span> Άμεση Αποστολή σε WhatsApp
+                            </button>
+                        </div>
+
+                        <div id="form-success-msg" class="hidden bg-emerald-950/90 border border-emerald-500/40 text-emerald-300 rounded-2xl p-4 text-xs sm:text-sm font-medium"></div>
+                    </form>
+                </div>
+
+                <!-- Right: Contact Cards & Interactive Google Map -->
+                <div class="lg:col-span-6 space-y-5">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div class="glass-card rounded-2xl p-5 border border-white/10">
+                            <span class="text-xs font-bold uppercase text-red-400">📍 ΔΙΕΥΘΥΝΣΗ ΣΧΟΛΗΣ</span>
+                            <p class="font-bold text-white text-base mt-1">Φιλαρέτου 129 & Ακροπόλεως 15</p>
+                            <p class="text-xs text-slate-400 mt-0.5">Καλλιθέα, Τ.Κ. 176 75, Αττική</p>
+                            <a href="https://www.google.com/maps/search/?api=1&query=%CE%A6%CE%B9%CE%BB%CE%B1%CF%81%CE%AD%CF%84%CE%BF%CF%85+129+%CE%9A%CE%B1%CE%BB%CE%BB%CE%B9%CE%B8%CE%AD%CE%B1+17675" target="_blank" rel="noopener" class="inline-block mt-3 text-xs font-bold text-red-400 hover:text-red-300">
+                                Οδηγίες Πλοήγησης στους Χάρτες →
+                            </a>
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-5 border border-white/10">
+                            <span class="text-xs font-bold uppercase text-emerald-400">📞 ΤΗΛΕΦΩΝΑ & EMAIL</span>
+                            <p class="font-bold text-white text-base mt-1">
+                                <a href="tel:2110088403" class="hover:text-red-400">211 0088403</a> (Σταθερό)
+                            </p>
+                            <p class="text-xs text-slate-300 mt-1">
+                                📱 <a href="tel:6987709305" class="hover:text-emerald-400">698 770 9305</a> • <a href="tel:6986910564" class="hover:text-emerald-400">698 691 0564</a>
+                            </p>
+                            <p class="text-xs text-slate-400 mt-1">✉️ driveonkallithea@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="rounded-3xl overflow-hidden border border-white/15 shadow-2xl h-[330px] bg-slate-900">
+                        <iframe
+                            title="Χάρτης Σχολής Οδηγών Drive On - Φιλαρέτου 129 Καλλιθέα"
+                            src="https://www.google.com/maps?q=%CE%A6%CE%B9%CE%BB%CE%B1%CF%81%CE%AD%CF%84%CE%BF%CF%85+129,+%CE%9A%CE%B1%CE%BB%CE%BB%CE%B9%CE%B8%CE%AD%CE%B1+17675&output=embed"
+                            width="100%"
+                            height="100%"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-white/10 py-10 text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <img src="driveon-assets/post_2.jpg" alt="Drive On Logo" class="w-9 h-9 rounded-full object-cover border border-red-500/50">
+                <div>
+                    <p class="font-bold text-white">ΣΧΟΛΗ ΟΔΗΓΩΝ DRIVE ON — ΝΤΟΥΚΑΣ Ε. - ΠΟΛΥΤΑΡΧΟΥ Η. Ο.Ε.</p>
+                    <p>Φιλαρέτου 129 & Ακροπόλεως 15, Καλλιθέα • Τηλ.: 211 0088403 | 698 770 9305 | 698 691 0564</p>
+                </div>
+            </div>
+            <div class="text-center sm:text-right">
+                <p>Σχεδίαση & Κατασκευή Ιστοσελίδας Demo από την <a href="https://uplogic.gr" target="_blank" rel="noopener" class="text-red-400 hover:underline font-semibold">UpLogic.gr</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Logic -->
+    <script>
+        const LICENSE_DATA = {
+            car: {
+                badge: "ΚΑΤΗΓΟΡΙΑ Β • ΕΠΙΒΑΤΙΚΟ ΑΥΤΟΚΙΝΗΤΟ (ΧΕΙΡΟΚΙΝΗΤΟ Ή ΑΥΤΟΜΑΤΟ)",
+                title: "Δίπλωμα Αυτοκινήτου Κατηγορίας Β' (από 17 ή 18 ετών)",
+                desc: "Εκπαιδεύσου σε σύγχρονα, ευέλικτα εκπαιδευτικά οχήματα (με χειροκίνητο ή αυτόματο κιβώτιο ταχυτήτων). Μαθαίνουμε παρκάρισμα, οδήγηση σε κίνηση, στενούς δρόμους της Καλλιθέας και λεωφόρους χωρίς άγχος!",
+                age: "18 ετών (ή 17 με συνοδό)",
+                hours: "21ώ Θεωρία + 25ώ Πρακτική",
+                gear: "Χειροκίνητο ή Αυτόματο",
+                img: "driveon-assets/panel_hero_car.jpg",
+                selectVal: "Δίπλωμα Αυτοκινήτου Β (Χειροκίνητο)",
+                docs: [
+                    "Δελτίο Ταυτότητας ή Διαβατήριο σε ισχύ",
+                    "ΑΦΜ & ΑΜΚΑ (για έκδοση Α.Μ.Α. μέσω gov.gr)",
+                    "4 έγχρωμες φωτογραφίες τύπου διαβατηρίου",
+                    "Πιστοποιητικά Παθολόγου & Οφθαλμιάτρου (συνεργαζόμενοι ιατροί)"
+                ]
+            },
+            moto: {
+                badge: "ΚΑΤΗΓΟΡΙΕΣ ΑΜ, Α1, Α2, Α • ΜΟΤΟΣΥΚΛΕΤΕΣ ΟΛΩΝ ΤΩΝ ΚΥΒΙΣΜΩΝ",
+                title: "Δίπλωμα Μηχανής (ΑΜ 50cc, Α1 125cc, Α2 έως 35kW & Α Απεριόριστο)",
+                desc: "Ολοκληρωμένη εκπαίδευση ισορροπίας, ελιγμών, πέδησης και αμυντικής οδήγησης μοτοσυκλέτας στην πόλη, με πλήρη εξοπλισμό ασφαλείας.",
+                age: "16 (ΑΜ), 18 (Α1), 20 (Α2), 24 (Α)",
+                hours: "11ώ Θεωρία + 14ώ Πρακτική (ή 7ώ με Β')",
+                gear: "Αυτόματο Scooter ή Συμπλέκτης",
+                img: "driveon-assets/panel_gearbox.jpg",
+                selectVal: "Δίπλωμα Μηχανής (ΑΜ / Α1 / Α2 / Α)",
+                docs: [
+                    "Δελτίο Ταυτότητας ή Διαβατήριο σε ισχύ",
+                    "Τυχόν υπάρχον δίπλωμα αυτοκινήτου (μειώνει τις ώρες!)",
+                    "ΑΦΜ, ΑΜΚΑ & 4 έγχρωμες φωτογραφίες διαβατηρίου",
+                    "Ηλεκτρονικά παράβολα gov.gr (εκδίδονται στη σχολή μας)"
+                ]
+            },
+            pro: {
+                badge: "ΕΠΑΓΓΕΛΜΑΤΙΚΑ ΔΙΠΛΩΜΑΤΑ Γ' (C), Δ' (D), Ε' (CE) & Π.Ε.Ι.",
+                title: "Επαγγελματικά Διπλώματα Φορτηγού, Λεωφορείου, Συρμού & Π.Ε.Ι.",
+                desc: "Αναβάθμισε την επαγγελματική σου καριέρα στις μεταφορές και τον τουρισμό. Αναλαμβάνουμε επέκταση σε Γ', Δ', Ε', Πιστοποιητικό Επαγγελματικής Ικανότητας (Π.Ε.Ι.) και κάρτα ψηφιακού ταχογράφου.",
+                age: "18-21 ετών (Γ' & ΠΕΙ) / 21-24 (Δ')",
+                hours: "Θεωρητική & Πρακτική Κατάρτιση ΠΕΙ",
+                gear: "Επαγγελματικά Οχήματα C / CE / D",
+                img: "driveon-assets/panel_road_wheel.jpg",
+                selectVal: "Επαγγελματικό Δίπλωμα (Γ / Δ / ΠΕΙ)",
+                docs: [
+                    "Ισχύον Δίπλωμα Οδήγησης Κατηγορίας Β'",
+                    "Δελτίο Ταυτότητας, ΑΦΜ & ΑΜΚΑ",
+                    "4 φωτογραφίες τύπου διαβατηρίου",
+                    "Παράβολα επέκτασης & εξέτασης Π.Ε.Ι."
+                ]
+            },
+            idp: {
+                badge: "ΔΙΕΘΝΕΣ ΔΙΠΛΩΜΑ ΟΔΗΓΗΣΗΣ (IDP) • ΙΣΧΥΕΙ ΣΕ 150+ ΧΩΡΕΣ",
+                title: "Διεθνές Δίπλωμα Οδήγησης IDP — Χωρίς Εξετάσεις!",
+                desc: "Απαραίτητο για ταξίδια και ενοικίαση οχήματος σε ΗΠΑ, Καναδά, Αυστραλία, Ασία, Μέση Ανατολή και 150+ χώρες εκτός Ε.Ε. Η σχολή μας αναλαμβάνει όλη τη διαδικασία γρήγορα και υπεύθυνα!",
+                age: "Κάτοχοι Ελληνικού Διπλώματος",
+                hours: "0 ώρες (Χωρίς Εξετάσεις!)",
+                gear: "Έκδοση 1ετούς ή 3ετούς Ισχύος",
+                img: "driveon-assets/post_5.jpg",
+                selectVal: "Διεθνές Δίπλωμα Οδήγησης (IDP)",
+                docs: [
+                    "Ισχύον Ελληνικό / Ευρωπαϊκό Δίπλωμα Οδήγησης",
+                    "Δελτίο Ταυτότητας ή Διαβατήριο σε ισχύ",
+                    "2 έγχρωμες φωτογραφίες τύπου διαβατηρίου",
+                    "Άμεση διεκπεραίωση από τη γραμματεία της Drive On"
+                ]
+            },
+            renew: {
+                badge: "ΑΝΑΝΕΩΣΕΙΣ, ΑΝΤΙΚΑΤΑΣΤΑΣΗ ΕΝΤΥΠΟΥ & ΜΕΤΕΚΠΑΙΔΕΥΣΗ",
+                title: "Ανανέωση Διπλώματος, Απώλεια & Μαθήματα Μετεκπαίδευσης",
+                desc: "Έχεις δίπλωμα αλλά έχεις χρόνια να οδηγήσεις; Ή χρειάζεσαι ανανέωση / αντικατάσταση παλαιού χάρτινου διπλώματος σε νέα ευρωπαϊκή κάρτα; Αναλαμβάνουμε τα πάντα!",
+                age: "Όλες οι ηλικίες (και άνω των 65)",
+                hours: "Εξατομικευμένα Μαθήματα Πόλης",
+                gear: "Χειροκίνητο ή Αυτόματο Όχημα",
+                img: "driveon-assets/panel_services.jpg",
+                selectVal: "Ανανέωση / Επέκταση / Μετεκπαίδευση",
+                docs: [
+                    "Παλαιό Δίπλωμα Οδήγησης & Ταυτότητα",
+                    "ΑΦΜ, ΑΜΚΑ & 1 φωτογραφία διαβατηρίου",
+                    "Ιατρική εξέταση (όπου απαιτείται λόγω ηλικίας/λήξης)",
+                    "Διεκπεραίωση χωρίς αναμονή σε ουρές"
+                ]
+            }
+        };
+
+        let currentSelectedCategory = LICENSE_DATA.car.selectVal;
+
+        function switchLicenseTab(key) {
+            const d = LICENSE_DATA[key];
+            if (!d) return;
+            currentSelectedCategory = d.selectVal;
+
+            document.querySelectorAll('.license-tab-btn').forEach(btn => {
+                btn.classList.remove('tab-btn-active');
+                btn.classList.add('bg-slate-900', 'text-slate-300');
+            });
+            const activeBtn = document.getElementById('tab-btn-' + key);
+            if (activeBtn) {
+                activeBtn.classList.add('tab-btn-active');
+                activeBtn.classList.remove('bg-slate-900', 'text-slate-300');
+            }
+
+            document.getElementById('lic-badge').textContent = d.badge;
+            document.getElementById('lic-title').textContent = d.title;
+            document.getElementById('lic-desc').textContent = d.desc;
+            document.getElementById('lic-age').textContent = d.age;
+            document.getElementById('lic-hours').textContent = d.hours;
+            document.getElementById('lic-gear').textContent = d.gear;
+            document.getElementById('lic-img').src = d.img;
+
+            const docsEl = document.getElementById('lic-docs');
+            docsEl.innerHTML = d.docs.map(item =>
+                `<li class="flex items-start gap-2"><span class="text-emerald-400 font-bold">✓</span> ${item}</li>`
+            ).join('');
+        }
+
+        function selectCategoryForBooking() {
+            const sel = document.getElementById('form-category');
+            if (sel) sel.value = currentSelectedCategory;
+            document.getElementById('booking-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleObservationSolution() {
+            const box = document.getElementById('obs-solution');
+            const btn = document.getElementById('obs-btn');
+            if (box.classList.contains('hidden')) {
+                box.classList.remove('hidden');
+                btn.textContent = '🙈 Απόκρυψη Απαντήσεων Παρατηρητικότητας';
+            } else {
+                box.classList.add('hidden');
+                btn.textContent = '👁️ Εμφάνιση Σωστών Απαντήσεων Παρατηρητικότητας';
+            }
+        }
+
+        const answeredMap = {};
+        function answerKok(qIdx, optIdx, isCorrect) {
+            const buttons = document.querySelectorAll('.kok-opt-' + qIdx);
+            buttons.forEach((b, i) => {
+                b.classList.remove('border-emerald-500', 'bg-emerald-950/70', 'border-red-500', 'bg-red-950/70');
+                if (i === optIdx) {
+                    if (isCorrect) {
+                        b.classList.add('border-emerald-500', 'bg-emerald-950/70', 'text-emerald-200');
+                    } else {
+                        b.classList.add('border-red-500', 'bg-red-950/70', 'text-red-200');
+                    }
+                }
+            });
+            answeredMap[qIdx] = isCorrect ? 1 : 0;
+            const total = Object.values(answeredMap).reduce((a, b) => a + b, 0);
+            document.getElementById('quiz-score').textContent = total;
+
+            const feed = document.getElementById('qfeed-' + qIdx);
+            feed.classList.remove('hidden', 'text-emerald-400', 'text-red-400');
+            if (isCorrect) {
+                feed.classList.add('text-emerald-400');
+                feed.textContent = '✔ Σωστή απάντηση! Έτσι οδηγούμε με ασφάλεια στη Drive On.';
+            } else {
+                feed.classList.add('text-red-400');
+                feed.textContent = '✖ Προσοχή! Δοκίμασε την άλλη επιλογή σύμφωνα με τον Κ.Ο.Κ.';
+            }
+        }
+
+        function handleDriveOnSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('form-name').value.trim();
+            const phone = document.getElementById('form-phone').value.trim();
+            const cat = document.getElementById('form-category').value;
+            const time = document.getElementById('form-time').value;
+            const msgBox = document.getElementById('form-success-msg');
+            msgBox.classList.remove('hidden');
+            msgBox.innerHTML = `✅ Ευχαριστούμε <strong>${name}</strong>! Το αίτημά σας για <strong>${cat}</strong> καταχωρήθηκε. Η γραμματεία της <strong>Σχολής Οδηγών DRIVE ON (Ντούκας - Πολυτάρχου)</strong> θα σας καλέσει στο <strong>${phone}</strong> (${time}). Για άμεση εξυπηρέτηση καλέστε στο <strong>211 0088403</strong>.`;
+        }
+
+        function sendViaWhatsApp() {
+            const name = document.getElementById('form-name').value.trim() || 'Ενδιαφερόμενος Μαθητής';
+            const cat = document.getElementById('form-category').value;
+            const notes = document.getElementById('form-notes').value.trim();
+            const text = `Καλησπέρα Σχολή Οδηγών Drive On! Ονομάζομαι ${name} και ενδιαφέρομαι για: ${cat}. ${notes}`;
+            window.open('https://wa.me/306987709305?text=' + encodeURIComponent(text), '_blank');
+        }
+    </script>
+</body>
+</html>
