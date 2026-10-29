@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <title>Σχολή Οδηγών – Live Demo | UpLogic</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+
+  <div class="bg-red-600 text-white text-xs font-bold py-2 px-4 text-center">
+    ⚡ LIVE DEMO ΓΙΑ ΣΧΟΛΕΣ ΟΔΗΓΩΝ ΤΗΣ UPLOGIC • ΣΧΕΔΙΑΣΜΕΝΟ ΓΙΑ ΤΗ ΝΕΑ ΓΕΝΙΑ ΟΔΗΓΩΝ (MOBILE-FIRST)
+  </div>
+
+  <header class="bg-slate-900/95 backdrop-blur sticky top-0 z-50 border-b border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-3.5 flex items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center font-black text-lg">
+          <i class="fa-solid fa-car-side"></i>
+        </div>
+        <div>
+          <div id="brand-title" class="text-base sm:text-lg font-extrabold text-white leading-tight">Σύγχρονη Σχολή Οδηγών</div>
+          <div class="text-[11px] text-slate-400">Διπλώματα Αυτοκινήτου • Μηχανής • Επαγγελματικά (ΠΕΙ)</div>
+        </div>
+      </div>
+      <a href="tel:2100000000" class="px-4 py-2 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs sm:text-sm font-extrabold flex items-center gap-2 transition">
+        <i class="fa-solid fa-phone"></i> <span>Κάλεσε Τώρα</span>
+      </a>
+    </div>
+  </header>
+
+  <section class="py-12 sm:py-16 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-7 space-y-5">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-red-500/15 text-red-400 border border-red-500/30">
+          <i class="fa-solid fa-bolt"></i> Στόλος Νέας Γενιάς • Αυτόματο & Χειροκίνητο
+        </span>
+        <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+          Πάρε το Δίπλωμά σου με την 1η, με Σύγχρονη Εκπαίδευση
+        </h1>
+        <p class="text-slate-400 text-sm sm:text-base max-w-2xl">
+          Επίλεξε την κατηγορία διπλώματος που θέλεις, δες αμέσως τα δικαιολογητικά και ξεκίνα τα μαθήματά σου με ευέλικτο ωράριο.
+        </p>
+      </div>
+
+      <!-- ENROLLMENT WIDGET -->
+      <div class="lg:col-span-5 bg-slate-900 rounded-2xl p-6 border border-slate-800 shadow-2xl">
+        <h2 class="text-lg font-extrabold text-white mb-1">Άμεση Εκδήλωση Ενδιαφέροντος</h2>
+        <p class="text-xs text-slate-400 mb-4">Επίλεξε κατηγορία διπλώματος και θα σε καλέσουμε άμεσα:</p>
+
+        <div class="space-y-3.5">
+          <div class="grid grid-cols-2 gap-2 text-xs" id="license-cats">
+            <button type="button" class="lic-btn py-3 px-3 rounded-xl border-2 border-red-500 bg-red-500/15 text-white font-bold">🚗 Αυτοκίνητο (Β)</button>
+            <button type="button" class="lic-btn py-3 px-3 rounded-xl border border-slate-800 bg-slate-950 text-slate-300 font-semibold">🏍️ Μηχανή (ΑΜ/Α1/Α2/Α)</button>
+            <button type="button" class="lic-btn py-3 px-3 rounded-xl border border-slate-800 bg-slate-950 text-slate-300 font-semibold">🚛 Επαγγελματικό (Γ/Δ/ΠΕΙ)</button>
+            <button type="button" class="lic-btn py-3 px-3 rounded-xl border border-slate-800 bg-slate-950 text-slate-300 font-semibold">🔄 Μεταβιβάσεις / Ανανέωση</button>
+          </div>
+
+          <input id="s-name" type="text" placeholder="Ονοματεπώνυμο" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-red-500 focus:outline-none">
+          <input id="s-phone" type="tel" placeholder="Κινητό Τηλέφωνο" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-sm text-white focus:border-red-500 focus:outline-none">
+
+          <button id="enroll-btn" type="button" class="w-full py-3.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-extrabold text-sm transition">
+            Θέλω Ενημέρωση Τιμών & Δικαιολογητικών
+          </button>
+
+          <div id="drv-feedback" class="hidden p-3.5 rounded-xl text-xs"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const customName = params.get('name');
+    if (customName && customName.trim()) {
+      document.getElementById('brand-title').textContent = customName.trim();
+      document.title = customName.trim() + ' – Live Demo | UpLogic';
+    }
+    let chosenLic = '🚗 Αυτοκίνητο (Β)';
+    document.querySelectorAll('.lic-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        chosenLic = btn.textContent.trim();
+        document.querySelectorAll('.lic-btn').forEach(b => {
+          b.className = b === btn
+            ? 'lic-btn py-3 px-3 rounded-xl border-2 border-red-500 bg-red-500/15 text-white font-bold'
+            : 'lic-btn py-3 px-3 rounded-xl border border-slate-800 bg-slate-950 text-slate-300 font-semibold';
+        });
+      });
+    });
+    document.getElementById('enroll-btn').addEventListener('click', () => {
+      const n = document.getElementById('s-name').value.trim();
+      const ph = document.getElementById('s-phone').value.trim();
+      const box = document.getElementById('drv-feedback');
+      if (!n || !ph) {
+        box.className = 'p-3.5 rounded-xl text-xs bg-red-950 border border-red-700 text-red-200 font-semibold';
+        box.textContent = 'Συμπληρώστε Όνομα και Κινητό.';
+        box.classList.remove('hidden');
+        return;
+      }
+      box.className = 'p-3.5 rounded-xl text-xs bg-emerald-950 border border-emerald-700 text-emerald-200';
+      box.innerHTML = '<strong>Το αίτημα εστάλη (Demo)!</strong><br>Κατηγορία: ' + chosenLic + '<br>Μαθητής: ' + n + ' (' + ph + ')';
+      box.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>
