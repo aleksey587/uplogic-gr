@@ -727,12 +727,12 @@
     }
 
 
-    /* ---------- Dark Mode Theme (Toggleable) ---------- */
+    /* ---------- Dark Mode Theme: Midnight Navy (Toggleable) ---------- */
     html[data-theme="dark"] {
-      --bg: #0B0D12;
-      --surface: #131720;
-      --line: #222736;
-      --line-strong: #2E3548;
+      --bg: #0A0E17;
+      --surface: #111827;
+      --line: #1E293B;
+      --line-strong: #2A3854;
       --ink: #F8FAFC;
       --ink-2: #CBD5E1;
       --muted: #94A3B8;
@@ -754,14 +754,13 @@
     html[data-theme="dark"] form.lead,
     html[data-theme="dark"] .ci,
     html[data-theme="dark"] .modal-box,
-    html[data-theme="dark"] .chat,
     html[data-theme="dark"] .cookie,
     html[data-theme="dark"] .calc-card,
     html[data-theme="dark"] .calc-opt,
     html[data-theme="dark"] .b-chan,
     html[data-theme="dark"] .b-day,
     html[data-theme="dark"] .b-slot {
-      background: #131720 !important;
+      background: #111827 !important;
       color: var(--ink) !important;
       border-color: var(--line) !important;
     }
@@ -771,13 +770,100 @@
     html[data-theme="dark"] .pillar,
     html[data-theme="dark"] .b-summary,
     html[data-theme="dark"] .calc-res {
-      background: #191E2B !important;
+      background: #172033 !important;
       border-color: var(--line) !important;
     }
-    html[data-theme="dark"] .btn-dark { background: #3B82F6; color: #fff; }
-    html[data-theme="dark"] .btn-line { background: #191E2B; color: #F8FAFC; border-color: #2E3548; }
+    html[data-theme="dark"] .btn-dark { background: #2451F5; color: #fff; }
+    html[data-theme="dark"] .btn-dark:hover { background: #1d40c7; }
+    html[data-theme="dark"] .btn-line { background: #172033; color: #F8FAFC; border-color: #2A3854; }
     html[data-theme="dark"] input, html[data-theme="dark"] textarea, html[data-theme="dark"] select {
-      background: #0F131C !important; color: #F8FAFC !important; border-color: #2E3548 !important;
+      background: #0A0E17 !important; color: #F8FAFC !important; border-color: #2A3854 !important;
+    }
+    html[data-theme="dark"] .proof-strip { background: #111827; }
+
+    /* ---------- Chat Assistant Dark Mode (Midnight Navy & High Contrast) ---------- */
+    html[data-theme="dark"] .chat-fab {
+      background: #111827 !important;
+      color: #3B82F6 !important;
+      border: 1.5px solid #2A3854 !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 16px rgba(59, 130, 246, 0.25) !important;
+    }
+    html[data-theme="dark"] .chat-fab:hover {
+      border-color: #3B82F6 !important;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6), 0 0 22px rgba(59, 130, 246, 0.45) !important;
+      transform: scale(1.08) !important;
+    }
+    html[data-theme="dark"] .chat-fab svg {
+      stroke: #3B82F6 !important;
+    }
+    html[data-theme="dark"] .chat {
+      background: #0E1422 !important;
+      border: 1px solid #222F48 !important;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 20px rgba(59, 130, 246, 0.15) !important;
+    }
+    html[data-theme="dark"] .chat-head {
+      background: #141B2D !important;
+      border-bottom: 1px solid #222F48 !important;
+    }
+    html[data-theme="dark"] .chat-head b {
+      color: #F8FAFC !important;
+    }
+    html[data-theme="dark"] .chat-head .x {
+      background: #1E293B !important;
+      border-color: #2A3854 !important;
+      color: #CBD5E1 !important;
+    }
+    html[data-theme="dark"] .chat-msgs {
+      background: #0A0E17 !important;
+    }
+    html[data-theme="dark"] .msg.bot {
+      background: #162035 !important;
+      color: #E2E8F0 !important;
+      border: 1px solid #222F48 !important;
+    }
+    html[data-theme="dark"] .msg.bot a {
+      color: #60A5FA !important;
+    }
+    html[data-theme="dark"] .msg.me {
+      background: #2451F5 !important;
+      color: #FFFFFF !important;
+    }
+    html[data-theme="dark"] .chips button {
+      background: #141B2D !important;
+      border: 1px solid #222F48 !important;
+      color: #CBD5E1 !important;
+    }
+    html[data-theme="dark"] .chips button:hover {
+      background: #1E293B !important;
+      border-color: #3B82F6 !important;
+      color: #FFFFFF !important;
+    }
+    html[data-theme="dark"] .chat form {
+      background: #0E1422 !important;
+      border-top: 1px solid #222F48 !important;
+    }
+    html[data-theme="dark"] .chat form input {
+      background: #141B2D !important;
+      border: 1px solid #222F48 !important;
+      color: #F8FAFC !important;
+    }
+    html[data-theme="dark"] .chat form button {
+      background: #2451F5 !important;
+      color: #FFFFFF !important;
+    }
+    html[data-theme="dark"] .chat-lead {
+      background: #141B2D !important;
+      border: 1px solid #222F48 !important;
+    }
+    html[data-theme="dark"] .chat-lead input {
+      background: #0A0E17 !important;
+      border: 1px solid #222F48 !important;
+      color: #F8FAFC !important;
+    }
+    html[data-theme="dark"] .chat-lead-ok {
+      background: rgba(16, 185, 129, 0.15) !important;
+      border: 1px solid rgba(16, 185, 129, 0.35) !important;
+      color: #6EE7B7 !important;
     }
 
     .theme-btn {
