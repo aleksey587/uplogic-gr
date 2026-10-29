@@ -728,6 +728,183 @@
       .cmp-table th, .cmp-table td { padding: 11px 12px; font-size: 13px; }
     }
 
+
+    /* ---------- Dark Mode Theme (Toggleable) ---------- */
+    html[data-theme="dark"] {
+      --bg: #0B0D12;
+      --surface: #131720;
+      --line: #222736;
+      --line-strong: #2E3548;
+      --ink: #F8FAFC;
+      --ink-2: #CBD5E1;
+      --muted: #94A3B8;
+      --accent: #3B82F6;
+      --accent-ink: #60A5FA;
+      --accent-soft: rgba(59,130,246,0.16);
+    }
+    html[data-theme="dark"] .win,
+    html[data-theme="dark"] .bcard,
+    html[data-theme="dark"] .bubble,
+    html[data-theme="dark"] .svc,
+    html[data-theme="dark"] .proj,
+    html[data-theme="dark"] .step,
+    html[data-theme="dark"] .pricing,
+    html[data-theme="dark"] .pkg,
+    html[data-theme="dark"] .cmp-box,
+    html[data-theme="dark"] .cmp-table thead th,
+    html[data-theme="dark"] .faq-item,
+    html[data-theme="dark"] form.lead,
+    html[data-theme="dark"] .ci,
+    html[data-theme="dark"] .modal-box,
+    html[data-theme="dark"] .chat,
+    html[data-theme="dark"] .cookie,
+    html[data-theme="dark"] .calc-card,
+    html[data-theme="dark"] .calc-opt,
+    html[data-theme="dark"] .b-chan,
+    html[data-theme="dark"] .b-day,
+    html[data-theme="dark"] .b-slot {
+      background: #131720 !important;
+      color: var(--ink) !important;
+      border-color: var(--line) !important;
+    }
+    html[data-theme="dark"] .cmp-head,
+    html[data-theme="dark"] .cmp-table tfoot td,
+    html[data-theme="dark"] .win-bar,
+    html[data-theme="dark"] .pillar,
+    html[data-theme="dark"] .b-summary,
+    html[data-theme="dark"] .calc-res {
+      background: #191E2B !important;
+      border-color: var(--line) !important;
+    }
+    html[data-theme="dark"] .btn-dark { background: #3B82F6; color: #fff; }
+    html[data-theme="dark"] .btn-line { background: #191E2B; color: #F8FAFC; border-color: #2E3548; }
+    html[data-theme="dark"] input, html[data-theme="dark"] textarea, html[data-theme="dark"] select {
+      background: #0F131C !important; color: #F8FAFC !important; border-color: #2E3548 !important;
+    }
+
+    .theme-btn {
+      width: 38px; height: 38px; border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16); background: rgba(255,255,255,0.08);
+      color: #fff; display: grid; place-items: center; font-size: 16px;
+      transition: background .2s, transform .2s; flex-shrink: 0;
+    }
+    .theme-btn:hover { background: rgba(255,255,255,0.18); transform: scale(1.05); }
+
+    /* ---------- Scarcity Badge in Hero ---------- */
+    .scarcity-badge {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 6px 14px; border-radius: 999px;
+      background: #ECFDF3; border: 1px solid #A7F3D0;
+      color: #065F46; font-size: 13px; font-weight: 600;
+      margin-bottom: 14px;
+    }
+    html[data-theme="dark"] .scarcity-badge {
+      background: rgba(16,185,129,0.14); border-color: rgba(16,185,129,0.35); color: #6EE7B7;
+    }
+    .pulse-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: #10B981;
+      box-shadow: 0 0 0 0 rgba(16,185,129,0.7);
+      animation: pulseGreen 2s infinite; flex-shrink: 0;
+    }
+    @keyframes pulseGreen {
+      0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.6); }
+      70% { box-shadow: 0 0 0 7px rgba(16,185,129,0); }
+      100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+    }
+
+    /* ---------- Proof Strip (99+ PageSpeed | 100% Custom Code | Zero Bloatware | Άμεση Υποστήριξη) ---------- */
+    .proof-strip {
+      background: var(--ink); color: #fff; padding: 18px 0;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    html[data-theme="dark"] .proof-strip { background: #131720; }
+    .proof-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    }
+    .proof-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 6px 10px; border-right: 1px solid rgba(255,255,255,0.12);
+    }
+    .proof-item:last-child { border-right: 0; }
+    .proof-ico {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(24,157,245,0.16); color: #38BDF8;
+      display: grid; place-items: center; font-weight: 800; font-size: 15px; flex-shrink: 0;
+    }
+    .proof-item b { display: block; font-family: var(--display); font-size: 15px; color: #fff; letter-spacing: -.01em; }
+    .proof-item span { display: block; font-size: 12.5px; color: #94A3B8; }
+
+    /* ---------- 2-Tab Services Switcher ---------- */
+    .svc-tabs {
+      display: inline-flex; gap: 6px; padding: 6px; border-radius: 14px;
+      background: var(--surface); border: 1px solid var(--line-strong);
+      margin-bottom: 28px; flex-wrap: wrap;
+    }
+    .svc-tab {
+      padding: 11px 20px; border-radius: 10px; border: 0; background: transparent;
+      font-family: var(--display); font-size: 15px; font-weight: 600; color: var(--muted);
+      cursor: pointer; transition: all .18s;
+    }
+    .svc-tab:hover { color: var(--ink); }
+    .svc-tab.active {
+      background: var(--ink); color: #fff; box-shadow: var(--shadow);
+    }
+    html[data-theme="dark"] .svc-tab.active { background: var(--accent); color: #fff; }
+
+    /* ---------- 3-Step Interactive Cost Calculator ---------- */
+    .calc-card {
+      background: #fff; border: 1.5px solid var(--line-strong); border-radius: 22px;
+      padding: 32px; margin: 28px 0 34px; box-shadow: var(--shadow-lg);
+    }
+    .calc-top {
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+      margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .calc-steps-dots { display: flex; gap: 8px; align-items: center; }
+    .calc-dot {
+      padding: 5px 12px; border-radius: 99px; font-size: 12.5px; font-weight: 700;
+      background: var(--bg); color: var(--muted); border: 1px solid var(--line);
+    }
+    .calc-dot.active { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+    .calc-q-title { font-family: var(--display); font-size: 21px; font-weight: 700; margin-bottom: 14px; }
+    .calc-opts { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .calc-opt {
+      text-align: left; padding: 16px 18px; border-radius: 14px;
+      border: 1.5px solid var(--line); background: var(--bg);
+      cursor: pointer; transition: all .16s; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .calc-opt:hover { border-color: var(--ink); transform: translateY(-1px); }
+    .calc-opt.selected { border-color: var(--accent); background: var(--accent-soft); }
+    .calc-opt b { display: block; font-size: 15.5px; color: var(--ink); margin-bottom: 3px; }
+    .calc-opt span { display: block; font-size: 13px; color: var(--muted); }
+    .calc-res {
+      margin-top: 20px; padding: 24px; border-radius: 16px;
+      background: var(--bg); border: 1px solid var(--line-strong);
+      display: none;
+    }
+    .calc-res.show { display: block; animation: pop .2s ease; }
+    .calc-res-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; align-items: center; }
+    .calc-lead-row { display: grid; gap: 10px; }
+    .calc-lead-row input {
+      padding: 11px 14px; border-radius: 10px; border: 1px solid var(--line-strong); font: inherit; font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .proof-grid { grid-template-columns: repeat(2, 1fr); }
+      .proof-item { border-right: 0; }
+      .calc-res-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .proof-grid { grid-template-columns: 1fr; gap: 10px; }
+      .calc-card { padding: 20px 16px; }
+      .calc-opts { grid-template-columns: 1fr; }
+      .svc-tabs { width: 100%; display: grid; grid-template-columns: 1fr; }
+      .svc-tab { font-size: 13.5px; padding: 10px 14px; text-align: center; }
+      .theme-btn { width: 32px; height: 32px; font-size: 14px; }
+      .scarcity-badge { font-size: 11.5px; padding: 5px 11px; }
+    }
+
   </style>
 </head>
 <body>
@@ -756,15 +933,16 @@
         <img src="UpLogicHeaderLogo.jpg" alt="UpLogic — Κατασκευή Ιστοσελίδων, E-Shop, Εφαρμογών & AI Chatbots στην Πάτρα" class="logo-banner-img">
       </a>
       <nav class="nav" aria-label="Κύριο μενού">
-        <a href="#about">Η Εταιρεία</a>
         <a href="#services">Υπηρεσίες</a>
         <a href="#work">Έργα</a>
-        <a href="#pricing">Πακέτα</a>
+        <a href="#work" data-goto-labs="1">Labs</a>
+        <a href="#pricing">Τιμολόγηση</a>
         <a href="blog.html">Άρθρα</a>
         <a href="#contact">Επικοινωνία</a>
       </nav>
       <div class="header-cta">
-        <a href="#contact" class="btn btn-dark btn-sm">Ζήτα προσφορά</a>
+        <button type="button" class="theme-btn" id="themeBtn" aria-label="Εναλλαγή Dark / Light Mode" title="Εναλλαγή εμφάνισης (Dark / Light)">🌙</button>
+        <a href="#pricing" class="btn btn-dark btn-sm">Κοστολόγηση</a>
         <button class="menu-btn" id="menuBtn" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="mobileNav">
           <svg width="20" height="20"><use href="#i-menu"/></svg>
         </button>
@@ -772,13 +950,13 @@
     </div>
   </header>
   <nav class="mobile-nav" id="mobileNav" aria-label="Μενού κινητού">
-    <a href="#about">Η Εταιρεία</a>
     <a href="#services">Υπηρεσίες</a>
-    <a href="#work">Έργα</a>
-    <a href="#pricing">Πακέτα</a>
-    <a href="blog.html">Άρθρα</a>
+    <a href="#work">Έργα Πελατών</a>
+    <a href="#work" data-goto-labs="1">UpLogic Labs (SaaS & Apps)</a>
+    <a href="#pricing">Τιμολόγηση & Υπολογισμός</a>
+    <a href="blog.html">Άρθρα & Οδηγοί</a>
     <a href="#contact">Επικοινωνία</a>
-    <a href="#contact" class="btn btn-dark">Ζήτα προσφορά</a>
+    <a href="#pricing" class="btn btn-dark">Υπολογισμός Κόστους</a>
   </nav>
 
   <main id="top">
@@ -787,11 +965,13 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div class="reveal">
-          <span class="eyebrow">Digital studio · Πάτρα</span>
+          <div class="scarcity-badge"><span class="pulse-dot"></span>Διαθεσιμότητα μήνα: <b>2 διαθέσιμα slots</b> για νέα projects</div>
+          <br>
+          <span class="eyebrow">Digital & Software Studio · Πάτρα · Ελλάδα & ΕΕ</span>
           <h1>Ψηφιακά προϊόντα που <span class="accent">φέρνουν πελάτες.</span></h1>
-          <p class="hero-sub">Σχεδιάζουμε και χτίζουμε ιστοσελίδες, e-shop, εφαρμογές και AI chatbots για επιχειρήσεις στην Ελλάδα και το εξωτερικό. Γρήγορα, καθαρά, με μετρήσιμο αποτέλεσμα.</p>
+          <p class="hero-sub">Σχεδιάζουμε και προγραμματίζουμε ταχύτατες ιστοσελίδες, αυτοματοποιημένα e-shop, custom εφαρμογές SaaS και AI chatbots με 100% καθαρό κώδικα και μετρήσιμο εμπορικό αποτέλεσμα.</p>
           <div class="hero-actions">
-            <a href="#contact" class="btn btn-dark">Ζήτα προσφορά <svg><use href="#i-arrow"/></svg></a>
+            <a href="#pricing" class="btn btn-dark">Υπολογισμός Κόστους <svg><use href="#i-arrow"/></svg></a>
             <button type="button" class="btn btn-line" data-book="Γενική Συζήτηση Project">📅 Κλείσε 15' Ραντεβού</button>
           </div>
           <div class="hero-facts">
@@ -806,7 +986,7 @@
             <div class="win-bar">
               <i></i><i></i><i></i>
               <span class="win-url">uplogic.gr · Digital Hub</span>
-              <span class="win-speed">Mobile-First</span>
+              <span class="win-speed">⚡ 99/100 PageSpeed · LCP 0.7s</span>
             </div>
             <div class="hub">
               <div class="hub-head">
@@ -869,6 +1049,28 @@
       </div>
     </section>
 
+    <!-- ================= PROOF STRIP ================= -->
+    <section class="proof-strip" aria-label="Τεχνικές εγγυήσεις UpLogic">
+      <div class="wrap proof-grid">
+        <div class="proof-item">
+          <span class="proof-ico">99+</span>
+          <div><b>99+ Google PageSpeed</b><span>Ακαριαία φόρτωση σε κινητά 4G/5G</span></div>
+        </div>
+        <div class="proof-item">
+          <span class="proof-ico">&lt;/&gt;</span>
+          <div><b>100% Custom Code</b><span>Σχεδιασμός & κώδικας στα μέτρα σας</span></div>
+        </div>
+        <div class="proof-item">
+          <span class="proof-ico">0%</span>
+          <div><b>Zero Bloatware</b><span>Χωρίς βαριά έτοιμα templates & plugins</span></div>
+        </div>
+        <div class="proof-item">
+          <span class="proof-ico">24/7</span>
+          <div><b>Άμεση Υποστήριξη</b><span>Μιλάτε απευθείας με τους developers</span></div>
+        </div>
+      </div>
+    </section>
+
     <!-- ================= ΠΕΛΑΤΕΣ ================= -->
     <section class="clients">
       <div class="wrap reveal">
@@ -911,58 +1113,64 @@
       </div>
     </section>
 
-    <!-- ================= ΥΠΗΡΕΣΙΕΣ ================= -->
+    <!-- ================= ΥΠΗΡΕΣΙΕΣ (2 TABS) ================= -->
     <section class="section" id="services">
       <div class="wrap">
-        <div class="section-head reveal">
+        <div class="section-head reveal" style="margin-bottom:20px">
           <div>
-            <span class="eyebrow">Υπηρεσίες</span>
-            <h2>Ό,τι χρειάζεται η επιχείρησή σας online, από μία ομάδα.</h2>
+            <span class="eyebrow">Υπηρεσίες · 2 Εξειδικευμένοι Πυλώνες</span>
+            <h2>Επιλέξτε κατηγορία: Web & E-Commerce ή Custom Λογισμικό & AI.</h2>
           </div>
-          <p>Από την πρώτη ιστοσελίδα μέχρι μια ολόκληρη πλατφόρμα. Ένας συνεργάτης για σχεδιασμό, κώδικα και ανάπτυξη.</p>
+          <p>Διαχωρίζουμε καθαρά τις λύσεις διαδικτυακής παρουσίας & πωλήσεων από την ανάπτυξη εξειδικευμένου λογισμικού B2B.</p>
         </div>
 
-        <div class="services reveal">
-          <a href="istoselides.html" class="svc">
-            <div class="svc-top"><span class="svc-num">01</span><span class="svc-price">από 350€</span></div>
+        <div class="svc-tabs reveal" role="tablist" aria-label="Κατηγορίες υπηρεσιών">
+          <button type="button" class="svc-tab active" data-svctab="web" role="tab" aria-selected="true">🌐 1. Web Sites, E-Shops & SEO/Ads</button>
+          <button type="button" class="svc-tab" data-svctab="saas" role="tab" aria-selected="false">🚀 2. Custom SaaS, Mobile Apps & AI</button>
+          <button type="button" class="svc-tab" data-svctab="all" role="tab" aria-selected="false">Όλες οι Υπηρεσίες (6)</button>
+        </div>
+
+        <div class="services reveal" id="servicesGrid">
+          <a href="istoselides.html" class="svc" data-svcgroup="web">
+            <div class="svc-top"><span class="svc-num">01</span><span class="svc-price">Starter από 350€</span></div>
             <h3>Ιστοσελίδες & Landing</h3>
             <p>Starter Μονοσέλιδη Παρουσίαση (Landing Page) από 350€ σε 3 εργάσιμες, καθώς και πολυσέλιδες εταιρικές ιστοσελίδες υψηλών προδιαγραφών.</p>
             <ul><li>Custom design</li><li>Από 3 εργάσιμες</li><li>SEO & GDPR</li></ul>
             <span class="svc-more">Αναλυτικά η υπηρεσία <svg><use href="#i-arrow"/></svg></span>
           </a>
-          <a href="eshop.html" class="svc">
-            <div class="svc-top"><span class="svc-num">02</span></div>
-            <h3>E-Shop</h3>
-            <p>Καταστήματα που πουλάνε. Πληρωμές, courier, myDATA και συγχρονισμός αποθήκης, όλα συνδεδεμένα.</p>
+          <a href="eshop.html" class="svc" data-svcgroup="web">
+            <div class="svc-top"><span class="svc-num">02</span><span class="svc-price">E-Commerce</span></div>
+            <h3>Σύγχρονα E-Shop</h3>
+            <p>Καταστήματα που πουλάνε 24/7. Πληρωμές κάρτας/IRIS, αυτόματα vouchers courier, myDATA και συγχρονισμός αποθήκης, όλα συνδεδεμένα.</p>
             <ul><li>IRIS & Apple Pay</li><li>Skroutz XML</li><li>Amazon & eBay</li></ul>
             <span class="svc-more">Αναλυτικά η υπηρεσία <svg><use href="#i-arrow"/></svg></span>
           </a>
-          <a href="efarmoges.html" class="svc">
-            <div class="svc-top"><span class="svc-num">03</span></div>
-            <h3>B2B Software & SaaS</h3>
-            <p>Εξειδικευμένες web & mobile εφαρμογές, πλατφόρμες SaaS (FinTech, PropTech, SportsTech) και διασυνδέσεις API/myDATA.</p>
-            <ul><li>iOS & Android</li><li>PWA</li><li>Cloud & API</li></ul>
+          <a href="seo-marketing.html" class="svc" data-svcgroup="web">
+            <div class="svc-top"><span class="svc-num">03</span><span class="svc-price">Growth & ROI</span></div>
+            <h3>SEO, Google Maps & Ads</h3>
+            <p>Τεχνικό SEO, Google Business Profile και στοχευμένες καμπάνιες σε Google, Instagram, Facebook & TikTok με μέτρηση μετατροπών.</p>
+            <ul><li>Core Web Vitals</li><li>Local SEO Maps</li><li>Google & Meta Ads</li></ul>
             <span class="svc-more">Αναλυτικά η υπηρεσία <svg><use href="#i-arrow"/></svg></span>
           </a>
-          <a href="ai-chatbots.html" class="svc">
-            <div class="svc-top"><span class="svc-num">04</span></div>
-            <h3>AI Chatbots</h3>
-            <p>Ένας βοηθός εκπαιδευμένος στα προϊόντα σας, που απαντά στους πελάτες 24/7 και μαζεύει αιτήματα.</p>
-            <ul><li>WooCommerce & Shopify</li><li>WhatsApp</li><li>Instagram</li></ul>
+          <a href="efarmoges.html" class="svc" data-svcgroup="saas" style="display:none">
+            <div class="svc-top"><span class="svc-num">04</span><span class="svc-price">B2B & Cloud</span></div>
+            <h3>Custom SaaS & Web Apps</h3>
+            <p>Εξειδικευμένες πλατφόρμες λογισμικού, portals πελατών και εσωτερικά συστήματα (CRM/PMS/ERP) κομμένα και ραμμένα στη ροή εργασίας σας.</p>
+            <ul><li>React / Next.js / Python</li><li>Multi-Role Cloud</li><li>myDATA & APIs</li></ul>
             <span class="svc-more">Αναλυτικά η υπηρεσία <svg><use href="#i-arrow"/></svg></span>
           </a>
-          <a href="seo-marketing.html" class="svc">
-            <div class="svc-top"><span class="svc-num">05</span></div>
-            <h3>SEO & Google Maps</h3>
-            <p>Τεχνικό SEO, λέξεις-κλειδιά και Google Business Profile, ώστε να σας βρίσκουν όταν σας ψάχνουν.</p>
-            <ul><li>Core Web Vitals</li><li>Local SEO</li><li>Μηνιαίες αναφορές</li></ul>
+          <a href="efarmoges.html" class="svc" data-svcgroup="saas" style="display:none">
+            <div class="svc-top"><span class="svc-num">05</span><span class="svc-price">iOS & Android</span></div>
+            <h3>Mobile Εφαρμογές & PWA</h3>
+            <p>Native και cross-platform εφαρμογές για Android (Google Play) και iOS (App Store), με real-time συγχρονισμό και offline λειτουργία.</p>
+            <ul><li>Android & iOS</li><li>Push Notifications</li><li>Fast Native UX</li></ul>
             <span class="svc-more">Αναλυτικά η υπηρεσία <svg><use href="#i-arrow"/></svg></span>
           </a>
-          <a href="seo-marketing.html#ads" class="svc">
-            <div class="svc-top"><span class="svc-num">06</span></div>
-            <h3>Google & Meta Ads</h3>
-            <p>Καμπάνιες σε Google, Facebook, Instagram και TikTok με σωστή μέτρηση μετατροπών από την πρώτη μέρα.</p>
-            <ul><li>Performance Max</li><li>Reels</li><li>Conversion API</li></ul>
+          <a href="ai-chatbots.html" class="svc" data-svcgroup="saas" style="display:none">
+            <div class="svc-top"><span class="svc-num">06</span><span class="svc-price">LLM & Automation</span></div>
+            <h3>AI Chatbots & AI Agents</h3>
+            <p>Ψηφιακοί βοηθοί εκπαιδευμένοι στα προϊόντα και τα έγγραφά σας, που απαντούν 24/7 σε 1 δευτερόλεπτο και συλλέγουν leads αυτόματα.</p>
+            <ul><li>OpenAI / Gemini API</li><li>Site & E-Shop</li><li>WhatsApp & IG</li></ul>
             <span class="svc-more">Αναλυτικά η υπηρεσία <svg><use href="#i-arrow"/></svg></span>
           </a>
         </div>
@@ -978,10 +1186,10 @@
             <h2>Έργα που παραδώσαμε και έργα που χτίζουμε τώρα.</h2>
           </div>
           <div class="filters" role="tablist" aria-label="Φίλτρο έργων">
-            <button class="active" data-filter="all" role="tab" aria-selected="true">Όλα</button>
-            <button data-filter="web" role="tab" aria-selected="false">Ιστοσελίδες & E-Shop</button>
-            <button data-filter="saas" role="tab" aria-selected="false">SaaS & AI</button>
-            <button data-filter="app" role="tab" aria-selected="false">Εφαρμογές</button>
+            <button class="active" data-filter="all" role="tab" aria-selected="true">Όλα (7)</button>
+            <button data-filter="web" role="tab" aria-selected="false">Έργα Πελατών (Web & Marketplaces)</button>
+            <button data-filter="saas" id="labsTabBtn" role="tab" aria-selected="false">🧪 UpLogic Labs (SaaS & AI)</button>
+            <button data-filter="app" role="tab" aria-selected="false">Mobile Apps</button>
           </div>
         </div>
 
@@ -1087,6 +1295,111 @@
               <h2>Επιλέξτε τι χρειάζεται η επιχείρησή σας.</h2>
             </div>
             <p>Συνδυάστε μία ή περισσότερες υπηρεσίες και λάβετε γραπτή, εξατομικευμένη προσφορά την ίδια μέρα.</p>
+          </div>
+
+          
+          <!-- Interactive Cost Calculator (3 Ερωτήσεις) -->
+          <div class="calc-card" id="calcWidget" role="region" aria-label="Διαδραστικός Υπολογιστής Κόστους 3 Βημάτων">
+            <div class="calc-top">
+              <div>
+                <span class="eyebrow" style="color:var(--accent)">Διαδραστικός Οδηγός Κοστολόγησης · 30 Δευτερόλεπτα</span>
+                <h3 style="font-size:22px;margin-top:4px">Υπολογίστε την εκτίμηση του project σας σε 3 κλικ</h3>
+              </div>
+              <div class="calc-steps-dots" id="calcDots">
+                <span class="calc-dot active" data-step="1">1. Είδος</span>
+                <span class="calc-dot" data-step="2">2. Επίπεδο</span>
+                <span class="calc-dot" data-step="3">3. Χρόνος</span>
+              </div>
+            </div>
+
+            <div id="calcStepBox">
+              <div class="calc-step" data-s="1">
+                <div class="calc-q-title">1. Τι θέλετε να δημιουργήσουμε;</div>
+                <div class="calc-opts">
+                  <button type="button" class="calc-opt" data-s="1" data-v="Ιστοσελίδα Παρουσίασης / Landing Page" data-code="web">
+                    <div><b>🌐 Ιστοσελίδα / Landing Page</b><span>Επαγγελματική παρουσίαση εταιρείας ή υπηρεσιών</span></div>
+                    <svg width="18" height="18"><use href="#i-arrow"/></svg>
+                  </button>
+                  <button type="button" class="calc-opt" data-s="1" data-v="Ηλεκτρονικό Κατάστημα (E-Shop)" data-code="eshop">
+                    <div><b>🛒 Ηλεκτρονικό Κατάστημα (E-Shop)</b><span>Πωλήσεις 24/7, IRIS, κάρτες, courier & Skroutz</span></div>
+                    <svg width="18" height="18"><use href="#i-arrow"/></svg>
+                  </button>
+                  <button type="button" class="calc-opt" data-s="1" data-v="Custom Εφαρμογή / Πλατφόρμα SaaS" data-code="saas">
+                    <div><b>📱 Custom Εφαρμογή / SaaS (Web ή Mobile)</b><span>Λογισμικό B2B, iOS/Android, βάση δεδομένων & API</span></div>
+                    <svg width="18" height="18"><use href="#i-arrow"/></svg>
+                  </button>
+                  <button type="button" class="calc-opt" data-s="1" data-v="AI Chatbot 24/7 ή SEO & Διαφήμιση" data-code="ai">
+                    <div><b>🤖 AI Chatbot 24/7 ή SEO & Ads</b><span>Αυτόματη εξυπηρέτηση πελατών ή 1η σελίδα Google</span></div>
+                    <svg width="18" height="18"><use href="#i-arrow"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="calc-step" data-s="2" style="display:none">
+                <div class="calc-q-title">2. Ποιο επίπεδο καλύπτει καλύτερα τις ανάγκες σας;</div>
+                <div class="calc-opts">
+                  <button type="button" class="calc-opt" data-s="2" data-v="Starter / Βασική Μονοσέλιδη Λύση" data-tier="starter">
+                    <div><b>⚡ Starter / Γρήγορο Launch</b><span>Μονοσέλιδη παρουσίαση ή βασικό πακέτο εκκίνησης</span></div>
+                    <svg width="18" height="18"><use href="#i-arrow"/></svg>
+                  </button>
+                  <button type="button" class="calc-opt" data-s="2" data-v="Business / Πλήρης Εμπορική Λύση" data-tier="business">
+                    <div><b>🏢 Business (Πολυσέλιδη / Πλήρες E-Shop)</b><span>Πολλαπλές σελίδες, Skroutz XML, Vouchers, SEO & AI</span></div>
+                    <svg width="18" height="18"><use href="#i-arrow"/></svg>
+                  </button>
+                  <button type="button" class="calc-opt" data-s="2" data-v="Custom / Προηγμένες Διασυνδέσεις (ERP / myDATA / App)" data-tier="custom">
+                    <div><b>🚀 Custom / Enterprise Προδιαγραφές</b><span>Γέφυρα ERP, myDATA, custom ρόλοι χρηστών ή Mobile App</span></div>
+                    <svg width="18" height="18"><use href="#i-arrow"/></svg>
+                  </button>
+                  <button type="button" class="calc-opt" data-s="2" data-v="Δεν είμαι σίγουρος — θέλω πρόταση" data-tier="consult">
+                    <div><b>💡 Θέλω να μου προτείνετε εσείς</b><span>Σύντομη ανάλυση αναγκών από την ομάδα μας</span></div>
+                    <svg width="18" height="18"><use href="#i-arrow"/></svg>
+                  </button>
+                </div>
+                <button type="button" class="btn btn-line btn-sm" style="margin-top:14px" id="calcBack1">← Προηγούμενη ερώτηση</button>
+              </div>
+
+              <div class="calc-step" data-s="3" style="display:none">
+                <div class="calc-q-title">3. Πότε ιδανικά θέλετε να είναι έτοιμο;</div>
+                <div class="calc-opts">
+                  <button type="button" class="calc-opt" data-s="3" data-v="Άμεσα (σε 3 – 7 εργάσιμες)">
+                    <div><b>🔥 Άμεσα (Express Παράδοση)</b><span>Θέλω να ξεκινήσουμε το συντομότερο δυνατό</span></div>
+                    <svg width="18" height="18"><use href="#i-arrow"/></svg>
+                  </button>
+                  <button type="button" class="calc-opt" data-s="3" data-v="Μέσα στις επόμενες 2 – 4 εβδομάδες">
+                    <div><b>📅 Μέσα στον μήνα (2 – 4 εβδομάδες)</b><span>Κανονικός προγραμματισμός έργου</span></div>
+                    <svg width="18" height="18"><use href="#i-arrow"/></svg>
+                  </button>
+                  <button type="button" class="calc-opt" data-s="3" data-v="Σε 1 – 2 μήνες">
+                    <div><b>🗓️ Σε 1 – 2 μήνες</b><span>Οργανώνω από τώρα το επόμενο βήμα</span></div>
+                    <svg width="18" height="18"><use href="#i-arrow"/></svg>
+                  </button>
+                  <button type="button" class="calc-opt" data-s="3" data-v="Ευέλικτο χρονοδιάγραμμα">
+                    <div><b>🧭 Ευέλικτο — προτεραιότητα στην κοστολόγηση</b><span>Θέλω πρώτα να δω την οικονομοτεχνική πρόταση</span></div>
+                    <svg width="18" height="18"><use href="#i-arrow"/></svg>
+                  </button>
+                </div>
+                <button type="button" class="btn btn-line btn-sm" style="margin-top:14px" id="calcBack2">← Προηγούμενη ερώτηση</button>
+              </div>
+            </div>
+
+            <div class="calc-res" id="calcResBox">
+              <div class="calc-res-grid">
+                <div>
+                  <span class="eyebrow" style="color:var(--accent)">Η Εκτίμησή σας είναι Έτοιμη</span>
+                  <h4 id="calcEstTitle" style="font-family:var(--display);font-size:26px;margin:6px 0">Starter Landing Page: από 350€</h4>
+                  <p id="calcEstSub" style="color:var(--ink-2);font-size:14.5px;margin-bottom:10px">Εκτιμώμενη παράδοση: από 3 εργάσιμες ημέρες · 100% Custom Κώδικας</p>
+                  <small id="calcSummarySelections" style="display:block;color:var(--muted);font-size:12.5px"></small>
+                  <button type="button" class="btn btn-line btn-sm" style="margin-top:12px" id="calcResetBtn">↺ Νέος υπολογισμός</button>
+                </div>
+                <form class="calc-lead-row" id="calcLeadForm" novalidate>
+                  <b style="font-size:14px">Πού να σας στείλουμε την αναλυτική γραπτή προσφορά;</b>
+                  <input type="text" id="calcName" placeholder="Το όνομά σας *" required>
+                  <input type="text" id="calcContact" placeholder="Τηλέφωνο ή Email *" required>
+                  <button type="submit" class="btn btn-dark" style="width:100%;justify-content:center" id="calcSubmitBtn">Λήψη Προσφοράς Τώρα <svg><use href="#i-arrow"/></svg></button>
+                  <div id="calcOkMsg" style="display:none;padding:10px 12px;border-radius:10px;background:#ECFDF3;color:#065F46;font-size:13.5px;font-weight:600"></div>
+                </form>
+              </div>
+            </div>
           </div>
 
           <div class="pkgs" id="pkgs">
@@ -1234,20 +1547,24 @@
         </div>
         <div class="faq-list reveal">
           <details class="faq-item" open>
-            <summary>Πόσο κοστίζει η κατασκευή μιας ιστοσελίδας και σε πόσο χρόνο παραδίδεται;</summary>
-            <div class="faq-ans">Οι επαγγελματικές ιστοσελίδες παρουσίασης ξεκινούν <b>από 350€</b> και παραδίδονται <b>από 3 εργάσιμες ημέρες</b>, με 100% custom design, mobile-first εμφάνιση, τεχνικό SEO και πλήρη συμμόρφωση GDPR. Για e-shop, custom εφαρμογές και AI chatbots ετοιμάζουμε αυθημερόν εξατομικευμένη γραπτή προσφορά.</div>
+            <summary>1. Σε πόσες μέρες παραδίδεται η ιστοσελίδα ή το e-shop μου;</summary>
+            <div class="faq-ans">Οι <b>Starter Landing Pages (από 350€)</b> παραδίδονται <b>από 3 εργάσιμες ημέρες</b>. Οι πολυσέλιδες εταιρικές ιστοσελίδες παραδίδονται σε 5–8 εργάσιμες, τα σύγχρονα E-Shop σε 7–12 εργάσιμες και τα AI Chatbots σε 3–5 εργάσιμες. Κάθε προσφορά συνοδεύεται από δεσμευτικό γραπτό χρονοδιάγραμμα.</div>
           </details>
           <details class="faq-item">
-            <summary>Υπάρχουν κρυφές χρεώσεις ή υποχρεωτική μηνιαία συνδρομή;</summary>
-            <div class="faq-ans">Όχι. Η ιστοσελίδα ή το e-shop ανήκει 100% σε εσάς. Πριν ξεκινήσουμε λαμβάνετε αναλυτική γραπτή προσφορά με σταθερό κόστος και σαφές χρονοδιάγραμμα, χωρίς «κλειδωμένα» μηνιαία συμβόλαια.</div>
+            <summary>2. Μου ανήκει 100% ο κώδικας; Υπάρχουν κρυφά μηνιαία πάγια;</summary>
+            <div class="faq-ans"><b>Ναι, η ιστοσελίδα, το e-shop ή η εφαρμογή ανήκει 100% σε εσάς.</b> Παραδίδουμε πλήρη πρόσβαση στον κώδικα και τα αρχεία σας, χωρίς «κλειδωμένα» συμβόλαια και χωρίς καμία υποχρεωτική μηνιαία συνδρομή συντήρησης.</div>
           </details>
           <details class="faq-item">
-            <summary>Μπορώ να κλείσω ένα σύντομο ραντεβού πριν αποφασίσω;</summary>
-            <div class="faq-ans">Φυσικά! Πατήστε <b>«📅 Κλείσε 15' Ραντεβού»</b> οπουδήποτε στη σελίδα, επιλέξτε ημέρα, ώρα και τρόπο επικοινωνίας (Τηλέφωνο, Google Meet ή Viber) και θα μιλήσουμε απευθείας για τις ανάγκες σας.</div>
+            <summary>3. Τι γίνεται με τη φιλοξενία (Hosting), το Domain και το SSL;</summary>
+            <div class="faq-ans">Αναλαμβάνουμε εξ ολοκλήρου τη σύνδεση του Domain σας (`.gr`, `.com`, `.eu`), την ενεργοποίηση δωρεάν πιστοποιητικού ασφαλείας <b>SSL (HTTPS)</b> και τη ρύθμιση ταχύτατου ευρωπαϊκού Cloud Hosting. Ο λογαριασμός καταχωρείται στο δικό σας όνομα ώστε να έχετε πάντα τον απόλυτο έλεγχο.</div>
           </details>
           <details class="faq-item">
-            <summary>Αναλαμβάνετε πελάτες εκτός Πάτρας ή στο εξωτερικό;</summary>
-            <div class="faq-ans">Ναι, εξυπηρετούμε επιχειρήσεις σε όλη την Ελλάδα και σε 5 χώρες της Ευρώπης εξ ολοκλήρου online, με ζωντανό σύνδεσμο προεπισκόπησης σε κάθε στάδιο της κατασκευής.</div>
+            <summary>4. Γιατί επιμένετε σε 100% Custom Code & Zero Bloatware;</summary>
+            <div class="faq-ans">Τα έτοιμα templates φορτώνουν δεκάδες περιττά plugins που ρίχνουν την ταχύτητα στο κινητό και δημιουργούν κενά ασφαλείας. Γράφοντας <b>καθαρό, custom κώδικα</b> πετυχαίνουμε <b>99+ Google PageSpeed</b>, ακαριαία φόρτωση σε 4G/5G και πολύ υψηλότερη κατάταξη στη Google.</div>
+          </details>
+          <details class="faq-item">
+            <summary>5. Πώς ξεκινάμε και πώς μπορώ να κλείσω μια κλήση γνωριμίας;</summary>
+            <div class="faq-ans">Μπορείτε να χρησιμοποιήσετε τον <b>Υπολογιστή Κόστους 3 Βημάτων</b> παραπάνω ή να πατήσετε <b>«📅 Κλείσε 15' Ραντεβού»</b> για να διαλέξετε ημέρα, ώρα και τρόπο επικοινωνίας (Τηλέφωνο, Google Meet ή Viber) και να μιλήσετε απευθείας με την ομάδα ανάπτυξης.</div>
           </details>
         </div>
       </div>
@@ -2070,6 +2387,125 @@
           const ok = document.getElementById('bOk');
           document.getElementById('bOkText').innerHTML = `Κλείσαμε <b>${bState.channel}</b> για <b>${bState.day} (${bState.slot})</b>.<br>Θα επικοινωνήσουμε στο <b>${contact.replace(/[<>&"']/g, '')}</b>!`;
           ok.style.display = 'block';
+        });
+      });
+    }
+
+
+    // ---------- Dark Mode Toggle ----------
+    const themeBtn = document.getElementById('themeBtn');
+    function applyTheme(t) {
+      if (t === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        if (themeBtn) themeBtn.textContent = '☀️';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        if (themeBtn) themeBtn.textContent = '🌙';
+      }
+    }
+    try {
+      const savedTheme = localStorage.getItem('ul_theme');
+      if (savedTheme) applyTheme(savedTheme);
+    } catch (e) {}
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const next = isDark ? 'light' : 'dark';
+        applyTheme(next);
+        try { localStorage.setItem('ul_theme', next); } catch (e) {}
+      });
+    }
+
+    // ---------- 2-Tab Services Switcher ----------
+    document.querySelectorAll('.svc-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.svc-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+        tab.classList.add('active'); tab.setAttribute('aria-selected', 'true');
+        const g = tab.dataset.svctab;
+        document.querySelectorAll('#servicesGrid .svc').forEach(card => {
+          card.style.display = (g === 'all' || card.dataset.svcgroup === g) ? '' : 'none';
+        });
+      });
+    });
+
+    // ---------- Labs Navigation Shortcut ----------
+    document.querySelectorAll('[data-goto-labs]').forEach(link => {
+      link.addEventListener('click', () => {
+        const labsBtn = document.getElementById('labsTabBtn');
+        if (labsBtn) labsBtn.click();
+      });
+    });
+
+    // ---------- 3-Step Interactive Cost Calculator ----------
+    const calcState = { s1: '', code: 'web', s2: '', tier: 'starter', s3: '' };
+    function showCalcStep(n) {
+      document.querySelectorAll('#calcStepBox .calc-step').forEach(el => {
+        el.style.display = (+el.dataset.s === n) ? 'block' : 'none';
+      });
+      document.querySelectorAll('#calcDots .calc-dot').forEach(d => {
+        d.classList.toggle('active', +d.dataset.step <= n);
+      });
+    }
+    document.querySelectorAll('#calcStepBox .calc-opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const step = +btn.dataset.s;
+        if (step === 1) {
+          calcState.s1 = btn.dataset.v; calcState.code = btn.dataset.code;
+          showCalcStep(2);
+        } else if (step === 2) {
+          calcState.s2 = btn.dataset.v; calcState.tier = btn.dataset.tier;
+          showCalcStep(3);
+        } else if (step === 3) {
+          calcState.s3 = btn.dataset.v;
+          document.getElementById('calcStepBox').style.display = 'none';
+          const res = document.getElementById('calcResBox');
+          const isStarterWeb = (calcState.code === 'web' && calcState.tier === 'starter');
+          document.getElementById('calcEstTitle').textContent = isStarterWeb
+            ? 'Εκτίμηση: Starter Landing Page από 350€'
+            : `Εκτίμηση: ${calcState.s1} (Κατόπιν μελέτης)`;
+          document.getElementById('calcEstSub').textContent = isStarterWeb
+            ? 'Παράδοση από 3 εργάσιμες ημέρες · 100% Custom Code & 99+ PageSpeed'
+            : 'Σας ετοιμάζουμε αυθημερόν αναλυτική γραπτή προσφορά & χρονοδιάγραμμα';
+          document.getElementById('calcSummarySelections').textContent = `Επιλογές: ${calcState.s1} · ${calcState.s2} · ${calcState.s3}`;
+          res.classList.add('show');
+          const fPkg = document.getElementById('fPkg');
+          if (fPkg) fPkg.value = `${calcState.s1} (${calcState.s2})`;
+        }
+      });
+    });
+    if (document.getElementById('calcBack1')) document.getElementById('calcBack1').addEventListener('click', () => showCalcStep(1));
+    if (document.getElementById('calcBack2')) document.getElementById('calcBack2').addEventListener('click', () => showCalcStep(2));
+    if (document.getElementById('calcResetBtn')) {
+      document.getElementById('calcResetBtn').addEventListener('click', () => {
+        document.getElementById('calcResBox').classList.remove('show');
+        document.getElementById('calcStepBox').style.display = 'block';
+        document.getElementById('calcOkMsg').style.display = 'none';
+        showCalcStep(1);
+      });
+    }
+    if (document.getElementById('calcLeadForm')) {
+      document.getElementById('calcLeadForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const name = document.getElementById('calcName').value.trim();
+        const contact = document.getElementById('calcContact').value.trim();
+        if (!name || !contact) {
+          document.getElementById(!name ? 'calcName' : 'calcContact').focus();
+          return;
+        }
+        const btn = document.getElementById('calcSubmitBtn');
+        btn.disabled = true;
+        sendLeadData({
+          name,
+          contact,
+          email: contact.includes('@') ? contact : '',
+          interest: `${calcState.s1} | ${calcState.s2}`,
+          message: `Υπολογιστής Κόστους 3 Βημάτων: 1) ${calcState.s1} | 2) ${calcState.s2} | 3) ${calcState.s3}`,
+          source: 'Υπολογιστής Κόστους 3 Βημάτων (uplogic.gr)'
+        }).then(() => {
+          btn.disabled = false;
+          const ok = document.getElementById('calcOkMsg');
+          ok.style.display = 'block';
+          ok.textContent = `✓ Ευχαριστούμε ${name}! Λάβαμε τις 3 επιλογές σας και θα σας καλέσουμε σήμερα με την προσφορά σας.`;
         });
       });
     }
