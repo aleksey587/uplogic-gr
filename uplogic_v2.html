@@ -1955,8 +1955,53 @@
     function closeLegal() { legalModal.classList.remove('open'); document.body.style.overflow = ''; lastFocus && lastFocus.focus(); }
     document.getElementById('lClose').addEventListener('click', closeLegal);
     legalModal.addEventListener('click', e => { if (e.target === legalModal) closeLegal(); });
-    addEventListener('keydown', e => { if (e.key === 'Escape') closeLegal(); });
-    
+        addEventListener('keydown', e => { if (e.key === 'Escape') closeLegal(); });
+
+    const CALENDLY_URL = '';
+    const bookingModal = document.getElementById('bookingModal');
+    let bState = { channel: 'Τηλεφωνική Κλήση', day: '', slot: '10:00 - 12:00' };
+
+    (function initBookingDays() {
+      const wrap = document.getElementById('bDays');
+      if (!wrap) return;
+      const dNames = ['Κυρ', 'Δευ', 'Τρί', 'Τετ', 'Πέμ', 'Παρ', 'Σάβ'];
+      const mNames = ['Ιαν', 'Φεβ', 'Μαρ', 'Απρ', 'Μαΐ', 'Ιουν', 'Ιουλ', 'Αυγ', 'Σεπ', 'Οκτ', 'Νοε', 'Δεκ'];
+      const now = new Date();
+      let added = 0, offset = 0;
+      while (added < 6) {
+        const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() + offset);
+        offset++;
+        if (d.getDay() === 0) continue;
+        const label = `${dNames[d.getDay()]} ${d.getDate()} ${mNames[d.getMonth()]}`;
+        const sub = added === 0 ? 'Άμεσα' : (added === 1 ? 'Επόμενη' : 'Διαθέσιμη');
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'b-day' + (added === 0 ? ' active' : '');
+        btn.dataset.val = label;
+        btn.innerHTML = `${label}<small>${sub}</small>`;
+        if (added === 0) bState.day = label;
+        wrap.appendChild(btn);
+        added++;
+      }
+    })();
+
+    function updateBookingSummary() {
+      const el = document.getElementById('bSumText');
+      if (el) el.textContent = `${bState.channel} · ${bState.day} · ${bState.slot}`;
+    }
+    updateBookingSummary();
+
+    function bindGroup(id, key) {
+      const wrap = document.getElementById(id);
+      if (!wrap) return;
+      wrap.addEventListener('click', e => {
+        const btn = e.target.closest('button[data-val]');
+        if (!btn) return;
+        wrap.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        bState[key] = btn.dataset.val;
+        updateBookingSummary();
+      });
     }
     bindGroup('bChannels', 'channel');
     bindGroup('bDays', 'day');
