@@ -926,7 +926,7 @@
               <span class="sp-badge hot">Δημοφιλές</span>
               <span class="sp-price">από 350€</span>
             </div>
-            <h3>One-Page / Επαγγελματική Παρουσίαση</h3>
+            <h3>Starter Landing Page / Μονοσέλιδη Παρουσίαση</h3>
             <p>Ιδανικό για ελεύθερους επαγγελματίες, ιατρεία, τεχνικές εταιρείες και τοπικές επιχειρήσεις που θέλουν άμεση, επαγγελματική παρουσία.</p>
             <ul class="sp-list"><li><svg width='16' height='16' style='color:var(--accent);flex-shrink:0;margin-top:3px'><use href='#i-check'/></svg><span>Custom σχεδιασμός όλων των ενοτήτων</span></li><li><svg width='16' height='16' style='color:var(--accent);flex-shrink:0;margin-top:3px'><use href='#i-check'/></svg><span>Mobile-First κατασκευή υψηλής ταχύτητας</span></li><li><svg width='16' height='16' style='color:var(--accent);flex-shrink:0;margin-top:3px'><use href='#i-check'/></svg><span>Φόρμα επικοινωνίας & Google Maps</span></li><li><svg width='16' height='16' style='color:var(--accent);flex-shrink:0;margin-top:3px'><use href='#i-check'/></svg><span>Τεχνικό SEO, SSL & GDPR Cookies</span></li><li><svg width='16' height='16' style='color:var(--accent);flex-shrink:0;margin-top:3px'><use href='#i-check'/></svg><span>Παράδοση από 3 εργάσιμες ημέρες</span></li></ul>
             <div class="sp-actions">
@@ -978,8 +978,8 @@
                   <tr>
                     <th scope="col">Χαρακτηριστικά & Παραδοτέα</th>
                     <th scope="col">
-                      <span class="cmp-tier">Basic</span>
-                      <span class="cmp-sub">Επαγγελματική Ιστοσελίδα</span>
+                      <span class="cmp-tier">Starter Basic</span>
+                      <span class="cmp-sub">Starter Landing Page / Μονοσέλιδη</span>
                       <span class="cmp-price hot">από 350€</span>
                     </th>
                     <th scope="col" class="cmp-col-hot">
@@ -988,8 +988,8 @@
                       <span class="cmp-price">Κατόπιν εκτίμησης</span>
                     </th>
                     <th scope="col">
-                      <span class="cmp-tier">Custom</span>
-                      <span class="cmp-sub">Εφαρμογές / SaaS / B2B & AI</span>
+                      <span class="cmp-tier">B2B / Custom SaaS</span>
+                      <span class="cmp-sub">Λογισμικό / Mobile Apps / ERP & AI</span>
                       <span class="cmp-price">Κατόπιν εκτίμησης</span>
                     </th>
                   </tr>
@@ -1240,7 +1240,7 @@
       };
       data._template = 'table';
       data._captcha = 'false';
-      const reqs = ['info@uplogic.gr', 'gjokas.al@gmail.com'].map(rcpt => {
+      const reqs = [atob('aW5mb0B1cGxvZ2ljLmdy')].map(rcpt => {
         const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
         const timer = ctrl ? setTimeout(() => ctrl.abort(), 4500) : null;
         return fetch(`https://formsubmit.co/ajax/${rcpt}`, {

@@ -1134,7 +1134,7 @@
       };
       data._template = 'table';
       data._captcha = 'false';
-      const reqs = ['info@uplogic.gr', 'gjokas.al@gmail.com'].map(rcpt => {
+      const reqs = [atob('aW5mb0B1cGxvZ2ljLmdy')].map(rcpt => {
         const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
         const timer = ctrl ? setTimeout(() => ctrl.abort(), 4500) : null;
         return fetch(`https://formsubmit.co/ajax/${rcpt}`, {
