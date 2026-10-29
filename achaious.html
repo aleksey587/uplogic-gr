@@ -38,153 +38,202 @@
     <style>
         body { font-family: 'Inter', sans-serif; background-color: #0F172A; color: #F8FAFC; }
         h1, h2, h3, .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
+        }
+        .shake-error { animation: shake 0.4s ease-in-out; }
     </style>
 </head>
-<body class="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+<body class="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-amber-500 selection:text-slate-950">
 
-    <!-- Top Brand Header -->
-    <header class="bg-slate-900 border-b border-white/10 sticky top-0 z-40 backdrop-blur-md bg-slate-900/90">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-4">
-            <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-red-600 flex items-center justify-center font-black text-xl text-white shadow-lg shadow-amber-500/20">
-                    🥋
+    <!-- SECURITY PIN LOCK OVERLAY (ACTIVE BY DEFAULT) -->
+    <div id="pin-overlay" class="fixed inset-0 z-50 bg-slate-950 flex flex-col items-center justify-center p-4">
+        <div class="max-w-sm w-full bg-slate-900 border border-white/10 rounded-3xl p-6 sm:p-8 text-center shadow-2xl shadow-black/80 space-y-6">
+            <div class="mx-auto w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-500 to-red-600 flex items-center justify-center text-3xl shadow-lg shadow-amber-500/20">
+                🔒
+            </div>
+
+            <div class="space-y-1">
+                <span class="bg-amber-500/15 text-amber-400 border border-amber-500/30 text-[10px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                    ΑΠΟΡΡΗΤΟ ΠΑΝΕΛ ΔΙΑΧΕΙΡΙΣΗΣ
+                </span>
+                <h2 class="font-display font-black text-xl text-white pt-2">Α.Σ. ΑΧΑΙΟΙ TAE KWON DO</h2>
+                <p class="text-xs text-slate-400">Εισάγετε τον 4ψήφιο κωδικό πρόσβασης (PIN)</p>
+            </div>
+
+            <!-- PIN Form -->
+            <form onsubmit="handlePinSubmit(event)" class="space-y-4">
+                <div id="pin-box" class="relative">
+                    <input type="password" id="pin-input" maxlength="4" pattern="[0-9]*" inputmode="numeric" autofocus placeholder="••••" class="w-full bg-slate-950 border border-white/20 rounded-2xl py-3.5 text-center text-2xl tracking-[0.5em] font-mono text-amber-400 font-black focus:outline-none focus:border-amber-400 transition placeholder-slate-700">
                 </div>
-                <div>
-                    <div class="flex items-center gap-2">
-                        <h1 class="font-display font-black text-lg sm:text-xl text-white tracking-tight">Α.Σ. ΑΧΑΙΟΙ</h1>
-                        <span class="bg-amber-500/15 text-amber-400 border border-amber-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">TAE KWON DO</span>
+
+                <div id="pin-error" class="hidden text-xs text-red-400 font-semibold">
+                    ✖ Λάθος PIN! Δοκιμάστε ξανά.
+                </div>
+
+                <button type="submit" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-3.5 px-4 rounded-xl text-sm transition shadow-lg shadow-amber-500/20">
+                    Είσοδος στο Σύστημα →
+                </button>
+            </form>
+
+            <div class="pt-2 border-t border-white/5 text-[11px] text-slate-500">
+                Προστατευμένο σύστημα διαχείρισης συνδρομών & προσωπικών δεδομένων αθλητών.
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN DASHBOARD (HIDDEN UNTIL UNLOCKED) -->
+    <div id="main-dashboard" class="hidden flex-1 flex flex-col">
+
+        <!-- Top Brand Header -->
+        <header class="bg-slate-900 border-b border-white/10 sticky top-0 z-40 backdrop-blur-md bg-slate-900/90">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-500 to-red-600 flex items-center justify-center font-black text-xl text-white shadow-lg shadow-amber-500/20">
+                        🥋
                     </div>
-                    <p class="text-xs text-slate-400">Διαχείριση Συνδρομών & Υπενθυμίσεις Viber / SMS</p>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h1 class="font-display font-black text-lg sm:text-xl text-white tracking-tight">Α.Σ. ΑΧΑΙΟΙ</h1>
+                            <span class="bg-amber-500/15 text-amber-400 border border-amber-500/30 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">TAE KWON DO</span>
+                        </div>
+                        <p class="text-xs text-slate-400">Διαχείριση Συνδρομών & Υπενθυμίσεις Viber / SMS</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2 bg-slate-800/80 border border-white/10 px-3 py-1.5 rounded-xl text-xs">
+                        <span class="text-slate-400">Μήνας:</span>
+                        <select id="selected-month" onchange="updateMonth()" class="bg-transparent font-bold text-amber-400 focus:outline-none cursor-pointer">
+                            <option value="Οκτωβρίου" selected class="bg-slate-900 text-white">Οκτώβριος 2026</option>
+                            <option value="Νοεμβρίου" class="bg-slate-900 text-white">Νοέμβριος 2026</option>
+                            <option value="Δεκεμβρίου" class="bg-slate-900 text-white">Δεκέμβριος 2026</option>
+                            <option value="Ιανουαρίου" class="bg-slate-900 text-white">Ιανουάριος 2027</option>
+                        </select>
+                    </div>
+                    <button type="button" onclick="openAddModal()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition shadow-lg shadow-amber-500/20">
+                        <span>➕</span> Νέος Αθλητής
+                    </button>
+                    <button type="button" onclick="lockDashboard()" title="Κλείδωμα Πάνελ" class="bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-white/10 px-2.5 py-2 rounded-xl text-xs font-semibold transition">
+                        🔒 Κλείδωμα
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 w-full space-y-6">
+
+            <!-- Stats Overview Cards -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
+                <div class="bg-slate-900/80 border border-white/10 rounded-2xl p-4">
+                    <span class="text-xs text-slate-400 block font-medium">Σύνολο Αθλητών</span>
+                    <span id="stat-total" class="font-display font-black text-2xl sm:text-3xl text-white block mt-1">0</span>
+                    <span class="text-[11px] text-slate-500 mt-0.5 block">Ενεργά μέλη συλλόγου</span>
+                </div>
+
+                <div class="bg-slate-900/80 border border-emerald-500/20 rounded-2xl p-4">
+                    <span class="text-xs text-emerald-400 block font-medium">Πληρωμένες</span>
+                    <span id="stat-paid" class="font-display font-black text-2xl sm:text-3xl text-emerald-400 block mt-1">0</span>
+                    <span class="text-[11px] text-emerald-500/80 mt-0.5 block">Έχουν εξοφλήσει</span>
+                </div>
+
+                <div class="bg-slate-900/80 border border-red-500/20 rounded-2xl p-4">
+                    <span class="text-xs text-red-400 block font-medium">Εκκρεμότητες</span>
+                    <span id="stat-unpaid" class="font-display font-black text-2xl sm:text-3xl text-red-400 block mt-1">0</span>
+                    <span class="text-[11px] text-red-400/80 mt-0.5 block">Απαιτείται υπενθύμιση</span>
+                </div>
+
+                <div class="bg-slate-900/80 border border-amber-500/20 rounded-2xl p-4">
+                    <span class="text-xs text-amber-400 block font-medium">Ποσό σε Εκκρεμότητα</span>
+                    <span id="stat-amount" class="font-display font-black text-2xl sm:text-3xl text-amber-400 block mt-1">0€</span>
+                    <span class="text-[11px] text-amber-400/80 mt-0.5 block">Προς είσπραξη (έως 10/μήνα)</span>
                 </div>
             </div>
 
-            <div class="flex items-center gap-3">
-                <div class="flex items-center gap-2 bg-slate-800/80 border border-white/10 px-3 py-1.5 rounded-xl text-xs">
-                    <span class="text-slate-400">Μήνας:</span>
-                    <select id="selected-month" onchange="updateMonth()" class="bg-transparent font-bold text-amber-400 focus:outline-none cursor-pointer">
-                        <option value="Οκτωβρίου" selected class="bg-slate-900 text-white">Οκτώβριος 2026</option>
-                        <option value="Νοεμβρίου" class="bg-slate-900 text-white">Νοέμβριος 2026</option>
-                        <option value="Δεκεμβρίου" class="bg-slate-900 text-white">Δεκέμβριος 2026</option>
-                        <option value="Ιανουαρίου" class="bg-slate-900 text-white">Ιανουάριος 2027</option>
-                    </select>
+            <!-- Customizable Template Settings Bar -->
+            <div class="bg-slate-900/90 border border-white/10 rounded-2xl p-4 sm:p-5 space-y-4">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="text-lg">⚙️</span>
+                        <h2 class="font-bold text-sm sm:text-base text-white">Πρότυπο Μηνύματος Υπενθύμισης</h2>
+                    </div>
+                    <span class="text-xs text-slate-400">Το κείμενο μπαίνει αυτόματα στο Viber & SMS</span>
                 </div>
-                <button type="button" onclick="openAddModal()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition shadow-lg shadow-amber-500/20">
-                    <span>➕</span> Νέος Αθλητής
-                </button>
-            </div>
-        </div>
-    </header>
 
-    <!-- Main Content -->
-    <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 w-full space-y-6">
-
-        <!-- Stats Overview Cards -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
-            <div class="bg-slate-900/80 border border-white/10 rounded-2xl p-4">
-                <span class="text-xs text-slate-400 block font-medium">Σύνολο Αθλητών</span>
-                <span id="stat-total" class="font-display font-black text-2xl sm:text-3xl text-white block mt-1">0</span>
-                <span class="text-[11px] text-slate-500 mt-0.5 block">Ενεργά μέλη συλλόγου</span>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1.5">Κείμενο Μηνύματος (Template):</label>
+                    <textarea id="template-field" rows="3" oninput="saveSettings()" class="w-full bg-slate-950 border border-white/15 rounded-xl p-3 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-amber-400 font-mono">Καλησπέρα σας! Από τον Α.Σ. ΑΧΑΙΟΙ TAE KWON DO, σας υπενθυμίζουμε ότι η μηνιαία συνδρομή {month} για τον/την {student} ({amount}€) εκκρεμεί (προθεσμία: έως 10 του μήνα). Παρακαλούμε για τη διευθέτησή της στη γραμματεία της σχολής κατά τις ώρες των προπονήσεων. Σας ευχαριστούμε!</textarea>
+                    <p class="text-[11px] text-slate-500 mt-1.5">Ετικέτες που αντικαθίστανται αυτόματα: <code class="text-amber-400 font-bold">{student}</code> (Όνομα Αθλητή), <code class="text-amber-400 font-bold">{month}</code> (Μήνας), <code class="text-amber-400 font-bold">{amount}</code> (Ποσό Συνδρομής)</p>
+                </div>
             </div>
 
-            <div class="bg-slate-900/80 border border-emerald-500/20 rounded-2xl p-4">
-                <span class="text-xs text-emerald-400 block font-medium">Πληρωμένες</span>
-                <span id="stat-paid" class="font-display font-black text-2xl sm:text-3xl text-emerald-400 block mt-1">0</span>
-                <span class="text-[11px] text-emerald-500/80 mt-0.5 block">Έχουν εξοφλήσει</span>
-            </div>
-
-            <div class="bg-slate-900/80 border border-red-500/20 rounded-2xl p-4">
-                <span class="text-xs text-red-400 block font-medium">Εκκρεμότητες</span>
-                <span id="stat-unpaid" class="font-display font-black text-2xl sm:text-3xl text-red-400 block mt-1">0</span>
-                <span class="text-[11px] text-red-400/80 mt-0.5 block">Απαιτείται υπενθύμιση</span>
-            </div>
-
-            <div class="bg-slate-900/80 border border-amber-500/20 rounded-2xl p-4">
-                <span class="text-xs text-amber-400 block font-medium">Ποσό σε Εκκρεμότητα</span>
-                <span id="stat-amount" class="font-display font-black text-2xl sm:text-3xl text-amber-400 block mt-1">0€</span>
-                <span class="text-[11px] text-amber-400/80 mt-0.5 block">Προς είσπραξη (έως 10/μήνα)</span>
-            </div>
-        </div>
-
-        <!-- Customizable Template Settings Bar -->
-        <div class="bg-slate-900/90 border border-white/10 rounded-2xl p-4 sm:p-5 space-y-4">
-            <div class="flex flex-wrap items-center justify-between gap-2">
+            <!-- Filter & Search Toolbar -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div class="flex items-center gap-2">
-                    <span class="text-lg">⚙️</span>
-                    <h2 class="font-bold text-sm sm:text-base text-white">Πρότυπο Μηνύματος Υπενθύμισης</h2>
+                    <button type="button" onclick="setFilter('all')" id="btn-filter-all" class="filter-btn bg-amber-500 text-slate-950 font-bold px-3 py-1.5 rounded-xl text-xs transition">
+                        Όλοι (<span id="count-all">0</span>)
+                    </button>
+                    <button type="button" onclick="setFilter('unpaid')" id="btn-filter-unpaid" class="filter-btn bg-slate-800 text-slate-300 hover:text-white font-medium px-3 py-1.5 rounded-xl text-xs transition">
+                        🔴 Εκκρεμείς (<span id="count-unpaid">0</span>)
+                    </button>
+                    <button type="button" onclick="setFilter('paid')" id="btn-filter-paid" class="filter-btn bg-slate-800 text-slate-300 hover:text-white font-medium px-3 py-1.5 rounded-xl text-xs transition">
+                        🟢 Πληρωμένοι (<span id="count-paid">0</span>)
+                    </button>
                 </div>
-                <span class="text-xs text-slate-400">Το κείμενο μπαίνει αυτόματα στο Viber & SMS</span>
+
+                <div class="relative w-full sm:w-64">
+                    <input type="text" id="search-input" oninput="renderTable()" placeholder="Αναζήτηση αθλητή, γονέα, τηλ..." class="w-full bg-slate-900 border border-white/15 rounded-xl pl-8 pr-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400">
+                    <span class="absolute left-2.5 top-2 text-slate-500 text-xs">🔍</span>
+                </div>
             </div>
 
-            <div>
-                <label class="block text-xs font-semibold text-slate-300 mb-1.5">Κείμενο Μηνύματος (Template):</label>
-                <textarea id="template-field" rows="3" oninput="saveSettings()" class="w-full bg-slate-950 border border-white/15 rounded-xl p-3 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-amber-400 font-mono">Καλησπέρα σας! Από τον Α.Σ. ΑΧΑΙΟΙ TAE KWON DO, σας υπενθυμίζουμε ότι η μηνιαία συνδρομή {month} για τον/την {student} ({amount}€) εκκρεμεί (προθεσμία: έως 10 του μήνα). Παρακαλούμε για τη διευθέτησή της στη γραμματεία της σχολής κατά τις ώρες των προπονήσεων. Σας ευχαριστούμε!</textarea>
-                <p class="text-[11px] text-slate-500 mt-1.5">Ετικέτες που αντικαθίστανται αυτόματα: <code class="text-amber-400 font-bold">{student}</code> (Όνομα Αθλητή), <code class="text-amber-400 font-bold">{month}</code> (Μήνας), <code class="text-amber-400 font-bold">{amount}</code> (Ποσό Συνδρομής)</p>
+            <!-- Members Table -->
+            <div class="bg-slate-900/90 border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs sm:text-sm">
+                        <thead>
+                            <tr class="bg-slate-950 text-slate-400 border-b border-white/10 text-[11px] uppercase tracking-wider font-semibold">
+                                <th class="py-3 px-4">Αθλητής / Παιδί</th>
+                                <th class="py-3 px-4">Γονέας & Τηλέφωνο</th>
+                                <th class="py-3 px-4">Τμήμα</th>
+                                <th class="py-3 px-4">Ποσό</th>
+                                <th class="py-3 px-4">Κατάσταση</th>
+                                <th class="py-3 px-4">Τελευταία Ενημέρωση</th>
+                                <th class="py-3 px-4 text-center">Αποστολή (1-Click)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="members-tbody" class="divide-y divide-white/5">
+                            <!-- Populated via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
-        </div>
 
-        <!-- Filter & Search Toolbar -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div class="flex items-center gap-2">
-                <button type="button" onclick="setFilter('all')" id="btn-filter-all" class="filter-btn bg-amber-500 text-slate-950 font-bold px-3 py-1.5 rounded-xl text-xs transition">
-                    Όλοι (<span id="count-all">0</span>)
-                </button>
-                <button type="button" onclick="setFilter('unpaid')" id="btn-filter-unpaid" class="filter-btn bg-slate-800 text-slate-300 hover:text-white font-medium px-3 py-1.5 rounded-xl text-xs transition">
-                    🔴 Εκκρεμείς (<span id="count-unpaid">0</span>)
-                </button>
-                <button type="button" onclick="setFilter('paid')" id="btn-filter-paid" class="filter-btn bg-slate-800 text-slate-300 hover:text-white font-medium px-3 py-1.5 rounded-xl text-xs transition">
-                    🟢 Πληρωμένοι (<span id="count-paid">0</span>)
-                </button>
+            <!-- How It Works Card -->
+            <div class="bg-gradient-to-r from-purple-950/40 via-slate-900 to-amber-950/30 border border-white/10 rounded-2xl p-5">
+                <h3 class="font-bold text-sm text-white mb-2 flex items-center gap-2">
+                    <span>💡</span> Πώς λειτουργεί για τον Θάνο & τη Γραμματεία:
+                </h3>
+                <ul class="grid md:grid-cols-3 gap-3 text-xs text-slate-300">
+                    <li class="flex items-start gap-2">
+                        <span class="text-purple-400 font-bold text-sm">1.</span>
+                        <span>Πατάς το μωβ κουμπί <strong>«🟣 Viber»</strong> δίπλα στον γονέα που εκκρεμεί. Ανοίγει απευθείας η συνομιλία με έτοιμο το κείμενο και το όνομα του παιδιού. Πατάς απλά αποστολή!</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-emerald-400 font-bold text-sm">2.</span>
+                        <span>Μόλις ο γονέας περάσει από τη γραμματεία και τακτοποιήσει τη συνδρομή, πατάς το κουμπάκι <strong>«Πληρώθηκε»</strong> και πρασινίζει άμεσα.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-amber-400 font-bold text-sm">3.</span>
+                        <span>Αν κάποιος γονέας δεν έχει Viber, υπάρχει το κουμπί <strong>«💬 SMS»</strong> που ανοίγει τα μηνύματα του κινητού χωρίς καμία χρέωση πλατφόρμας.</span>
+                    </li>
+                </ul>
             </div>
-
-            <div class="relative w-full sm:w-64">
-                <input type="text" id="search-input" oninput="renderTable()" placeholder="Αναζήτηση αθλητή, γονέα, τηλ..." class="w-full bg-slate-900 border border-white/15 rounded-xl pl-8 pr-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-400">
-                <span class="absolute left-2.5 top-2 text-slate-500 text-xs">🔍</span>
-            </div>
-        </div>
-
-        <!-- Members Table -->
-        <div class="bg-slate-900/90 border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse text-xs sm:text-sm">
-                    <thead>
-                        <tr class="bg-slate-950 text-slate-400 border-b border-white/10 text-[11px] uppercase tracking-wider font-semibold">
-                            <th class="py-3 px-4">Αθλητής / Παιδί</th>
-                            <th class="py-3 px-4">Γονέας & Τηλέφωνο</th>
-                            <th class="py-3 px-4">Τμήμα</th>
-                            <th class="py-3 px-4">Ποσό</th>
-                            <th class="py-3 px-4">Κατάσταση</th>
-                            <th class="py-3 px-4">Τελευταία Ενημέρωση</th>
-                            <th class="py-3 px-4 text-center">Αποστολή (1-Click)</th>
-                        </tr>
-                    </thead>
-                    <tbody id="members-tbody" class="divide-y divide-white/5">
-                        <!-- Populated via JavaScript -->
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- How It Works / Value Explanation Card -->
-        <div class="bg-gradient-to-r from-purple-950/40 via-slate-900 to-amber-950/30 border border-white/10 rounded-2xl p-5">
-            <h3 class="font-bold text-sm text-white mb-2 flex items-center gap-2">
-                <span>💡</span> Πώς λειτουργεί για τον Θάνο & τη Γραμματεία:
-            </h3>
-            <ul class="grid md:grid-cols-3 gap-3 text-xs text-slate-300">
-                <li class="flex items-start gap-2">
-                    <span class="text-purple-400 font-bold text-sm">1.</span>
-                    <span>Πατάς το μωβ κουμπί <strong>«🟣 Viber»</strong> δίπλα στον γονέα που εκκρεμεί. Ανοίγει απευθείας η συνομιλία με έτοιμο το κείμενο και το όνομα του παιδιού. Πατάς απλά αποστολή!</span>
-                </li>
-                <li class="flex items-start gap-2">
-                    <span class="text-emerald-400 font-bold text-sm">2.</span>
-                    <span>Μόλις ο γονέας περάσει από τη γραμματεία και τακτοποιήσει τη συνδρομή, πατάς το κουμπάκι <strong>«Πληρώθηκε»</strong> και πρασινίζει άμεσα.</span>
-                </li>
-                <li class="flex items-start gap-2">
-                    <span class="text-amber-400 font-bold text-sm">3.</span>
-                    <span>Αν κάποιος γονέας δεν έχει Viber, υπάρχει το κουμπί <strong>«💬 SMS»</strong> που ανοίγει τα μηνύματα του κινητού χωρίς καμία χρέωση πλατφόρμας.</span>
-                </li>
-            </ul>
-        </div>
-    </main>
+        </main>
+    </div>
 
     <!-- Modal: Add New Member -->
     <div id="add-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
@@ -238,6 +287,44 @@
 
     <!-- App Logic -->
     <script>
+        const REQUIRED_PIN = "5555";
+
+        function checkPinAuth() {
+            const isAuth = sessionStorage.getItem('achaious_auth') === 'true';
+            if (isAuth) {
+                document.getElementById('pin-overlay').classList.add('hidden');
+                document.getElementById('main-dashboard').classList.remove('hidden');
+            } else {
+                document.getElementById('pin-overlay').classList.remove('hidden');
+                document.getElementById('main-dashboard').classList.add('hidden');
+                setTimeout(() => document.getElementById('pin-input')?.focus(), 200);
+            }
+        }
+
+        function handlePinSubmit(e) {
+            e.preventDefault();
+            const input = document.getElementById('pin-input');
+            const err = document.getElementById('pin-error');
+            const box = document.getElementById('pin-box');
+
+            if (input.value.trim() === REQUIRED_PIN) {
+                sessionStorage.setItem('achaious_auth', 'true');
+                err.classList.add('hidden');
+                document.getElementById('pin-overlay').classList.add('hidden');
+                document.getElementById('main-dashboard').classList.remove('hidden');
+            } else {
+                err.classList.remove('hidden');
+                box.classList.add('shake-error');
+                input.value = '';
+                setTimeout(() => box.classList.remove('shake-error'), 400);
+            }
+        }
+
+        function lockDashboard() {
+            sessionStorage.removeItem('achaious_auth');
+            checkPinAuth();
+        }
+
         const DEFAULT_MEMBERS = [
             { id: 1, name: "Αλέξανδρος Παπαδόπουλος", parent: "Γιώργος Παπαδόπουλος", phone: "6987654321", group: "Παιδικό Α'", amount: 35, paid: false, lastReminded: null },
             { id: 2, name: "Ελένη Δημητρίου", parent: "Μαρία Δημητρίου", phone: "6945123456", group: "Εφηβικό", amount: 40, paid: false, lastReminded: "26/10" },
@@ -316,18 +403,13 @@
             const digits = cleanPhone(m.phone);
             const formatted = digits.startsWith('30') ? digits : '30' + digits;
 
-            // Mark reminded date
             const today = new Date();
             m.lastReminded = `${today.getDate()}/${today.getMonth() + 1}`;
             saveState();
 
-            // Open Viber chat
-            // Viber deep links: on mobile viber://chat?number=+30... or forward
             const viberUrl = `viber://chat?number=%2B${formatted}`;
-            // Also copy message to clipboard for seamless paste
             navigator.clipboard?.writeText(msg).catch(() => {});
             
-            // Try viber protocol, fallback prompt
             window.location.href = viberUrl;
             setTimeout(() => {
                 alert(`📱 Άνοιξε το Viber για τον γονέα: ${m.parent} (${m.phone}).\n\nΤο μήνυμα αντιγράφηκε αυτόματα:\n\n"${msg}"`);
@@ -466,6 +548,7 @@
         }
 
         // Init on load
+        checkPinAuth();
         loadSettings();
         renderStats();
         renderTable();
