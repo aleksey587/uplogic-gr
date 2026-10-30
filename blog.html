@@ -7,6 +7,9 @@
   <meta name="description" content="Πρακτικοί οδηγοί από την UpLogic: Πόσο κοστίζει μια ιστοσελίδα ή ένα e-shop το 2026, AI Chatbot vs Live Chat, Local SEO & Google Maps, Custom Design vs Template.">
   <meta name="theme-color" content="#FBFAF8">
   <link rel="canonical" href="https://uplogic.gr/blog.html">
+  <link rel="alternate" hreflang="el" href="https://uplogic.gr/blog.html">
+  <link rel="alternate" hreflang="en" href="https://uplogic.gr/en/blog.html">
+  <link rel="alternate" hreflang="x-default" href="https://uplogic.gr/blog.html">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -281,6 +284,58 @@
       .cmp-table th, .cmp-table td { padding: 11px 12px; font-size: 13px; }
     }
 
+  
+    /* Language Switcher */
+    .lang-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      height: 40px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #fff;
+      font-size: 13.5px;
+      font-weight: 600;
+      transition: all .2s ease;
+      cursor: pointer;
+      text-decoration: none;
+      flex-shrink: 0;
+      letter-spacing: 0.5px;
+    }
+    .lang-pill:hover {
+      background: rgba(255,255,255,0.18);
+      border-color: rgba(255,255,255,0.3);
+      transform: scale(1.05);
+      color: #fff;
+    }
+    .lang-pill .lang-active {
+      color: #60A5FA;
+      font-weight: 700;
+    }
+    .lang-pill .lang-div {
+      opacity: 0.4;
+      font-weight: 400;
+      margin: 0 1px;
+    }
+    .lang-pill .lang-inactive {
+      opacity: 0.75;
+      color: #fff;
+    }
+    .lang-pill:hover .lang-inactive {
+      opacity: 1;
+    }
+    @media (max-width: 480px) {
+      .lang-pill { height: 36px; padding: 0 9px; font-size: 12px; }
+    }
+    .mobile-lang-box {
+      padding: 10px 4px 14px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+    }
+
   </style>
 </head>
 <body>
@@ -305,6 +360,7 @@
         <a href="index.html#contact">Επικοινωνία</a>
       </nav>
       <div class="header-cta">
+        <a href="en/blog.html" class="lang-pill" aria-label="Switch to English version" title="English version"><span class="lang-active">EL</span><span class="lang-div">/</span><span class="lang-inactive">EN</span></a>
         <a href="index.html#contact" class="btn btn-dark btn-sm">Ζήτα προσφορά</a>
         <button class="menu-btn" id="menuBtn" aria-label="Άνοιγμα μενού" aria-expanded="false" aria-controls="mobileNav">
           <svg width="20" height="20"><use href="#i-menu"/></svg>
@@ -313,6 +369,9 @@
     </div>
   </header>
   <nav class="mobile-nav" id="mobileNav" aria-label="Μενού κινητού">
+    <div class="mobile-lang-box">
+      <a href="en/blog.html" class="lang-pill" aria-label="Switch to English version" title="English version"><span class="lang-active">EL</span><span class="lang-div">/</span><span class="lang-inactive">EN</span></a>
+    </div>
     <a href="index.html">← Αρχική σελίδα</a>
     <a href="index.html#services">Υπηρεσίες</a>
     <a href="index.html#work">Έργα</a>
