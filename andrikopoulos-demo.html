@@ -843,7 +843,7 @@
 
         <button class="cart-trigger-btn" onclick="toggleCart()">
           <i class="fa-solid fa-cart-shopping"></i>
-          <span>Καλάθι</span>
+          <span id="cartHeaderTotal">0.00€</span>
           <span class="cart-count-pill" id="cartCountPill">0</span>
         </button>
       </div>
@@ -1592,7 +1592,7 @@
               <span class="p-price-current">${p.price.toFixed(2)}€</span>
               ${p.oldPrice ? `<span class="p-price-old">${p.oldPrice.toFixed(2)}€</span>` : ''}
             </div>
-            <button class="add-to-cart-btn" onclick="addToCart(${p.id})">
+            <button class="add-to-cart-btn" onclick="addToCart(${p.id}, this)">
               <i class="fa-solid fa-cart-plus"></i> Προσθήκη στο Καλάθι
             </button>
           </div>
@@ -1622,7 +1622,7 @@
     });
 
     // Cart Functions
-    function addToCart(id) {
+    function addToCart(id, btn) {
       const item = PRODUCTS.find(p => p.id === id);
       const existing = cart.find(c => c.id === id);
       if (existing) {
@@ -1631,7 +1631,21 @@
         cart.push({ ...item, qty: 1 });
       }
       updateCartUI();
-      openCart();
+      
+      // Smooth feedback on the button without opening the drawer
+      if (btn) {
+        const origText = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Προστέθηκε!';
+        btn.style.background = '#10b981';
+        btn.style.borderColor = '#10b981';
+        btn.style.color = '#ffffff';
+        setTimeout(() => {
+          btn.innerHTML = origText;
+          btn.style.background = '';
+          btn.style.borderColor = '';
+          btn.style.color = '';
+        }, 1000);
+      }
     }
 
     function updateQty(id, delta) {
@@ -1658,7 +1672,7 @@
           </div>
         `;
         document.getElementById('cartSubtotal').innerText = '0.00€';
-        document.getElementById('cartTotal').innerText = '0.00€';
+        document.getElementById('cartTotal').innerText = '0.00€'; const ht = document.getElementById('cartHeaderTotal'); if(ht) ht.innerText = '0.00€';
         return;
       }
 
@@ -1688,6 +1702,8 @@
       document.getElementById('cartSubtotal').innerText = subtotal.toFixed(2) + '€';
       document.getElementById('cartTotal').innerText = subtotal.toFixed(2) + '€';
       document.getElementById('modalOrderTotal').innerText = subtotal.toFixed(2) + '€';
+      const headerTotalEl = document.getElementById('cartHeaderTotal');
+      if (headerTotalEl) headerTotalEl.innerText = subtotal.toFixed(2) + '€';
     }
 
     function toggleCart() {
