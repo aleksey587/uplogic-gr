@@ -1702,11 +1702,25 @@
         container.appendChild(row);
       });
 
+      const deliveryFee = subtotal >= 40.0 ? 0.0 : 3.0;
+      const finalTotal = subtotal + deliveryFee;
+
       document.getElementById('cartSubtotal').innerText = subtotal.toFixed(2) + '€';
-      document.getElementById('cartTotal').innerText = subtotal.toFixed(2) + '€';
-      document.getElementById('modalOrderTotal').innerText = subtotal.toFixed(2) + '€';
+      
+      const feeEl = document.getElementById('cartDeliveryFee');
+      if (feeEl) {
+        if (deliveryFee === 0) {
+          feeEl.innerHTML = '<span style="color: var(--accent-green); font-weight: 700;">ΔΩΡΕΑΝ</span>';
+        } else {
+          const remaining = (40.0 - subtotal).toFixed(2);
+          feeEl.innerHTML = `<span style="color: #ef4444; font-weight: 700;">3.00€</span> <span style="font-size: 0.72rem; color: #64748b; display: block;">(ακόμη ${remaining}€ για δωρεάν)</span>`;
+        }
+      }
+
+      document.getElementById('cartTotal').innerText = finalTotal.toFixed(2) + '€';
+      document.getElementById('modalOrderTotal').innerText = finalTotal.toFixed(2) + '€';
       const headerTotalEl = document.getElementById('cartHeaderTotal');
-      if (headerTotalEl) headerTotalEl.innerText = subtotal.toFixed(2) + '€';
+      if (headerTotalEl) headerTotalEl.innerText = finalTotal.toFixed(2) + '€';
     }
 
     function toggleCart() {
