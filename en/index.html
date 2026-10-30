@@ -8,6 +8,20 @@
   <meta name="theme-color" content="#FBFAF8">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%23111114%22/><path d=%22M30 30v24a20 20 0 0 0 40 0V30%22 fill=%22none%22 stroke=%22%23ffffff%22 stroke-width=%2210%22 stroke-linecap=%22round%22/><circle cx=%2270%22 cy=%2230%22 r=%227%22 fill=%22%232451F5%22/></svg>">
 
+    <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('ul_theme');
+        if (saved === 'light') {
+          document.documentElement.removeAttribute('data-theme');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
   <link rel="canonical" href="https://uplogic.gr/en/">
   <link rel="alternate" hreflang="el" href="https://uplogic.gr/">
   <link rel="alternate" hreflang="en" href="https://uplogic.gr/en/">
@@ -1174,6 +1188,254 @@
       .scarcity-badge { font-size: 11.5px; padding: 5px 11px; }
     }
 
+  
+    /* ============================================================
+       PREMIUM STUDIO DESIGN ENHANCEMENTS (Bento, Ambient Glow, Mobile-first)
+       ============================================================ */
+    
+    /* Ambient Glow & Radial Backgrounds */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 0 48px;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 900px;
+      height: 480px;
+      background: radial-gradient(ellipse at center, rgba(24, 157, 245, 0.16) 0%, rgba(36, 81, 245, 0.05) 50%, transparent 75%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero .wrap { position: relative; z-index: 1; }
+    
+    /* Modern Gradient Headline */
+    .hero-glow-text {
+      background: linear-gradient(135deg, #189DF5 0%, #60A5FA 50%, #38BDF8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+    html[data-theme="dark"] .hero h1 {
+      color: #F8FAFC;
+    }
+
+    /* Laser-thin borders with glowing hover */
+    .bcard, .svc, .proj, .pillar, .calc-card {
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    html[data-theme="dark"] .bcard:hover,
+    html[data-theme="dark"] .svc:hover,
+    html[data-theme="dark"] .proj:hover,
+    html[data-theme="dark"] .pillar:hover {
+      border-color: rgba(59, 130, 246, 0.5) !important;
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.18) !important;
+      transform: translateY(-3px) !important;
+    }
+
+    /* Mobile Swipe Hint */
+    .mobile-swipe-hint {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 600;
+      color: var(--accent-ink);
+      padding: 8px 14px;
+      margin-bottom: 14px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(24, 157, 245, 0.2);
+      border-radius: 999px;
+      text-align: center;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Sticky Mobile Action Bar */
+    .mobile-sticky-bar {
+      display: none;
+      position: fixed;
+      bottom: 16px;
+      left: 14px;
+      right: 14px;
+      z-index: 98;
+      background: rgba(17, 24, 39, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      padding: 6px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.45);
+      gap: 8px;
+      align-items: center;
+    }
+    html:not([data-theme="dark"]) .mobile-sticky-bar {
+      background: rgba(255, 255, 255, 0.92);
+      border-color: rgba(17, 17, 20, 0.12);
+      box-shadow: 0 12px 36px rgba(17, 17, 20, 0.15);
+    }
+    .mobile-sticky-bar a, .mobile-sticky-bar button {
+      flex: 1;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      font-size: 13.5px;
+      font-weight: 600;
+      border-radius: 999px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+    .sticky-calc-btn {
+      background: #189DF5 !important;
+      color: #fff !important;
+      box-shadow: 0 4px 14px rgba(24, 157, 245, 0.35);
+    }
+    .sticky-contact-btn {
+      background: rgba(255, 255, 255, 0.08) !important;
+      color: #fff !important;
+      border: 1px solid rgba(255, 255, 255, 0.14) !important;
+    }
+    html:not([data-theme="dark"]) .sticky-contact-btn {
+      background: #F3F4F6 !important;
+      color: #111114 !important;
+      border-color: #E5E7EB !important;
+    }
+
+    /* Mobile Enhancements & Overload Prevention */
+    @media (max-width: 768px) {
+      .mobile-sticky-bar {
+        display: flex;
+      }
+      .mobile-swipe-hint {
+        display: flex;
+      }
+      
+      /* Hide redundant cluttered mobile cards in Hero */
+      .phone, .bubble {
+        display: none !important;
+      }
+      .stage {
+        height: auto !important;
+        max-width: 100% !important;
+        margin-top: 10px;
+      }
+      .win {
+        position: relative !important;
+        inset: auto !important;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25) !important;
+        border-radius: 20px !important;
+      }
+      .hub {
+        padding: 14px !important;
+        gap: 10px !important;
+      }
+      .bento {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+      }
+      .bcard {
+        padding: 10px 12px !important;
+        border-radius: 14px !important;
+      }
+      .bcard b {
+        font-size: 13.5px !important;
+      }
+      .bcard span {
+        font-size: 11px !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      /* Horizontal Snap-Scroll for Work & Blog on Mobile */
+      .work {
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        gap: 14px !important;
+        padding: 6px 4px 18px !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+      }
+      .work::-webkit-scrollbar { display: none !important; }
+      .work .proj {
+        flex: 0 0 86% !important;
+        max-width: 320px !important;
+        scroll-snap-align: center !important;
+        border-radius: 20px !important;
+        margin: 0 !important;
+      }
+
+      /* Blog Grid Horizontal Scroll on Mobile */
+      .blog-grid {
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        gap: 14px !important;
+        padding: 6px 4px 18px !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+      }
+      .blog-grid::-webkit-scrollbar { display: none !important; }
+      .blog-grid .bpost {
+        flex: 0 0 86% !important;
+        max-width: 320px !important;
+        scroll-snap-align: center !important;
+        border-radius: 20px !important;
+      }
+
+      /* Padding at bottom of page so sticky bar never covers content */
+      footer {
+        padding-bottom: 84px !important;
+      }
+    }
+
+  
+    /* Dark Mode Filter Tabs Contrast */
+    html[data-theme="dark"] .filters {
+      background: #111827 !important;
+      border: 1px solid #1E293B !important;
+    }
+    html[data-theme="dark"] .filters button {
+      color: #94A3B8 !important;
+    }
+    html[data-theme="dark"] .filters button:hover {
+      color: #F8FAFC !important;
+    }
+    html[data-theme="dark"] .filters button.active {
+      background: #189DF5 !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 4px 14px rgba(24, 157, 245, 0.35) !important;
+    }
+
+    /* Scarcity badge mobile polish */
+    @media (max-width: 600px) {
+      .scarcity-badge {
+        font-size: 11.5px !important;
+        padding: 5px 12px !important;
+        line-height: 1.35 !important;
+        gap: 6px !important;
+      }
+      .mobile-sticky-bar a, .mobile-sticky-bar button {
+        font-size: 12.5px !important;
+        height: 40px !important;
+        white-space: nowrap !important;
+      }
+    }
+    .sticky-calc-btn span, .sticky-contact-btn span {
+      white-space: nowrap !important;
+    }
+
   </style>
 </head>
 <body>
@@ -1238,7 +1500,7 @@
           <div class="scarcity-badge"><span class="pulse-dot"></span>Monthly availability: <b>2 slots open</b> for new projects</div>
           <br>
           <span class="eyebrow">Digital & Software Studio · Patras · Greece & EU</span>
-          <h1>Digital products that <span class="accent">acquire & convert clients.</span></h1>
+          <h1>Digital products that <span class="hero-glow-text">acquire & convert clients.</span></h1>
           <p class="hero-sub">We engineer ultra-fast websites, automated e-commerce stores, custom SaaS platforms, AI chatbots, and deliver end-to-end Social Media management with measurable ROI.</p>
           <div class="hero-actions">
             <a href="#pricing" class="btn btn-dark">Calculate Project Cost <svg><use href="#i-arrow"/></svg></a>
@@ -1470,6 +1732,7 @@
           </div>
         </div>
 
+        <div class="mobile-swipe-hint"><span>👈 Swipe to explore all projects (7) 👉</span></div>
         <div class="work" id="workGrid">
           <button class="proj reveal" data-cat="saas app" data-id="taxpilot">
             <div class="proj-body">
@@ -2634,11 +2897,12 @@
     if (bookingModal) bookingModal.addEventListener('click', e => { if (e.target === bookingModal) closeBookingModal(); });
     addEventListener('keydown', e => { if (e.key === 'Escape') closeBookingModal(); });
 
-    document.querySelectorAll('[data-book]').forEach(btn => {
-      btn.addEventListener('click', e => {
+    document.addEventListener('click', e => {
+      const btn = e.target.closest('[data-book]');
+      if (btn) {
         e.preventDefault();
         openBookingModal(btn.dataset.book || '');
-      });
+      }
     });
 
     if (document.getElementById('bookingForm')) {
@@ -2792,5 +3056,14 @@
 
     document.getElementById('yr').textContent = new Date().getFullYear();
   </script>
+  <!-- Sticky Mobile Action Bar (Thumb-Friendly) -->
+  <div class="mobile-sticky-bar" id="mobileStickyBar" aria-label="Quick Actions">
+    <a href="#pricing" class="sticky-calc-btn">
+      <span>⚡ Calculate Cost</span>
+    </a>
+    <button type="button" class="sticky-contact-btn" data-book="Mobile Quick Action">
+      <span>📅 Book 15' Call</span>
+    </button>
+  </div>
 </body>
 </html>
