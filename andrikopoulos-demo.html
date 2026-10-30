@@ -870,13 +870,16 @@
 
     <!-- Categories Nav -->
     <div class="category-pills">
-      <button class="cat-btn active" onclick="filterCategory('all', this)"><i class="fa-solid fa-border-all"></i> Όλα τα Είδη</button>
+      <button class="cat-btn active" onclick="filterCategory('all', this)"><i class="fa-solid fa-border-all"></i> Όλα τα Είδη (50)</button>
       <button class="cat-btn" onclick="filterCategory('fylladio', this)"><i class="fa-solid fa-tag"></i> Προσφορές Φυλλαδίου</button>
       <button class="cat-btn" onclick="filterCategory('dairy', this)"><i class="fa-solid fa-cheese"></i> Γαλακτοκομικά & Τυριά</button>
       <button class="cat-btn" onclick="filterCategory('bakery', this)"><i class="fa-solid fa-bread-slice"></i> Αρτογεύσεις & Πρωινό</button>
       <button class="cat-btn" onclick="filterCategory('meat', this)"><i class="fa-solid fa-drumstick-bite"></i> Κρεοπωλείο</button>
+      <button class="cat-btn" onclick="filterCategory('fruits', this)"><i class="fa-solid fa-apple-whole"></i> Μαναβική & Φρούτα</button>
+      <button class="cat-btn" onclick="filterCategory('pantry', this)"><i class="fa-solid fa-wheat-awn"></i> Παντοπωλείο & Ζυμαρικά</button>
       <button class="cat-btn" onclick="filterCategory('cleaning', this)"><i class="fa-solid fa-soap"></i> Απορρυπαντικά & Χαρτικά</button>
       <button class="cat-btn" onclick="filterCategory('drinks', this)"><i class="fa-solid fa-wine-bottle"></i> Κάβα & Αναψυκτικά</button>
+      <button class="cat-btn" onclick="filterCategory('personal', this)"><i class="fa-solid fa-pump-soap"></i> Προσωπική Φροντίδα</button>
     </div>
 
     <!-- Product Showcase -->
@@ -1061,87 +1064,507 @@
   <script>
     // Product Database (Mocking Real Andrikopoulos Flyer & Staples)
     const PRODUCTS = [
-      {
-        id: 1,
-        title: "Φέτα Καλαβρύτων Π.Ο.Π. (Βαρελίσια)",
-        category: "dairy",
-        unit: "Συσκευασία 400g (Κομμάτι)",
-        price: 4.85,
-        oldPrice: 5.90,
-        deal: "Προσφορά Φυλλαδίου -18%",
-        img: "https://images.unsplash.com/photo-1559561853-08451507cbe7?w=400&auto=format&fit=crop&q=60"
-      },
-      {
-        id: 2,
-        title: "Εξαιρετικό Παρθένο Ελαιόλαδο Αχαΐας 5L",
-        category: "fylladio",
-        unit: "Μεταλλικό Δοχείο 5 Λίτρα",
-        price: 43.50,
-        oldPrice: 49.90,
-        deal: "Super Τιμή",
-        img: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&auto=format&fit=crop&q=60"
-      },
-      {
-        id: 3,
-        title: "Φρέσκο Γάλα Πλήρες 3.5% 1L",
-        category: "dairy",
-        unit: "Χάρτινη Συσκευασία 1L",
-        price: 1.28,
-        oldPrice: 1.55,
-        deal: "Προσφορά",
-        img: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&auto=format&fit=crop&q=60"
-      },
-      {
-        id: 4,
-        title: "Ψωμί Προζυμένιο Χωριάτικο «Αρτογεύσεις»",
-        category: "bakery",
-        unit: "Φρέσκο Ψημένο 500g",
-        price: 1.10,
-        oldPrice: 1.30,
-        deal: "Αρτογεύσεις",
-        img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&auto=format&fit=crop&q=60"
-      },
-      {
-        id: 5,
-        title: "Μοσχαρίσια Σπάλα Νωπή Ελληνική",
-        category: "meat",
-        unit: "1 Κιλό (Κομμένη σε μερίδες)",
-        price: 11.40,
-        oldPrice: 13.20,
-        deal: "Κρεοπωλείο -14%",
-        img: "https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=400&auto=format&fit=crop&q=60"
-      },
-      {
-        id: 6,
-        title: "Ariel Υγρό Απορρυπαντικό Πλυντηρίου 70 Μεζούρες",
-        category: "cleaning",
-        unit: "Φιάλη 3.5L",
-        price: 13.90,
-        oldPrice: 19.80,
-        deal: "1+1 ΔΩΡΟ Ίδια Αξία",
-        img: "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=400&auto=format&fit=crop&q=60"
-      },
-      {
-        id: 7,
-        title: "Μπύρα Fix Hellas 6x330ml (Κουτί)",
-        category: "drinks",
-        unit: "Εξάδα 6x330ml",
-        price: 4.60,
-        oldPrice: 5.75,
-        deal: "-20% Έκπτωση",
-        img: "https://images.unsplash.com/photo-1608270546103-979c323f4c6e?w=400&auto=format&fit=crop&q=60"
-      },
-      {
-        id: 8,
-        title: "Γιαούρτι Στραγγιστό 2% 3x200g (2+1 Δώρο)",
-        category: "dairy",
-        unit: "Πολυσυσκευασία 600g",
-        price: 2.75,
-        oldPrice: 3.40,
-        deal: "2+1 ΔΩΡΟ",
-        img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&auto=format&fit=crop&q=60"
-      }
-    ];
+  {
+    "id": 1,
+    "title": "Φέτα Καλαβρύτων Π.Ο.Π. (Βαρελίσια)",
+    "category": "dairy",
+    "unit": "Συσκευασία 400g (Κομμάτι)",
+    "price": 4.85,
+    "oldPrice": 5.9,
+    "deal": "Προσφορά Φυλλαδίου -18%",
+    "img": "https://images.unsplash.com/photo-1559561853-08451507cbe7?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 2,
+    "title": "Γραβιέρα Αμφιλοχίας Π.Ο.Π.",
+    "category": "dairy",
+    "unit": "Κομμάτι 350g",
+    "price": 5.4,
+    "oldPrice": 6.5,
+    "deal": "-17% Έκπτωση",
+    "img": "https://images.unsplash.com/photo-1452195100486-9cc805987862?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 3,
+    "title": "Φρέσκο Γάλα Πλήρες 3.5% 1L",
+    "category": "dairy",
+    "unit": "Χάρτινη Συσκευασία 1L",
+    "price": 1.28,
+    "oldPrice": 1.55,
+    "deal": "Προσφορά",
+    "img": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 4,
+    "title": "Φρέσκο Γάλα Ελαφρύ 1.5% 1L",
+    "category": "dairy",
+    "unit": "Χάρτινη Συσκευασία 1L",
+    "price": 1.28,
+    "oldPrice": 1.55,
+    "deal": "Προσφορά",
+    "img": "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 5,
+    "title": "Γιαούρτι Στραγγιστό 2% 3x200g (2+1 Δώρο)",
+    "category": "dairy",
+    "unit": "Πολυσυσκευασία 600g",
+    "price": 2.75,
+    "oldPrice": 3.4,
+    "deal": "2+1 ΔΩΡΟ",
+    "img": "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 6,
+    "title": "Κασέρι Π.Ο.Π. Ελασσόνας σε Φέτες",
+    "category": "dairy",
+    "unit": "Συσκευασία 200g",
+    "price": 3.15,
+    "oldPrice": 3.8,
+    "deal": "-17%",
+    "img": "https://images.unsplash.com/photo-1624806992066-5ffcf7ca186b?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 7,
+    "title": "Βούτυρο Αγελάδος Lurpak 250g",
+    "category": "dairy",
+    "unit": "Συσκευασία 250g",
+    "price": 3.45,
+    "oldPrice": 4.1,
+    "deal": "Προσφορά",
+    "img": "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 8,
+    "title": "Αυγά Ελευθέρας Βοσκής Αχαΐας (Εξάδα)",
+    "category": "dairy",
+    "unit": "6 Τεμάχια L",
+    "price": 2.2,
+    "oldPrice": 2.7,
+    "deal": "Τοπικό Προϊόν",
+    "img": "https://images.unsplash.com/photo-1516448620398-c5f44bf9f441?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 9,
+    "title": "Ψωμί Προζυμένιο Χωριάτικο «Αρτογεύσεις»",
+    "category": "bakery",
+    "unit": "Φρέσκο Ψημένο 500g",
+    "price": 1.1,
+    "oldPrice": 1.3,
+    "deal": "Αρτογεύσεις",
+    "img": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 10,
+    "title": "Κουλούρι Θεσσαλονίκης με Σουσάμι (2 τμχ)",
+    "category": "bakery",
+    "unit": "Φρεσκοψημένο",
+    "price": 0.9,
+    "oldPrice": 1.2,
+    "deal": "Προσφορά",
+    "img": "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 11,
+    "title": "Φρυγανιές Σταρένιες Παπαδοπούλου 4x127g (3+1 Δώρο)",
+    "category": "bakery",
+    "unit": "508g",
+    "price": 1.85,
+    "oldPrice": 2.35,
+    "deal": "3+1 ΔΩΡΟ",
+    "img": "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 12,
+    "title": "Μέλι Ανθέων & Κωνοφόρων Εύβοιας 900g",
+    "category": "bakery",
+    "unit": "Γυάλινο Βάζο 900g",
+    "price": 7.4,
+    "oldPrice": 8.9,
+    "deal": "-17%",
+    "img": "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 13,
+    "title": "Μαρμελάδα Φράουλα Extra 380g",
+    "category": "bakery",
+    "unit": "Βάζο 380g",
+    "price": 1.95,
+    "oldPrice": 2.4,
+    "deal": "Προσφορά",
+    "img": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 14,
+    "title": "Δημητριακά Fitness Ολικής Άλεσης 375g",
+    "category": "bakery",
+    "unit": "Κουτί 375g",
+    "price": 2.65,
+    "oldPrice": 3.5,
+    "deal": "-24%",
+    "img": "https://images.unsplash.com/photo-1521483451569-e33803c0330c?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 15,
+    "title": "Ελληνικός Καφές Παραδοσιακός 200g",
+    "category": "bakery",
+    "unit": "Σακουλάκι 200g",
+    "price": 2.7,
+    "oldPrice": 3.2,
+    "deal": "Προσφορά",
+    "img": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 16,
+    "title": "Μοσχαρίσια Σπάλα Νωπή Ελληνική",
+    "category": "meat",
+    "unit": "1 Κιλό (Κομμένη σε μερίδες)",
+    "price": 11.4,
+    "oldPrice": 13.2,
+    "deal": "Κρεοπωλείο -14%",
+    "img": "https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 17,
+    "title": "Φιλέτο Στήθος Κοτόπουλο Νωπό Ελληνικό",
+    "category": "meat",
+    "unit": "1 Κιλό",
+    "price": 7.9,
+    "oldPrice": 9.4,
+    "deal": "Super Τιμή",
+    "img": "https://images.unsplash.com/photo-1604503468506-a8da13d82791?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 18,
+    "title": "Χοιρινή Μπριζόλα Λαιμού με Οστό",
+    "category": "meat",
+    "unit": "1 Κιλό",
+    "price": 5.8,
+    "oldPrice": 6.9,
+    "deal": "-16%",
+    "img": "https://images.unsplash.com/photo-1432139555190-58524dae6a55?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 19,
+    "title": "Κιμάς Μοσχαρίσιος Νωπός Ελληνικός",
+    "category": "meat",
+    "unit": "1 Κιλό",
+    "price": 10.9,
+    "oldPrice": 12.5,
+    "deal": "Προσφορά",
+    "img": "https://images.unsplash.com/photo-1588168333986-5078d3ae3976?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 20,
+    "title": "Γαλοπούλα Καπνιστή Υφαντής σε Φέτες 200g",
+    "category": "meat",
+    "unit": "200g (1+1 -50%)",
+    "price": 2.45,
+    "oldPrice": 3.1,
+    "deal": "Προσφορά",
+    "img": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 21,
+    "title": "Χωριάτικα Λουκάνικα με Πράσο Αχαΐας",
+    "category": "meat",
+    "unit": "450g",
+    "price": 3.8,
+    "oldPrice": 4.5,
+    "deal": "Τοπική Παραγωγή",
+    "img": "https://images.unsplash.com/photo-1597474246876-0a2569e9d6ef?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 22,
+    "title": "Μήλα Σμιθ Αγιάς (Εγχώρια)",
+    "category": "fruits",
+    "unit": "1 Κιλό",
+    "price": 1.45,
+    "oldPrice": 1.85,
+    "deal": "Μαναβική -22%",
+    "img": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 23,
+    "title": "Μπανάνες Chiquita Extra",
+    "category": "fruits",
+    "unit": "1 Κιλό",
+    "price": 1.65,
+    "oldPrice": 1.95,
+    "deal": "Προσφορά",
+    "img": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 24,
+    "title": "Πατάτες Αχαΐας (Κάτω Αχαΐα)",
+    "category": "fruits",
+    "unit": "Δίχτυ 3 Κιλών",
+    "price": 2.85,
+    "oldPrice": 3.6,
+    "deal": "Τοπική Σοδειά",
+    "img": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 25,
+    "title": "Ντομάτες Τσαμπί Ελληνικές",
+    "category": "fruits",
+    "unit": "1 Κιλό",
+    "price": 1.6,
+    "oldPrice": 2.1,
+    "deal": "-24%",
+    "img": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 26,
+    "title": "Πορτοκάλια Χυμού Λακωνίας",
+    "category": "fruits",
+    "unit": "Δίχτυ 2 Κιλών",
+    "price": 1.7,
+    "oldPrice": 2.2,
+    "deal": "Φρέσκια Συγκομιδή",
+    "img": "https://images.unsplash.com/photo-1611080626919-7cf5a9dbab5b?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 27,
+    "title": "Εξαιρετικό Παρθένο Ελαιόλαδο Αχαΐας 5L",
+    "category": "pantry",
+    "unit": "Μεταλλικό Δοχείο 5 Λίτρα",
+    "price": 43.5,
+    "oldPrice": 49.9,
+    "deal": "Super Τιμή Φυλλαδίου",
+    "img": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 28,
+    "title": "Barilla Σπαγγέτι No 5 (500g)",
+    "category": "pantry",
+    "unit": "Πακέτο 500g",
+    "price": 0.88,
+    "oldPrice": 1.25,
+    "deal": "Προσφορά Φυλλαδίου -30%",
+    "img": "https://images.unsplash.com/photo-1551462147-ff29053bfc14?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 29,
+    "title": "MISKO Κριθαράκι Μέτριο 500g",
+    "category": "pantry",
+    "unit": "Πακέτο 500g",
+    "price": 0.82,
+    "oldPrice": 1.15,
+    "deal": "-28%",
+    "img": "https://images.unsplash.com/photo-1621996346565-e3d5d6281216?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 30,
+    "title": "Ρύζι Καρολίνα Σερρών 1kg",
+    "category": "pantry",
+    "unit": "1 Κιλό",
+    "price": 1.75,
+    "oldPrice": 2.2,
+    "deal": "Προσφορά",
+    "img": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 31,
+    "title": "Pummaro Passata Κλασικός Τοματοπολτός 3x500g",
+    "category": "pantry",
+    "unit": "3x500g (2+1 Δώρο)",
+    "price": 2.1,
+    "oldPrice": 2.8,
+    "deal": "2+1 ΔΩΡΟ",
+    "img": "https://images.unsplash.com/photo-1546548970-71785318a17b?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 32,
+    "title": "Αλεύρι για Όλες τις Χρήσεις Μύλοι Αγίου Γεωργίου 1kg",
+    "category": "pantry",
+    "unit": "1 Κιλό",
+    "price": 1.15,
+    "oldPrice": 1.45,
+    "deal": "Προσφορά",
+    "img": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 33,
+    "title": "Τόνος Rio Mare σε Ελαιόλαδο 3x80g (2+1 Δώρο)",
+    "category": "pantry",
+    "unit": "3x80g",
+    "price": 4.6,
+    "oldPrice": 5.95,
+    "deal": "2+1 ΔΩΡΟ",
+    "img": "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 34,
+    "title": "Ariel Υγρό Απορρυπαντικό Πλυντηρίου 70 Μεζούρες",
+    "category": "cleaning",
+    "unit": "Φιάλη 3.5L",
+    "price": 13.9,
+    "oldPrice": 19.8,
+    "deal": "1+1 ΔΩΡΟ Ίδια Αξία",
+    "img": "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 35,
+    "title": "Skip Σκόνη Active Clean 60 Μεζούρες",
+    "category": "cleaning",
+    "unit": "Συσκευασία 3kg",
+    "price": 11.8,
+    "oldPrice": 16.5,
+    "deal": "-28% Έκπτωση",
+    "img": "https://images.unsplash.com/photo-1610557892470-55d9e80c0bce?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 36,
+    "title": "Fairy Υγρό Πιάτων Platinum Λεμόνι 900ml",
+    "category": "cleaning",
+    "unit": "Φιάλη 900ml",
+    "price": 2.65,
+    "oldPrice": 3.9,
+    "deal": "-32%",
+    "img": "https://images.unsplash.com/photo-1607613009820-a29f7bb81c04?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 37,
+    "title": "Χαρτί Υγείας Softex Silk 3φυλλο (10 Ρολά)",
+    "category": "cleaning",
+    "unit": "Πακέτο 10 Ρολά",
+    "price": 4.2,
+    "oldPrice": 5.8,
+    "deal": "Προσφορά Φυλλαδίου",
+    "img": "https://images.unsplash.com/photo-1584556812952-905ffd0c611a?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 38,
+    "title": "Χαρτί Κουζίνας Regina XXL 800g",
+    "category": "cleaning",
+    "unit": "Μεγάλο Ρολό 800g",
+    "price": 2.4,
+    "oldPrice": 3.2,
+    "deal": "-25%",
+    "img": "https://images.unsplash.com/photo-1583947215259-38e31be8751f?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 39,
+    "title": "Klinex Ultra Χλωρίνη Classic 1.25L",
+    "category": "cleaning",
+    "unit": "Φιάλη 1.25L",
+    "price": 1.45,
+    "oldPrice": 1.95,
+    "deal": "Προσφορά",
+    "img": "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 40,
+    "title": "Μαλακτικό Ρούχων Soupline Μυρωδιά Βανίλια 82 Μεζούρες",
+    "category": "cleaning",
+    "unit": "Φιάλη 1.9L",
+    "price": 3.75,
+    "oldPrice": 5.2,
+    "deal": "-28%",
+    "img": "https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 41,
+    "title": "Μπύρα Fix Hellas 6x330ml (Κουτί)",
+    "category": "drinks",
+    "unit": "Εξάδα 6x330ml",
+    "price": 4.6,
+    "oldPrice": 5.75,
+    "deal": "-20% Έκπτωση",
+    "img": "https://images.unsplash.com/photo-1608270546103-979c323f4c6e?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 42,
+    "title": "Μπύρα Alfa 6x330ml (5+1 Δώρο)",
+    "category": "drinks",
+    "unit": "Εξάδα 6x330ml",
+    "price": 4.45,
+    "oldPrice": 5.6,
+    "deal": "5+1 ΔΩΡΟ",
+    "img": "https://images.unsplash.com/photo-1535958636474-b021ee887b13?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 43,
+    "title": "Κρασί Ροδίτης Πατρών Π.Ο.Π. (Λευκό Ξηρό) 750ml",
+    "category": "drinks",
+    "unit": "Φιάλη 750ml",
+    "price": 4.2,
+    "oldPrice": 5.5,
+    "deal": "Τοπικός Οίνος",
+    "img": "https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 44,
+    "title": "Coca-Cola Original 4x500ml (3+1 Δώρο)",
+    "category": "drinks",
+    "unit": "Τετράδα 4x500ml",
+    "price": 3.4,
+    "oldPrice": 4.25,
+    "deal": "3+1 ΔΩΡΟ",
+    "img": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 45,
+    "title": "Φυσικό Μεταλλικό Νερό Ζαγόρι 6x1.5L",
+    "category": "drinks",
+    "unit": "Εξάδα 6x1.5L",
+    "price": 1.65,
+    "oldPrice": 2.1,
+    "deal": "Super Τιμή",
+    "img": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 46,
+    "title": "Λουξ Πορτοκαλάδα με Ανθρακικό 6x330ml",
+    "category": "drinks",
+    "unit": "Εξάδα Πατρινή 6x330ml",
+    "price": 2.95,
+    "oldPrice": 3.7,
+    "deal": "Πατρινό Προϊόν",
+    "img": "https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 47,
+    "title": "Σαμπουάν Ultrex Men Active Clean 360ml",
+    "category": "personal",
+    "unit": "360ml",
+    "price": 3.25,
+    "oldPrice": 4.9,
+    "deal": "-34% Έκπτωση",
+    "img": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 48,
+    "title": "Αφρόλουτρο Palmolive Αμύγδαλο & Ενυδάτωση 650ml",
+    "category": "personal",
+    "unit": "650ml (1+1 Δώρο)",
+    "price": 3.4,
+    "oldPrice": 5.1,
+    "deal": "1+1 ΔΩΡΟ",
+    "img": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 49,
+    "title": "Οδοντόκρεμα Colgate Total Clean Mint 75ml (2 τμχ)",
+    "category": "personal",
+    "unit": "Διπλό Πακέτο",
+    "price": 2.9,
+    "oldPrice": 4.2,
+    "deal": "-30%",
+    "img": "https://images.unsplash.com/photo-1559591937-e1032b2e88a0?w=400&auto=format&fit=crop&q=60"
+  },
+  {
+    "id": 50,
+    "title": "Υγρά Μαντηλάκια Babylino Sensitive (3x54 τμχ)",
+    "category": "personal",
+    "unit": "Mega Pack 162 τμχ (2+1 Δώρο)",
+    "price": 3.65,
+    "oldPrice": 5.2,
+    "deal": "2+1 ΔΩΡΟ",
+    "img": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=400&auto=format&fit=crop&q=60"
+  }
+];
 
     // Cart State
     let cart = [];
